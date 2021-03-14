@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".src.main.mypage.MyFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/toolbar_back"
+            android:id="@+id/my_toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/my_toolbar"
+            android:layout_marginTop="26dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/round_design"/>
+            <TextView
+                android:id="@+id/my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:textStyle="normal"
+                android:textSize="19sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="8sp"
+                android:text="님"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/my_crown"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="6sp"
+                    android:text="최고의 메이트"/>
+                <TextView
+                    android:id="@+id/my_bestmate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:textColor="#ff883f"
+                    android:lineSpacingExtra="8sp"
+                    android:text="3회"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16.5dp">
+
+                <View
+                    android:layout_width="332dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#e0e0e0"/>
+
+                <Button
+                    android:id="@+id/my_profile_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="6sp"
+                    android:text="프로필 관리">
+                </Button>
+
+                <View
+                    android:layout_width="332dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#e0e0e0"/>
+
+                <Button
+                    android:id="@+id/my_logout_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="6sp"
+                    android:text="로그아웃"/>
+
+                <View
+                    android:layout_width="332dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#e0e0e0"/>
+
+                <Button
+                    android:id="@+id/my_getout_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="6sp"
+                    android:text="계정 탈퇴"/>
+
+                <View
+                    android:layout_width="332dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#e0e0e0"/>
+
+                <Button
+                    android:id="@+id/my_ask_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="6sp"
+                    android:text="문의하기"/>
+
+                <View
+                    android:layout_width="332dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="#e0e0e0"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

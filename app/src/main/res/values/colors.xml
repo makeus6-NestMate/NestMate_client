@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff883f</color>
+    <color name="colorAccent">#4cd8c2</color>
+    <color name="splashback">#fffdfa</color>
+    <color name="orange">#ff883f</color>
+    <color name="mint">#4cd8c2</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray">#c1c1c1</color>
+    <color name="light_gray">#e0e0e0</color>
+    <color name="darkgray">#7c7c7c</color>
+    <color name="gray2">#b5b5b5</color>
+    <color name="black">#000000</color>
+    <color name="daybuttonmint">#1bcbb0</color>
+</resources>

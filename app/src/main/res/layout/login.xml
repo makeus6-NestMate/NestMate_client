@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/login_img"
+        android:layout_width="94dp"
+        android:layout_height="104dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="101dp"
+        android:src="@drawable/chicken_img"/>
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:layout_below="@id/login_img"
+        android:textStyle="normal"
+        android:textSize="24sp"
+        android:textColor="#ff883f"
+        android:lineSpacingExtra="5sp"
+        android:text="둥지메이트" />
+
+    <LinearLayout
+        android:id="@+id/login_insert"
+        android:layout_width="321dp"
+        android:layout_height="102dp"
+        android:background="@drawable/rec_design"
+        android:layout_below="@+id/login_title"
+        android:layout_marginTop="43dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="321dp"
+            android:layout_height="51dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/login_email"/>
+
+            <EditText
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/transparent"
+                android:hint="이메일을 입력해주세요."
+                android:breakStrategy="balanced"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="298dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="#e0e0e0"/>
+
+        <LinearLayout
+            android:layout_width="321dp"
+            android:layout_height="51dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/login_pw"/>
+
+            <EditText
+                android:id="@+id/login_pw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/login_email"
+                android:background="@color/transparent"
+                android:hint="비밀번호를 입력해주세요."/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="321dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/login_insert"
+        android:layout_marginTop="29dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/roundrec_design"
+        android:text="로그인"
+        android:textColor="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="아직 회원이 아니신가요?"/>
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/transparent"
+            android:text="회원가입"
+            android:textColor="@color/orange"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rec_design">
+
+    <ImageView
+        android:id="@+id/alarmImage"
+        android:background="@drawable/round_design"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="13dp">
+
+        <TextView
+            android:id="@+id/alarmTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:textStyle="normal"
+            android:textSize="10sp"
+            android:textColor="#c1c1c1"
+            android:lineSpacingExtra="5sp"
+            android:layout_alignParentRight="true"
+            tools:text="오후 7시 30분"
+            />
+
+        <TextView
+            android:id="@+id/alarmContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alarmTime"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="9sp"
+            tools:text="‘서은’님이\n‘쓰레기 버리기’를 부탁해요."/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/register_two_toolbar"
+        layout="@layout/toolbar_back"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/register_two_toolbar"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/register_img"
+            android:layout_width="109dp"
+            android:layout_height="109dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="58dp"
+            android:background="@drawable/round_design"/>
+        <EditText
+            android:id="@+id/register_nickname"
+            android:layout_width="321dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="29dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:background="@drawable/rec_design"
+            android:hint="닉네임을 입력해주세요."/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register_two_btn"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundrec_design"
+        android:text="회원가입"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

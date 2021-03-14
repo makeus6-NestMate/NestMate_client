@@ -1,0 +1,74 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="nest_tabtext_style" parent="TextAppearance.Design.Tab">
+        <item name="fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">17sp</item>
+        <item name="android:textColor">@color/darkgray</item>
+    </style>
+
+    <style name="orangebutton">
+        <item name="android:background">@drawable/orange_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="whitebutton">
+        <item name="android:background">@drawable/white_button</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="graybutton">
+        <item name="android:background">@drawable/gray_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="edittext">
+        <item name="android:background">@drawable/edittext_design</item>
+        <item name="android:textColorHint">#7c7c7c</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_regular</item>
+    </style>
+
+    <style name="spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="background">@drawable/dialog_white_roundcorner</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyTimePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="background">@drawable/dialog_white_roundcorner</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:timePickerStyle">@style/MyTimePickerTheme</item>
+    </style>
+
+    <style name="MyTimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
+        <item name="android:timePickerMode">spinner</item>
+    </style>
+</resources>
