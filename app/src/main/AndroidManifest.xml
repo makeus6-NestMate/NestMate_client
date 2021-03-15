@@ -22,11 +22,12 @@
             android:name=".src.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.register.RegisterOne"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".src.register.RegisterOneActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".src.register.RegisterTwo"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".src.register.RegisterTwoActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
             android:name=".src.main.home.nest.NestActivity"
             android:theme="@style/AppTheme.NoActionBar">
