@@ -2,24 +2,19 @@ package com.example.nm1.src.main.home.nest.memo
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentMemoBinding
-import kotlinx.android.synthetic.main.memo_delete_dialog.view.*
 import kotlinx.android.synthetic.main.memo_item.view.*
 
 class MemoFragment : BaseFragment<FragmentMemoBinding>(
     FragmentMemoBinding::bind,
     R.layout.fragment_memo
 ), MemoAddInterface, MemoDeleteInterface {
-
 
     var idx = 0
     var moveX = 0f
@@ -87,10 +82,7 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
                         v.y = (binding.memoFrameLayout.height - v.height).toFloat()
                     }
                 }
-
             }
-
-
             true
         }
 
@@ -101,8 +93,6 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
             true
         }
 
-
-
         var frame = binding.memoFrameLayout
         frame.addView(
             target, 0, ViewGroup.LayoutParams(
@@ -111,9 +101,6 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
             )
         )
         idx++
-
-
-
     }
 
     override fun onCancelBtnClicked() {
@@ -125,7 +112,4 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
             Log.d("로그", "Delete Clicked!!")
         }
     }
-
-
-
 }

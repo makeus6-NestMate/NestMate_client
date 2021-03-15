@@ -13,7 +13,7 @@ import com.example.nm1.src.main.mypage.MyFragment
 import com.example.nm1.src.register.RegisterOneActivity
 import kotlinx.android.synthetic.main.outer_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMain>(ActivityLoginBinding::inflate)  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
