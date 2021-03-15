@@ -9,7 +9,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.nm1.CalendarPagerFragmentStateAdapter
 import com.example.nm1.R
 import kotlinx.android.synthetic.main.calendar_view.*
-import kotlinx.android.synthetic.main.inner_view.*
 
 class CalendarViewPagerFragment : Fragment() {
 

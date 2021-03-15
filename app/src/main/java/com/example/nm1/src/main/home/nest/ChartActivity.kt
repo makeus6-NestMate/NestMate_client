@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.chart_activity.*
 import kotlinx.android.synthetic.main.chart_day.*
 import kotlinx.android.synthetic.main.chart_day.view.*
 import kotlinx.android.synthetic.main.chart_person_item.view.*
-import kotlinx.android.synthetic.main.inner_main.*
-import kotlinx.android.synthetic.main.inner_main.toolbar_title
 import kotlinx.android.synthetic.main.toolbar_back.*
 
 class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::inflate) {
@@ -34,6 +32,7 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
 
     val colorArray = arrayOf("#5e6af5", "#43a8ff", "#21ffbb", "#cfff2e")
     val txtArray= arrayOf("월", "화","수","목","금","토","일")
+    val dataArray= arrayListOf<List<Int>>(listOf(20,30,40,50), listOf(30,10,30,50),listOf(20,50,40,30),listOf(20,30,40,50),listOf(20,30,40,50),listOf(20,30,40,50),listOf(20,30,40,50))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +41,9 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
         val dayArray = arrayOf(chart_mon, chart_tue, chart_wed, chart_thu, chart_fri, chart_sat, chart_sun)
 
         toolbar_title.text="차트"
-        for(txt in txtArray){
-            for(day in dayArray) init(day, txt)
-        }
-        for(color in colorArray){
-            for(day in dayArray) draw(day, color, 30)
+        for(idx1 in dayArray.indices){
+            init(dayArray[idx1], txtArray[idx1])
+            for(idx2 in dataArray[idx1].indices) draw(dayArray[idx1], colorArray[idx2], dataArray[idx1][idx2])
         }
 
 

@@ -30,22 +30,20 @@ class CalendarAdd : BaseActivity<CalendarAddBinding>(CalendarAddBinding::inflate
         //
         //init
         calendar_add_toolbar.toolbar_title.text="일정추가"
-        for(color in colorArray){
-            for(cate in cateArray) initCategory(cate, color, null)
-        }
-        for(name in nameArray){
-            for(cate in cateArray) initCategory(cate, null, name)
-        }
+        for(idx in cateArray.indices) initCategory(cateArray[idx], colorArray[idx], nameArray[idx])
 
         //event
+        category_random.setOnClickListener {
+            CalendarAddDialog().show(supportFragmentManager, "CalendarAddDialog")
+        }
         back_btn.setOnClickListener {
             finish()
         }
     }
 
-    fun initCategory(cate : View, color:String?, name:String?){
+    fun initCategory(cate : View, color:String, name:String){
         cate.setBackgroundColor(resources.getColor(R.color.white))
-        if(name==null) cate.calendar_category_color.setBackgroundColor(Color.parseColor(color))
-        else cate.calendar_category_name.text=name
+        cate.calendar_category_color.setBackgroundColor(Color.parseColor(color))
+        cate.calendar_category_name.text=name
     }
 }
