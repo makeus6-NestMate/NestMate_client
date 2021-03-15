@@ -2,27 +2,26 @@ package com.example.nm1.src.main
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
+import com.example.nm1.config.BaseActivity
+import com.example.nm1.databinding.ActivityMainBinding
 import com.example.nm1.src.login.LoginActivity
-import com.example.nm1.src.main.alarm.AlarmFragment
 import com.example.nm1.src.main.home.HomeFragment
 import com.example.nm1.src.main.mypage.MyFragment
 import com.example.nm1.src.register.RegisterOneActivity
-import kotlinx.android.synthetic.main.outer_main.*
 
-class MainActivity : BaseActivity<ActivityMain>(ActivityLoginBinding::inflate)  {
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate)  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.outer_main)
+        setContentView(R.layout.activity_main)
         initNavigationBar()
     }
 
     private fun initNavigationBar() {
-        tabBottom.run {
+        binding.tabBottom.run {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.home -> { changeFragment(HomeFragment()) }

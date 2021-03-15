@@ -32,10 +32,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
 //        밀어서 수정 삭제
 
-
         val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
-
-
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
