@@ -8,6 +8,8 @@ import com.example.nm1.src.main.alarm.AlarmFragment
 import com.example.nm1.src.main.home.HomeFragment
 import com.example.nm1.src.main.mypage.MyFragment
 import kotlinx.android.synthetic.main.outer_main.*
+// Test !!!
+
 
 class MainActivity : AppCompatActivity() {
 
