@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.chart_activity.*
 import kotlinx.android.synthetic.main.chart_day.*
 import kotlinx.android.synthetic.main.chart_day.view.*
 import kotlinx.android.synthetic.main.chart_person_item.view.*
-import kotlinx.android.synthetic.main.inner_main.*
-import kotlinx.android.synthetic.main.inner_main.toolbar_title
 import kotlinx.android.synthetic.main.toolbar_back.*
 
 class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::inflate) {

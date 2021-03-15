@@ -8,7 +8,6 @@ import com.example.nm1.databinding.ActivityNestBinding
 class NestActivity : BaseActivity<ActivityNestBinding>(ActivityNestBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nest)
 
         // ViewPagerFragment를 fragmentFrame에 띄우기
         supportFragmentManager.beginTransaction().add(R.id.innerFrame, ViewPagerFragment()).commit()
