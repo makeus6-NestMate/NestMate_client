@@ -40,6 +40,7 @@ class ViewPagerFragment : BaseFragment<ViewpagerNestTabBinding>(ViewpagerNestTab
         TabLayoutMediator(binding.nestTabTop, binding.vpInner) { tab, position ->
             tab.text = tabTextArray[position]
         }.attach()
-    }
 
+        binding.vpInner.isUserInputEnabled = false
+    }
 }
