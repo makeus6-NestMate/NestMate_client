@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/memo_dialog_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/memo_dialog_title"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="12sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="11dp"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/notosanskr_medium"/>
+
+    <View
+        android:id="@+id/memo_dialog_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorGreyLine"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="10dp"/>
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/memo_dialog_content_title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:textColor="@color/colorSubTitle"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/memo_dialog_content_title"
+        />
+
+        <EditText
+            android:id="@+id/memo_dialog_content_et"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/memo_dialog_content_bg"
+            android:fontFamily="@font/notosanskr_regular"
+            android:gravity="left"
+            android:hint="@string/memo_dialog_content_hint"
+            android:maxLines="5"
+            android:inputType="textMultiLine"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="8sp"
+            android:paddingLeft="9dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toRightOf="@id/memo_dialog_content_title_tv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/memo_dialog_color_title_tv"
+            app:layout_constraintStart_toStartOf="@id/memo_dialog_content_title_tv"
+            app:layout_constraintTop_toBottomOf="@id/memo_dialog_content_title_tv"
+            android:layout_marginTop="170dp"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:textColor="@color/colorSubTitle"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/memo_dialog_color_title"
+            />
+
+        <RadioGroup
+            android:id="@+id/memo_dialog_color_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toRightOf="@id/memo_dialog_color_title_tv"
+            app:layout_constraintTop_toTopOf="@id/memo_dialog_color_title_tv">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/yello_selector_radio"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/pink_selector_radio" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/blue_selector_radio"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/purple_selector_radio" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/green_selector_radio" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/memo_dialog_radio_btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginRight="6dp"
+                android:button="@drawable/orange_selector_radio" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/memo_dialog_cancel_btn"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/memo_dialog_cancel"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:layout_marginRight="11dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/memo_dialog_confirm_btn"
+            android:includeFontPadding="false"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/memo_dialog_confirm"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal"
+           />
+
+    </LinearLayout>
+</LinearLayout>
