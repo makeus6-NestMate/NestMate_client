@@ -33,4 +33,29 @@
         <item>50</item>
         <item>55</item>
     </string-array>
+
+    <!-- MemoAddDialog -->
+    <string name="memo_dialog_title">메모 붙이기</string>
+    <string name="memo_dialog_content_title">내용</string>
+    <string name="memo_dialog_content_hint">내용을 입력해 주세요.</string>
+    <string name="memo_dialog_color_title">색상</string>
+    <string name="memo_dialog_cancel">취소</string>
+    <string name="memo_dialog_confirm">확인</string>
+
+    <!-- MemoDeleteDialog -->
+    <string name="memo_delete_dialog_btn_txt">삭제하기</string>
+
+    <!-- Register Toolbar -->
+    <string name="register_toolbar_title">회원가입</string>
+    <string name="register_two_name">닉네임은 두글자로 설정해주세요.</string>
+
+    <!-- RegisterOneDialog   -->
+    <string name="register_one_phone_success">사용 가능한 번호입니다.</string>
+    <string name="register_one_phone_failure">이미 사용중인 번호입니다</string>
+    <string name="register_one_email_success">사용 가능한 이메일입니다.</string>
+    <string name="register_one_email_failure">이미 사용중인 이메일입니다.</string>
+
+    <!-- RegisterLoginDialog   -->
+    <string name="register_login_btn_text">로그인</string>
+
 </resources>
