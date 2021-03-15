@@ -31,24 +31,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         val todolist = arrayListOf<Todo>()
 
 //        밀어서 수정 삭제
-        val swipeHelperCallback = SwipeHelperCallback().apply {
-            setClamp(200f)
-        }
-        val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
-        itemTouchHelper.attachToRecyclerView(binding.todoRecycler)
 
         val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
-
-        binding.todoRecycler.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            addItemDecoration(ItemDecoration())
-            adapter = todoadapter
-
-            setOnTouchListener { _, _ ->
-                swipeHelperCallback.removePreviousClamp(this)
-                false
-            }
-        }
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {

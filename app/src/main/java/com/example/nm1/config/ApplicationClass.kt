@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 // 앱이 실행될때 1번만 실행이 됩니다.
 // 전역변수, 앱이 실행될 동안 한번만 유지되면 되는 객체들을 생성하는 코드 작성
 class ApplicationClass : Application() {
-    val API_URL = "https://members.softsquared.com/"
+    val API_URL = "https://rigingprogrammertest.site"
 
     // 테스트 서버 주소
     // val API_URL = "http://dev-api.test.com/"
@@ -36,7 +36,7 @@ class ApplicationClass : Application() {
         super.onCreate()
         //싱글톤 객체 2개
         sSharedPreferences =
-            applicationContext.getSharedPreferences("SOFTSQUARED_TEMPLATE_APP", MODE_PRIVATE)
+            applicationContext.getSharedPreferences("NESTMATE", MODE_PRIVATE)
         // 레트로핏 인스턴스 생성
         initRetrofitInstance()
     }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/memo_dialog_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/register_dialog_img"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dialog_ok"/>
+
+    <TextView
+        android:id="@+id/register_login_dialog_response1_tv"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="8sp"
+        android:text="회원가입이 완료되었습니다."
+        android:includeFontPadding="false"/>
+
+    <TextView
+        android:id="@+id/register_login_dialog_response2_tv"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="8sp"
+        android:text="로그인 하시겠습니까?"
+        android:includeFontPadding="false"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_login_dialog_cancel_btn"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/memo_dialog_cancel"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:layout_marginRight="11dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_login_dialog_confirm_btn"
+            android:includeFontPadding="false"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:background="@drawable/memo_dialog_btn_orange_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:lineSpacingExtra="3sp"
+            android:text="@string/register_login_btn_text"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
