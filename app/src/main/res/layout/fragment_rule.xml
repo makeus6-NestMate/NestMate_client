@@ -8,6 +8,7 @@
     tools:context=".src.main.home.nest.rule.RuleFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
