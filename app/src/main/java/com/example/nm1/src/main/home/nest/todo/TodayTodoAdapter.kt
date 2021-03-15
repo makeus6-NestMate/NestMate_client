@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
+import com.example.nm1.databinding.ItemSwipeBinding
 import com.example.nm1.src.main.home.nest.todo.Todo
 import com.example.nm1.src.main.home.nest.todo.TodoCockDialogFragment
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import kotlin.coroutines.coroutineContext
 import kotlin.math.floor

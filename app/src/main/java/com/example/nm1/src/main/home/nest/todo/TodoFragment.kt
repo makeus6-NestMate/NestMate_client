@@ -1,22 +1,26 @@
 package com.example.nm1.src.main.home.nest.todo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class TodoFragment : BaseFragment<FragmentTodoBinding>(
     FragmentTodoBinding::bind,
     R.layout.fragment_todo
 ) {
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,18 +28,31 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     ): View? {
 
         val binding = bind(super.onCreateView(inflater, container, savedInstanceState)!!)
-        var todolist = arrayListOf<Todo>()
-        val adapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
-        binding.todoRecycler.adapter = adapter
+        val todolist = arrayListOf<Todo>()
 
 //        밀어서 수정 삭제
+        val swipeHelperCallback = SwipeHelperCallback().apply {
+            setClamp(200f)
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.todoRecycler)
 
+        val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
 
+        binding.todoRecycler.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(ItemDecoration())
+            adapter = todoadapter
 
+            setOnTouchListener { _, _ ->
+                swipeHelperCallback.removePreviousClamp(this)
+                false
+            }
+        }
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
-            adapter.notifyDataSetChanged()
+            todoadapter.notifyDataSetChanged()
             // 새로고침 완료시,
             // 새로고침 아이콘이 사라질 수 있게 isRefreshing = false
             binding.todoRefreshlayout.isRefreshing = false
@@ -71,10 +88,9 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             bundle.getParcelable<Todo>("todoadd_one")?.let {
                 todolist.add(0, it)
 
-                adapter.notifyItemInserted(0)
+                todoadapter.notifyItemInserted(0)
             }
         }
-
 
         return binding.root
     }
