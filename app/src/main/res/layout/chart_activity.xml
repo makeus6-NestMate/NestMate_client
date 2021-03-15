@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <include
+        android:id="@+id/chart_toolbar"
+        layout="@layout/toolbar_back"/>
+
+    <LinearLayout
+        android:id="@+id/chart_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/chart_toolbar">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="77dp"
+                android:layout_height="30dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/chart_crown"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                android:textStyle="normal"
+                android:textSize="13sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="8sp"
+                android:text="이번주"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="19sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:text="최고의 메이트는?"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chart_best_mate"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/chart_text"
+        android:background="@drawable/rec_design">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#c1c1c1"
+                android:lineSpacingExtra="7sp"
+                android:text="아직 최고의 메이트가 없어요"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/round_design"/>
+                <TextView
+                    android:id="@+id/bestmate_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="7sp"
+                    android:text="수현"/>
+                <TextView
+                    android:id="@+id/bestmate_cnt_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="10sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="3sp"
+                    android:text="횟수 43회"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/clap_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="20dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/chart_clap"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@color/transparent"
+                        android:textStyle="normal"
+                        android:textSize="12sp"
+                        android:textColor="#000000"
+                        android:lineSpacingExtra="-3sp"
+                        android:text="박수보내기"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="367dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/chart_best_mate"
+        android:background="@drawable/rec_design">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chart_person_list"
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/chart_person_item">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="14dp"
+            android:background="#e0e0e0"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/chart_mon"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_tue"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_wed"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_thu"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_fri"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_sat"
+                layout="@layout/chart_day"/>
+            <include
+                android:id="@+id/chart_sun"
+                layout="@layout/chart_day"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

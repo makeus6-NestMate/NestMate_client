@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">둥지메이트</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calendar_format">yyyy. MM</string>
     <string-array name="todo_spinner_ampm">
         <item>오전</item>
         <item>오후</item>
