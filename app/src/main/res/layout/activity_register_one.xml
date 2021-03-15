@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".src.register.RegisterOneActivity"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <include
+        android:id="@+id/register_one_toolbar"
+        layout="@layout/toolbar_back"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/register_page_number"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/circle_bg_orange"
+                    android:layout_gravity="center"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="8dp"
+                    android:text="1"
+                    android:includeFontPadding="false"/>
+
+                <TextView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/circle_bg_gray"
+                    android:layout_gravity="center"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:text="2"
+                    android:includeFontPadding="false"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="17dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="이름"/>
+                <EditText
+                    android:id="@+id/register_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="14dp"
+                    android:background="@drawable/rec_design"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/colorTextHint"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:hint="이름을 입력해주세요."/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="전화번호"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rec_design"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_phone_et"
+                        android:layout_width="0dp"
+                        android:layout_height="51dp"
+                        android:layout_weight="3"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="14dp"
+                        android:background="@color/nothing"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:textStyle="normal"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/colorTextHint"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:hint="전화번호를 입력해주세요."/>
+                    <Button
+                        android:id="@+id/register_phone_auth_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="27dp"
+                        android:layout_weight="0.8"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/register_button_design"
+                        android:textStyle="normal"
+                        android:textSize="11sp"
+                        android:textColor="#1bcbb0"
+                        android:lineSpacingExtra="7sp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:includeFontPadding="false"
+                        android:text="인증번호"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register_phone_auth_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="인증번호"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rec_design"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="51dp"
+                        android:layout_weight="3"
+                        android:layout_marginRight="10dp">
+                        <EditText
+                            android:id="@+id/register_phone_auth_msg_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="14dp"
+                            android:background="@color/nothing"
+                            android:fontFamily="@font/notosanskr_regular"
+                            android:textStyle="normal"
+                            android:textSize="15sp"
+                            android:textColorHint="@color/colorTextHint"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            android:hint="인증번호를 입력해주세요."/>
+
+                        <TextView
+                            android:id="@+id/register_phone_auth_timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="04:50"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:textStyle="normal"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorBlueText"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="5sp"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/register_phone_auth_msg_btn"
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="27dp"
+                        android:layout_weight="0.8"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/register_button_design"
+                        android:textStyle="normal"
+                        android:textSize="11sp"
+                        android:textColor="#1bcbb0"
+                        android:lineSpacingExtra="7sp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:includeFontPadding="false"
+                        android:text="확인"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="이메일"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rec_design"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_email_et"
+                        android:layout_width="0dp"
+                        android:layout_height="51dp"
+                        android:layout_weight="3"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="14dp"
+                        android:background="@color/nothing"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:textStyle="normal"
+                        android:textSize="15sp"
+                        android:textColorHint="@color/colorTextHint"
+                        android:maxLines="1"
+                        android:inputType="textEmailAddress"
+                        android:hint="이메일을 입력해주세요."/>
+                    <Button
+                        android:id="@+id/register_email_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="27dp"
+                        android:layout_weight="0.8"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/register_button_design"
+                        android:textStyle="normal"
+                        android:textSize="11sp"
+                        android:textColor="#1bcbb0"
+                        android:lineSpacingExtra="7sp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:includeFontPadding="false"
+                        android:text="중복확인"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="비밀번호"/>
+                <EditText
+                    android:id="@+id/register_pw_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="14dp"
+                    android:background="@drawable/rec_design"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/colorTextHint"
+                    android:maxLines="1"
+                    android:inputType="textPassword"
+                    android:hint="비밀번호를 입력해주세요."/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/chpw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#000000"
+                    android:lineSpacingExtra="3sp"
+                    android:fontFamily="@font/notosanskr_medium"
+                    android:includeFontPadding="false"
+                    android:text="비밀번호 확인"/>
+                <EditText
+                    android:id="@+id/register_pw_confirm_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="14dp"
+                    android:background="@drawable/rec_design"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:maxLines="1"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/colorTextHint"
+                    android:textColor="@color/colorBluePW"
+                    android:hint="비밀번호를 재입력해주세요."/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_one_btn"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginBottom="28dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/chpw"
+                android:background="@drawable/roundrec_design_inactive_bg"
+                android:text="다음"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/notosanskr_medium"
+                android:lineSpacingExtra="1sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

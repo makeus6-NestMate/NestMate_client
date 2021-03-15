@@ -13,4 +13,21 @@
     <color name="gray2">#b5b5b5</color>
     <color name="black">#000000</color>
     <color name="daybuttonmint">#1bcbb0</color>
+
+
+    <color name="nothing">#00000000</color>
+    <color name="colorNest">#fcfcfc</color>
+    <color name="colorGreyLine">#e0e0e0</color>
+    <color name="colorSubTitle">#505050</color>
+    <color name="colorTextHint">#7c7c7c</color>
+
+    <color name="colorYellow">#ffd581</color>
+    <color name="colorPink">#ffd5e5</color>
+    <color name="colorBlue">#79e6ef</color>
+    <color name="colorPurple">#c0adff</color>
+    <color name="colorGreen">#4debbb</color>
+    <color name="colorOrange">#ff9e81</color>
+    <color name="colorBlueText">#0062ff</color>
+    <color name="colorBluePW">#5da8ff</color>
+
 </resources>
