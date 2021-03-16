@@ -50,20 +50,25 @@
                     android:id="@+id/category_birthday"
                     layout="@layout/calendar_category"/>
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/calendaradd_layout_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
                 <include
                     android:id="@+id/category_general"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category" />
+
                 <include
                     android:id="@+id/category_etc"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category" />
+
                 <include
                     android:id="@+id/category_random"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category" />
             </LinearLayout>
         </LinearLayout>
 

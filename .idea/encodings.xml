@@ -4,7 +4,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarActivity.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarDay.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarViewPagerFragment.kt" charset="UTF-8" />
@@ -26,15 +25,15 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/chart_clap.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/chart_crown.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/front_icon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_calendar_add.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_chart.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_activity.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_add.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_category.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_fragment.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_list.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_list_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_view.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_activity.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_day.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_dialog.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_person_item.xml" charset="UTF-8" />

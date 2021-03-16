@@ -12,15 +12,15 @@ import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.nest.NestActivity
 import com.example.nm1.src.main.mypage.MyFragment
 import com.example.nm1.src.register.RegisterOneActivity
+import com.example.nm1.src.register.RegisterTwoActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//       ???? ??????
-        if(ApplicationClass.sSharedPreferences.getString("JWT", "na") == "na"){
+        if(ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "na") == "na"){
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }, 2000)
         }else{
