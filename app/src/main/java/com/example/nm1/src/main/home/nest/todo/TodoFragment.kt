@@ -21,18 +21,12 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 ) {
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val binding = bind(super.onCreateView(inflater, container, savedInstanceState)!!)
         val todolist = arrayListOf<Todo>()
-
-//        밀어서 수정 삭제
-
         val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
+        binding.todoRecycler.adapter = todoadapter
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
@@ -75,7 +69,5 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
                 todoadapter.notifyItemInserted(0)
             }
         }
-
-        return binding.root
     }
 }

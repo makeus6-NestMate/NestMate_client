@@ -4,18 +4,30 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivitySplashBinding
+import com.example.nm1.src.login.LoginActivity
 import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.nest.NestActivity
+import com.example.nm1.src.main.mypage.MyFragment
+import com.example.nm1.src.register.RegisterOneActivity
+import com.example.nm1.src.register.RegisterTwoActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, NestActivity::class.java))
-            finish()
-        }, 2000)
+        if(ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "na") == "na"){
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }, 2000)
+        }else{
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }, 2000)
+        }
     }
 }

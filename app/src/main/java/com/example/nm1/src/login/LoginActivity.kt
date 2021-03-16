@@ -9,6 +9,7 @@ import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityLoginBinding
 import com.example.nm1.src.login.model.LoginResponse
 import com.example.nm1.src.login.model.PostLoginRequest
+import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.register.RegisterOneActivity
 import com.example.nm1.util.onMyTextChanged
 
@@ -50,7 +51,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 binding.loginBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
             }
         }
-
     }
 
     override fun onPostLoginSuccess(response: LoginResponse) {
@@ -60,8 +60,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 val token = response.result.token
                 val editor = ApplicationClass.sSharedPreferences.edit()
                 Log.d("로그", "Login Success!! ${token}")
+
                 editor.putString(ApplicationClass.X_ACCESS_TOKEN, token)
                 editor.apply()
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
                 finish()
             }
             else -> {

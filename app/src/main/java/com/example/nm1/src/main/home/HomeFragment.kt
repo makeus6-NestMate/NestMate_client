@@ -1,6 +1,5 @@
 package com.example.nm1.src.main.home
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,18 +11,12 @@ import com.example.nm1.databinding.FragmentHomeBinding
 import com.example.nm1.src.main.home.nest.NestActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,R.layout.fragment_home) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.nestOwner.setOnClickListener {
+        binding.homeTvOwner.setOnClickListener {
             val intent = Intent(activity, NestActivity::class.java)
             startActivity(intent)
-
         }
     }
 }

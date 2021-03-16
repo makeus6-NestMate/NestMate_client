@@ -57,6 +57,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/todo_button_repeat"
             android:fontFamily="@font/notosanscjkkr_medium"
+            android:includeFontPadding="false"
             android:text="할일관리"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/todo_btn_addtodo"
