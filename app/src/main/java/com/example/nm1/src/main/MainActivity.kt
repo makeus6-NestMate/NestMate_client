@@ -2,7 +2,6 @@ package com.example.nm1.src.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
@@ -17,10 +16,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         initNavigationBar()
     }
 
@@ -30,12 +25,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 when(it.itemId) {
                     R.id.home -> { changeFragment(HomeFragment()) }
                     R.id.alarm -> {
-                        Log.d("hello", "??")
                         val intent = Intent(this@MainActivity, LoginActivity::class.java)
                         startActivity(intent)
                     }
                     R.id.my -> {
-                        Log.d("hello", "??")
                         if(ApplicationClass.sSharedPreferences.getString("JWT", "na") == "na"){
                             val intent = Intent(this@MainActivity, RegisterOneActivity::class.java)
                             startActivity(intent)
@@ -49,7 +42,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             selectedItemId = R.id.home
         }
     }
-
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager .beginTransaction().replace(R.id.outerFrame, fragment) .commit()
     }
