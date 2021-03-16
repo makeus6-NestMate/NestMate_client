@@ -3,12 +3,8 @@ package com.example.nm1.src.main.home.nest.todo
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
