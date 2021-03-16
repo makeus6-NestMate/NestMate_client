@@ -9,6 +9,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.nm1.CalendarPagerFragmentStateAdapter
 import com.example.nm1.R
 import kotlinx.android.synthetic.main.calendar_view.*
+<<<<<<< HEAD
+=======
+import kotlinx.android.synthetic.main.inner_view.*
+>>>>>>> parent of d0b62cd (Revert "Merge branch 'main' into feature/todo")
 
 class CalendarViewPagerFragment : Fragment() {
 

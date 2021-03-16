@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.nm1.src.main.home.nest.CalendarFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/calendar_back_btn"
+            android:layout_width="5dp"
+            android:layout_height="10.5dp"
+            android:layout_marginRight="21dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent"
+            android:src="@drawable/back_icon"/>
+        <TextView
+            android:id="@+id/calendar_year_month_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:text="2020. 01"/>
+        <ImageButton
+            android:id="@+id/calendar_front_btn"
+            android:layout_width="5dp"
+            android:layout_height="10.5dp"
+            android:layout_marginLeft="21dp"
+            android:scaleType="centerInside"
+            android:background="@color/transparent"
+            android:src="@drawable/front_icon"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/calendar_header"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:background="#fff5e2"
+        android:orientation="horizontal">
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="S"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="M"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="T"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="W"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="T"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="F"/>
+        <TextView android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="8sp"
+            android:gravity="center_horizontal"
+            android:text="S"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/calendar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:spanCount="7"
+            android:adjustViewBounds="true"
+            tools:listitem="@layout/calendar_item"/>
+    </LinearLayout>
+</LinearLayout>

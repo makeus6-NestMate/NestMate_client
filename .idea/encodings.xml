@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/login/LoginActivity.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/login/LoginActivityView.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/login/LoginRetrofitInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/login/LoginService.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/login/model" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddDialog.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteDialog.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarActivity.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarDay.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarViewPagerFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/ChartActivity.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/ChartDialog.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/ItemDecoration.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeControllerActions.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeHelperCallback.kt" charset="UTF-8" />
@@ -21,75 +20,27 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoManagerAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSwipeController.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSwipeHelperCallback.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterAuthDialog.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterLoginDialog.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterLoginInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterOneActivity.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterOneService.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterOneView.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterRetrofitInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterTwoActivity.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterTwoService.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/RegisterTwoView.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/register/model" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/util/Extensions.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/blue_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/blue_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/bottom_sheet_btn_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/circle_bg_gray.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/circle_bg_orange.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/green_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/green_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_blue_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_blue_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_green_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_green_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_orange_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_orange_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_pink_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_pink_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_purple_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_purple_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_yello_radio_checked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_color_yellow_radio_unchecked.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_dialog_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_dialog_btn_grey_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_dialog_btn_orange_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_dialog_content_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/memo_item_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/orange_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/orange_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pink_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pink_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/purple_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/purple_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rec_design.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/register_button_design.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/round_design.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/roundrec_design_active_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/roundrec_design_inactive_bg.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/yello_radio_layer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/yello_selector_radio.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/jalnan.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_black.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_bold.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_light.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_medium.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_regular.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/font/notosanskr_thin.otf" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register_one.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register_two.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_loading.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_memo_add.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_register_auth.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_register_login.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_memo.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_memo_icon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_setting_icon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_time_icon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/chart_clap.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/chart_crown.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/front_icon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_activity.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_add.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_category.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_fragment.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_item.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_list.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_list_item.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_view.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_activity.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_day.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_dialog.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_person_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/item_swipe.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/memo_delete_dialog.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/memo_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/mypage_bottomsheet_logout.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar_back.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar_back_plus.xml" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

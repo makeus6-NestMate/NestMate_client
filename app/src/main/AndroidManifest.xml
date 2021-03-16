@@ -4,7 +4,6 @@
     package="com.example.nm1">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".config.ApplicationClass"
@@ -28,20 +27,45 @@
         <activity
             android:name=".src.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
         <activity android:name=".src.register.RegisterOneActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".src.register.RegisterTwoActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+>>>>>>> parent of d0b62cd (Revert "Merge branch 'main' into feature/todo")
+        <activity
+            android:name=".src.register.RegisterOneActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".src.register.RegisterTwoActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
             android:name=".src.main.home.nest.NestActivity"
             android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> parent of d0b62cd (Revert "Merge branch 'main' into feature/todo")
         </activity>
         <activity
             android:name=".src.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".src.main.home.nest.ChartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.home.nest.CalendarActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.home.nest.CalendarAdd"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

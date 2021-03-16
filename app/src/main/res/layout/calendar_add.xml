@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+        android:id="@+id/calendar_add_toolbar"
+        layout="@layout/toolbar_back"/>
+
+        <LinearLayout
+            android:id="@+id/calendar_category_pick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendar_add_toolbar"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="3sp"
+                android:text="카테고리 선택"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <include
+                    android:id="@+id/category_trip"
+                    layout="@layout/calendar_category"/>
+                <include
+                    android:id="@+id/category_meal"
+                    layout="@layout/calendar_category"/>
+                <include
+                    android:id="@+id/category_meeting"
+                    layout="@layout/calendar_category"/>
+                <include
+                    android:id="@+id/category_birthday"
+                    layout="@layout/calendar_category"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <include
+                    android:id="@+id/category_general"
+                    layout="@layout/calendar_category"/>
+                <include
+                    android:id="@+id/category_etc"
+                    layout="@layout/calendar_category"/>
+                <include
+                    android:id="@+id/category_random"
+                    layout="@layout/calendar_category"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_day_pick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_below="@+id/calendar_category_pick"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="3sp"
+                android:text="날짜 선택"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/calendar_year_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="78dp"
+                    android:layout_height="49dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="23sp"
+                    android:text="년"/>
+                <Spinner
+                    android:id="@+id/calendar_month_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="78dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="23sp"
+                    android:text="월"/>
+                <Spinner
+                    android:id="@+id/calendar_day_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="78dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="23sp"
+                    android:text="일"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_time_pick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_below="@+id/calendar_day_pick"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="3sp"
+                android:text="시간 선택"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/calendar_fm_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="87dp"
+                    android:layout_height="49dp"/>
+                <Spinner
+                    android:id="@+id/calendar_hour_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="78dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="11dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="23sp"
+                    android:text="시"/>
+                <Spinner
+                    android:id="@+id/calendar_min_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="78dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="#7c7c7c"
+                    android:lineSpacingExtra="23sp"
+                    android:text="분"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_below="@+id/calendar_time_pick"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="3sp"
+                android:text="제목"/>
+
+            <EditText
+                android:id="@+id/calendar_title_txt"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="11dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="14dp"
+                android:background="@drawable/rec_design"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/calendar_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_below="@+id/calendar_title"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="3sp"
+                android:text="내용"/>
+
+            <EditText
+                android:id="@+id/calendar_content_txt"
+                android:layout_width="match_parent"
+                android:layout_height="97dp"
+                android:layout_marginTop="11dp"
+                android:gravity="start"
+                android:paddingTop="7dp"
+                android:paddingLeft="14dp"
+                android:background="@drawable/rec_design"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calendar_add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_below="@+id/calendar_content"
+            android:layout_marginVertical="23dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/roundrec_design"
+            android:text="확인"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+</ScrollView>

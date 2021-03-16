@@ -30,20 +30,38 @@ class CalendarAdd : BaseActivity<CalendarAddBinding>(CalendarAddBinding::inflate
         //
         //init
         calendar_add_toolbar.toolbar_title.text="일정추가"
+<<<<<<< HEAD
         for(idx in cateArray.indices) initCategory(cateArray[idx], colorArray[idx], nameArray[idx])
 
         //event
         category_random.setOnClickListener {
             CalendarAddDialog().show(supportFragmentManager, "CalendarAddDialog")
         }
+=======
+        for(color in colorArray){
+            for(cate in cateArray) initCategory(cate, color, null)
+        }
+        for(name in nameArray){
+            for(cate in cateArray) initCategory(cate, null, name)
+        }
+
+        //event
+>>>>>>> parent of d0b62cd (Revert "Merge branch 'main' into feature/todo")
         back_btn.setOnClickListener {
             finish()
         }
     }
 
+<<<<<<< HEAD
     fun initCategory(cate : View, color:String, name:String){
         cate.setBackgroundColor(resources.getColor(R.color.white))
         cate.calendar_category_color.setBackgroundColor(Color.parseColor(color))
         cate.calendar_category_name.text=name
+=======
+    fun initCategory(cate : View, color:String?, name:String?){
+        cate.setBackgroundColor(resources.getColor(R.color.white))
+        if(name==null) cate.calendar_category_color.setBackgroundColor(Color.parseColor(color))
+        else cate.calendar_category_name.text=name
+>>>>>>> parent of d0b62cd (Revert "Merge branch 'main' into feature/todo")
     }
 }
