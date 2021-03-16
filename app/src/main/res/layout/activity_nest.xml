@@ -24,8 +24,9 @@
             android:gravity="center_vertical">
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="7dp"
+                android:layout_height="13dp"
+                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:background="@color/transparent"
@@ -51,8 +52,9 @@
 
                 <ImageButton
                     android:id="@+id/chart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:scaleType="centerInside"
                     android:layout_marginRight="18dp"
                     android:layout_toLeftOf="@+id/calendar"
                     android:background="@color/transparent"
@@ -60,8 +62,9 @@
 
                 <ImageButton
                     android:id="@+id/calendar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="18dp"
+                    android:layout_height="19dp"
+                    android:scaleType="centerInside"
                     android:layout_marginRight="18dp"
                     android:background="@color/transparent"
                     android:src="@drawable/cal_icon" />
