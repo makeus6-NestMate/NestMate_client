@@ -32,7 +32,6 @@
                 android:layout_centerInParent="true" />
 
             <ImageButton
-                android:id="@+id/home_btn_addnest"
                 android:layout_width="23sp"
                 android:layout_height="23sp"
                 android:layout_alignParentRight="true"
@@ -83,25 +82,43 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/home_layout_empty"
-            android:layout_width="156sp"
-            android:layout_height="156sp"
+            android:id="@+id/home_layout_dungji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/dungji_background"
             app:layout_constraintStart_toStartOf="@+id/nestList"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_medium"
+                android:lineSpacingExtra="4sp"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="해피하우스" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="156sp"
+                android:layout_height="156sp"
+                android:src="@drawable/dungji_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="63sp"
                 android:layout_height="63sp"
-                android:layout_marginStart="48dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="48dp"
                 android:src="@drawable/home_dungji_bird_icon"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
             <ImageView
                 android:id="@+id/imageView8"
@@ -110,6 +127,7 @@
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/home_empty_plus"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
@@ -121,24 +139,27 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:gravity="center_horizontal"
+                android:lineSpacingExtra="5sp"
                 android:text="버튼으로"
                 android:textColor="#c1c1c1"
                 android:textSize="11sp"
                 android:textStyle="normal"
+                android:visibility="invisible"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:gravity="center_horizontal"
+                android:lineSpacingExtra="5sp"
                 android:text="새 둥지를 만들어보세요"
                 android:textColor="#c1c1c1"
                 android:textSize="11sp"
                 android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -153,10 +174,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/nest_item"></androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -196,39 +215,15 @@
                 android:src="@drawable/home_tip" />
         </LinearLayout>
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tipList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="14sp"
-            android:fillViewport="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="272sp"
-                    android:layout_height="183sp"
-                    android:background="@color/transparent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/tip_ex"
-                    android:stateListAnimator="@null" />
-
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="272sp"
-                    android:layout_height="183sp"
-                    android:layout_marginLeft="16sp"
-                    android:layout_weight="1"
-                    android:background="@color/transparent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/tip_ex2"
-                    android:stateListAnimator="@null" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tipTitle"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/tip_item"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

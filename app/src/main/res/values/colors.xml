@@ -29,11 +29,5 @@
     <color name="colorOrange">#ff9e81</color>
     <color name="colorBlueText">#0062ff</color>
     <color name="colorBluePW">#5da8ff</color>
-    <color name="peach">#f5895e</color>
-    <color name="light_orange">#f5af5e</color>
-    <color name="light_blue">#5661f5</color>
-    <color name="light_purple">#7550f5</color>
-    <color name="sky">#22b0ea</color>
-    <color name="light_green">#92e032</color>
 
 </resources>
