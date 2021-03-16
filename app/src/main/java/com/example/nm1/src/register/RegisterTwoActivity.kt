@@ -35,6 +35,8 @@ class RegisterTwoActivity : BaseActivity<ActivityRegisterTwoBinding>(ActivityReg
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+
         setSupportActionBar(binding.registerTwoToolbar.toolbarBack)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         binding.registerTwoToolbar.toolbarTitle.text = getString(R.string.register_toolbar_title)
