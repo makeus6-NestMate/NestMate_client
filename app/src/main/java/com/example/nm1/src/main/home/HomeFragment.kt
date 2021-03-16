@@ -17,7 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         binding.homeTvOwner.setOnClickListener {
             val intent = Intent(activity, NestActivity::class.java)
             startActivity(intent)
-
         }
     }
 }

@@ -32,12 +32,13 @@
                 android:layout_centerInParent="true" />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23sp"
+                android:layout_height="23sp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
                 android:background="@color/transparent"
+                android:scaleType="fitXY"
                 android:src="@drawable/nest_plus" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -81,11 +82,24 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_layout_dungji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/nestList"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_medium"
+                android:lineSpacingExtra="4sp"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="해피하우스" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -101,6 +115,7 @@
                 android:layout_height="63sp"
                 android:layout_marginTop="32dp"
                 android:src="@drawable/home_dungji_bird_icon"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />
@@ -112,6 +127,7 @@
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/home_empty_plus"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
@@ -128,20 +144,22 @@
                 android:textColor="#c1c1c1"
                 android:textSize="11sp"
                 android:textStyle="normal"
+                android:visibility="invisible"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
+                android:layout_marginStart="32dp"
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="5sp"
-                android:text="버튼으로"
+                android:text="새 둥지를 만들어보세요"
                 android:textColor="#c1c1c1"
                 android:textSize="11sp"
                 android:textStyle="normal"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
