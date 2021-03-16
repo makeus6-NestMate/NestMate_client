@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.nm1.databinding.DialogNestAddBinding
+import com.example.nm1.src.main.home.model.AddNestResponse
+import com.example.nm1.src.main.home.model.PostAddNestRequest
 
-class HomeAddNestDialogFragment : DialogFragment() {
+class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
     var windowManager: WindowManager? = null
     var display: Display? = null
     var size: Point? = null
@@ -36,6 +38,14 @@ class HomeAddNestDialogFragment : DialogFragment() {
         display = windowManager!!.defaultDisplay
         size = Point()
         display!!.getSize(size)
+
+//        취소버튼
+        binding.homeAddnestBtnCancel.setOnClickListener {
+            dismiss()
+        }
+
+////       확인버튼
+//        val addNestRequest = PostAddNestRequest()
     }
 
     override fun onResume() {
@@ -45,5 +55,13 @@ class HomeAddNestDialogFragment : DialogFragment() {
         val deviceWidth = size!!.x
         params?.width = (deviceWidth*0.9).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
+    }
+
+    override fun onAddNestSuccess(response: AddNestResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddNestFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

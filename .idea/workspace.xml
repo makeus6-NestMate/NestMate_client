@@ -23,12 +23,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeAddNestDialogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeAddNestDialogFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/splash/SplashActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dungji_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dungji_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tip_ex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_loading.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_loading.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_nest_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_nest_add.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nest_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nest_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/tip_item.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottomtab_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottomtab_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,13 +79,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="android-custom-viewC:/Users/lyr82/.gradle/caches/modules-2/files-2.1/com.github.ybq/Android-SpinKit/1.4.0/f58852551150babe66d223b0c3107ecece8eff7f/Android-SpinKit-1.4.0-sources.jar!/com/github/ybq/android/spinkit/SpinKitView.java_SELECTED" value="SpinKitView" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home" />
+    <property name="multi-representation-previewC:/Users/lyr82/.gradle/caches/modules-2/files-2.1/com.github.ybq/Android-SpinKit/1.4.0/f58852551150babe66d223b0c3107ecece8eff7f/Android-SpinKit-1.4.0-sources.jar!/com/github/ybq/android/spinkit/SpinKitView.java_selected" value="Custom views" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.nm1.src.main.home.model" />
       <recent name="com.example.nm1.src.main.home" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\work\rp2\NestMate\app\src\main\java\com\example\nm1\src\main\home" />
+      <recent name="C:\work\rp2\NestMate\app\src\main\java\com\example\nm1\src\main\home\model" />
       <recent name="C:\work\rp2\NestMate\app\src\main\res\drawable" />
       <recent name="C:\work\rp2\NestMate\app\src\main\res\drawable-hdpi" />
       <recent name="C:\work\rp2\NestMate\app\src\main\res\layout" />
@@ -171,18 +179,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="558" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1615930838541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="558" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615930838541" />
     <state x="420" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1615863552707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="420" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1615863552707" />
-    <state x="411" y="138" key="AndroidCreateResourceFileDialog" timestamp="1615890922559">
+    <state x="411" y="138" key="AndroidCreateResourceFileDialog" timestamp="1615928263977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="411" y="138" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1615890922559" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1615891470914">
+    <state x="411" y="138" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1615928263977" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1615929973889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615891470914" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615929973889" />
     <state width="1537" height="111" key="GridCell.Tab.0.bottom" timestamp="1615890576157">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -199,13 +211,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1537" height="111" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615890576156" />
-    <state width="456" height="92" key="javadoc.popup.new" timestamp="1615925270815">
+    <state width="456" height="92" key="javadoc.popup.new" timestamp="1615931191905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="456" height="92" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1615925270815" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1615925481256">
+    <state width="456" height="92" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1615931191905" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1615930347660">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615925481256" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1615930347660" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1615928914626">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615928914626" />
   </component>
 </project>

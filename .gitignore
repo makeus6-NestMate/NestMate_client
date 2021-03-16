@@ -13,3 +13,5 @@
 *.bin
 *.lock
 *.lock
+*.bin
+*.lock

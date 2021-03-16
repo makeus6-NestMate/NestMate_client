@@ -5,15 +5,18 @@
     <item
         android:id="@+id/home"
         app:showAsAction="always"
+        android:icon="@drawable/home_tab_home"
         android:enabled="true"
         android:title="홈" />
     <item
         android:id="@+id/alarm"
         app:showAsAction="always"
+        android:icon="@drawable/home_tab_alarm"
         android:title="알림" />
     <item
         android:id="@+id/my"
         app:showAsAction="always"
+        android:icon="@drawable/home_tab_mypage"
         android:enabled="true"
         android:title="MY" />
 </menu>

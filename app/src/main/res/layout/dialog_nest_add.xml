@@ -20,14 +20,13 @@
         android:fontFamily="@font/notosanskr_medium"/>
 
     <View
-        android:id="@+id/memo_dialog_bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorGreyLine"
-        android:layout_marginRight="20sp"
         android:layout_marginLeft="20sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20sp"
+        android:background="@color/colorGreyLine" />
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_gravity="center_horizontal"
@@ -52,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/memo_dialog_content_et"
+            android:id="@+id/home_addnest_edt_name"
             android:layout_width="168sp"
             android:layout_height="35sp"
             android:layout_marginLeft="12dp"
@@ -89,17 +88,16 @@
             app:layout_constraintTop_toBottomOf="@id/memo_dialog_content_title_tv" />
 
         <RadioGroup
-            android:id="@+id/memo_dialog_color_rg"
+            android:id="@+id/home_addnest_radiogroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@id/memo_dialog_color_title_tv"
             app:layout_constraintTop_toTopOf="@id/memo_dialog_color_title_tv">
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn1"
+                android:id="@+id/home_addnest_radio_btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -107,7 +105,7 @@
                 android:padding="2dp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn2"
+                android:id="@+id/home_addnest_radio_btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
@@ -115,7 +113,7 @@
                 android:padding="2dp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn3"
+                android:id="@+id/home_addnest_radio_btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
@@ -123,7 +121,7 @@
                 android:padding="2dp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn4"
+                android:id="@+id/home_addnest_radio_btn4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
@@ -131,7 +129,7 @@
                 android:padding="2dp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn5"
+                android:id="@+id/home_addnest_radio_btn5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
@@ -139,7 +137,7 @@
                 android:padding="2dp" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/memo_dialog_radio_btn6"
+                android:id="@+id/home_addnest_radio_btn6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="6dp"
@@ -160,7 +158,7 @@
         android:layout_height="50dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/memo_dialog_cancel_btn"
+            android:id="@+id/home_addnest_btn_cancel"
             android:layout_width="84dp"
             android:layout_height="40dp"
             android:layout_marginRight="11dp"
@@ -175,7 +173,7 @@
             android:textStyle="normal" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/memo_dialog_confirm_btn"
+            android:id="@+id/home_addnest_btn_confirm"
             android:layout_width="84dp"
             android:layout_height="40dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"

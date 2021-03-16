@@ -6,6 +6,7 @@ import android.view.View
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentHomeBinding
+import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.nest.NestActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,R.layout.fragment_home) {
@@ -16,7 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
             val intent = Intent(activity, NestActivity::class.java)
             startActivity(intent)
         }
-
 
         val addnestedialog = HomeAddNestDialogFragment()
         binding.homeBtnAddnest.setOnClickListener {

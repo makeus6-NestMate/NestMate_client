@@ -20,6 +20,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun initNavigationBar() {
+        binding.tabBottom.itemIconTintList = null
+
         binding.tabBottom.run {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
