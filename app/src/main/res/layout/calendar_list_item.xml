@@ -38,6 +38,8 @@
                 android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="8sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="수현이 생일"/>
         </LinearLayout>
 
@@ -65,6 +67,8 @@
                 android:textSize="14sp"
                 android:textColor="#7c7c7c"
                 android:lineSpacingExtra="6sp"
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
                 android:text="01월02일 오전10시"
                 />
         </LinearLayout>
@@ -92,8 +96,9 @@
                 android:textSize="14sp"
                 android:textColor="#7c7c7c"
                 android:lineSpacingExtra="6sp"
-                android:text="생일이니까 외식갈 예정"
-                />
+                android:fontFamily="@font/notosanskr_regular"
+                android:includeFontPadding="false"
+                android:text="생일이니까 외식갈 예정"/>
         </LinearLayout>
     </RelativeLayout>
 

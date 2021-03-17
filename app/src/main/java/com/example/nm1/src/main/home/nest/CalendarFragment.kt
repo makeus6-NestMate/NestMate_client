@@ -5,21 +5,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
-import kotlinx.android.synthetic.main.calendar_fragment.*
-import kotlinx.android.synthetic.main.calendar_fragment.view.*
-import kotlinx.android.synthetic.main.calendar_item.*
+import com.example.nm1.config.BaseFragment
+import com.example.nm1.databinding.FragmentCalendarBinding
+import kotlinx.android.synthetic.main.fragment_calendar.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarFragment : Fragment() {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
+    FragmentCalendarBinding::bind,
+    R.layout.fragment_calendar
+){
     lateinit var mContext: Context
 
     var pageIndex = 0
@@ -51,7 +51,7 @@ class CalendarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.calendar_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
         initView(view)
         return view
     }
@@ -85,11 +85,11 @@ class CalendarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calendar_back_btn.setOnClickListener {
+        binding.calendarBackBtn.setOnClickListener {
             pageIndex--;
             setView(view)
         }
-        calendar_front_btn.setOnClickListener {
+        binding.calendarFrontBtn.setOnClickListener {
             pageIndex++;
             setView(view)
         }

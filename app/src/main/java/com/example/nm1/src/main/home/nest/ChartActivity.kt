@@ -29,8 +29,9 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
             return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), metrics).toInt()
         }
 
+    var memList = arrayListOf<ChartMember>()
 
-    val colorArray = arrayOf("#5e6af5", "#43a8ff", "#21ffbb", "#cfff2e")
+    val colorArray = arrayOf("#5e6af5", "#43a8ff", "#21ffbb", "#cfff2e","#ffe033","#ffb221","#ff7f21","#ff2121","#b70d0d")
     val txtArray= arrayOf("월", "화","수","목","금","토","일")
     val dataArray= arrayListOf<List<Int>>(listOf(20,30,40,50), listOf(30,10,30,50),listOf(20,50,40,30),listOf(20,30,40,50),listOf(20,30,40,50),listOf(20,30,40,50),listOf(20,30,40,50))
 
@@ -40,17 +41,31 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
 
         val dayArray = arrayOf(chart_mon, chart_tue, chart_wed, chart_thu, chart_fri, chart_sat, chart_sun)
 
+<<<<<<< Updated upstream
         toolbar_title.text="차트"
         for(idx1 in dayArray.indices){
+=======
+
+        //setVisibility 설정 필요(최고의 메이트)
+
+        binding.chartPersonList.adapter=ChartMemberAdapter(this, memList)
+
+        binding.chartToolbar.toolbarTitle.text = "차트"
+        for(idx1 in dayArray.indices) {
+>>>>>>> Stashed changes
             init(dayArray[idx1], txtArray[idx1])
             for(idx2 in dataArray[idx1].indices) draw(dayArray[idx1], colorArray[idx2], dataArray[idx1][idx2])
         }
 
+<<<<<<< Updated upstream
 
         clap_btn.setOnClickListener {
+=======
+        binding.clapBtn.setOnClickListener {
+>>>>>>> Stashed changes
             ChartDialog().show(supportFragmentManager, "ChartDialog")
         }
-        back_btn.setOnClickListener {
+        binding.chartToolbar.backBtn.setOnClickListener {
             finish()
         }
     }

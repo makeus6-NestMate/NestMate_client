@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.nm1.R
-import com.example.nm1.databinding.CalendarAddDialogBinding
-import com.example.nm1.databinding.ChartDialogBinding
+import com.example.nm1.databinding.DialogCalendarAddBinding
 
 class CalendarAddDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,14 +14,14 @@ class CalendarAddDialog : DialogFragment() {
         isCancelable=true
     }
 
-    private lateinit var binding: CalendarAddDialogBinding
+    private lateinit var binding: DialogCalendarAddBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = CalendarAddDialogBinding.inflate(inflater, container, false)
+        binding = DialogCalendarAddBinding.inflate(inflater, container, false)
         return binding.root
     }
 

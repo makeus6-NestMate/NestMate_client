@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.nm1.R
-import com.example.nm1.config.BaseFragment
-import com.example.nm1.databinding.ChartDialogBinding
-import com.example.nm1.databinding.DialogLoadingBinding
-import kotlinx.android.synthetic.main.chart_dialog.*
+import com.example.nm1.databinding.DialogChartBinding
 
 class ChartDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,14 +14,14 @@ class ChartDialog : DialogFragment() {
         isCancelable=true
     }
 
-    private lateinit var binding: ChartDialogBinding
+    private lateinit var binding: DialogChartBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = ChartDialogBinding.inflate(inflater, container, false)
+        binding = DialogChartBinding.inflate(inflater, container, false)
         return binding.root
     }
 

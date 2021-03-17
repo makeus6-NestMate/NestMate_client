@@ -29,6 +29,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="카테고리 선택"/>
 
             <LinearLayout
@@ -83,6 +85,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="날짜 선택"/>
 
             <LinearLayout
@@ -158,6 +162,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="시간 선택"/>
 
             <LinearLayout
@@ -224,6 +230,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="제목"/>
 
             <EditText
@@ -233,6 +241,9 @@
                 android:layout_marginTop="11dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="14dp"
+                android:maxLength="15"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:background="@drawable/rec_design"/>
         </LinearLayout>
 
@@ -252,6 +263,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="내용"/>
 
             <EditText
@@ -262,6 +275,8 @@
                 android:gravity="start"
                 android:paddingTop="7dp"
                 android:paddingLeft="14dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:background="@drawable/rec_design"/>
         </LinearLayout>
 
@@ -274,6 +289,8 @@
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/roundrec_design"
             android:text="확인"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:textColor="@color/white"/>
 
     </RelativeLayout>

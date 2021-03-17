@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="42dp"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -30,6 +31,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="8sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="짝짝짝짝! 박수를 보냈어요"
                 />
         </LinearLayout>
@@ -46,6 +49,8 @@
             android:textSize="15sp"
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:text="확인"/>
 
     </RelativeLayout>

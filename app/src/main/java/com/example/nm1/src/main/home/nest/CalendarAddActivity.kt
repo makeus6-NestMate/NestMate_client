@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.nm1.R
 import com.example.nm1.config.BaseActivity
+<<<<<<< Updated upstream:app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt
 import com.example.nm1.databinding.CalendarAddBinding
 import kotlinx.android.synthetic.main.calendar_activity.*
 import kotlinx.android.synthetic.main.calendar_activity.calendar_toolbar
@@ -17,6 +18,14 @@ import kotlinx.android.synthetic.main.toolbar_back.*
 import kotlinx.android.synthetic.main.toolbar_back_plus.view.*
 
 class CalendarAdd : BaseActivity<CalendarAddBinding>(CalendarAddBinding::inflate) {
+=======
+import com.example.nm1.databinding.ActivityCalendarAddBinding
+import kotlinx.android.synthetic.main.activity_calendar_add.*
+import kotlinx.android.synthetic.main.activity_calendar_add.view.*
+import kotlinx.android.synthetic.main.calendar_category.view.*
+
+class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCalendarAddBinding::inflate) {
+>>>>>>> Stashed changes:app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAddActivity.kt
 
     val colorArray = arrayOf("#0b70c6", "#1bcbb0", "#95f288", "#fcd60a", "#f26317","#b71bcb","#94f5e6")
     val nameArray = arrayOf("여행", "외식", "회의", "생일", "일반", "기타", "직접 입력")
@@ -36,7 +45,13 @@ class CalendarAdd : BaseActivity<CalendarAddBinding>(CalendarAddBinding::inflate
         category_random.setOnClickListener {
             CalendarAddDialog().show(supportFragmentManager, "CalendarAddDialog")
         }
+<<<<<<< Updated upstream:app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt
         back_btn.setOnClickListener {
+=======
+
+        //event
+        binding.calendarAddToolbar.backBtn.setOnClickListener {
+>>>>>>> Stashed changes:app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAddActivity.kt
             finish()
         }
     }

@@ -20,6 +20,8 @@
             android:textSize="15sp"
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:text="직접입력"/>
 
         <View
@@ -43,6 +45,8 @@
                 android:textSize="13sp"
                 android:textColor="#505050"
                 android:lineSpacingExtra="8sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="내용"/>
 
             <EditText
@@ -52,7 +56,14 @@
                 android:layout_marginLeft="22dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="11dp"
-                android:background="@drawable/rec_design"/>
+                android:background="@drawable/rec_design"
+                android:hint="최대 7자"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textStyle="normal"
+                android:textSize="12sp"
+                android:textColor="#1c1c1c"
+                android:lineSpacingExtra="6sp"
+                android:maxLength="7"/>
         </LinearLayout>
 
 
@@ -72,6 +83,8 @@
                 android:textSize="15sp"
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="취소"/>
 
             <Button
@@ -84,6 +97,8 @@
                 android:textSize="15sp"
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="확인"/>
         </LinearLayout>
 

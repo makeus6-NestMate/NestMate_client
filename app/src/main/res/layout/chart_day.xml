@@ -21,9 +21,11 @@
         android:layout_width="18dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
         android:textSize="14sp"
         android:textColor="#6a6a6a"
         android:lineSpacingExtra="1sp"
+        android:includeFontPadding="false"
         android:text="dd"/>
 </LinearLayout>

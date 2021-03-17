@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
             android:textSize="16sp"
             android:textColor="#000000"
@@ -57,7 +58,9 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="S"/>
+            android:text="S"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,7 +69,9 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="M"/>
+            android:text="M"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
         <TextView android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,8 +80,11 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="T"/>
-        <TextView android:layout_width="0dp"
+            android:text="T"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="normal"
@@ -84,8 +92,11 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="W"/>
-        <TextView android:layout_width="0dp"
+            android:text="W"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="normal"
@@ -93,8 +104,11 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="T"/>
-        <TextView android:layout_width="0dp"
+            android:text="T"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="normal"
@@ -102,8 +116,11 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="F"/>
-        <TextView android:layout_width="0dp"
+            android:text="F"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="normal"
@@ -111,7 +128,9 @@
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
             android:gravity="center_horizontal"
-            android:text="S"/>
+            android:text="S"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"/>
 
     </LinearLayout>
     <LinearLayout

@@ -4,25 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.nm1.R
 import com.example.nm1.config.BaseActivity
-import com.example.nm1.databinding.CalendarActivityBinding
-import kotlinx.android.synthetic.main.calendar_activity.*
-import kotlinx.android.synthetic.main.toolbar_back.*
-import kotlinx.android.synthetic.main.toolbar_back_plus.*
-import kotlinx.android.synthetic.main.toolbar_back_plus.toolbar_title
-import kotlinx.android.synthetic.main.toolbar_back_plus.view.*
-import java.util.*
+import com.example.nm1.databinding.ActivityCalendarBinding
 
-class CalendarActivity : BaseActivity<CalendarActivityBinding>(CalendarActivityBinding::inflate) {
+class CalendarActivity : BaseActivity<ActivityCalendarBinding>(ActivityCalendarBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.calendar_activity)
 
-        toolbar_title.text="캘린더"
+        binding.calendarToolbar.toolbarTitle.text="캘린더"
 
-        plus_btn.setOnClickListener {
-            startActivity(Intent(this, CalendarAdd::class.java))
+        binding.calendarToolbar.plusBtn.setOnClickListener {
+            startActivity(Intent(this, CalendarAddActivity::class.java))
         }
-        back_btn_two.setOnClickListener {
+        binding.calendarToolbar.backBtnTwo.setOnClickListener {
             finish()
         }
 
