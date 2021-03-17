@@ -1,6 +1,7 @@
 package com.example.nm1.src.main.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
+import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.model.NestInfo
+import com.example.nm1.src.main.home.nest.NestActivity
 
 class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>):
     RecyclerView.Adapter<HomeNestAdapter.ItemViewHolder>(){
@@ -24,6 +28,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
         private val tvPlusMemNum = itemView.findViewById<TextView>(R.id.nest_tv_plusmemnum)
         private val memList = itemView.findViewById<RecyclerView>(R.id.nest_recycler_memlist)
         private val layoutNest = itemView.findViewById<ConstraintLayout>(R.id.layout_nest_item)
+        val editor = ApplicationClass.sSharedPreferences.edit()
 
         fun bind(nest: NestInfo, context: Context) {
             tvName.text = nest.roomName //둥지 이름
@@ -59,8 +64,10 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
 
             layoutNest.setOnClickListener {
 //              둥지를 클릭할때마다 roomId 저장소에 저장
-                ApplicationClass.sSharedPreferences.edit().putInt("roomId", nest.roomId)
-                ApplicationClass.sSharedPreferences.edit().apply()
+                editor.putInt("roomId", nest.roomId)
+                editor.apply()
+                
+                startActivity(context, Intent(context, NestActivity::class.java), null)
             }
         }
     }
