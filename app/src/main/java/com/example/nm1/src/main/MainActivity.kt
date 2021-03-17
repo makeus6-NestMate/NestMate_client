@@ -8,6 +8,7 @@ import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityMainBinding
 import com.example.nm1.src.login.LoginActivity
+import com.example.nm1.src.main.alarm.AlarmFragment
 import com.example.nm1.src.main.home.HomeFragment
 import com.example.nm1.src.main.mypage.MyFragment
 import com.example.nm1.src.register.RegisterOneActivity
@@ -27,16 +28,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 when(it.itemId) {
                     R.id.home -> { changeFragment(HomeFragment()) }
                     R.id.alarm -> {
-                        val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                        startActivity(intent)
+                        changeFragment(AlarmFragment())
                     }
                     R.id.my -> {
-                        if(ApplicationClass.sSharedPreferences.getString("JWT", "na") == "na"){
-                            val intent = Intent(this@MainActivity, RegisterOneActivity::class.java)
-                            startActivity(intent)
-                        }else{
-                            changeFragment(MyFragment())
-                        }
+                        changeFragment(MyFragment())
                     }
                 }
                 true

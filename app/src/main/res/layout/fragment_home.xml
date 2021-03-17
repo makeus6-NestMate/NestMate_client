@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="5sp"
-                android:text="'유리'님의 둥지"
+                android:text="''님의 둥지"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -88,7 +88,6 @@
             android:layout_height="156sp"
             android:layout_marginTop="16dp"
             android:background="@drawable/dungji_background"
-            android:elevation="15dp"
             app:layout_constraintStart_toStartOf="@+id/nestList"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
