@@ -47,6 +47,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
                         adapter.notifyDataSetChanged()
                         binding.ruleAddInputContent.clearFocus()
                         binding.ruleAddInputLayout.visibility = View.GONE
+                        binding.ruleAddInputContent.text.clear()
 
                         return true
                     }
