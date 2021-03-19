@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivitySplashBinding
