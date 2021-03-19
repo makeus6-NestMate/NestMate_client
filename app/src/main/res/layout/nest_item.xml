@@ -23,6 +23,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="17sp"
