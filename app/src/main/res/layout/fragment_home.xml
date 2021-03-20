@@ -72,7 +72,7 @@
             android:id="@+id/home_tv_owner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_medium"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:includeFontPadding="false"
             android:lineSpacingExtra="5sp"
             android:text="''"
