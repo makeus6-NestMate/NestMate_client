@@ -8,13 +8,15 @@ import androidx.fragment.app.setFragmentResultListener
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.nest.todo.models.AddOneDayTodoResponse
+import com.example.nm1.src.main.home.nest.todo.models.AddRepeatTodoResponse
 import java.text.SimpleDateFormat
 import java.util.*
 
 class TodoFragment : BaseFragment<FragmentTodoBinding>(
     FragmentTodoBinding::bind,
     R.layout.fragment_todo
-) {
+), TodoFragmentView {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,5 +67,21 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
                 todoadapter.notifyItemInserted(0)
             }
         }
+    }
+
+    override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

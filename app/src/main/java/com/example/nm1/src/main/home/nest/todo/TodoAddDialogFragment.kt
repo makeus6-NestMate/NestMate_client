@@ -2,12 +2,12 @@ package com.example.nm1.src.main.home.nest.todo
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -15,10 +15,15 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
 import com.example.nm1.databinding.DialogTodoAddBinding
+import com.example.nm1.src.main.home.nest.todo.models.AddOneDayTodoResponse
+import com.example.nm1.src.main.home.nest.todo.models.AddRepeatTodoResponse
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TodoAddDialogFragment : DialogFragment() {
+class TodoAddDialogFragment : DialogFragment(), TodoFragmentView {
+    var windowManager: WindowManager? = null
+    var display: Display? = null
+    var size: Point? = null
 
     private lateinit var binding: DialogTodoAddBinding
     private val isselected = Array(7){false}
@@ -37,6 +42,11 @@ class TodoAddDialogFragment : DialogFragment() {
     ): View {
         binding = DialogTodoAddBinding.inflate(inflater, container, false)
         isrepeat[0] = true
+
+        windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
+        display = windowManager!!.defaultDisplay
+        size = Point()
+        display!!.getSize(size)
 
 //       반복
         binding.todoBtnRepeat.setOnClickListener {
@@ -61,7 +71,7 @@ class TodoAddDialogFragment : DialogFragment() {
             isrepeat[1] = false
         }
 
-//        하루만
+//        하루만 버튼색 변경
         binding.todoBtnOne.setOnClickListener {
             binding.todoBtnOne.setBackgroundResource(R.drawable.orange_button)
             binding.todoBtnOne.setTextColor(
@@ -320,27 +330,34 @@ class TodoAddDialogFragment : DialogFragment() {
 //       확인버튼 -> 할일 등록
 //       반복/하루만 구분할 필요 O -> 날짜선택 / 요일선택이 다름
         binding.todoBtnConfirm.setOnClickListener {
-            lateinit var todo: Todo
-            //하루만
-            if (isrepeat[1]) {
-                todo = Todo(
-                    binding.todoEdtTitle.text.toString(),
-                    null,
-                    selecteddate,
-                    selectedTime
-                )
-                val bundle = bundleOf("todoadd_one" to todo)
-                // 요청키로 수신측의 리스너에 값을 전달
-                setFragmentResult("todoadd", bundle)
-            }
-            //반복
-            else if (isrepeat[0]){
 
-            }
-            binding.todoEdtTitle.text.clear() //edittext 비우기
-            dismiss()
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
+        val deviceWidth = size!!.x
+        params?.width = (deviceWidth*0.75).toInt()
+        dialog?.window?.attributes = params as WindowManager.LayoutParams
+    }
+
+    override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

@@ -22,6 +22,8 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodayTodoAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoCockDialogFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoFragmentView.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoInterface.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoItemDecoration.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoManagerAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSwipeController.kt" charset="UTF-8" />
