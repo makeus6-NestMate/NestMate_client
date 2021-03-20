@@ -1,18 +1,17 @@
 package com.example.nm1.src.main.home.nest
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentCalendarBinding
-import kotlinx.android.synthetic.main.fragment_calendar.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,51 +19,33 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
     FragmentCalendarBinding::bind,
     R.layout.fragment_calendar
 ){
-    lateinit var mContext: Context
-
     var pageIndex = 0
-    lateinit var currentDate: Date
+    private lateinit var currentDate: Date
 
-    lateinit var calendar_year_month_text: TextView
-    lateinit var calendar_layout: LinearLayout
-    lateinit var calendar_view: RecyclerView
-    lateinit var calendarAdapter: CalendarAdapter
-
-    companion object {
-        var instance: CalendarFragment? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        pageIndex-=(Int.MAX_VALUE / 2)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is CalendarActivity) {
-            mContext = context
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(0)
+        binding.calendarBackBtn.setOnClickListener {
+            initView(1)
+        }
+        binding.calendarFrontBtn.setOnClickListener {
+            initView(2)
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        instance = this
-    }
+    fun initView(idx : Int) {
+        if(idx==1) pageIndex--;
+        else if(idx==2) pageIndex++;
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        initView(view)
-        return view
-    }
-
-    fun initView(view: View) {
-        pageIndex -= (Int.MAX_VALUE / 2)
-        calendar_year_month_text = view.calendar_year_month_text
-        calendar_layout = view.calendar_layout
-        calendar_view = view.calendar_view
-        setView(view)
-    }
-
-    fun setView(view: View){
         // 날짜 적용
         val date = Calendar.getInstance().run {
             add(Calendar.MONTH, pageIndex)
@@ -72,31 +53,20 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
         }
         currentDate = date
         // 포맷 적용
-        var datetime: String = SimpleDateFormat(
-            mContext.getString(R.string.calendar_format),
-            Locale.KOREA
-        ).format(date.time)
-        calendar_year_month_text.setText(datetime)
+        var datetime: String = SimpleDateFormat("yyyy. MM", Locale.KOREA).format(date.time)
+        binding.calendarYearMonthText.text=datetime
 
-        calendarAdapter=CalendarAdapter(mContext, calendar_layout, currentDate)
-        calendar_view.layoutManager=GridLayoutManager(mContext, CalendarDay.DAYS_OF_WEEK)
-        calendar_view.adapter=calendarAdapter
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.calendarBackBtn.setOnClickListener {
-            pageIndex--;
-            setView(view)
+        binding.calendarView.layoutManager=GridLayoutManager(requireContext(), CalendarDay.DAYS_OF_WEEK)
+        val calAdapter = CalendarAdapter(requireContext(), binding.calendarLayout, currentDate)
+        calAdapter.itemClick = object: CalendarAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireContext(), CalendarListActivity::class.java)
+                intent.putExtra("year", datetime.substring(0,4))
+                intent.putExtra("month", datetime.substring(6,8).toInt().toString())
+                intent.putExtra("day", calAdapter.dateList[position].toString())
+                (activity as CalendarActivity).Change(intent)
+            }
         }
-        binding.calendarFrontBtn.setOnClickListener {
-            pageIndex++;
-            setView(view)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        instance = null
+        binding.calendarView.adapter=calAdapter
     }
 }

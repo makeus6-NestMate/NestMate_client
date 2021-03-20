@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="97dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
     android:background="@drawable/rec_design"
     android:orientation="vertical">
@@ -28,10 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical|bottom"
             android:layout_marginBottom="9dp"
             android:layout_below="@+id/calendar_list_item_set">
 
             <TextView
+                android:id="@+id/calendar_list_item_title_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
@@ -41,6 +43,13 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="수현이 생일"/>
+
+            <include
+                android:id="@+id/category_trip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                layout="@layout/calendar_category_mini"/>
         </LinearLayout>
 
         <LinearLayout
@@ -77,6 +86,7 @@
             android:id="@+id/calendar_list_item_memo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_below="@+id/calendar_list_item_time">

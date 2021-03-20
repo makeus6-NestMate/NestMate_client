@@ -2,11 +2,13 @@ package com.example.nm1.src.main.home.nest
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.src.main.home.nest.notice.Notice

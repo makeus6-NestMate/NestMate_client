@@ -13,15 +13,6 @@
     app:contentInsetEnd="0dp"
     android:background="@color/white">
 
-    <ImageButton
-        android:id="@+id/back_btn"
-        android:layout_width="7dp"
-        android:layout_height="13dp"
-        android:scaleType="centerInside"
-        android:layout_marginLeft="17dp"
-        android:background="@color/nothing"
-        android:src="@drawable/back_icon"/>
-
     <TextView
         android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"

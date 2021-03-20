@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="36dp"
-    android:layout_marginRight="13dp"
-    android:background="@drawable/roundrec_design"
+    android:background="@drawable/cal_add_cate_roundrec"
     android:gravity="center"
     android:orientation="horizontal">
 

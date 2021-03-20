@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
 import com.example.nm1.databinding.DialogCalendarAddBinding
+import com.example.nm1.util.onMyTextChanged
+import kotlinx.android.synthetic.main.dialog_calendar_add.*
 
 class CalendarAddDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,9 @@ class CalendarAddDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.setBackgroundColor(resources.getColor(R.color.transparent))
+        binding.calendarAddTxt.onMyTextChanged {
+            (activity as CalendarAddActivity).changeRandomCate(binding.calendarAddTxt.text.toString())
+        }
         binding.calendarAddNoBtn.setOnClickListener {
             dismiss()
         }

@@ -63,7 +63,9 @@
                 android:textSize="12sp"
                 android:textColor="#1c1c1c"
                 android:lineSpacingExtra="6sp"
-                android:maxLength="7"/>
+                android:maxLength="7"
+                android:lines="1"
+                android:singleLine="true"/>
         </LinearLayout>
 
 

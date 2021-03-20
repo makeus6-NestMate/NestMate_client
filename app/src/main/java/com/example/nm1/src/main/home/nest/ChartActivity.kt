@@ -2,6 +2,7 @@ package com.example.nm1.src.main.home.nest
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -14,15 +15,11 @@ import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import com.example.nm1.R
 import com.example.nm1.config.BaseActivity
-import com.example.nm1.databinding.ChartActivityBinding
-import com.example.nm1.databinding.ChartDialogBinding
-import kotlinx.android.synthetic.main.chart_activity.*
-import kotlinx.android.synthetic.main.chart_day.*
+import com.example.nm1.databinding.ActivityChartBinding
+import kotlinx.android.synthetic.main.activity_chart.*
 import kotlinx.android.synthetic.main.chart_day.view.*
-import kotlinx.android.synthetic.main.chart_person_item.view.*
-import kotlinx.android.synthetic.main.toolbar_back.*
 
-class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::inflate) {
+class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::inflate) {
     val Int.dp: Int
         get() {
             val metrics = resources.displayMetrics
@@ -37,14 +34,8 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.chart_activity)
 
         val dayArray = arrayOf(chart_mon, chart_tue, chart_wed, chart_thu, chart_fri, chart_sat, chart_sun)
-
-<<<<<<< Updated upstream
-        toolbar_title.text="차트"
-        for(idx1 in dayArray.indices){
-=======
 
         //setVisibility 설정 필요(최고의 메이트)
 
@@ -52,21 +43,12 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
 
         binding.chartToolbar.toolbarTitle.text = "차트"
         for(idx1 in dayArray.indices) {
->>>>>>> Stashed changes
             init(dayArray[idx1], txtArray[idx1])
             for(idx2 in dataArray[idx1].indices) draw(dayArray[idx1], colorArray[idx2], dataArray[idx1][idx2])
         }
 
-<<<<<<< Updated upstream
-
-        clap_btn.setOnClickListener {
-=======
         binding.clapBtn.setOnClickListener {
->>>>>>> Stashed changes
             ChartDialog().show(supportFragmentManager, "ChartDialog")
-        }
-        binding.chartToolbar.backBtn.setOnClickListener {
-            finish()
         }
     }
 
@@ -79,7 +61,9 @@ class ChartActivity : BaseActivity<ChartActivityBinding>(ChartActivityBinding::i
         val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, cnt.dp)
         layoutParams.setMargins(0.dp,4.dp,0.dp,0.dp)
         img.layoutParams=layoutParams
-        img.setBackgroundColor(Color.parseColor(color))
+        val drawable = resources.getDrawable(R.drawable.chart_rec_design)
+        drawable.setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_ATOP)
+        img.setImageDrawable(drawable)
         day.chart_block.addView(img)
     }
 }
