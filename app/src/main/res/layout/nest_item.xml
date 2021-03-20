@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_nest_item"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/nest_img_background"
         android:layout_width="156sp"
-        android:layout_height="156sp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.433"
         app:srcCompat="@drawable/dungji_peach_background" />
 
     <TextView
