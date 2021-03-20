@@ -8,6 +8,7 @@ import androidx.fragment.app.setFragmentResultListener
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.HomeService
 import com.example.nm1.src.main.home.nest.todo.models.AddOneDayTodoResponse
 import com.example.nm1.src.main.home.nest.todo.models.AddRepeatTodoResponse
 import java.text.SimpleDateFormat
@@ -58,13 +59,14 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
         // 해당 요청키로 전달된 값을 처리하겠다는 의미 입니다.
 
-        setFragmentResultListener("todoadd") { _, bundle ->
+        setFragmentResultListener("todoadd_one") { _, bundle ->
             binding.todoLayoutEmpty.visibility = View.INVISIBLE
             binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
-            bundle.getParcelable<Todo>("todoadd_one")?.let {
-                todolist.add(0, it)
-
-                todoadapter.notifyItemInserted(0)
+            bundle.getString("todoadd_one_ok")?.let {
+                if (it=="ok"){
+                    showLoadingDialog(requireContext())
+                    //TodoService(this)
+                }
             }
         }
     }
