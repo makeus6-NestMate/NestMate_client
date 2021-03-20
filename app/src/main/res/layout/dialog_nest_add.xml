@@ -52,7 +52,7 @@
 
         <EditText
             android:id="@+id/home_addnest_edt_name"
-            android:layout_width="168sp"
+            android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="20dp"
@@ -61,16 +61,16 @@
             android:gravity="left"
             android:hint="둥지 이름을 지어보세요."
             android:includeFontPadding="false"
-            android:lineSpacingExtra="8sp"
-            android:maxLines="5"
-            android:paddingLeft="9dp"
-            android:paddingTop="5dp"
+            android:paddingLeft="11sp"
+            android:paddingTop="7sp"
+            android:paddingBottom="8sp"
             android:textColor="@color/black"
             android:textColorHint="@color/colorTextHint"
             android:textSize="13sp"
             android:textStyle="normal"
             app:layout_constraintLeft_toRightOf="@id/memo_dialog_content_title_tv"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.617" />
 
         <TextView
             android:id="@+id/memo_dialog_color_title_tv"
@@ -151,7 +151,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40sp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="18dp"
         android:gravity="center"
@@ -159,8 +159,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/home_addnest_btn_cancel"
-            android:layout_width="84dp"
-            android:layout_height="40dp"
+            android:layout_width="84sp"
+            android:layout_height="40sp"
             android:layout_marginRight="11dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
             android:fontFamily="@font/notosanskr_medium"
@@ -174,8 +174,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/home_addnest_btn_confirm"
-            android:layout_width="84dp"
-            android:layout_height="40dp"
+            android:layout_width="84sp"
+            android:layout_height="40sp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
