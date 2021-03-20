@@ -20,6 +20,7 @@ import com.example.nm1.src.main.home.nest.todo.models.AddOneDayTodoResponse
 import com.example.nm1.src.main.home.nest.todo.models.AddRepeatTodoResponse
 import com.example.nm1.src.main.home.nest.todo.models.PostAddOneDayTodo
 import com.example.nm1.util.LoadingDialog
+import com.example.nm1.util.onMyTextChanged
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
@@ -33,6 +34,8 @@ class TodoAddDialogFragment : DialogFragment(), TodoFragmentView {
     private lateinit var binding: DialogTodoAddBinding
     private val selecteddaylist = Array(7){false}
     private val isrepeat = Array(2){false}
+
+//   선택한 날짜, 시간 저장
     private var selectedyear by Delegates.notNull<Int>()
     private var selectedmonth by Delegates.notNull<Int>()
     private var selectedday by Delegates.notNull<Int>()
@@ -342,6 +345,31 @@ class TodoAddDialogFragment : DialogFragment(), TodoFragmentView {
             dismiss()
         }
 
+//       다 입력시 확인버튼 활성화
+        binding.todoEdtTitle.onMyTextChanged {
+//           반복
+            if (isrepeat[0]){
+                if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.contains(true) && binding.todoTimepicker.text.isNotEmpty()){
+                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }else{
+                    binding.todoBtnConfirm.isEnabled = false
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
+            }
+//            하루만
+            else if (isrepeat[1]){
+                if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
+                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }else{
+                    binding.todoBtnConfirm.isEnabled = false
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
+            }
+
+        }
+
 //       확인버튼 -> 할일 등록
 //       반복/하루만 구분할 필요 O -> 날짜선택 / 요일선택이 다름
         binding.todoBtnConfirm.setOnClickListener {
@@ -363,7 +391,7 @@ class TodoAddDialogFragment : DialogFragment(), TodoFragmentView {
 
         val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.75).toInt()
+        params?.width = (deviceWidth*0.76).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 

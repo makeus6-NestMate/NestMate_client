@@ -105,6 +105,7 @@
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:textColor="@color/black"
         android:textColorLink="@color/colorPrimary"
         android:textCursorDrawable="@color/colorPrimary"
         android:textSize="13sp"
@@ -151,11 +152,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/todo_layout_day"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="7dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday"
@@ -275,16 +276,16 @@
         app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday"
-        app:layout_constraintWidth_percent="0.84"
-        tools:visibility="invisible">
+        app:layout_constraintWidth_percent="0.84">
 
         <TextView
             android:id="@+id/todo_datepicker"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/todo_spinner"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:paddingLeft="10dp"
+            android:textColor="@color/black"
             tools:text="날짜" />
     </LinearLayout>
 
@@ -311,7 +312,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="7dp"
         android:orientation="horizontal"
-        android:visibility="visible"
         app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
@@ -319,8 +319,8 @@
 
         <TextView
             android:id="@+id/todo_timepicker"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/todo_spinner"
             android:fontFamily="@font/notosanscjkkr_medium"
@@ -328,6 +328,7 @@
             android:paddingLeft="11dp"
             android:paddingTop="7dp"
             android:paddingBottom="8dp"
+            android:textColor="@color/black"
             android:textSize="13sp"
             tools:text="시간" />
     </LinearLayout>

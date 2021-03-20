@@ -11,4 +11,8 @@ interface TodoFragmentView {
 //   반복할일추가
     fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse)
     fun onAddRepeatTodoFailure(message: String)
+
+//    하루 할일 조회
+
+//    반복 할일 조회
 }
