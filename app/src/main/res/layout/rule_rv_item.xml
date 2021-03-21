@@ -31,16 +31,17 @@
         android:id="@+id/rule_rv_item_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rule_rv_item_num"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="12시 이후 귀가시 미리 이야기한다."
+        android:layout_marginLeft="14sp"
         android:fontFamily="@font/notosanskr_regular"
         android:textStyle="normal"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:includeFontPadding="false"
         android:lineSpacingExtra="16sp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 
     <ImageView

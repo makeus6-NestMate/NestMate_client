@@ -28,7 +28,7 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.noticeVoteToolbar.toolbarTitle.text = "공지/투포"
+        binding.noticeVoteToolbar.toolbarTitle.text = "공지/투표"
 
         binding.noticeVoteNoticeBtn.setOnClickListener {
             isNotice = true

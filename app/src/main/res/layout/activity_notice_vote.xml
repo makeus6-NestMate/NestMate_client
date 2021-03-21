@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/roundrec_design_inactive_white_bg"
-            android:text="공지"
+            android:text="투표"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
             android:textSize="15sp"
@@ -125,9 +125,9 @@
 
         <TextView
             android:id="@+id/vote_title"
-            app:layout_constraintTop_toTopOf="@id/vote_content_et"
-            app:layout_constraintBottom_toBottomOf="@id/vote_content_et"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,7 +146,8 @@
             android:background="@drawable/memo_dialog_content_bg"
             app:layout_constraintStart_toEndOf="@id/vote_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vote_title"
+            app:layout_constraintBottom_toBottomOf="@id/vote_title"
             android:maxLines="1"
             android:inputType="text"
             android:textColor="@color/black"
@@ -169,7 +170,7 @@
             android:id="@+id/vote_item_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vote_content_et"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +186,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="@id/vote_item_title"
+            app:layout_constraintTop_toBottomOf="@id/vote_content_et"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toEndOf="@id/vote_item_title"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginLeft="12dp"
@@ -193,6 +195,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/vote_add_recyclerview"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
