@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="AllowBackup">
-        <activity android:name=".src.LiamActivity"></activity>
+        <activity android:name=".src.main.home.nest.notice.NoticeVoteActivity"
+            android:windowSoftInputMode="adjustPan">
+    </activity>
         <activity android:name=".src.main.home.nest.todo.TodoManagerActivity" />
         <activity
             android:name=".src.splash.SplashActivity"
