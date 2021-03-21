@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_white_roundcorner">
+    android:background="@drawable/memo_dialog_bg">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,6 +13,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="center_horizontal"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="12sp"
         android:text="할일추가"
         android:textColor="#000000"
@@ -53,6 +54,7 @@
             android:layout_marginTop="16dp"
             android:elevation="0dp"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:stateListAnimator="@null"
             android:text="반복" />
 
@@ -66,6 +68,7 @@
             android:layout_marginTop="16dp"
             android:elevation="0dp"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:text="하루만" />
@@ -75,9 +78,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="8sp"
         android:text="할일"
         android:textColor="#505050"
@@ -90,167 +93,211 @@
     <EditText
         android:id="@+id/todo_edt_title"
         style="@style/edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="23dp"
         android:ems="10"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:hint="할 일을 입력해 주세요."
+        android:includeFontPadding="false"
         android:inputType="textPersonName"
         android:maxLength="15"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:textColor="@color/black"
         android:textColorLink="@color/colorPrimary"
         android:textCursorDrawable="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        android:textSize="13sp"
+        app:layout_constraintHeight_percent="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintWidth_percent="0.84" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="/15"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/todo_edt_title"
+        app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
+
+    <TextView
+        android:id="@+id/todo_tv_titlelength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
 
     <TextView
         android:id="@+id/todo_tv_dateday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="right"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="8sp"
         android:text="요일 선택"
         android:textColor="#505050"
         android:textSize="13sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/todo_layout_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday">
+        app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday"
+        app:layout_constraintWidth_percent="0.84">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_mon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:stateListAnimator="@null"
             android:text="월"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_tue"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:stateListAnimator="@null"
             android:text="화"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_mon"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_wed"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:text="수"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_tue"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_thu"
-            android:layout_width="28dp"
+            android:layout_width="28sp"
             android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:text="목"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_wed"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_fri"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:text="금"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_thu"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_sat"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:stateListAnimator="@null"
             android:text="토"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_fri"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_sun"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="28sp"
+            android:layout_height="28sp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/todo_btn_notclickedday"
             android:elevation="0dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
             android:text="일"
-            android:textColor="#e0e0e0" />
+            android:textColor="#e0e0e0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/todo_btn_sat"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/todo_layout_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday"
-        tools:visibility="visible">
+        app:layout_constraintWidth_percent="0.84">
 
         <TextView
             android:id="@+id/todo_datepicker"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
-            tools:text="날짜"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/todo_spinner"
             android:fontFamily="@font/notosanscjkkr_medium"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            tools:text="날짜" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="8sp"
         android:text="시간 선택"
         android:textColor="#505050"
@@ -261,22 +308,29 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintWidth_percent="0.84">
 
         <TextView
             android:id="@+id/todo_timepicker"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/todo_spinner"
             android:fontFamily="@font/notosanscjkkr_medium"
-            android:paddingLeft="10dp"
+            android:includeFontPadding="false"
+            android:paddingLeft="11dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
             tools:text="시간" />
     </LinearLayout>
 
@@ -317,23 +371,5 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/15"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/todo_edt_title"
-        app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
-
-    <TextView
-        android:id="@+id/todo_tv_titlelength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
