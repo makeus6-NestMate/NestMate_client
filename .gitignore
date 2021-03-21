@@ -19,7 +19,10 @@
 *.bin
 *.lock
 *.lock
+.idea/caches/build_file_checksums.ser
 *.bin
 *.lock
+*.bin
+*.bin
 *.bin
 *.lock
