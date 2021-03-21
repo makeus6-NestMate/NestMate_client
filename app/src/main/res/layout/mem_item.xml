@@ -1,23 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:orientation="horizontal"
-    android:background="@drawable/rec_design">
+    android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/memImage"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/round_design"
-        android:layout_margin="10dp"/>
+        android:id="@+id/mem_img_background"
+        android:layout_width="0dp"
+        android:layout_height="72sp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rec_design" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/mem_img_profile"
+        android:layout_width="45sp"
+        android:layout_height="45sp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/mem_emptyprofile"
+        app:layout_constraintBottom_toBottomOf="@+id/mem_img_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/memName"
+        android:id="@+id/mem_tv_memname"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:text="Name"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="17sp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/mem_img_background"
+        app:layout_constraintStart_toEndOf="@+id/mem_img_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="수현" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/mem_btn_edit"
+        android:layout_width="19sp"
+        android:layout_height="5sp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/more_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/mem_img_background"
+        app:layout_constraintEnd_toEndOf="@+id/mem_img_background"
+        app:layout_constraintTop_toTopOf="@+id/mem_img_background"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

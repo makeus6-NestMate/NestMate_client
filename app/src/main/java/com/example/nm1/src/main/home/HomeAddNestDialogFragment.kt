@@ -3,6 +3,7 @@ package com.example.nm1.src.main.home
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -40,6 +41,7 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
         savedInstanceState: Bundle?
     ): View {
         binding = DialogNestAddBinding.inflate(inflater, container, false)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         return binding.root
     }
