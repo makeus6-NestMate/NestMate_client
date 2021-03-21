@@ -1,39 +1,40 @@
 package com.example.nm1.src.main.home.nest.todo
 
-import com.example.nm1.src.main.home.nest.todo.models.*
+import com.example.nm1.src.main.home.nest.todo.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
 interface TodoInterface {
 //    할일 추가
-    @POST("/todo/day")
-    fun postAddOneDayTodo(@Body params: PostAddOneDayTodo): Call<AddOneDayTodoResponse>
+    @POST("/room/{roomId}/todo/day")
+    fun postAddOneDayTodo(@Path("roomId") roomId:Int, @Body params: PostAddOneDayTodo): Call<AddOneDayTodoResponse>
 
 //    반복 할일 추가
-    @POST("/todo/days")
-    fun postAddRepeatTodo(@Body params: PostAddRepeatTodo): Call<AddRepeatTodoResponse>
+    @POST("/room/{roomId}/todo/days")
+    fun postAddRepeatTodo(@Path("roomId") roomId:Int, @Body params: PostAddRepeatTodo): Call<AddRepeatTodoResponse>
 
 //    하루 할일 조회
     @GET("/room/{roomId}/todo/day")
-    fun getOneDayTodo(@Query("roomId") roomId:Int)
+    fun getOneDayTodo(@Path("roomId") roomId:Int) : Call<GetOneDayTodoResponse>
 
 //    반복 할일 조회
     @GET("/room/{roomId}/todo/days")
-    fun getRepeatTodo(@Query("roomId") roomId:Int)
+    fun getRepeatTodo(@Path("roomId") roomId:Int) : Call<GetRepeatTodoResponse>
 
 //    하루 할일 수정
     @PUT("/room/{roomId}/todo/day")
-    fun putOneDayTodo(@Query("roomId") roomId:Int, @Body params:PutOneDayTodo) : Call<PutOneDayTodoResponse>
+    fun putOneDayTodo(@Path("roomId") roomId:Int, @Body params:PutOneDayTodo) : Call<PutOneDayTodoResponse>
 
     //   반복 할일 수정
     @PUT("/room/{roomId}/todo/days")
-    fun putRepeatTodo(@Query("roomId") roomId:Int, @Body params:PutRepeatTodo) : Call<PutRepeatTodoResponse>
+    fun putRepeatTodo(@Path("roomId") roomId:Int, @Body params:PutRepeatTodo) : Call<PutRepeatTodoResponse>
 
 //    하루 할일 삭제
     @DELETE("/room/{roomId}/todo/{todoId}/day")
-    fun deleteOneDayTodo(@Query("roomId") roomId:Int, @Query("todoId") todoId:Int)
+    fun deleteOneDayTodo(@Path("roomId") roomId:Int, @Path("todoId") todoId:Int) : Call<DeleteOneDayTodoResponse>
 
 //    반복 할일 삭제
     @DELETE("/room/{roomId}/todo/{todoId}/days")
-    fun deleteRepeatTodo(@Query("roomId") roomId:Int, @Query("todoId") todoId:Int)
+    fun deleteRepeatTodo(@Path("roomId") roomId:Int, @Path("todoId") todoId:Int): Call<DeleteRepeatTodoResponse>
+
 }
