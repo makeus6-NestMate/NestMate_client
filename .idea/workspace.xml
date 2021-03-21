@@ -14,14 +14,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a273853-cb71-4a5b-8085-1224a60c7cef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[520037b6f01b658d]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -65,7 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-viewC:/Users/lyr82/.gradle/caches/modules-2/files-2.1/com.github.ybq/Android-SpinKit/1.4.0/f58852551150babe66d223b0c3107ecece8eff7f/Android-SpinKit-1.4.0-sources.jar!/com/github/ybq/android/spinkit/SpinKitView.java_SELECTED" value="SpinKitView" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="multi-representation-previewC:/Users/lyr82/.gradle/caches/modules-2/files-2.1/com.github.ybq/Android-SpinKit/1.4.0/f58852551150babe66d223b0c3107ecece8eff7f/Android-SpinKit-1.4.0-sources.jar!/com/github/ybq/android/spinkit/SpinKitView.java_selected" value="Custom views" />
   </component>
   <component name="RecentsManager">
@@ -155,7 +157,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1124e4e7-9885-4097-89c5-66222676ad03" name="Default Changelist" comment="" />
+      <changelist id="8a273853-cb71-4a5b-8085-1224a60c7cef" name="Default Changelist" comment="" />
       <created>1615855253618</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
