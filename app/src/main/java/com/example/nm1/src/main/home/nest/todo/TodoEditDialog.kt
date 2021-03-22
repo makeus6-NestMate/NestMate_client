@@ -30,7 +30,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
     private lateinit var mLoadingDialog: LoadingDialog
 
     private lateinit var binding: DialogTodoAddBinding
-    private val isdayselectedlist = Array(7){false}
+    private val selecteddaylist = Array(7){0}
 
 //   선택한 날짜, 시간 저장
     private var selectedyear by Delegates.notNull<Int>()
@@ -60,6 +60,8 @@ class TodoEditDialog : DialogFragment(), TodoView {
         display = windowManager!!.defaultDisplay
         size = Point()
         display!!.getSize(size)
+
+        binding.todoTvHeader.text = "할일수정"
 
 //       반복
         if (arguments?.getString("onedayorrepeat")=="repeat"){
@@ -102,6 +104,10 @@ class TodoEditDialog : DialogFragment(), TodoView {
             binding.todoLayoutDay.visibility = View.INVISIBLE
             binding.todoTvDateday.text = "날짜 선택"
         }
+
+//       기존 내용 가져오기
+        binding.todoEdtTitle.setText(arguments?.getString("todotitle"))
+
 //       할일
 //       글자수 실시간으로 보이게
         binding.todoEdtTitle.addTextChangedListener(object : TextWatcher {
@@ -123,150 +129,154 @@ class TodoEditDialog : DialogFragment(), TodoView {
         })
 
 //       요일 선택
-//        binding.todoBtnMon.setOnClickListener {
-////            선택된 경우에 클릭했을때
-//            if (isdayselectedlist[0]==1) {
-//                binding.todoBtnMon.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//                isdayselectedlist[0]==0
-//            } else {
-//                binding.todoBtnMon.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//                isdayselectedlist[0]==1
-//            }
-//            isdayselectedlist[0] = !isdayselectedlist[0]
-//        }
-//        binding.todoBtnTue.setOnClickListener {
-//            if (isdayselectedlist[1]==1) {
-//                binding.todoBtnTue.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//                isdayselectedlist[1]==0
-//            } else {
-//                binding.todoBtnTue.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//                isdayselectedlist[1]==1
-//            }
-//        }
-//        binding.todoBtnWed.setOnClickListener {
-//            if (isdayselectedlist[2]) {
-//                binding.todoBtnWed.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//            } else {
-//                binding.todoBtnWed.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//            }
-//            isdayselectedlist[2] = !isdayselectedlist[2]
-//        }
-//        binding.todoBtnThu.setOnClickListener {
-//            if (isdayselectedlist[3]) {
-//                binding.todoBtnThu.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//            } else {
-//                binding.todoBtnThu.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//            }
-//            isdayselectedlist[3] = !isdayselectedlist[3]
-//        }
-//        binding.todoBtnFri.setOnClickListener {
-//            if (isdayselectedlist[4]) {
-//                binding.todoBtnFri.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//            } else {
-//                binding.todoBtnFri.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//            }
-//            isdayselectedlist[4] = !isdayselectedlist[4]
-//        }
-//        binding.todoBtnSat.setOnClickListener {
-//            if (isdayselectedlist[5]) {
-//                binding.todoBtnSat.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//            } else {
-//                binding.todoBtnSat.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//            }
-//            isdayselectedlist[5] = !isdayselectedlist[5]
-//        }
-//        binding.todoBtnSun.setOnClickListener {
-//            if (isdayselectedlist[6]) {
-//                binding.todoBtnSun.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.light_gray
-//                    )
-//                )
-//                binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_notclickedday)
-//            } else {
-//                binding.todoBtnSun.setTextColor(
-//                    ContextCompat.getColor(
-//                        requireContext(),
-//                        R.color.daybuttonmint
-//                    )
-//                )
-//                binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_clickedday)
-//            }
-//            isdayselectedlist[6] = !isdayselectedlist[6]
-//        }
+        binding.todoBtnMon.setOnClickListener {
+//            선택된 경우에 클릭했을때
+            if (selecteddaylist[0]==1) {
+                binding.todoBtnMon.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[0] = 0
+            } else {
+                binding.todoBtnMon.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[0] = 1
+            }
+        }
+        binding.todoBtnTue.setOnClickListener {
+            if (selecteddaylist[1]==1) {
+                binding.todoBtnTue.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[1] = 0
+            } else {
+                binding.todoBtnTue.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[1] = 1
+            }
+        }
+        binding.todoBtnWed.setOnClickListener {
+            if (selecteddaylist[2]==1) {
+                binding.todoBtnWed.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[2]=0
+            } else {
+                binding.todoBtnWed.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[2]=1
+            }
+        }
+        binding.todoBtnThu.setOnClickListener {
+            if (selecteddaylist[3]==1) {
+                binding.todoBtnThu.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[3] = 0
+            } else {
+                binding.todoBtnThu.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[3] = 1
+            }
+        }
+        binding.todoBtnFri.setOnClickListener {
+            if (selecteddaylist[4]==1) {
+                binding.todoBtnFri.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[4] = 0
+            } else {
+                binding.todoBtnFri.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[4] = 1
+            }
+        }
+        binding.todoBtnSat.setOnClickListener {
+            if (selecteddaylist[5]==1) {
+                binding.todoBtnSat.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[5] = 0
+            } else {
+                binding.todoBtnSat.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[5] = 1
+            }
+        }
+        binding.todoBtnSun.setOnClickListener {
+            if (selecteddaylist[6]==1) {
+                binding.todoBtnSun.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.light_gray
+                    )
+                )
+                binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[6] = 0
+            } else {
+                binding.todoBtnSun.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.daybuttonmint
+                    )
+                )
+                binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[6] = 1
+            }
+        }
 
 //       날짜 선택
         lateinit var selecteddate: Date
@@ -348,7 +358,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
         binding.todoEdtTitle.onMyTextChanged {
 //           반복
             if (arguments?.getString("onedayorrepeat")=="repeat"){
-                if(binding.todoEdtTitle.text.isNotEmpty() && isdayselectedlist.contains(true) && binding.todoTimepicker.text.isNotEmpty()){
+                if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
                     binding.todoBtnConfirm.isEnabled = true //버튼 활성화
                     binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
                 }else{
@@ -372,13 +382,19 @@ class TodoEditDialog : DialogFragment(), TodoView {
 //       확인버튼 -> 할일 등록
 //       반복/하루만 구분할 필요 O -> 날짜선택 / 요일선택이 다름
         binding.todoBtnConfirm.setOnClickListener {
-//          하루만
+//          하루 수정
             if (arguments?.getString("onedayorrepeat")=="oneday"){
                 val selectedTimeString = "$selectedyear/$selectedmonth/$selectedday/$selectedhour/$selectedminute"
                 val putOneDayTodo = PutOneDayTodo(arguments?.getInt("todoId")!!, binding.todoEdtTitle.text.toString(), selectedTimeString)
 
                 showLoadingDialog(requireContext())
                 TodoService(this).tryPutOneDayTodo(roomId, putOneDayTodo)
+            }
+//           반복 수정
+            else{
+                val putAddRepeatTodo = PutRepeatTodo(arguments?.getInt("todoId")!!, binding.todoEdtTitle.text.toString(), "$selectedhour/$selectedminute", selecteddaylist.joinToString(""))
+                showLoadingDialog(requireContext())
+                TodoService(this).tryPutRepeatTodo(roomId, putAddRepeatTodo)
             }
         }
 
@@ -456,11 +472,20 @@ class TodoEditDialog : DialogFragment(), TodoView {
     }
 
     override fun onPutRepeatTodoSuccess(response: PutRepeatTodoResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        if (!response.isSuccess){
+            Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show()
+        }
+        else {
+            dismissLoadingDialog()
+            Toast.makeText(requireContext(), "수정이 완료되었습니다", Toast.LENGTH_SHORT).show()
+            this.dismiss()
+        }
     }
 
     override fun onPutRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
