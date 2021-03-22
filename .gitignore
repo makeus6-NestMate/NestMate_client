@@ -18,3 +18,10 @@
 *.lock
 *.bin
 *.lock
+*.lock
+*.bin
+*.lock
+*.bin
+*.lock
+.idea/workspace.xml
+.idea/workspace.xml
