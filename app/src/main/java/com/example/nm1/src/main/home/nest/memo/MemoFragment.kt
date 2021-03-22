@@ -124,6 +124,7 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
                     var item = activity?.applicationContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var target = item.inflate(R.layout.memo_item, null)
                     target.memo_item_tv.text = memoList[i].memo
+                    target.memo_item_timestamp_tv.text = memoList[i].createdAt
 
                     target.memo_item_layout.setBackgroundColor(Color.parseColor(memoList[i].memoColor))
 
