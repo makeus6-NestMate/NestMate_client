@@ -65,6 +65,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
                 intent.putExtra("month", datetime.substring(6,8).toInt().toString())
                 intent.putExtra("day", calAdapter.dateList[position].toString())
                 (activity as CalendarActivity).Change(intent)
+                // 이 때 CalendarList 넘겨야 한다.
+                // 아니면 CalendarListActivity에서 날짜에 맞는 걸 가져오든가!
+                // 여기서 넘기는 게 나을 듯. CalendarList에서 카테고리 정보만 가져와서 달력에 표시
             }
         }
         binding.calendarView.adapter=calAdapter

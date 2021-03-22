@@ -53,6 +53,9 @@
         <activity
             android:name=".src.main.home.nest.CalendarListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".src.main.home.nest.CalendarListDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

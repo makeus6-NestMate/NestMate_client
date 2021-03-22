@@ -70,6 +70,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(dateList[position], position)
+
+
         // list_item_calendar 높이 지정
         val h = calendarLayout.height / 6
         holder.itemView.layoutParams.height = h

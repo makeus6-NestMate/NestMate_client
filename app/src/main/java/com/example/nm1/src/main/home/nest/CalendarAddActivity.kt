@@ -1,7 +1,9 @@
 package com.example.nm1.src.main.home.nest
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.DrawableContainer.DrawableContainerState
@@ -27,20 +29,23 @@ import java.util.*
 
 class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCalendarAddBinding::inflate) {
 
+    // 전역 변수
     private var selecteddate: Date? = null
     private var selectedtime: Date? = null
+    private var preYear: Int = -1
+    private var preMonth: Int = -1
+    private var preDay: Int = -1
+    private var preHour: Int = -1
+    private var preMin: Int = -1
+    private var moveYear: Int = -1
+    private var moveMonth: Int = -1
+    private var moveDay: Int = -1
+    // 확인 작업
     private var isOK = false
-    private val colorArray = arrayOf(
-        "#0b70c6",
-        "#1bcbb0",
-        "#95f288",
-        "#fcd60a",
-        "#f26317",
-        "#b71bcb",
-        "#94f5e6"
-    )
-    private val nameArray = arrayOf("여행", "외식", "회의", "생일", "일반", "기타", "직접 입력")
     private val Selected = Array(4){false}
+    // 부수 데이터
+    private val colorArray = arrayOf("#0b70c6", "#1bcbb0", "#95f288", "#fcd60a", "#f26317", "#b71bcb", "#94f5e6")
+    private val nameArray = arrayOf("여행", "외식", "회의", "생일", "일반", "기타", "직접 입력")
     val Int.dp: Int
         get() {
             val metrics = resources.displayMetrics
@@ -59,9 +64,29 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
             category_etc,
             category_random
         )
+
         //init
-        binding.calendarAddToolbar.toolbarTitle.text="일정추가"
+        //일정 추가가 아닌 수정일 경우!
         for(idx in cateArray.indices) initCategory(cateArray[idx], colorArray[idx], nameArray[idx])
+        if(intent.hasExtra("time")){
+            binding.calendarAddToolbar.toolbarTitle.text="일정수정"
+            //카테고리 관련
+            val tmpIdx = intent.getIntExtra("cateIdx", 0)
+            if(tmpIdx==6) changeRandomCate(intent.getStringExtra("cateName").toString())
+            changeStroke(tmpIdx, cateArray)
+            //그외 정보
+            binding.calAddDate.text=intent.getStringExtra("date")
+            preYear=2021; preMonth=5; preDay=4;//여기 선택한 연,월,일 넣어야 함
+            moveYear=preYear; moveMonth=preMonth; moveDay=preDay
+            binding.calAddTime.text=intent.getStringExtra("time")
+            preHour=4; preMin=6;//여기 선택한 시,분 넣어야 함
+            binding.calendarTitleTxt.setText(intent.getStringExtra("title"))
+            binding.calendarContentTxt.setText(intent.getStringExtra("memo"))
+            checkActive()
+        }
+        else{ //일정 추가일 경우!
+            binding.calendarAddToolbar.toolbarTitle.text="일정추가"
+        }
 
         //카테고리 선택
         //1
@@ -93,9 +118,12 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         binding.calAddDate.setOnClickListener {
 //            datepickerdialog에 표시할 달력
             val datepickercalendar = Calendar.getInstance()
-            val year = datepickercalendar.get(Calendar.YEAR)
-            val month = datepickercalendar.get(Calendar.MONTH)
-            val day = datepickercalendar.get(Calendar.DAY_OF_MONTH)
+            var year = datepickercalendar.get(Calendar.YEAR)
+            if(preYear!=-1) year= preYear
+            var month = datepickercalendar.get(Calendar.MONTH)
+            if(preMonth!=-1) month= preMonth-1
+            var day = datepickercalendar.get(Calendar.DAY_OF_MONTH)
+            if(preDay!=-1) day= preDay
 
             val dpd = DatePickerDialog(
                 this, R.style.MyDatePickerStyle, { _, year, monthOfYear, dayOfMonth ->
@@ -110,7 +138,10 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
                     val simpledateformat = SimpleDateFormat("EEEE", Locale.KOREA)
                     val dayName: String = simpledateformat.format(selecteddate)
 
-                    binding.calAddDate.text = "$year.$month.$dayOfMonth ($dayName)"
+                    binding.calAddDate.text = year.toString()+"년 "+month.toString()+"월 "+dayOfMonth.toString()+"일 "+dayName.toString()
+                    moveYear=year
+                    moveMonth=month
+                    moveDay=dayOfMonth
                 },
                 year,
                 month,
@@ -126,8 +157,11 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         binding.calAddTime.setOnClickListener {
             //timepickerdialog에 표시할 달력
             val timepickercalendar = Calendar.getInstance()
-            val hour = timepickercalendar.get(Calendar.HOUR_OF_DAY)
-            val minute = timepickercalendar.get(Calendar.MINUTE)
+            var hour = timepickercalendar.get(Calendar.HOUR_OF_DAY)
+            if(preHour!=-1) hour= preHour
+            else hour-=3
+            var minute = timepickercalendar.get(Calendar.MINUTE)
+            if(preMin!=-1) minute= preMin
             val tpd = TimePickerDialog(
                 this, R.style.MyTimePickerStyle, { _, hourOfDay, minute ->
                     val calendar = Calendar.getInstance()
@@ -153,22 +187,25 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
 
         //제목 입력
         binding.calendarTitleTxt.onMyTextChanged {
-            Selected[3] = (binding.calendarTitleTxt.text).isNotEmpty()
             checkActive()
         }
 
         binding.calendarAddBtn.setOnClickListener {
             checkActive()
-            if(isOK){
+            if(isOK) {
+                val intent = Intent(this, CalendarListActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("year", moveYear.toString())
+                intent.putExtra("month", moveMonth.toString())
+                intent.putExtra("day", moveDay.toString())
+                startActivity(intent)
                 finish()
             }
         }
     }
 
     fun initCategory(cate: View, color: String, name: String){
-        val drawable = resources.getDrawable(R.drawable.cal_add_cate_roundrec)
-        drawable.setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_ATOP)
-        cate.calendar_category_color.setImageDrawable(drawable)
+        cate.calendar_category_color.background.setTint(Color.parseColor(color))
         cate.calendar_category_name.text=name
     }
 
@@ -197,17 +234,18 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
 
     fun checkActive(){
         var flag = -1
-        if(selecteddate!=null) Selected[1]=true
-        if(selectedtime!=null) Selected[2]=true
+        Selected[1]=(binding.calAddDate.text).isNotEmpty()
+        Selected[2]=(binding.calAddTime.text).isNotEmpty()
+        Selected[3]=(binding.calendarTitleTxt.text).isNotEmpty()
         for(idx in Selected.indices){
             if(!Selected[idx]) flag = idx
         }
-
         if(flag==-1){
             binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             isOK = true
         }else{
             binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+            isOK=false
         }
     }
 }

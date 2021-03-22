@@ -24,7 +24,7 @@
         android:includeFontPadding="false"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendar_view"
+        android:id="@+id/calendar_category_list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
