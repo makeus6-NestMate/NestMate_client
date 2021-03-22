@@ -12,13 +12,16 @@ import com.example.nm1.R
 import com.example.nm1.databinding.MemoDeleteDialogBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterface): BottomSheetDialogFragment() {
+class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterface, roomId: Int, memoId: Int, listIdx: Int): BottomSheetDialogFragment() {
     private lateinit var binding: MemoDeleteDialogBinding
     private var memoDeleteInterface: MemoDeleteInterface = memoDeleteInterface
 
     var windowManager: WindowManager? = null
     var display: Display? = null
     var size: Point? = null
+    var roomId = roomId
+    var memoId = memoId
+    var listIdx = listIdx
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +41,7 @@ class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterfac
         display!!.getSize(size)
 
         binding.memoDeleteBtn.setOnClickListener {
-            this.memoDeleteInterface.onDeleteClicked(true)
+            this.memoDeleteInterface.onDeleteClicked(true, roomId, memoId, listIdx)
             dismiss()
         }
     }
@@ -48,7 +51,7 @@ class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterfac
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.9).toInt()
+        params?.width = (deviceWidth*1).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
 
     }

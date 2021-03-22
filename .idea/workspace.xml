@@ -8,20 +8,49 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="okh" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="okhttp" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a273853-cb71-4a5b-8085-1224a60c7cef" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__gun0912_ted_tedpermission_2_2_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__gun0912_ted_tedpermission_2_2_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/nm1.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/nm1.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-15__7_41__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-15_오후_7_41_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeAddNestDialogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeAddNestDialogFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/splash/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_memo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_memo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[520037b6f01b658d]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5200a9335a4c945f]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -40,9 +69,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -72,6 +103,9 @@
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.example.nm1.src.main.home" />
       <recent name="com.example.nm1.src.main.home.model" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.nm1.src.main.home.nest.memo" />
     </key>
     <key name="android.template.-1656125817">
       <recent name="com.example.nm1.src" />
@@ -155,7 +189,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1124e4e7-9885-4097-89c5-66222676ad03" name="Default Changelist" comment="" />
+      <changelist id="8a273853-cb71-4a5b-8085-1224a60c7cef" name="Default Changelist" comment="" />
       <created>1615855253618</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -164,17 +198,32 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="558" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1615970222441">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser" timestamp="1616433341411">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
+    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616433341411" />
+    <state x="371" y="-912" key="#com.intellij.ide.util.MemberChooser/-327.-1080.1920.1080/0.0.1440.900@-327.-1080.1920.1080" timestamp="1616343778144" />
     <state x="558" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615970222441" />
     <state x="420" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1615863552707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="420" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1615863552707" />
+    <state x="374" y="-730" width="524" height="403" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1616343070889">
+      <screen x="-327" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="374" y="-730" width="524" height="403" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/-327.-1080.1920.1080/0.0.1440.900@-327.-1080.1920.1080" timestamp="1616343070889" />
     <state x="411" y="138" key="AndroidCreateResourceFileDialog" timestamp="1615977200178">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -183,26 +232,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616245243363" />
-    <state width="1537" height="117" key="GridCell.Tab.0.bottom" timestamp="1616255523827">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="213" key="GridCell.Tab.0.bottom" timestamp="1616340862667">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
+    <state width="1878" height="213" key="GridCell.Tab.0.bottom/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616340862667" />
     <state width="1537" height="117" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
-    <state width="1537" height="117" key="GridCell.Tab.0.center" timestamp="1616255523827">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="213" key="GridCell.Tab.0.center" timestamp="1616340862666">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
+    <state width="1878" height="213" key="GridCell.Tab.0.center/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616340862666" />
     <state width="1537" height="117" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
-    <state width="1537" height="117" key="GridCell.Tab.0.left" timestamp="1616255523826">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="213" key="GridCell.Tab.0.left" timestamp="1616340862664">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
+    <state width="1878" height="213" key="GridCell.Tab.0.left/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616340862664" />
     <state width="1537" height="117" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616255523826" />
-    <state width="1537" height="117" key="GridCell.Tab.0.right" timestamp="1616255523827">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="213" key="GridCell.Tab.0.right" timestamp="1616340862666">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
+    <state width="1878" height="213" key="GridCell.Tab.0.right/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616340862666" />
     <state width="1537" height="117" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
     <state x="147" y="65" key="MergeDialog" timestamp="1615962314363">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1615962314363" />
+    <state x="291" y="-907" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1616349945356">
+      <screen x="-327" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="291" y="-907" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616349945356" />
     <state x="528" y="124" key="git4idea.branch.GitSmartOperationDialog" timestamp="1615962258407">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

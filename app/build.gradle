@@ -81,4 +81,11 @@ dependencies {
 
 //    ted permission
     implementation 'gun0912.ted:tedpermission:2.2.3'
+
+    implementation "io.reactivex.rxjava3:rxjava:3.0.11"
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.1"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+
+
 }

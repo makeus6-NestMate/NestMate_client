@@ -20,8 +20,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showLoadingDialog(requireContext())
-        HomeService(this).tryGetNest()
 
         binding.homeLayoutEmpty.setOnClickListener {
             val intent = Intent(activity, NestActivity::class.java)
@@ -42,14 +40,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
             }
         }
         binding.nestList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        showLoadingDialog(requireContext())
+        HomeService(this).tryGetNest()
+
     }
 
+
     override fun onAddNestSuccess(response: AddNestResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun onAddNestFailure(message: String) {
-        TODO("Not yet implemented")
     }
 
     override fun onGetNestSuccess(response: GetNestResponse) {
