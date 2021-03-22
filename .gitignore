@@ -19,9 +19,17 @@
 *.bin
 *.lock
 *.lock
+<<<<<<< Updated upstream
 *.bin
 *.lock
 *.bin
 *.lock
 .idea/workspace.xml
+=======
+.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml
+>>>>>>> Stashed changes
+.idea/workspace.xml
+*.bin
+*.lock
+*.lock
 .idea/workspace.xml

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/memo_dialog_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="12sp"
+        android:text="멤버추가"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20sp"
+        android:background="@color/colorGreyLine" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="8sp"
+            android:text="이메일"
+            android:textColor="@color/colorSubTitle"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/member_add_edt_email"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/memo_dialog_content_bg"
+            android:fontFamily="@font/notosanskr_regular"
+            android:gravity="left"
+            android:hint="이메일 주소를 입력해주세요."
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="8sp"
+            android:maxLines="5"
+            android:paddingLeft="9sp"
+            android:paddingTop="8sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.691" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/member_add_btn_cancel"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="11dp"
+            android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="3sp"
+            android:stateListAnimator="@null"
+            android:text="@string/memo_dialog_cancel"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/member_add_btn_confirm"
+            android:layout_width="84dp"
+            android:layout_height="40dp"
+            android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="3sp"
+            android:stateListAnimator="@null"
+            android:text="@string/memo_dialog_confirm"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+</LinearLayout>
