@@ -2,27 +2,44 @@ package com.example.nm1.src.main.home.nest.todo
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.view.*
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.databinding.DialogTodoAddBinding
+import com.example.nm1.src.main.home.nest.todo.model.*
+import com.example.nm1.util.LoadingDialog
+import com.example.nm1.util.onMyTextChanged
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
-class TodoAddDialogFragment : DialogFragment() {
+class TodoAddDialog : DialogFragment(), TodoView {
+    private var windowManager: WindowManager? = null
+    private var display: Display? = null
+    var size: Point? = null
+    private lateinit var mLoadingDialog: LoadingDialog
 
     private lateinit var binding: DialogTodoAddBinding
-    private val isselected = Array(7){false}
+    private val selecteddaylist = Array(7){0}
     private val isrepeat = Array(2){false}
+
+//   선택한 날짜, 시간 저장
+    private var selectedyear by Delegates.notNull<Int>()
+    private var selectedmonth by Delegates.notNull<Int>()
+    private var selectedday by Delegates.notNull<Int>()
+    private var selectedhour by Delegates.notNull<Int>()
+    private var selectedminute by Delegates.notNull<Int>()
+    private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +53,14 @@ class TodoAddDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DialogTodoAddBinding.inflate(inflater, container, false)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         isrepeat[0] = true
+
+        windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
+        display = windowManager!!.defaultDisplay
+        size = Point()
+        display!!.getSize(size)
 
 //       반복
         binding.todoBtnRepeat.setOnClickListener {
@@ -61,7 +85,7 @@ class TodoAddDialogFragment : DialogFragment() {
             isrepeat[1] = false
         }
 
-//        하루만
+//        하루만 버튼색 변경
         binding.todoBtnOne.setOnClickListener {
             binding.todoBtnOne.setBackgroundResource(R.drawable.orange_button)
             binding.todoBtnOne.setTextColor(
@@ -106,7 +130,7 @@ class TodoAddDialogFragment : DialogFragment() {
 //       요일 선택
         binding.todoBtnMon.setOnClickListener {
 //            선택된 경우에 클릭했을때
-            if (isselected[0]) {
+            if (selecteddaylist[0]==1) {
                 binding.todoBtnMon.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -114,6 +138,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[0] = 0
             } else {
                 binding.todoBtnMon.setTextColor(
                     ContextCompat.getColor(
@@ -122,11 +147,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[0] = 1
             }
-            isselected[0] = !isselected[0]
         }
         binding.todoBtnTue.setOnClickListener {
-            if (isselected[1]) {
+            if (selecteddaylist[1]==1) {
                 binding.todoBtnTue.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -134,6 +159,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[1] = 0
             } else {
                 binding.todoBtnTue.setTextColor(
                     ContextCompat.getColor(
@@ -142,11 +168,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[1] = 1
             }
-            isselected[1] = !isselected[1]
         }
         binding.todoBtnWed.setOnClickListener {
-            if (isselected[2]) {
+            if (selecteddaylist[2]==1) {
                 binding.todoBtnWed.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -154,6 +180,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[2]=0
             } else {
                 binding.todoBtnWed.setTextColor(
                     ContextCompat.getColor(
@@ -162,11 +189,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[2]=1
             }
-            isselected[2] = !isselected[2]
         }
         binding.todoBtnThu.setOnClickListener {
-            if (isselected[3]) {
+            if (selecteddaylist[3]==1) {
                 binding.todoBtnThu.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -174,6 +201,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[3] = 0
             } else {
                 binding.todoBtnThu.setTextColor(
                     ContextCompat.getColor(
@@ -182,11 +210,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[3] = 1
             }
-            isselected[3] = !isselected[3]
         }
         binding.todoBtnFri.setOnClickListener {
-            if (isselected[4]) {
+            if (selecteddaylist[4]==1) {
                 binding.todoBtnFri.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -194,6 +222,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[4] = 0
             } else {
                 binding.todoBtnFri.setTextColor(
                     ContextCompat.getColor(
@@ -202,11 +231,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[4] = 1
             }
-            isselected[4] = !isselected[4]
         }
         binding.todoBtnSat.setOnClickListener {
-            if (isselected[5]) {
+            if (selecteddaylist[5]==1) {
                 binding.todoBtnSat.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -214,6 +243,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[5] = 0
             } else {
                 binding.todoBtnSat.setTextColor(
                     ContextCompat.getColor(
@@ -222,11 +252,11 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[5] = 1
             }
-            isselected[5] = !isselected[5]
         }
         binding.todoBtnSun.setOnClickListener {
-            if (isselected[6]) {
+            if (selecteddaylist[6]==1) {
                 binding.todoBtnSun.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -234,6 +264,7 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_notclickedday)
+                selecteddaylist[6] = 0
             } else {
                 binding.todoBtnSun.setTextColor(
                     ContextCompat.getColor(
@@ -242,8 +273,8 @@ class TodoAddDialogFragment : DialogFragment() {
                     )
                 )
                 binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_clickedday)
+                selecteddaylist[6] = 1
             }
-            isselected[6] = !isselected[6]
         }
 
 //       날짜 선택
@@ -271,6 +302,9 @@ class TodoAddDialogFragment : DialogFragment() {
                     val dayName: String = simpledateformat.format(selecteddate)
 
                     binding.todoDatepicker.text = "$year.$month.$dayOfMonth ($dayName)"
+                    selectedyear = year
+                    selectedmonth = month
+                    selectedday = dayOfMonth
                 },
                 year,
                 month,
@@ -303,6 +337,8 @@ class TodoAddDialogFragment : DialogFragment() {
                     else {
                         "오후 " + (hourOfDay - 12).toString() + "시 " + minute.toString() + "분"
                     }
+                    selectedhour = hourOfDay
+                    selectedminute = minute
                     binding.todoTimepicker.text = timeString
                 },
                 hour,
@@ -317,30 +353,143 @@ class TodoAddDialogFragment : DialogFragment() {
             dismiss()
         }
 
+//       다 입력시 확인버튼 활성화
+        binding.todoEdtTitle.onMyTextChanged {
+//           반복
+            if (isrepeat[0]){
+                if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
+                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }else{
+                    binding.todoBtnConfirm.isEnabled = false
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
+            }
+//            하루만
+            else if (isrepeat[1]){
+                if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
+                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }else{
+                    binding.todoBtnConfirm.isEnabled = false
+                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
+            }
+
+        }
+
 //       확인버튼 -> 할일 등록
 //       반복/하루만 구분할 필요 O -> 날짜선택 / 요일선택이 다름
         binding.todoBtnConfirm.setOnClickListener {
-            lateinit var todo: Todo
-            //하루만
-            if (isrepeat[1]) {
-                todo = Todo(
-                    binding.todoEdtTitle.text.toString(),
-                    null,
-                    selecteddate,
-                    selectedTime
-                )
-                val bundle = bundleOf("todoadd_one" to todo)
-                // 요청키로 수신측의 리스너에 값을 전달
-                setFragmentResult("todoadd", bundle)
-            }
-            //반복
-            else if (isrepeat[0]){
+//          하루만
+            if (isrepeat[1]){
+                val selectedTimeString = "$selectedyear/$selectedmonth/$selectedday/$selectedhour/$selectedminute"
+                val postAddOneDayTodo = PostAddOneDayTodo(selectedTimeString, binding.todoEdtTitle.text.toString(), ApplicationClass.sSharedPreferences.getInt("roomId", 0))
 
+                showLoadingDialog(requireContext())
+                TodoService(this).tryAddOneDayTodo(roomId, postAddOneDayTodo)
             }
-            binding.todoEdtTitle.text.clear() //edittext 비우기
-            dismiss()
+//            반복
+            else if (isrepeat[0]){
+                val postAddRepeatTodo = PostAddRepeatTodo("$selectedhour/$selectedminute", selecteddaylist.joinToString(""), binding.todoEdtTitle.text.toString(), ApplicationClass.sSharedPreferences.getInt("roomId", 0))
+                showLoadingDialog(requireContext())
+                TodoService(this).tryAddRepeatTodo(roomId, postAddRepeatTodo)
+            }
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
+        val deviceWidth = size!!.x
+        params?.width = (deviceWidth*0.76).toInt()
+        dialog?.window?.attributes = params as WindowManager.LayoutParams
+    }
+
+    private fun showLoadingDialog(context: Context) {
+        mLoadingDialog = LoadingDialog(context)
+        mLoadingDialog.show()
+    }
+
+    private fun dismissLoadingDialog() {
+        if (mLoadingDialog.isShowing) {
+            mLoadingDialog.dismiss()
+        }
+    }
+
+    override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
+        dismissLoadingDialog()
+        binding.todoEdtTitle.text.clear() //할일 제목 비우기
+        this.dismiss()
+//        val bundle = bundleOf("todoadd_one_ok" to "ok")
+//        // 요청키로 수신측의 리스너에 값을 전달
+//        setFragmentResult("todoadd_one", bundle)
+    }
+
+    override fun onAddOneDayTodoFailure(message: String) {
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse) {
+        dismissLoadingDialog()
+        binding.todoEdtTitle.text.clear() //할일 제목 비우기
+        this.dismiss()
+    }
+
+    override fun onAddRepeatTodoFailure(message: String) {
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutRepeatTodoSuccess(response: PutRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteRepeatTodoSuccess(response: DeleteRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

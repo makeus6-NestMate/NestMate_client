@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splashback">
@@ -16,16 +17,13 @@
             android:layout_height="119dp"
             android:layout_gravity="center"
             android:src="@drawable/chicken_img" />
-        <TextView
-            android:layout_width="wrap_content"
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="11dp"
-            android:textStyle="normal"
-            android:textSize="24sp"
-            android:textColor="#ff883f"
-            android:lineSpacingExtra="5sp"
-            android:text="둥지메이트" />
+            android:layout_marginTop="6dp"
+            app:srcCompat="@drawable/home_logo" />
 
     </LinearLayout>
 
