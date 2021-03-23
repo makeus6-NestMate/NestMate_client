@@ -56,7 +56,10 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
             val customDialog = MemoAddDialog(this)
             customDialog.show(parentFragmentManager, "test")
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         MemoService(this).tryGetMemo(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
     }
 
