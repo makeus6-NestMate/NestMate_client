@@ -12,7 +12,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
+import kotlinx.android.synthetic.main.activity_nest.view.*
 import kotlinx.android.synthetic.main.calendar_item.view.*
+import kotlinx.android.synthetic.main.fragment_calendar.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -20,6 +22,7 @@ import kotlin.collections.ArrayList
 class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, val date: Date) :
     RecyclerView.Adapter<CalendarAdapter.Holder>() {
     var dateList: ArrayList<Int> = arrayListOf()
+    var cates : ArrayList<CalendarCategory> = arrayListOf(CalendarCategory(1, null))
 
     // 날짜 리스트 세팅
     var calendarDay: CalendarDay = CalendarDay(date)
@@ -70,7 +73,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(dateList[position], position)
-
 
         // list_item_calendar 높이 지정
         val h = calendarLayout.height / 6
