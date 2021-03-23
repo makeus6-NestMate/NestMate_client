@@ -12,42 +12,45 @@
             android:layout_height="match_parent">
 
         <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/notosanscjkkr_medium"
-                android:text="TODAY"
-                android:textColor="#000000"
-                android:textSize="21sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/notosanscjkkr_medium"
+            android:includeFontPadding="false"
+            android:text="TODAY"
+            android:textColor="#000000"
+            android:textSize="21sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/todo_tv_todaydate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:text="2월 14일"
-                android:textColor="#7c7c7c"
-                android:textSize="16sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/todo_tv_todaydate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:text="2월 14일"
+            android:textColor="#7c7c7c"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic__nest_todo_today" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic__nest_todo_today" />
 
         <Button
             android:id="@+id/todo_btn_manager"
@@ -57,6 +60,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/todo_button_repeat"
             android:fontFamily="@font/notosanscjkkr_medium"
+            android:includeFontPadding="false"
             android:text="할일관리"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/todo_btn_addtodo"

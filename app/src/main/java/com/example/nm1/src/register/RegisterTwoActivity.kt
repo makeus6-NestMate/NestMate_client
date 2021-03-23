@@ -79,6 +79,8 @@ class RegisterTwoActivity : BaseActivity<ActivityRegisterTwoBinding>(ActivityReg
 
                 if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
                         PackageManager.PERMISSION_GRANTED){
+                    Log.d("확인", "사진 받아옴")
+
                     var email = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("email")!!)
                     var password = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("password")!!)
                     var phoneNumber = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("phone")!!)
@@ -102,8 +104,6 @@ class RegisterTwoActivity : BaseActivity<ActivityRegisterTwoBinding>(ActivityReg
             }
         }
     }
-
-
 
     override fun postUserSignUpSuccess(response: BaseResponse) {
         when(response.code){

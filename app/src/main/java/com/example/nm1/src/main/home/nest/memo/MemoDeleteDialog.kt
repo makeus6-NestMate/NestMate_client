@@ -46,10 +46,10 @@ class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterfac
     override fun onResume() {
         super.onResume()
 
-//        var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
-//        val deviceWidth = size!!.x
-//        params?.width = (deviceWidth*0.9).toInt()
-//        dialog?.window?.attributes = params as WindowManager.LayoutParams
+        var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
+        val deviceWidth = size!!.x
+        params?.width = (deviceWidth*0.9).toInt()
+        dialog?.window?.attributes = params as WindowManager.LayoutParams
 
     }
 

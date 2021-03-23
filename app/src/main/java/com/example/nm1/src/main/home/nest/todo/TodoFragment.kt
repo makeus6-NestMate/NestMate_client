@@ -3,36 +3,26 @@ package com.example.nm1.src.main.home.nest.todo
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.setFragmentResultListener
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class TodoFragment : BaseFragment<FragmentTodoBinding>(
     FragmentTodoBinding::bind,
     R.layout.fragment_todo
-) {
+), TodoView {
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val binding = bind(super.onCreateView(inflater, container, savedInstanceState)!!)
         val todolist = arrayListOf<Todo>()
-
-//        밀어서 수정 삭제
-
         val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
+        binding.todoRecycler.adapter = todoadapter
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
@@ -52,7 +42,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         binding.todoTvTodaydate.text = todayString
 
 //       할일추가 dialog 띄우기
-        val tododialog = TodoAddDialogFragment()
+        val tododialog = TodoAddDialog()
         binding.todoBtnAddtodo.setOnClickListener {
             tododialog.show(parentFragmentManager, "tododialog")
         }
@@ -66,16 +56,79 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
         // 해당 요청키로 전달된 값을 처리하겠다는 의미 입니다.
 
-        setFragmentResultListener("todoadd") { _, bundle ->
-            binding.todoLayoutEmpty.visibility = View.INVISIBLE
-            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
-            bundle.getParcelable<Todo>("todoadd_one")?.let {
-                todolist.add(0, it)
+//        setFragmentResultListener("todoadd_one") { _, bundle ->
+//            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+//            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
+//            bundle.getString("todoadd_one_ok")?.let {
+//                if (it=="ok"){
+//                    //showLoadingDialog(requireContext())
+//                    //TodoService(this)
+//                }
+//            }
+//        }
+    }
 
-                todoadapter.notifyItemInserted(0)
-            }
-        }
+    override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
 
-        return binding.root
+    override fun onAddOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutRepeatTodoSuccess(response: PutRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteRepeatTodoSuccess(response: DeleteRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
