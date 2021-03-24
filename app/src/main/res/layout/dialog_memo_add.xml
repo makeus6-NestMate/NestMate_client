@@ -25,8 +25,8 @@
         android:layout_height="1dp"
         android:layout_gravity="center_horizontal"
         android:background="@color/colorGreyLine"
-        android:layout_marginRight="20sp"
-        android:layout_marginLeft="20sp"
+        android:layout_marginRight="8sp"
+        android:layout_marginLeft="8sp"
         android:layout_marginTop="10dp"/>
     
     <androidx.constraintlayout.widget.ConstraintLayout

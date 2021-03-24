@@ -54,6 +54,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/mypage_bottomsheet_logout.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/todo_manager_bottomsheet_editordelete.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar_back_plus.xml" charset="UTF-8" />
-    <file url="PROJECT" charset="windows-1251" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fcfcfc"
+    tools:context=".src.main.home.nest.notice.NoticeVoteActivity">
+
+    <include
+        android:id="@+id/notice_vote_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        layout="@layout/toolbar_back"/>
+
+    <LinearLayout
+        android:id="@+id/notice_vote_tabs"
+        android:layout_below="@id/notice_vote_toolbar"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/notice_vote_notice_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundrec_design_active_bg"
+            android:text="공지"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="16sp"
+            android:includeFontPadding="false"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:paddingLeft="34dp"
+            android:paddingRight="34dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/notice_vote_vote_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundrec_design_inactive_white_bg"
+            android:text="투표"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColor="#c1c1c1"
+            android:clickable="true"
+            android:lineSpacingExtra="16sp"
+            android:includeFontPadding="false"
+            android:paddingLeft="34dp"
+            android:paddingRight="34dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notice_content_layout"
+        android:visibility="visible"
+        android:layout_below="@id/notice_vote_tabs"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/notice_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="내용"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="5sp"
+            android:includeFontPadding="false"/>
+
+        <EditText
+            android:id="@+id/notice_Vote_content_et"
+            android:layout_width="0dp"
+            android:layout_height="205dp"
+            android:background="@drawable/memo_dialog_content_bg"
+            app:layout_constraintStart_toEndOf="@id/notice_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:maxLines="5"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_regular"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColorHint="@color/colorTextHint"
+            android:includeFontPadding="false"
+            android:hint="내용을 입력해 주세요."
+            android:gravity="top|left"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="12dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vote_content_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/notice_vote_tabs">
+
+        <TextView
+            android:id="@+id/vote_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="5sp"
+            android:includeFontPadding="false"/>
+
+        <EditText
+            android:id="@+id/vote_content_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/memo_dialog_content_bg"
+            app:layout_constraintStart_toEndOf="@id/vote_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vote_title"
+            app:layout_constraintBottom_toBottomOf="@id/vote_title"
+            android:maxLines="1"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_regular"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColorHint="@color/colorTextHint"
+            android:includeFontPadding="false"
+            android:hint="제목을 입력해 주세요."
+            android:maxLength="20"
+            android:gravity="top|left"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="12dp"/>
+
+        <TextView
+            android:id="@+id/vote_item_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vote_content_et"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="항목"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="5sp"
+            android:includeFontPadding="false"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/vote_content_et"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toEndOf="@id/vote_item_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/vote_add_recyclerview"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vote_add_item_layout"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:background="@drawable/memo_dialog_content_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/vote_add_item_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1."
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="5sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="12dp"/>
+
+                <EditText
+                    android:id="@+id/vote_add_item_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="투표 항목을 입력하세요."
+                    android:textColorHint="@color/colorTextHint"
+                    android:background="@null"
+                    android:fontFamily="@font/notosanskr_regular"
+                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="5sp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintTop_toTopOf="@id/vote_add_item_num"
+                    app:layout_constraintBottom_toBottomOf="@id/vote_add_item_num"
+                    app:layout_constraintStart_toEndOf="@id/vote_add_item_num"
+                    android:layout_marginLeft="12dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/vote_item_add_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/memo_dialog_content_bg"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/vote_add_btn"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/notice_vote_confirm_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="확인"
+        android:textAlignment="center"
+        android:background="@drawable/roundrec_design_inactive_bg"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textStyle="normal"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:lineSpacingExtra="1sp"/>
+
+
+
+</RelativeLayout>
