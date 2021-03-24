@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcfcfc"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vote_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/vote_status_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/vote_ing"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:includeFontPadding="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="진행중"
+                android:background="@drawable/roundrec_design_active_bg"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:lineSpacingExtra="16sp"/>
+
+            <TextView
+                android:id="@+id/vote_done"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:includeFontPadding="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="마감"
+                android:background="@drawable/roundrec_design_inactive_bg"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#e0e0e0"
+                android:lineSpacingExtra="16sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/vote_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="5sp"
+            android:includeFontPadding="false"
+            android:text="가족여행 장소"
+            app:layout_constraintTop_toTopOf="@id/vote_status_layout"
+            app:layout_constraintBottom_toBottomOf="@id/vote_status_layout"
+            app:layout_constraintStart_toEndOf="@id/vote_status_layout"
+            android:layout_marginLeft="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="미참여:1명"
+            android:fontFamily="@font/notosanskr_regular"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColor="#1bcbb0"
+            android:lineSpacingExtra="1sp"
+            android:includeFontPadding="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="40dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/vote_grey_bar"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="#f8f8f8"
+        android:layout_below="@id/vote_status_bar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/vote_grey_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/vote_confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundrec_design_inactive_bg"
+        android:text="확인"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        android:fontFamily="@font/notosanskr_medium"
+        android:lineSpacingExtra="1sp"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

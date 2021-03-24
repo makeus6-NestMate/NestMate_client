@@ -10,6 +10,5 @@ data class NoticeVoteInfo(@SerializedName("profileImg") val profileImg: String,
                           @SerializedName("isNotice") val isNotice: String,
                           @SerializedName("voteId") val voteId: Int? = null,
                           @SerializedName("title") val title: String? = null,
-                          @SerializedName("isFinished") val isFinished: String? = null,
-                          @SerializedName("choice") val choice: ArrayList<String>? = null
+                          @SerializedName("isFinished") val isFinished: String? = null
                           ): Serializable

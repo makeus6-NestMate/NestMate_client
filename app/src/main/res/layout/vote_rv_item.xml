@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rule_rec_design"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/vote_rv_item_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1."
+        android:fontFamily="@font/notosanskr_medium"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="20dp"
+        android:lineSpacingExtra="16sp"
+        app:layout_constraintTop_toTopOf="@id/vote_rv_item_content"
+        app:layout_constraintBottom_toBottomOf="@id/vote_rv_item_content"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/vote_rv_item_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vote_rv_item_num"
+        android:text="12시 이후 귀가시 미리 이야기한다."
+        android:layout_marginLeft="14sp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/vote_rv_item_radio_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/more_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:button="@drawable/vote_selector_radio"
+        android:layout_marginRight="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

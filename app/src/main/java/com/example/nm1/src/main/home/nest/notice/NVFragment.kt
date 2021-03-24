@@ -98,8 +98,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
                         dataList.add(temp)
 
                     }else{
-                        val temp = NoticeVoteInfo(profileImg = data.profileImg, voteId = data.voteId, title = data.title, createdAt = data.createdAt, isFinished = data.isFinished,
-                            choice = data.choice, isNotice = data.isNotice)
+                        val temp = NoticeVoteInfo(profileImg = data.profileImg, voteId = data.voteId, title = data.title, createdAt = data.createdAt, isFinished = data.isFinished, isNotice = data.isNotice)
                         dataList.add(temp)
                     }
                 }
