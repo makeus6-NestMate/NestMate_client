@@ -13,7 +13,11 @@ import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.nest.NestActivity
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,R.layout.fragment_home), HomeFragmentView {
+
+class HomeFragment : BaseFragment<FragmentHomeBinding>(
+    FragmentHomeBinding::bind,
+    R.layout.fragment_home
+), HomeFragmentView {
     private var nestlist:List<NestInfo>?=null
     var adapter:HomeNestAdapter?=null
 
@@ -41,7 +45,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
                 }
             }
         }
-        binding.nestList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.nestList.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {

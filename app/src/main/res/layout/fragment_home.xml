@@ -173,12 +173,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nestList"
         android:layout_width="0dp"
-        android:layout_height="156sp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="13dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.243"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_layout_user"
         tools:listitem="@layout/nest_item">
@@ -187,8 +188,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_layout_empty"
-        android:layout_width="156sp"
-        android:layout_height="156sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="13dp"
         android:background="@drawable/dungji_background"
@@ -196,7 +197,7 @@
         app:layout_constraintHeight_percent="0.254"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_layout_user_empty"
-        app:layout_constraintWidth_percent="0.43">
+        app:layout_constraintWidth_percent="0.433">
 
         <ImageView
             android:id="@+id/imageView6"
