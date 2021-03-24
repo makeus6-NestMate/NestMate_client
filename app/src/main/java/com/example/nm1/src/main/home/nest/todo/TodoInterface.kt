@@ -37,4 +37,23 @@ interface TodoInterface {
     @DELETE("/room/{roomId}/todo/{todoId}/days")
     fun deleteRepeatTodo(@Path("roomId") roomId:Int, @Path("todoId") todoId:Int): Call<DeleteRepeatTodoResponse>
 
+//   하루할일 키워드검색
+    @GET("/room/{roomId}/todo/day/search")
+    fun getSearchOneDayTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchOneDayTodoResponse>
+
+//    반복 할일 키워드검색
+    @GET("/room/{roomId}/todo/days/search")
+    fun getSearchRepeatTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchRepeatTodoResponse>
+
+//    하루할일 날짜 검색
+    @GET("/room/{roomId}/todo/day/calendar")
+    fun getSearchTodoByDate(@Path("roomId") roomId:Int, @Query("date") date:String) : Call<GetSearchTodoByDateResponse>
+
+//    하루할일 전체 삭제
+    @DELETE("/room/{roomId}/todo/day")
+    fun deleteAllOneDayTodo(@Path("roomId") roomId:Int) : Call<DeleteAllOneDayTodoResponse>
+
+    //  반복할일 전체 삭제
+    @DELETE("/room/{roomId}/todo/days")
+    fun deleteAllRepeatTodo(@Path("roomId") roomId:Int) : Call<DeleteAllRepeatTodoResponse>
 }

@@ -35,4 +35,23 @@ interface TodoView {
     fun onDeleteRepeatTodoSuccess(response:DeleteRepeatTodoResponse)
     fun onDeleteRepeatTodoFailure(message: String)
 
+    //    하루 키워드 검색 조회
+    fun onGetSearchOneDayTodoSuccess(response:GetSearchOneDayTodoResponse)
+    fun onGetSearchOneDayTodoFailure(message: String)
+
+    //    반복 할일 조회
+    fun onGetSearchRepeatTodoSuccess(response:GetSearchRepeatTodoResponse)
+    fun onGetSearchRepeatTodoFailure(message: String)
+
+//    하루 날짜로 검색
+    fun onGetSearchTodoByDateSuccess(response:GetSearchTodoByDateResponse)
+    fun onGetSearchTodoByDateFailure(message: String)
+
+    //    하루 전체삭제
+    fun onDeleteAllOneDayTodoSuccess(response:DeleteAllOneDayTodoResponse)
+    fun onDeleteAllOneDayTodoFailure(message: String)
+
+    //    반복 전체삭제
+    fun onDeleteAllRepeatTodoSuccess(response:DeleteAllRepeatTodoResponse)
+    fun onDeleteAllRepeatTodoFailure(message: String)
 }

@@ -111,4 +111,68 @@ class TodoService(val view: TodoView) {
         })
     }
 
+    fun trySearchGetOneDayTodo(roomId:Int, keyword:String){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.getSearchOneDayTodo(roomId, keyword).enqueue(object: Callback<GetSearchOneDayTodoResponse> {
+            override fun onResponse(call: Call<GetSearchOneDayTodoResponse>, response: Response<GetSearchOneDayTodoResponse>) {
+                view.onGetSearchOneDayTodoSuccess(response.body() as GetSearchOneDayTodoResponse)
+            }
+
+            override fun onFailure(call: Call<GetSearchOneDayTodoResponse>, t: Throwable) {
+                view.onGetSearchOneDayTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun trySearchGetRepeatTodo(roomId:Int, keyword:String){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.getSearchRepeatTodo(roomId, keyword).enqueue(object: Callback<GetSearchRepeatTodoResponse> {
+            override fun onResponse(call: Call<GetSearchRepeatTodoResponse>, response: Response<GetSearchRepeatTodoResponse>) {
+                view.onGetSearchRepeatTodoSuccess(response.body() as GetSearchRepeatTodoResponse)
+            }
+
+            override fun onFailure(call: Call<GetSearchRepeatTodoResponse>, t: Throwable) {
+                view.onGetSearchRepeatTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun trySearchTodoByDate(roomId:Int, date:String){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.getSearchTodoByDate(roomId, date).enqueue(object: Callback<GetSearchTodoByDateResponse> {
+            override fun onResponse(call: Call<GetSearchTodoByDateResponse>, response: Response<GetSearchTodoByDateResponse>) {
+                view.onGetSearchTodoByDateSuccess(response.body() as GetSearchTodoByDateResponse)
+            }
+
+            override fun onFailure(call: Call<GetSearchTodoByDateResponse>, t: Throwable) {
+                view.onGetSearchTodoByDateFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryDeleteAllOneDayTodo(roomId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.deleteAllOneDayTodo(roomId).enqueue(object: Callback<DeleteAllOneDayTodoResponse> {
+            override fun onResponse(call: Call<DeleteAllOneDayTodoResponse>, response: Response<DeleteAllOneDayTodoResponse>) {
+                view.onDeleteAllOneDayTodoSuccess(response.body() as DeleteAllOneDayTodoResponse)
+            }
+
+            override fun onFailure(call: Call<DeleteAllOneDayTodoResponse>, t: Throwable) {
+                view.onDeleteAllOneDayTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryDeleteAllRepeatTodo(roomId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.deleteAllRepeatTodo(roomId).enqueue(object: Callback<DeleteAllRepeatTodoResponse> {
+            override fun onResponse(call: Call<DeleteAllRepeatTodoResponse>, response: Response<DeleteAllRepeatTodoResponse>) {
+                view.onDeleteAllRepeatTodoSuccess(response.body() as DeleteAllRepeatTodoResponse)
+            }
+
+            override fun onFailure(call: Call<DeleteAllRepeatTodoResponse>, t: Throwable) {
+                view.onDeleteAllRepeatTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
 }
