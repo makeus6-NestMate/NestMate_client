@@ -9,11 +9,13 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
+import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
+import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 import com.example.nm1.src.main.home.nest.todo.model.*
 import com.example.nm1.util.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MemberExitBottomSheet: BottomSheetDialogFragment(){
+class MemberExitBottomSheet: BottomSheetDialogFragment(), MemberView{
     private lateinit var mLoadingDialog: LoadingDialog
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
 
@@ -47,5 +49,21 @@ class MemberExitBottomSheet: BottomSheetDialogFragment(){
         if (mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
         }
+    }
+
+    override fun onAddMemberByEmailSuccess(response: ResponseAddMemberByEmail) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAddMemberByEmailFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteMeFromNestSuccess(response: DeleteMeFromNestResponse) {
+        dismissLoadingDialog()
+    }
+
+    override fun onDeleteMeFromNestFailure(message: String) {
+        dismissLoadingDialog()
     }
 }

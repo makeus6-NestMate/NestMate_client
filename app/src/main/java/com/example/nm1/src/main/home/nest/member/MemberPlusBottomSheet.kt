@@ -5,43 +5,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
-import com.example.nm1.src.main.home.nest.todo.model.*
+import com.example.nm1.databinding.MemberBottomsheetPlusmemberBinding
 import com.example.nm1.util.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MemberPlusBottomSheet: BottomSheetDialogFragment(){
     private lateinit var mLoadingDialog: LoadingDialog
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
+    private lateinit var binding: MemberBottomsheetPlusmemberBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
+        binding = MemberBottomsheetPlusmemberBinding.inflate(inflater, container, false)
 
-
-        return inflater.inflate(R.layout.member_bottomsheet_plusmember, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val email = view?.findViewById<ConstraintLayout>(R.id.member_layout_plus_email)
-        val kakao = view?.findViewById<ConstraintLayout>(R.id.member_layout_plus_kakao)
-
-        email?.setOnClickListener{
-
+        binding.memberLayoutPlusEmail.setOnClickListener{
+            val memberAddByEmailDialogFragment = MemberAddByEmailDialogFragment()
+            memberAddByEmailDialogFragment.show(parentFragmentManager, memberAddByEmailDialogFragment.tag)
+            this.dismiss()
         }
-
-        kakao?.setOnClickListener{
-
-        }
+//
+//        binding.memberLayoutPlusKakao.setOnClickListener{
+//
+//        }
     }
 
     private fun showLoadingDialog(context: Context) {

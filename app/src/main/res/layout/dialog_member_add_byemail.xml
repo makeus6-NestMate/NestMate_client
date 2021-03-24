@@ -59,7 +59,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/memo_dialog_content_bg"
-            android:fontFamily="@font/notosanskr_regular"
+            android:fontFamily="@font/notosanscjkkr_medium"
             android:gravity="left"
             android:hint="이메일 주소를 입력해주세요."
             android:includeFontPadding="false"

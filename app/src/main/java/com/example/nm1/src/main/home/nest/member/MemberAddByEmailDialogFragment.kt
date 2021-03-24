@@ -6,18 +6,24 @@ import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.databinding.DialogMemberAddByemailBinding
+import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
+import com.example.nm1.src.main.home.nest.member.model.PostAddMemberByEmail
+import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 import com.example.nm1.util.LoadingDialog
 import com.example.nm1.util.onMyTextChanged
 
-class MemberAddByEmailDialogFragment : DialogFragment() {
-    var windowManager: WindowManager? = null
+class MemberAddByEmailDialogFragment : DialogFragment(), MemberView {
+    private var windowManager: WindowManager? = null
     var display: Display? = null
     var size: Point? = null
     var color = 0
-    lateinit var mLoadingDialog: LoadingDialog
+    private lateinit var mLoadingDialog: LoadingDialog
+    private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
 
     private lateinit var binding: DialogMemberAddByemailBinding
 
@@ -63,7 +69,9 @@ class MemberAddByEmailDialogFragment : DialogFragment() {
         }
 
         binding.memberAddBtnConfirm.setOnClickListener {
-
+            val postAddMemberByEmail = PostAddMemberByEmail(binding.memberAddEdtEmail.text.toString().trim())
+            showLoadingDialog(requireContext())
+            MemberService(this).tryAddMemberByEmail(roomId, postAddMemberByEmail)
         }
     }
 
@@ -85,5 +93,24 @@ class MemberAddByEmailDialogFragment : DialogFragment() {
         if (mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
         }
+    }
+
+    override fun onAddMemberByEmailSuccess(response: ResponseAddMemberByEmail) {
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), "멤버 초대 완료", Toast.LENGTH_SHORT).show()
+        this.dismiss()
+    }
+
+    override fun onAddMemberByEmailFailure(message: String) {
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDeleteMeFromNestSuccess(response: DeleteMeFromNestResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteMeFromNestFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

@@ -4,7 +4,7 @@ import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
 import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 
 interface MemberView {
-//   멤버추가
+//   멤버 초대(이메일)
     fun onAddMemberByEmailSuccess(response: ResponseAddMemberByEmail)
     fun onAddMemberByEmailFailure(message: String)
 
