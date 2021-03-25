@@ -108,9 +108,9 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        //val deviceHeight = size!!.y
+
         params?.width = (deviceWidth*0.75).toInt()
-        //params?.height = (deviceHeight*0.4).toInt()
+
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 

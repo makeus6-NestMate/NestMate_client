@@ -7,7 +7,7 @@
     android:background="@drawable/memo_dialog_bg">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/todo_tv_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -33,7 +33,7 @@
         android:background="#e0e0e0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/todo_tv_header" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -154,115 +154,123 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/todo_layout_day"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:orientation="horizontal"
-        app:layout_constraintHeight_percent="0.087"
+        app:layout_constraintBottom_toBottomOf="@+id/todo_layout_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday"
-        app:layout_constraintWidth_percent="0.84">
+        app:layout_constraintTop_toBottomOf="@+id/todo_tv_dateday">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_mon"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:stateListAnimator="@null"
-            android:text="월"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_tue"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:stateListAnimator="@null"
-            android:text="화"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_mon"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_mon"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:text="월"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_wed"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:text="수"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_tue"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_tue"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:text="화"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_mon"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_thu"
-            android:layout_width="28sp"
-            android:layout_height="28dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:text="목"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_wed"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_wed"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:text="수"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_tue"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_fri"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:text="금"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_thu"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_thu"
+                android:layout_width="28sp"
+                android:layout_height="28dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:text="목"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_wed"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_sat"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:stateListAnimator="@null"
-            android:text="토"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_fri"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_fri"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:text="금"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_thu"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/todo_btn_sun"
-            android:layout_width="28sp"
-            android:layout_height="28sp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/todo_btn_notclickedday"
-            android:elevation="0dp"
-            android:onClick="onClick"
-            android:stateListAnimator="@null"
-            android:text="일"
-            android:textColor="#e0e0e0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/todo_btn_sat"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_sat"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:text="토"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_fri"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/todo_btn_sun"
+                android:layout_width="28sp"
+                android:layout_height="28sp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/todo_btn_notclickedday"
+                android:elevation="0dp"
+                android:onClick="onClick"
+                android:stateListAnimator="@null"
+                android:text="일"
+                android:textColor="#e0e0e0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_btn_sat"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

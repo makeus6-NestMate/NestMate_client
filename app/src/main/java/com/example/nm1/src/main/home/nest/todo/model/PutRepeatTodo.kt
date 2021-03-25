@@ -3,8 +3,8 @@ package com.example.nm1.src.main.home.nest.todo.model
 import com.google.gson.annotations.SerializedName
 
 data class PutRepeatTodo(
-    @SerializedName("time") val color: String,
-    @SerializedName("days") val days: String,
+    @SerializedName("todoId") val todoId:Int,
     @SerializedName("todo") val todo: String,
-    @SerializedName("roomId") val roomId: Int
+    @SerializedName("time") val time: String,
+    @SerializedName("days") val days: String
 )
