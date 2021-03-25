@@ -1,9 +1,11 @@
 package com.example.nm1.src.main.home
 
 import android.content.Context
+import android.view.Gravity.apply
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +25,18 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
         private val imgProfile = itemView.findViewById<ImageView>(R.id.nest_img_memprofile)
 
         fun bind(member: NestMember, context: Context) {
+            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val width = (windowManager.defaultDisplay.width *0.08).toInt()
+            itemView.layoutParams = RecyclerView.LayoutParams(
+                width,
+                RecyclerView.LayoutParams.MATCH_PARENT
+            )
+
             tvName.text = member.nickname //멤버 이름
-            Glide.with(context).load(member.profileImg).into(imgProfile) //멤버 프로필
+            Glide
+                .with(context)
+                .load(member.profileImg)
+                .into(imgProfile) //멤버 프로필
         }
     }
 
