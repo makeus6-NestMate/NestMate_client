@@ -3,91 +3,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_nest_item"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/nest_img_background"
-        android:layout_width="156sp"
-        android:layout_height="156sp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dungji_peach_background" />
-
-    <TextView
-        android:id="@+id/nest_tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/notosanscjkkr_medium"
-        android:includeFontPadding="false"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/nest_img_background"
-        app:layout_constraintTop_toTopOf="@+id/nest_img_background" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nest_recycler_memlist"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginBottom="25dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
-        app:layout_constraintEnd_toStartOf="@+id/nest_layout_plusmem"
-        app:layout_constraintStart_toStartOf="@+id/nest_img_background"
-        app:layout_constraintTop_toTopOf="@+id/nest_layout_plusmem">
-
-    </androidx.recyclerview.widget.RecyclerView>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/nest_layout_plusmem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="25dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
-        app:layout_constraintEnd_toEndOf="@+id/nest_img_background"
-        tools:visibility="visible">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/nest_img_plusmembackground"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/nest_img_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constrainedWidth="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/nest_plusmembernum_icon" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dungji_peach_background" />
 
         <TextView
+            android:id="@+id/nest_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/notosanscjkkr_medium"
-            android:text="+"
+            android:includeFontPadding="false"
+            android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/nest_tv_plusmemnum"
-            app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/nest_img_background"
+            app:layout_constraintTop_toTopOf="@+id/nest_img_background" />
 
-        <TextView
-            android:id="@+id/nest_tv_plusmemnum"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nest_recycler_memlist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
+            app:layout_constraintEnd_toStartOf="@+id/nest_layout_plusmem"
+            app:layout_constraintStart_toStartOf="@+id/nest_img_background"
+            tools:listitem="@layout/nest_member_items">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nest_layout_plusmem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="9dp"
-            android:fontFamily="@font/notosanscjkkr_medium"
-            android:text="1"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="25dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
+            app:layout_constraintEnd_toEndOf="@+id/nest_img_background"
+            tools:visibility="visible">
 
+            <ImageView
+                android:id="@+id/nest_img_plusmembackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/nest_plusmembernum_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_medium"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nest_tv_plusmemnum"
+                app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />
+
+            <TextView
+                android:id="@+id/nest_tv_plusmemnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:fontFamily="@font/notosanscjkkr_medium"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

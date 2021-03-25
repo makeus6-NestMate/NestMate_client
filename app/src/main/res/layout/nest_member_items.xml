@@ -9,9 +9,10 @@
         android:id="@+id/nest_img_memprofile"
         android:layout_width="29sp"
         android:layout_height="29sp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/home_bird"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/home_bird_icon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +25,9 @@
         android:includeFontPadding="false"
         android:text="유리"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="9sp"
         app:layout_constraintEnd_toEndOf="@+id/nest_img_memprofile"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nest_img_memprofile"
         app:layout_constraintTop_toBottomOf="@+id/nest_img_memprofile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
