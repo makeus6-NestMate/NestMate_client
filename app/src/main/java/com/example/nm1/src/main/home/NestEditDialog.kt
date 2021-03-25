@@ -13,14 +13,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.databinding.DialogNestAddBinding
-import com.example.nm1.src.main.home.model.AddNestResponse
-import com.example.nm1.src.main.home.model.GetNestResponse
-import com.example.nm1.src.main.home.model.PostAddNestRequest
+import com.example.nm1.src.main.home.model.*
 import com.example.nm1.util.LoadingDialog
 import com.example.nm1.util.onMyTextChanged
 
-class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
+class NestEditDialog : DialogFragment(), HomeView {
     var windowManager: WindowManager? = null
     var display: Display? = null
     var size: Point? = null
@@ -43,7 +42,9 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
         binding = DialogNestAddBinding.inflate(inflater, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        return binding.root
+        binding.nestDialogTitle.text = "둥지 수정하기"
+
+       return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,8 +55,10 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
         size = Point()
         display!!.getSize(size)
 
+        binding.homeAddnestEdtName.setText(ApplicationClass.sSharedPreferences.getString("roomName", null))
+
 //       색 고르기
-        binding.homeAddnestRadiogroup.setOnCheckedChangeListener { group, checkedId ->
+        binding.homeAddnestRadiogroup.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.home_addnest_radio_btn1 -> {
                     color = R.color.peach
@@ -98,8 +101,8 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
         binding.homeAddnestBtnConfirm.setOnClickListener {
             showLoadingDialog(requireContext())
             val hexColor = "#"+Integer.toHexString(ContextCompat.getColor(requireContext(), color)).substring(2)
-            val addNestRequest = PostAddNestRequest(hexColor, binding.homeAddnestEdtName.text.toString())
-            HomeService(this).tryAddNest(addNestRequest)
+            val putEditNestRequest = PutEditNestRequest(hexColor, binding.homeAddnestEdtName.text.toString())
+            HomeService(this).tryPutNest(ApplicationClass.sSharedPreferences.getInt("roomId", 0), putEditNestRequest)
         }
     }
 
@@ -108,7 +111,9 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
+
         params?.width = (deviceWidth*0.75).toInt()
+
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 
@@ -124,16 +129,11 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {
-        dismissLoadingDialog()
-        this.dismiss()
-        val bundle = bundleOf("addnest_ok" to "ok")
-        // 요청키로 수신측의 리스너에 값을 전달
-        setFragmentResult("addnest", bundle)
+        TODO("Not yet implemented")
     }
 
     override fun onAddNestFailure(message: String) {
-        dismissLoadingDialog()
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+        TODO("Not yet implemented")
     }
 
     override fun onGetNestSuccess(response: GetNestResponse) {
@@ -142,5 +142,20 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
 
     override fun onGetNestFailure(message: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onPutNestSuccess(response: PutEditNestResponse) {
+        dismissLoadingDialog()
+        this.dismiss()
+        Toast.makeText(requireContext(), "둥지 수정이 완료되었습니다", Toast.LENGTH_SHORT).show()
+
+        val bundle = bundleOf("editnest_ok" to "ok")
+        // 요청키로 수신측의 리스너에 값을 전달
+        setFragmentResult("editnest", bundle)
+    }
+
+    override fun onPutNestFailure(message: String) {
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -2,8 +2,9 @@ package com.example.nm1.src.main.home
 
 import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
+import com.example.nm1.src.main.home.model.PutEditNestResponse
 
-interface HomeFragmentView {
+interface HomeView {
 //   ?? ???
     fun onAddNestSuccess(response: AddNestResponse)
     fun onAddNestFailure(message: String)
@@ -11,4 +12,8 @@ interface HomeFragmentView {
 //    ?? ????
     fun onGetNestSuccess(response: GetNestResponse)
     fun onGetNestFailure(message: String)
+
+//    둥지 수정
+    fun onPutNestSuccess(response: PutEditNestResponse)
+    fun onPutNestFailure(message: String)
 }

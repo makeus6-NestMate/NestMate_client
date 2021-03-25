@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/home_bird"/>
+            android:src="@drawable/home_bird_icon"/>
 
         <TextView
             android:id="@+id/nvLabel"

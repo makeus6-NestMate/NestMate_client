@@ -1,15 +1,18 @@
 package com.example.nm1.src.main.home
 
 import android.content.Context
+import android.view.Gravity.apply
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.nm1.R
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.model.NestMember
@@ -20,11 +23,23 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvName = itemView.findViewById<TextView>(R.id.nest_tv_memname)
-        private val imgProfile = itemView.findViewById<ImageView>(R.id.nest_img_memprofile)
+        private val imgProfile = itemView.findViewById<ImageView>(R.id.nest_mem_img_profile)
 
         fun bind(member: NestMember, context: Context) {
+//            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+//            val width = (windowManager.defaultDisplay.width *0.22).toInt()
+//
+//            itemView.layoutParams = RecyclerView.LayoutParams(
+//                width,
+//                RecyclerView.LayoutParams.MATCH_PARENT
+//            )
+
             tvName.text = member.nickname //멤버 이름
-            Glide.with(context).load(member.profileImg).into(imgProfile) //멤버 프로필
+            Glide
+                .with(context)
+                .load(member.profileImg)
+                .apply(RequestOptions.circleCropTransform()) //원으로
+                .into(imgProfile) //멤버 프로필
         }
     }
 
@@ -40,12 +55,7 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
         holder.bind(memList[position], context)
     }
 
-//    3명만 보여주게
     override fun getItemCount(): Int {
-        return if(memList.size > 3){
-            3
-        } else {
-            memList.size
-        }
+        return memList.size
     }
 }

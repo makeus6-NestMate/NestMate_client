@@ -16,6 +16,10 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemPlusBottomSheet.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberExitBottomSheet.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberInterface.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberPlusBottomSheet.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberView.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/ItemDecoration.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeControllerActions.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeHelperCallback.kt" charset="UTF-8" />
@@ -51,10 +55,12 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/chart_person_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/item_swipe.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/member_botomsheetdialog_plus.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/member_bottomsheet_exit.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/member_bottomsheet_plusmember.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/member_bottomsheetdialog_plus.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/mypage_bottomsheet_logout.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/todo_manager_bottomsheet_editordelete.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar_back_plus.xml" charset="UTF-8" />
-    <file url="PROJECT" charset="windows-1251" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

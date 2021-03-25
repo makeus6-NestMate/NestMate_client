@@ -19,15 +19,43 @@
 *.bin
 *.lock
 *.lock
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+.idea/caches/build_file_checksums.ser
+>>>>>>> feature/home
+*.bin
+*.lock
+*.bin
+*.bin
 *.bin
 *.lock
 *.bin
 *.lock
 .idea/workspace.xml
 .idea/workspace.xml
+*.bin
+*.lock
+*.bin
+.idea/workspace.xml
+=======
+.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml
+>>>>>>> Stashed changes
+.idea/workspace.xml
+*.bin
+*.lock
+*.lock
+=======
+.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml
+>>>>>>> Stashed changes
+.idea/workspace.xml
+=======
+.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml
+>>>>>>> Stashed changes
 .idea/workspace.xml
 *.bin
 *.lock
 *.bin
 *.lock
-.idea/workspace.xml

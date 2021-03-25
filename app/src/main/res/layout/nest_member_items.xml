@@ -3,30 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:layout_constraintWidth_percent="0.22">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/nest_img_memprofile"
-        android:layout_width="29sp"
+    <ImageView
+        android:id="@+id/nest_mem_img_profile"
+        android:layout_width="wrap_content"
         android:layout_height="29sp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/home_bird"
+        android:layout_marginEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mem_emptyprofile" />
 
     <TextView
         android:id="@+id/nest_tv_memname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
+        android:lineSpacingExtra="4sp"
         android:text="유리"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/nest_img_memprofile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nest_img_memprofile" />
-
+        android:textColor="#ffffff"
+        android:textSize="9sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/nest_mem_img_profile"
+        app:layout_constraintStart_toStartOf="@+id/nest_mem_img_profile"
+        app:layout_constraintTop_toBottomOf="@+id/nest_mem_img_profile" />
 </androidx.constraintlayout.widget.ConstraintLayout>
