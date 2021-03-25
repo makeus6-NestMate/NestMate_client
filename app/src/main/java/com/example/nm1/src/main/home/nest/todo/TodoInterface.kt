@@ -21,6 +21,10 @@ interface TodoInterface {
     @GET("/room/{roomId}/todo/days")
     fun getRepeatTodo(@Path("roomId") roomId:Int) : Call<GetRepeatTodoResponse>
 
+//    오늘 할일 조회
+    @GET("/room/{roomId}/todo/today")
+    fun getTodayTodo(@Path("roomId") roomId:Int) : Call<GetTodayTodoResponse>
+
 //    하루 할일 수정
     @PUT("/room/{roomId}/todo/day")
     fun putOneDayTodo(@Path("roomId") roomId:Int, @Body params:PutOneDayTodo) : Call<PutOneDayTodoResponse>

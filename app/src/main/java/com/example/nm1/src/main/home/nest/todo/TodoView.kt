@@ -19,6 +19,10 @@ interface TodoView {
     fun onGetRepeatTodoSuccess(response:GetRepeatTodoResponse)
     fun onGetRepeatTodoFailure(message: String)
 
+//   오늘 할일 조회
+    fun onGetTodayTodoSuccess(response:GetTodayTodoResponse)
+    fun onGetTodayTodoFailure(message: String)
+
     //    하루 할일 수정
     fun onPutOneDayTodoSuccess(response:PutOneDayTodoResponse)
     fun onPutOneDayTodoFailure(message: String)

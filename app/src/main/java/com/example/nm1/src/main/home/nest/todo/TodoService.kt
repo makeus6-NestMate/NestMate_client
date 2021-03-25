@@ -59,6 +59,19 @@ class TodoService(val view: TodoView) {
         })
     }
 
+    fun tryGetTodayTodo(roomId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.getTodayTodo(roomId).enqueue(object: Callback<GetTodayTodoResponse> {
+            override fun onResponse(call: Call<GetTodayTodoResponse>, response: Response<GetTodayTodoResponse>) {
+                view.onGetTodayTodoSuccess(response.body() as GetTodayTodoResponse)
+            }
+
+            override fun onFailure(call: Call<GetTodayTodoResponse>, t: Throwable) {
+                view.onGetTodayTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
     fun tryPutOneDayTodo(roomId:Int, putOneDayTodo: PutOneDayTodo){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
         todoInterface.putOneDayTodo(roomId, putOneDayTodo).enqueue(object: Callback<PutOneDayTodoResponse> {

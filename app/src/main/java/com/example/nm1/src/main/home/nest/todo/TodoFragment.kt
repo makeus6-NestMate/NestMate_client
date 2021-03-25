@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
 import com.example.nm1.src.main.home.nest.todo.model.*
@@ -15,20 +16,18 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     FragmentTodoBinding::bind,
     R.layout.fragment_todo
 ), TodoView {
+    private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val todolist = arrayListOf<Todo>()
-        val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
-        binding.todoRecycler.adapter = todoadapter
-
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
-            todoadapter.notifyDataSetChanged()
             // 새로고침 완료시,
             // 새로고침 아이콘이 사라질 수 있게 isRefreshing = false
+            showLoadingDialog(requireContext())
+            TodoService(this).tryGetTodayTodo(roomId)
             binding.todoRefreshlayout.isRefreshing = false
         }
 
@@ -98,6 +97,18 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onGetRepeatTodoFailure(message: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
+        dismissLoadingDialog()
+        val adapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
+        binding.todoRecycler.adapter = adapter
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onGetTodayTodoFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {

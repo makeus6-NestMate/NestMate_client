@@ -8,19 +8,15 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
-import com.example.nm1.databinding.ItemSwipeBinding
-import com.example.nm1.src.main.home.nest.todo.Todo
-import com.example.nm1.src.main.home.nest.todo.TodoCockDialogFragment
-import com.google.android.material.snackbar.Snackbar
+import com.example.nm1.src.main.home.nest.todo.model.TodayTodo
+import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.coroutines.coroutineContext
 import kotlin.math.floor
 
-class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Todo>, private val fragmentManager:FragmentManager):
+class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTodo>, private val fragmentManager:FragmentManager):
     RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,10 +30,11 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
         private val imguncheckBackground = itemView.findViewById<ImageView>(R.id.todo_img_notcheckbackground)
         private val layoutCock = itemView.findViewById<LinearLayout>(R.id.todo_layout_cock)
 
-        fun bind(todo: Todo, context: Context, fragmentManager: FragmentManager) {
+        fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
 //           설정된 시간
             val cal = Calendar.getInstance()
-            cal.time = todo.time
+            val formatData = SimpleDateFormat("hh/mm", Locale.getDefault()).parse(todayTodo.deadline)
+            cal.time = formatData
             val hour = cal.get(Calendar.HOUR_OF_DAY)
             val minute = cal.get(Calendar.MINUTE)
 
@@ -49,7 +46,7 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
             val hourTime = floor((diffSec / 3600).toDouble()).toInt() //남은시간
             val minTime = floor(((diffSec - 3600 * hourTime) / 60).toDouble()).toInt() //남은 분
 
-            tvTitle.text = todo.title
+            tvTitle.text = todayTodo.todo
             tvTime.text = if (hour < 12)
                 "오전 " + hour.toString() + "시 " + minute.toString() + "분"
             else {
@@ -68,15 +65,15 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
                 tvRemain.text = "분 전"
             }
 
-            imgCheck.setOnClickListener {
-                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
-                imgCheck.visibility = View.INVISIBLE
-                imgProfile.visibility = View.VISIBLE
-                imguncheckBackground.visibility = View.INVISIBLE
-                imgTimer.setImageResource(R.drawable.ic_todo_complete)
-                tvReaminHour.visibility = View.INVISIBLE
-                tvRemain.text = "유리"
-            }
+//            imgCheck.setOnClickListener {
+//                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
+//                imgCheck.visibility = View.INVISIBLE
+//                imgProfile.visibility = View.VISIBLE
+//                imguncheckBackground.visibility = View.INVISIBLE
+//                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+//                tvReaminHour.visibility = View.INVISIBLE
+//                tvRemain.text = "유리"
+//            }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
             if (current.time > cal.time){
