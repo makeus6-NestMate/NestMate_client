@@ -13,7 +13,11 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <list default="true" id="da84c4c1-90d5-4234-a143-f732f088d398" name="Default Changelist" comment="">
+=======
+    <list default="true" id="807da2b0-18f1-4822-bbbc-8ec00cfc90b1" name="Default Changelist" comment="">
+>>>>>>> Stashed changes
 =======
     <list default="true" id="807da2b0-18f1-4822-bbbc-8ec00cfc90b1" name="Default Changelist" comment="">
 >>>>>>> Stashed changes
@@ -29,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__gun0912_ted_tedpermission_2_2_3_aar.xml" beforeDir="false" />
@@ -37,6 +42,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16__2_54__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16__3_01__Default_Changelist_.xml" beforeDir="false" />
 =======
+=======
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16__2_53__Default_Changelist_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16__2_54__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16__3_01__Default_Changelist_.xml" beforeDir="false" />
@@ -44,6 +51,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16_오후_2_54_[Default_Changelist]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16_오후_3_01_[Default_Changelist]/build_file_checksums.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-16_오후_3_01_[Default_Changelist]/shelved.patch" beforeDir="false" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__3_24__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-17__7_05__Default_Changelist_.xml" afterDir="false" />
@@ -54,14 +64,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-24__1_34__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021-03-24__1_34__Default_Changelist_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestMemberAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestMemberAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nest_member_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nest_member_items.xml" afterDir="false" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     </list>
@@ -267,10 +283,17 @@
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1615930347660" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616672027984">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1616672027984" />
+=======
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616657291568">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1616657291568" />
+>>>>>>> Stashed changes
 =======
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616657291568">
       <screen x="0" y="0" width="1536" height="824" />

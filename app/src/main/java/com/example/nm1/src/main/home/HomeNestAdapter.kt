@@ -30,7 +30,8 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
         fun bind(nest: NestInfo, context: Context) {
             tvName.text = nest.roomName //둥지 이름
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val width = (windowManager.defaultDisplay.width *0.452).toInt()
+            val width = (windowManager.defaultDisplay.width *0.4805).toInt()
+
             itemView.layoutParams = RecyclerView.LayoutParams(
                 width,
                 RecyclerView.LayoutParams.MATCH_PARENT
