@@ -12,6 +12,7 @@ import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.databinding.DialogMemberAddByemailBinding
 import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
+import com.example.nm1.src.main.home.nest.member.model.GetMemberResponse
 import com.example.nm1.src.main.home.nest.member.model.PostAddMemberByEmail
 import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 import com.example.nm1.util.LoadingDialog
@@ -111,6 +112,14 @@ class MemberAddByEmailDialogFragment : DialogFragment(), MemberView {
     }
 
     override fun onDeleteMeFromNestFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetMemberSuccess(response: GetMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetMemberFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

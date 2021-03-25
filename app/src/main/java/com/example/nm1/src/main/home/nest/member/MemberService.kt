@@ -2,6 +2,7 @@ package com.example.nm1.src.main.home.nest.member
 
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
+import com.example.nm1.src.main.home.nest.member.model.GetMemberResponse
 import com.example.nm1.src.main.home.nest.member.model.PostAddMemberByEmail
 import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 import retrofit2.Call
@@ -31,6 +32,19 @@ class MemberService(val view: MemberView) {
 
             override fun onFailure(call: Call<DeleteMeFromNestResponse>, t: Throwable) {
                 view.onDeleteMeFromNestFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryGetMember(roomId:Int){
+        val memberInterface = ApplicationClass.sRetrofit.create(MemberInterface::class.java)
+        memberInterface.getMember(roomId).enqueue(object: Callback<GetMemberResponse> {
+            override fun onResponse(call: Call<GetMemberResponse>, response: Response<GetMemberResponse>) {
+                view.onGetMemberSuccess(response.body() as GetMemberResponse)
+            }
+
+            override fun onFailure(call: Call<GetMemberResponse>, t: Throwable) {
+                view.onGetMemberFailure(t.message ?: "통신 오류")
             }
         })
     }

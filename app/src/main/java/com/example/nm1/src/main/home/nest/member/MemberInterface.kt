@@ -1,6 +1,7 @@
 package com.example.nm1.src.main.home.nest.member
 
 import com.example.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
+import com.example.nm1.src.main.home.nest.member.model.GetMemberResponse
 import com.example.nm1.src.main.home.nest.member.model.PostAddMemberByEmail
 import com.example.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
 import retrofit2.Call
@@ -16,6 +17,6 @@ interface MemberInterface {
     fun deleteMeFromNest(@Path("roomId") roomId:Int): Call<DeleteMeFromNestResponse>
 
 //   멤버 조회
-//    @GET("/room/{roomId}/member")
-//    fun postAddMemberByEmail(@Path("roomId") roomId:Int): Call<ResponseAddMemberByEmail>
+    @GET("/room/{roomId}/member")
+    fun getMember(@Path("roomId") roomId:Int): Call<GetMemberResponse>
 }

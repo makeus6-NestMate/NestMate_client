@@ -25,12 +25,6 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
         private val imgProfile = itemView.findViewById<ImageView>(R.id.nest_img_memprofile)
 
         fun bind(member: NestMember, context: Context) {
-            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val width = (windowManager.defaultDisplay.width *0.08).toInt()
-            itemView.layoutParams = RecyclerView.LayoutParams(
-                width,
-                RecyclerView.LayoutParams.MATCH_PARENT
-            )
 
             tvName.text = member.nickname //멤버 이름
             Glide
