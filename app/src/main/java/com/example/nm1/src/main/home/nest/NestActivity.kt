@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.nm1.R
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityNestBinding
+import com.example.nm1.src.main.home.nest.calendar.CalendarActivity
+import com.example.nm1.src.main.home.nest.chart.ChartActivity
 
 class NestActivity : BaseActivity<ActivityNestBinding>(ActivityNestBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {

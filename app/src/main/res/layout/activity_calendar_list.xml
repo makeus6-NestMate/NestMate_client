@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <include
         layout="@layout/toolbar_back_plus"
@@ -26,7 +27,6 @@
             android:textSize="16sp"
             android:textColor="#000000"
             android:lineSpacingExtra="8sp"
-            android:text="1개의 ‘지난’ 일정"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"/>
 

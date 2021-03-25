@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -201,7 +202,7 @@
                 android:lines="1"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
-                android:background="@drawable/rec_design"/>
+                android:background="@drawable/new_rec_design"/>
         </LinearLayout>
 
         <LinearLayout
@@ -235,7 +236,7 @@
                 android:lines="3"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
-                android:background="@drawable/rec_design"/>
+                android:background="@drawable/new_rec_design"/>
         </LinearLayout>
 
         <Button

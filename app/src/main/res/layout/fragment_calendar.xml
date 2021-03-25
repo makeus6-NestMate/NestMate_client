@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.nm1.src.main.home.nest.CalendarFragment">
+    tools:context="com.example.nm1.src.main.home.nest.calendar.CalendarFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -142,7 +142,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:spanCount="7"
-            android:adjustViewBounds="true"
             tools:listitem="@layout/calendar_item"/>
     </LinearLayout>
 </LinearLayout>

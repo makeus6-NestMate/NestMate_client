@@ -47,19 +47,19 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.ChartActivity"
+            android:name=".src.main.home.nest.chart.ChartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.CalendarActivity"
+            android:name=".src.main.home.nest.calendar.CalendarActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.CalendarAddActivity"
+            android:name=".src.main.home.nest.calendar.CalendarAddActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.CalendarListActivity"
+            android:name=".src.main.home.nest.calendar.CalendarListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.CalendarListDetailActivity"
+            android:name=".src.main.home.nest.calendar.CalendarListDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

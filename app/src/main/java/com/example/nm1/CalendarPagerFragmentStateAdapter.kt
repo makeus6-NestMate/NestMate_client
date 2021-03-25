@@ -3,8 +3,7 @@ package com.example.nm1
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.nm1.src.main.home.nest.CalendarFragment
-import java.util.*
+import com.example.nm1.src.main.home.nest.calendar.CalendarFragment
 import kotlin.collections.ArrayList
 
 class CalendarPagerFragmentStateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
@@ -15,7 +14,7 @@ class CalendarPagerFragmentStateAdapter(fragmentActivity: FragmentActivity): Fra
     override fun getItemCount(): Int = Int.MAX_VALUE
 
     override fun createFragment(position: Int): Fragment {
-        val calendarFragment=CalendarFragment()
+        val calendarFragment= CalendarFragment()
         calendarFragment.pageIndex=position
         return calendarFragment
     }

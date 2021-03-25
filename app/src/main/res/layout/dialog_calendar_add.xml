@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_width="84dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="5dp"
-                android:background="@drawable/roundrec_design"
+                android:background="@drawable/roundrec_design_inactive_bg"
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="#ffffff"
@@ -94,7 +94,7 @@
                 android:layout_width="84dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="5dp"
-                android:background="@drawable/roundrec_design"
+                android:background="@drawable/roundrec_design_inactive_bg"
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="#ffffff"
@@ -105,4 +105,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
