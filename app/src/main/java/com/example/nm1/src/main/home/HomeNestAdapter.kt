@@ -86,6 +86,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
 
             layoutNest.setOnClickListener {
 //              둥지를 클릭할때마다 roomId 저장소에 저장
+                editor.putString("roomName", nest.roomName)
                 editor.putInt("roomId", nest.roomId)
                 editor.apply()
                 
