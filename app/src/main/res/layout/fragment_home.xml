@@ -106,6 +106,7 @@
         android:src="@drawable/home_bird_icon"
         app:layout_constraintBottom_toBottomOf="@+id/home_layout_user"
         app:layout_constraintStart_toEndOf="@+id/home_layout_user" />
+<<<<<<< Updated upstream
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home_layout_empty"
@@ -116,6 +117,8 @@
             app:layout_constraintStart_toStartOf="@+id/nestList"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
             app:layout_constraintWidth_percent="0.433">
+=======
+>>>>>>> Stashed changes
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_layout_user_empty"

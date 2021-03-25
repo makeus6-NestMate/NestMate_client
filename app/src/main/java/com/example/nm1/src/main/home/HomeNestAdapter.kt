@@ -29,13 +29,20 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
         private val memList = itemView.findViewById<RecyclerView>(R.id.nest_recycler_memlist)
         private val layoutNest = itemView.findViewById<ConstraintLayout>(R.id.layout_nest_item)
         val editor = ApplicationClass.sSharedPreferences.edit()
+        private val viewPool = RecyclerView.RecycledViewPool()
 
         fun bind(nest: NestInfo, context: Context, fragmentManager: FragmentManager) {
             tvName.text = nest.roomName //둥지 이름
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val width = (windowManager.defaultDisplay.width *0.4805).toInt()
 
-            memList.layoutManager = GridLayoutManager(context, 3)
+            val innerLayoutManager = GridLayoutManager(context, 3, GridLayoutManager.HORIZONTAL, false)
+
+            memList.apply{
+                layoutManager = innerLayoutManager
+                adapter = HomeNestMemberAdapter(context, nest.members)
+                setRecycledViewPool(viewPool)
+            }
 
             itemView.layoutParams = RecyclerView.LayoutParams(
                 width,
@@ -80,14 +87,6 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
                 layoutplusMem.visibility = View.VISIBLE
                 tvPlusMemNum.text = (nest.members.size-3).toString() //추가 멤버 수 보여주기
             }
-
-            val adapter = HomeNestMemberAdapter(context, nest.members)
-            memList.layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-            memList.adapter = adapter
 
             layoutNest.setOnClickListener {
 //              둥지를 클릭할때마다 roomId 저장소에 저장
