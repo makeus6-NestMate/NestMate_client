@@ -94,7 +94,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             binding.nestList.visibility = View.VISIBLE
             binding.homeLayoutEmpty.visibility = View.INVISIBLE
 
-            adapter = HomeNestAdapter(requireContext(), nestlist!!, parentFragmentManager)
+            adapter = HomeNestAdapter(requireContext(), nestlist!!, parentFragmentManager, LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false))
         }
         binding.nestList.adapter = adapter
     }

@@ -46,11 +46,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
             android:layout_marginBottom="11dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
             app:layout_constraintEnd_toStartOf="@+id/nest_layout_plusmem"
             app:layout_constraintHeight_percent="0.211"
             app:layout_constraintStart_toStartOf="@+id/nest_img_background"
+            app:spanCount="3"
             tools:listitem="@layout/nest_member_items">
 
         </androidx.recyclerview.widget.RecyclerView>
