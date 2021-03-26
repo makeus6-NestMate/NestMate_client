@@ -173,13 +173,11 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
         }
 
         override fun onEdited(content: String, position: Int, ruleId: Int) {
-            dataList[position] = RuleData((position+1).toString(), content, ruleId)
+            dataList[position] = RuleData((position + 1).toString(), content, ruleId)
             adapter.notifyItemChanged(position)
             val request = PutRuleRequest(content)
             RuleService(this@RuleFragment).tryPutRule(roomId, ruleId, request)
         }
-
-
     }
 
     override fun onEditClicked(position: Int, ruleId: Int) {

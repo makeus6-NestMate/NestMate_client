@@ -15,16 +15,17 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
+import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
 import com.example.nm1.src.main.home.nest.todo.model.*
 import com.example.nm1.util.LoadingDialog
+import kotlinx.android.synthetic.main.layout_todo_items.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
 
 class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTodo>, private val fragmentManager:FragmentManager) :
-    RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>(), TodoView {
-    private lateinit var mLoadingDialog: LoadingDialog
-    private lateinit var imageViewProfile:ImageView
+    RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>() {
+    private var listener: TodayTodoAdapter.OnItemClickListener? = null
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle = itemView.findViewById<TextView>(R.id.todo_tv_title)
@@ -38,7 +39,6 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
         private val layoutCock = itemView.findViewById<LinearLayout>(R.id.todo_layout_cock)
 
         private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
-
 
         fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
             val bundle = Bundle()
@@ -87,10 +87,6 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
                 imguncheckBackground.visibility = View.INVISIBLE
                 imgTimer.setImageResource(R.drawable.ic_todo_complete)
                 tvReaminHour.visibility = View.INVISIBLE
-//                tvRemain.text = "유리"
-
-                showLoadingDialog(context)
-                TodoService(this@TodayTodoAdapter).tryPostCompleteTodo(roomId, todayTodo.todoId)
             }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
@@ -129,158 +125,21 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
 
     override fun onBindViewHolder(holder: TodayTodoAdapter.ItemViewHolder, position: Int) {
         holder.bind(todoList[position], context, fragmentManager)
+
+        holder.itemView.todo_img_check.setOnClickListener {
+            listener!!.onClicked(position, todoList[position].todoId)
+        }
     }
 
     override fun getItemCount(): Int {
         return todoList.size
     }
 
-    private fun showLoadingDialog(context: Context) {
-        mLoadingDialog = LoadingDialog(context)
-        mLoadingDialog.show()
+    fun setOnClickListener(listener: TodayTodoAdapter.OnItemClickListener){
+        this.listener = listener
     }
 
-    private fun dismissLoadingDialog() {
-        if (mLoadingDialog.isShowing) {
-            mLoadingDialog.dismiss()
-        }
-    }
-
-    override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onAddOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onAddRepeatTodoSuccess(response: AddRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onAddRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetTodayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
-        dismissLoadingDialog()
-
-    }
-
-    override fun onPostCompleteTodoFailure(message: String) {
-        dismissLoadingDialog()
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetCockMemberFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPostCockSuccess(response: PostCockResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPostCockFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPutOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPutRepeatTodoSuccess(response: PutRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onPutRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteRepeatTodoSuccess(response: DeleteRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchOneDayTodoSuccess(response: GetSearchOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchRepeatTodoSuccess(response: GetSearchRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchTodoByDateSuccess(response: GetSearchTodoByDateResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onGetSearchTodoByDateFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteAllOneDayTodoSuccess(response: DeleteAllOneDayTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteAllOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteAllRepeatTodoSuccess(response: DeleteAllRepeatTodoResponse) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDeleteAllRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
+    interface OnItemClickListener{
+        fun onClicked(position: Int, todoId: Int)
     }
 }

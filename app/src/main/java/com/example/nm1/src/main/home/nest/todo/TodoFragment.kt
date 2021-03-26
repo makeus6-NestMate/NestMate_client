@@ -8,6 +8,11 @@ import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.nest.rule.RuleData
+import com.example.nm1.src.main.home.nest.rule.RuleDialog
+import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
+import com.example.nm1.src.main.home.nest.rule.RuleService
+import com.example.nm1.src.main.home.nest.rule.model.PutRuleRequest
 import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,6 +22,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     R.layout.fragment_todo
 ), TodoView {
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
+    private lateinit var adapter: TodayTodoAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,6 +76,13 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 //        }
     }
 
+    private val onClicked = object: TodayTodoAdapter.OnItemClickListener{
+        override fun onClicked(position: Int, todoId: Int) {
+            showLoadingDialog(requireContext())
+            TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
+        }
+    }
+
     override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -104,15 +117,18 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
         dismissLoadingDialog()
+        val todayadapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
+
         if (response.result.todo.isNotEmpty()){ //오늘 할일이 있으면
             binding.todoLayoutEmpty.visibility = View.INVISIBLE
             binding.todoRecycler.visibility = View.VISIBLE
-            val adapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
 
-
-            binding.todoRecycler.adapter = adapter
-            adapter.notifyDataSetChanged()
+            binding.todoRecycler.adapter = todayadapter
+            todayadapter.notifyDataSetChanged()
         }
+
+        this.adapter = todayadapter
+        this.adapter.setOnClickListener(onClicked)
     }
 
     override fun onGetTodayTodoFailure(message: String) {
