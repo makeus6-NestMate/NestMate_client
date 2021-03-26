@@ -34,7 +34,6 @@ class MemberAdapter(val context: Context, private val memList: List<Member>, val
                 .load(member.profileImg)
                 .into(imgProfile) //멤버 프로필
             tvName.text = member.nickname //멤버이름
-            if (member.isSelf) btnMenu.visibility = View.VISIBLE //나가기 메뉴 보이기
 
             btnMenu.setOnClickListener {
                 val exitBottomSheet = MemberExitBottomSheet()
@@ -53,6 +52,8 @@ class MemberAdapter(val context: Context, private val memList: List<Member>, val
 
     override fun onBindViewHolder(holder: MemberAdapter.ItemViewHolder, position: Int) {
         holder.bind(memList[position], context)
+        if (position==0)
+            holder.itemView.findViewById<Button>(R.id.mem_btn_edit).visibility = View.VISIBLE
     }
 
     override fun getItemCount(): Int {
