@@ -137,11 +137,12 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     }
 
     override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
     }
 
     override fun onPostCompleteTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 
     override fun onPostCockSuccess(response: PostCockResponse) {

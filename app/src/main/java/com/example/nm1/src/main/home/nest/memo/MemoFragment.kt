@@ -17,13 +17,7 @@ import com.example.nm1.src.main.home.nest.memo.model.GetMemoResponse
 import com.example.nm1.src.main.home.nest.memo.model.MemoData
 import com.example.nm1.src.main.home.nest.memo.model.PatchMemoRequest
 import com.example.nm1.src.main.home.nest.memo.model.PostMemoRequest
-import com.jakewharton.rxbinding4.view.focusChanges
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.kotlin.subscribeBy
 import kotlinx.android.synthetic.main.memo_item.view.*
-import retrofit2.Call
-import java.util.concurrent.TimeUnit
 
 class MemoFragment : BaseFragment<FragmentMemoBinding>(
     FragmentMemoBinding::bind,

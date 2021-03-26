@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
@@ -42,6 +43,21 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
 
         fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
             val bundle = Bundle()
+
+            if (todayTodo.profileImg!=""){
+                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
+                imgCheck.visibility = View.INVISIBLE
+                imgProfile.visibility = View.VISIBLE
+                imguncheckBackground.visibility = View.INVISIBLE
+                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+                tvReaminHour.visibility = View.INVISIBLE
+                tvRemain.text = "유리"
+
+                Glide
+                    .with(context)
+                    .load(todayTodo.profileImg)
+                    .into(imgProfile) //멤버 프로필
+            }
 
 //           설정된 시간
             val cal = Calendar.getInstance()
