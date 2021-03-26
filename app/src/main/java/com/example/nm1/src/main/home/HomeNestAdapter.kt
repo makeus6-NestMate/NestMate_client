@@ -2,9 +2,7 @@ package com.example.nm1.src.main.home
 
 import android.content.Context
 import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
-import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.nest.NestActivity
 
@@ -32,24 +29,45 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
 
         fun bind(nest: NestInfo, context: Context) {
             tvName.text = nest.roomName //둥지 이름
+            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val width = (windowManager.defaultDisplay.width *0.4805).toInt()
+
+            itemView.layoutParams = RecyclerView.LayoutParams(
+                width,
+                RecyclerView.LayoutParams.MATCH_PARENT
+            )
 //           배경
             when (nest.roomColor) {
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.peach)).substring(2) -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.peach))
+                    .substring(2) -> {
                     imgBackground.setImageResource(R.drawable.dungji_peach_background)
                 }
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.light_orange)).substring(2)  -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.light_orange))
+                    .substring(
+                        2
+                    ) -> {
                     imgBackground.setImageResource(R.drawable.dungji_lightorange_background)
                 }
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.light_blue)).substring(2)  -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.light_blue))
+                    .substring(
+                        2
+                    ) -> {
                     imgBackground.setImageResource(R.drawable.dungji_lightblue_background)
                 }
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.light_purple)).substring(2)  -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.light_purple))
+                    .substring(
+                        2
+                    ) -> {
                     imgBackground.setImageResource(R.drawable.dungji_lightpurple_background)
                 }
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.sky)).substring(2)  -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.sky))
+                    .substring(2) -> {
                     imgBackground.setImageResource(R.drawable.dungji_sky_background)
                 }
-                "#"+Integer.toHexString(ContextCompat.getColor(context, R.color.light_green)).substring(2)  -> {
+                "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.light_green))
+                    .substring(
+                        2
+                    ) -> {
                     imgBackground.setImageResource(R.drawable.dungji_green_background)
                 }
             }
@@ -59,11 +77,16 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
             }
 
             val adapter = HomeNestMemberAdapter(context, nest.members)
-            memList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            memList.layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
             memList.adapter = adapter
 
             layoutNest.setOnClickListener {
 //              둥지를 클릭할때마다 roomId 저장소에 저장
+                editor.putString("roomName", nest.roomName)
                 editor.putInt("roomId", nest.roomId)
                 editor.apply()
                 

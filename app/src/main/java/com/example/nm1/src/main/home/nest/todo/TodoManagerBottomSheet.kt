@@ -1,15 +1,12 @@
 package com.example.nm1.src.main.home.nest.todo
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.nest.todo.model.*
@@ -41,15 +38,22 @@ class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
             val bundle = Bundle()
             bundle.putInt("todoId", arguments?.getInt("todoId")!!)
             bundle.putString("onedayorrepeat", arguments?.getString("onedayorrepeat"))
+            bundle.putString("todotitle", arguments?.getString("todotitle"))
 
 //          수정삭제 bottomsheet
             todoEditDialog.arguments = bundle
             todoEditDialog.show(parentFragmentManager, todoEditDialog.tag)
+            this.dismiss()
         }
 
         delete?.setOnClickListener{
             showLoadingDialog(requireContext())
-            TodoService(this).tryDeleteOneDayTodo(roomId, arguments?.getInt("todoId")!!)
+            if (arguments?.getString("onedayorrepeat")=="oneday") { //하루만에서 띄운경우
+                TodoService(this).tryDeleteOneDayTodo(roomId, arguments?.getInt("todoId")!!)
+            }
+            else{ //반복에서 띄운 경우
+                TodoService(this).tryDeleteRepeatTodo(roomId, arguments?.getInt("todoId")!!)
+            }
         }
     }
 
@@ -113,11 +117,11 @@ class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
     }
 
     override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
+        dismissLoadingDialog()
         if (!response.isSuccess){
             Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show()
         }
         else {
-            dismissLoadingDialog()
             Toast.makeText(requireContext(), "삭제가 완료되었습니다", Toast.LENGTH_SHORT).show()
             this.dismiss()
         }
@@ -130,10 +134,18 @@ class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
     }
 
     override fun onDeleteRepeatTodoSuccess(response: DeleteRepeatTodoResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        if (!response.isSuccess){
+            Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show()
+        }
+        else {
+            Toast.makeText(requireContext(), "삭제가 완료되었습니다", Toast.LENGTH_SHORT).show()
+            this.dismiss()
+        }
     }
 
     override fun onDeleteRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

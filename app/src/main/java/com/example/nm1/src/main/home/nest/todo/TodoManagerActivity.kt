@@ -1,6 +1,7 @@
 package com.example.nm1.src.main.home.nest.todo
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
@@ -9,24 +10,42 @@ import com.example.nm1.databinding.ActivityTodoManagerBinding
 import com.example.nm1.src.main.home.nest.todo.model.*
 
 class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTodoManagerBinding::inflate), TodoView {
-    private val selectedDays = Array(7){0}
-    lateinit var onedayadapter:TodoOneDayManagerAdapter
-    lateinit var repeatadapter:TodoRepeatManagerAdapter
+    private lateinit var onedayadapter:TodoOneDayManagerAdapter
+    private lateinit var repeatadapter:TodoRepeatManagerAdapter
     private val isrepeat = Array(2){false}
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        검색창 띄우기
+        binding.todoManagerBtnSearch.setOnClickListener {
+            binding.todoManagerBtnSearch.visibility = View.INVISIBLE
+            binding.todoManagerSearchExit.visibility = View.VISIBLE
+            binding.todoManagerEdtSearch.visibility = View.VISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.VISIBLE
+        }
+
+//        검색창 닫기
+        binding.todoManagerSearchExit.setOnClickListener {
+            binding.todoManagerBtnSearch.visibility = View.VISIBLE
+            binding.todoManagerSearchExit.visibility = View.INVISIBLE
+            binding.todoManagerEdtSearch.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+        }
+
         isrepeat[0] = true
+        showLoadingDialog(this)
+        TodoService(this).tryGetRepeatTodo(roomId)
 
  //       리프레시 레이아웃
         binding.todoManagerRefreshlayout.setOnRefreshListener {
-            if (isrepeat[1])
+            if (isrepeat[1]) //하루
                 TodoService(this).tryGetOneDayTodo(roomId)
+            else if (isrepeat[0]) //반복
+                TodoService(this).tryGetRepeatTodo(roomId)
 
-            // 새로고침 완료시,
-            // 새로고침 아이콘이 사라질 수 있게 isRefreshing = false
+            // 새로고침 완료시, 새로고침 아이콘이 사라질 수 있게
             binding.todoManagerRefreshlayout.isRefreshing = false
         }
 
@@ -45,6 +64,9 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             )
             isrepeat[0] = true
             isrepeat[1] = false
+
+            showLoadingDialog(this)
+            TodoService(this).tryGetRepeatTodo(roomId)
         }
 
 //        하루만
@@ -98,11 +120,15 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
     }
 
     override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        repeatadapter = TodoRepeatManagerAdapter(this, response.result.todo, supportFragmentManager)
+        binding.todoManagerRecyclerview.adapter = repeatadapter
+        repeatadapter.notifyDataSetChanged()
     }
 
     override fun onGetRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
