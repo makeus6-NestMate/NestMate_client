@@ -36,7 +36,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val width = (windowManager.defaultDisplay.width *0.4805).toInt()
 
-            val innerLayoutManager = GridLayoutManager(context, 3, GridLayoutManager.HORIZONTAL, false)
+            val innerLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
             memList.apply{
                 layoutManager = innerLayoutManager
@@ -48,6 +48,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
                 width,
                 RecyclerView.LayoutParams.MATCH_PARENT
             )
+
 //           배경
             when (nest.roomColor) {
                 "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.peach))

@@ -40,20 +40,19 @@
             app:layout_constraintStart_toStartOf="@+id/nest_img_background"
             app:layout_constraintTop_toTopOf="@+id/nest_img_background" />
 
-        <GridView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/nest_recycler_memlist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="11dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/nest_img_background"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nest_layout_plusmem"
             app:layout_constraintHeight_percent="0.211"
-            app:layout_constraintStart_toStartOf="@+id/nest_img_background"
-            tools:listitem="@layout/nest_member_items">
-
-        </GridView>
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/nest_member_items" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/nest_layout_plusmem"
