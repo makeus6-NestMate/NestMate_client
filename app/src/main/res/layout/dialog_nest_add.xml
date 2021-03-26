@@ -58,7 +58,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/memo_dialog_content_bg"
-            android:fontFamily="@font/notosanskr_regular"
+            android:fontFamily="@font/notosanscjkkr_medium"
             android:gravity="left"
             android:hint="둥지 이름을 지어보세요."
             android:includeFontPadding="false"

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/white"
-        android:elevation="2dp"
+        android:elevation="4dp"
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
@@ -46,19 +46,19 @@
                     android:id="@+id/chart"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
-                    android:scaleType="centerInside"
                     android:layout_marginRight="18dp"
                     android:layout_toLeftOf="@+id/calendar"
                     android:background="@color/transparent"
+                    android:scaleType="centerInside"
                     android:src="@drawable/chart_icon" />
 
                 <ImageButton
                     android:id="@+id/calendar"
                     android:layout_width="18dp"
                     android:layout_height="19dp"
-                    android:scaleType="centerInside"
                     android:layout_marginRight="18dp"
                     android:background="@color/transparent"
+                    android:scaleType="centerInside"
                     android:src="@drawable/cal_icon" />
 
             </LinearLayout>

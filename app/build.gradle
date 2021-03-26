@@ -81,4 +81,6 @@ dependencies {
 
     implementation 'jp.wasabeef:picasso-transformations:2.4.0'
 
+    implementation 'com.sdsmdg.harjot:materialshadows:1.2.5'
+
 }

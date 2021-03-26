@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sdsmdg.harjot:materialshadows:1.2.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3f60e370b925f637d32e85091f2d51ea/jetified-materialshadows-1.2.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3f60e370b925f637d32e85091f2d51ea/jetified-materialshadows-1.2.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3f60e370b925f637d32e85091f2d51ea/jetified-materialshadows-1.2.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sdsmdg.harjot/materialshadows/1.2.5/494b135fe7bdf7bcad6167c3d0b56c2ef2ddfb05/materialshadows-1.2.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sdsmdg.harjot/materialshadows/1.2.5/3d4a7e24ac3af59b98e81efb96b2f0be3ce60b5f/materialshadows-1.2.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
