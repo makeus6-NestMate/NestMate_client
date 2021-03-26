@@ -8,11 +8,6 @@ import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
-import com.example.nm1.src.main.home.nest.rule.RuleData
-import com.example.nm1.src.main.home.nest.rule.RuleDialog
-import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
-import com.example.nm1.src.main.home.nest.rule.RuleService
-import com.example.nm1.src.main.home.nest.rule.model.PutRuleRequest
 import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*

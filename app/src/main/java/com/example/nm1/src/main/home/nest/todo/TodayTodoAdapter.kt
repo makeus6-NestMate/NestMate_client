@@ -36,8 +36,6 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
         private val imguncheckBackground = itemView.findViewById<ImageView>(R.id.todo_img_notcheckbackground)
         private val layoutCock = itemView.findViewById<LinearLayout>(R.id.todo_layout_cock)
 
-        private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
-
         fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
             val bundle = Bundle()
 
