@@ -108,9 +108,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
             isrepeat[1] = true
         }
 //       할일
-//       글자수 실시간으로 보이게
+//       글자수 실시간으로 보이게 & 버튼 활성화
         binding.todoEdtTitle.addTextChangedListener(object : TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -118,6 +117,27 @@ class TodoAddDialog : DialogFragment(), TodoView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val userinput = binding.todoEdtTitle.text.toString()
                 binding.todoTvTitlelength.text = userinput.length.toString()
+
+//           반복
+                if (isrepeat[0]){
+                    if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
+                        binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                    }else{
+                        binding.todoBtnConfirm.isEnabled = false
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                    }
+                }
+//            하루만
+                else if (isrepeat[1]){
+                    if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
+                        binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                    }else{
+                        binding.todoBtnConfirm.isEnabled = false
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                    }
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -351,31 +371,6 @@ class TodoAddDialog : DialogFragment(), TodoView {
 //       취소버튼
         binding.todoBtnCancel.setOnClickListener {
             dismiss()
-        }
-
-//       다 입력시 확인버튼 활성화
-        binding.todoEdtTitle.onMyTextChanged {
-//           반복
-            if (isrepeat[0]){
-                if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
-                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-                }else{
-                    binding.todoBtnConfirm.isEnabled = false
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
-                }
-            }
-//            하루만
-            else if (isrepeat[1]){
-                if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
-                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-                }else{
-                    binding.todoBtnConfirm.isEnabled = false
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
-                }
-            }
-
         }
 
 //       확인버튼 -> 할일 등록

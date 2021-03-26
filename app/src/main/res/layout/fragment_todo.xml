@@ -77,11 +77,55 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/todo_layout_empty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/today_todo_background"
+            android:elevation="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.129"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/todo_btn_manager">
+
+            <ImageView
+                android:id="@+id/todo_img_empty2"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic__nest_todo_plustodo" />
+
+            <TextView
+                android:id="@+id/todo_tv_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="7sp"
+                android:text="버튼으로 할 일을 등록해보세요"
+                android:textColor="#c1c1c1"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/todo_img_empty2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:fillViewport="true"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,54 +137,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/todo_layout_empty"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/todo_recycler">
-
-                    <ImageView
-                        android:id="@+id/todo_img_empty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic__todo_items" />
-
-                    <ImageView
-                        android:id="@+id/todo_img_empty2"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="95dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/todo_img_empty"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic__nest_todo_plustodo" />
-
-                    <TextView
-                        android:id="@+id/todo_tv_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/notosanscjkkr_regular"
-                        android:gravity="center_horizontal"
-                        android:lineSpacingExtra="7sp"
-                        android:text="버튼으로 할 일을 등록해보세요"
-                        android:textColor="#c1c1c1"
-                        android:textSize="15sp"
-                        android:textStyle="normal"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/todo_img_empty2"
-                        app:layout_constraintTop_toTopOf="@+id/todo_img_empty" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/todo_recycler"
                     android:layout_width="match_parent"
@@ -150,6 +146,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:listitem="@layout/layout_todo_items"
                     tools:visibility="visible" />
             </androidx.constraintlayout.widget.ConstraintLayout>
