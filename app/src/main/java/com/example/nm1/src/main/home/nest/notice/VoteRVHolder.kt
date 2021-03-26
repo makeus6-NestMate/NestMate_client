@@ -12,6 +12,7 @@ class VoteRVHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private var title = itemView.notice_vote_rv_item_title
     private var content = itemView.notice_vote_rv_item_content
     private var timestamp = itemView.notice_vote_rv_item_timestamp
+    private var ingMark = itemView.notice_vote_rv_item_vote_ing
 
     fun bindWithView(item: NoticeVoteInfo){
         Glide.with(itemView).load(item.profileImg).error(R.drawable.chicken_img).into(img)
@@ -23,5 +24,15 @@ class VoteRVHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         content.text = item.title
         timestamp.text = item.createdAt
+
+        if(item.isFinished != null){
+            if(item.isFinished == "Y"){
+                ingMark.visibility = View.GONE
+            }else{
+                ingMark.visibility = View.VISIBLE
+            }
+        }else{
+            ingMark.visibility = View.GONE
+        }
     }
 }

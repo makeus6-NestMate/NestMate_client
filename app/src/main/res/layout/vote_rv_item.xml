@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/rule_rec_design"
+    android:id="@+id/vote_rv_item_layout"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:paddingBottom="16dp"
@@ -54,5 +55,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:button="@drawable/vote_selector_radio"
         android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/vote_rv_item_unvoteMemberCnt"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskr_medium"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0sp"
+        android:text="2명"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

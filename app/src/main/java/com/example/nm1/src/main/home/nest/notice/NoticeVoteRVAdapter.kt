@@ -36,8 +36,12 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             is VoteRVHolder -> {
                 holder.bindWithView(this.dataList[position])
                 holder.itemView.notice_vote_rv_item_more_btn.setOnClickListener {
+                    listener!!.onVoteMoreClicked(position, dataList[position].voteId!!)
+                }
+                holder.itemView.notice_vote_rv_item_layout.setOnClickListener {
                     listener!!.onVoteClicked(position, dataList[position].voteId!!)
                 }
+
             }
         }
     }
@@ -64,6 +68,7 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface OnItemClickListener {
         fun onNoticeClicked(position: Int, noticeId: Int)
+        fun onVoteMoreClicked(position: Int, voteId: Int)
         fun onVoteClicked(position: Int, voteId: Int)
     }
 }

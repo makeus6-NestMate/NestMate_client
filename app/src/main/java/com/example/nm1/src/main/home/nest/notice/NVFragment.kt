@@ -14,12 +14,14 @@ import com.example.nm1.src.main.home.nest.notice.model.GetNoticeVoteResponse
 import com.example.nm1.src.main.home.nest.notice.model.NoticeVoteInfo
 import com.example.nm1.src.main.home.nest.notice.model.PostNoticeRequest
 import com.example.nm1.src.main.home.nest.notice.model.PostVoteRequest
+import com.example.nm1.src.main.home.nest.notice.vote.VoteActivity
 import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
 
 class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.layout.fragment_nv), NoticeVoteView, NVDialogInterface {
     private var dataList = ArrayList<NoticeVoteInfo>()
     private lateinit var adapter: NoticeVoteRVAdapter
     private var roomId = ApplicationClass.sSharedPreferences.getInt("roomId", -1)
+    private var page = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,7 +46,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
 
     override fun onResume() {
         super.onResume()
-        NoticeVoteService(this).tryGetNoticeVote(roomId)
+        NoticeVoteService(this).tryGetNoticeVote(roomId, page)
         if(dataList.size > 0){
             binding.noticeEmptyImg.visibility = View.GONE
         }else{
@@ -75,7 +77,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
     override fun onPostNoticeSuccess(response: BaseResponse) {
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId)
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -124,7 +126,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
     override fun onPostVoteSuccess(response: BaseResponse) {
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId)
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -139,7 +141,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
     override fun onDeleteNoticeSuccess(response: BaseResponse) {
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId)
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -154,7 +156,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
     override fun onDeleteVoteSuccess(response: BaseResponse) {
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId)
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -172,9 +174,17 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
             dialog.show(childFragmentManager, "notice")
         }
 
+        override fun onVoteMoreClicked(position: Int, voteId: Int) {
+            TODO("Not yet implemented")
+        }
+
         override fun onVoteClicked(position: Int, voteId: Int) {
-            val dialog = NoticeVoteDialog(isNotice = false, position = position, voteId = voteId, nvDialogInterface = this@NVFragment)
-            dialog.show(childFragmentManager, "vote")
+            val intent = Intent(activity, VoteActivity::class.java)
+            intent.putExtra("position", position)
+            intent.putExtra("roomId", roomId)
+            intent.putExtra("voteId", voteId)
+            startActivity(intent)
+
         }
 
 
