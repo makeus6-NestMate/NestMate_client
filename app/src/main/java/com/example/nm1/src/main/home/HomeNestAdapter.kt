@@ -103,6 +103,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
                 val homeNestEditBottomSheet = HomeNestEditBottomSheet()
                 editor.putString("roomName", nest.roomName)
                 editor.putInt("roomId", nest.roomId)
+                editor.apply()
 
                 homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
                 true
