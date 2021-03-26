@@ -39,7 +39,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             TodoService(this).tryGetTodayTodo(roomId)
             binding.todoRefreshlayout.isRefreshing = false
         }
-
 //       오늘날짜 설정
         val todayDate = Calendar.getInstance().time
         val todayMonth: String = SimpleDateFormat("MM", Locale.KOREAN).format(todayDate)

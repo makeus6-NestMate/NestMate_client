@@ -9,16 +9,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
-import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
-import com.example.nm1.src.main.home.nest.todo.model.*
-import com.example.nm1.util.LoadingDialog
+import com.example.nm1.src.main.home.nest.todo.model.TodayTodo
 import kotlinx.android.synthetic.main.layout_todo_items.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -58,7 +55,6 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
                     .load(todayTodo.profileImg)
                     .into(imgProfile) //멤버 프로필
             }
-
 //           설정된 시간
             val cal = Calendar.getInstance()
             val formatData = SimpleDateFormat("yyyy/MM/dd/hh/mm", Locale.getDefault()).parse(todayTodo.deadline)
