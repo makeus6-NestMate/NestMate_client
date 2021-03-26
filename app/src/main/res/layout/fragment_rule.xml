@@ -9,6 +9,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_marginTop="8dp"
+        android:paddingBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -166,8 +167,8 @@
                     android:id="@+id/rule_add_input_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/rule_add_input_num"
+                    app:layout_constraintEnd_toStartOf="@id/rule_add_input_more_btn"
                     android:hint="12시 이후 귀가시 미리 이야기한다."
                     android:fontFamily="@font/notosanskr_regular"
                     android:maxLines="1"
@@ -178,9 +179,10 @@
                     android:textColorHint="#c1c1c1"
                     android:textColor="@color/black"
                     android:padding="0dp"
+                    android:layout_marginLeft="14sp"
                     android:includeFontPadding="false"
                     android:lineSpacingExtra="16sp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 
                 <ImageView

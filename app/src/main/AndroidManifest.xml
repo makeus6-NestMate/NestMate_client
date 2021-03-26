@@ -17,9 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="AllowBackup">
-        <activity android:name=".src.main.home.nest.notice.NoticeVoteActivity"
-            android:windowSoftInputMode="adjustPan">
-    </activity>
+        <activity android:name=".src.main.home.nest.notice.vote.VoteActivity"></activity>
+        <activity
+            android:name=".src.main.home.nest.notice.NoticeVoteActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".src.main.home.nest.todo.TodoManagerActivity" />
         <activity
             android:name=".src.splash.SplashActivity"
@@ -32,20 +33,25 @@
         </activity>
         <activity
             android:name=".src.login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".src.register.RegisterOneActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".src.register.RegisterTwoActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".src.main.home.nest.NestActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".src.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".src.main.home.nest.ChartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
