@@ -42,10 +42,10 @@
                 android:background="@drawable/todo_manager_search_exit"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHeight_percent="0.214"
+                app:layout_constraintHeight_percent="0.25"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.033"
+                app:layout_constraintWidth_percent="0.032"
                 tools:visibility="visible" />
 
             <TextView
@@ -74,6 +74,7 @@
                 android:ems="10"
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:hint="키워드를 입력해주세요."
+                android:imeOptions="actionSearch"
                 android:includeFontPadding="false"
                 android:inputType="textPersonName"
                 android:paddingLeft="16dp"
@@ -99,7 +100,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.536"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.083"
+                app:layout_constraintWidth_percent="0.07"
                 tools:visibility="visible" />
 
             <LinearLayout
@@ -175,7 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
             android:lineSpacingExtra="1sp"
@@ -190,14 +191,17 @@
             android:id="@+id/todo_manager_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todo_manager_tv_deleteall" />
+            app:layout_constraintTop_toBottomOf="@+id/todo_manager_tv_deleteall"
+            tools:listitem="@layout/todo_manager_items" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

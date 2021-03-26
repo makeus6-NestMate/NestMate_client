@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_white_roundcorner">
+    android:background="@drawable/memo_dialog_bg">
 
     <TextView
         android:id="@+id/todo_tv_header"
@@ -13,6 +13,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="center_horizontal"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="12sp"
         android:text="콕찌르기"
         android:textColor="#000000"
@@ -34,48 +35,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_header" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/notosanscjkkr_medium"
-            android:lineSpacingExtra="8sp"
-            android:text="메이트 선택"
-            android:textColor="#505050"
-            android:textSize="13sp"
-            android:textStyle="normal" />
-
-        <Spinner
-            android:id="@+id/todo_cock_spinner"
-            android:layout_width="110dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/todo_spinner"
-            android:popupBackground="@drawable/edittext_design" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="8sp"
+        android:text="메이트 선택"
+        android:textColor="#505050"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <Spinner
+        android:id="@+id/todo_cock_spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/todo_spinner"
+        android:popupBackground="@drawable/edittext_design"
+        app:layout_constraintHeight_percent="0.184"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/todo_cock_spinner">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_cockcancel"

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
 import com.example.nm1.src.main.home.nest.todo.model.*
@@ -15,23 +16,24 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     FragmentTodoBinding::bind,
     R.layout.fragment_todo
 ), TodoView {
+    private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
+    private lateinit var adapter: TodayTodoAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val todolist = arrayListOf<Todo>()
-        val todoadapter = TodayTodoAdapter(requireContext(), todolist, parentFragmentManager)
-        binding.todoRecycler.adapter = todoadapter
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId)
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
-            todoadapter.notifyDataSetChanged()
             // 새로고침 완료시,
             // 새로고침 아이콘이 사라질 수 있게 isRefreshing = false
+            showLoadingDialog(requireContext())
+            TodoService(this).tryGetTodayTodo(roomId)
             binding.todoRefreshlayout.isRefreshing = false
         }
-
 //       오늘날짜 설정
         val todayDate = Calendar.getInstance().time
         val todayMonth: String = SimpleDateFormat("MM", Locale.KOREAN).format(todayDate)
@@ -68,6 +70,13 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 //        }
     }
 
+    private val onClicked = object: TodayTodoAdapter.OnItemClickListener{
+        override fun onClicked(position: Int, todoId: Int) {
+            showLoadingDialog(requireContext())
+            TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
+        }
+    }
+
     override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -100,6 +109,52 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         TODO("Not yet implemented")
     }
 
+    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
+        dismissLoadingDialog()
+        val todayadapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
+
+        if (response.result.todo.isNotEmpty()){ //오늘 할일이 있으면
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE
+
+            binding.todoRecycler.adapter = todayadapter
+            todayadapter.notifyDataSetChanged()
+        }
+
+        this.adapter = todayadapter
+        this.adapter.setOnClickListener(onClicked)
+    }
+
+    override fun onGetTodayTodoFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
+        dismissLoadingDialog()
+    }
+
+    override fun onPostCompleteTodoFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onPostCockSuccess(response: PostCockResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -129,6 +184,46 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     }
 
     override fun onDeleteRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchOneDayTodoSuccess(response: GetSearchOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoSuccess(response: GetSearchRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateSuccess(response: GetSearchTodoByDateResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoSuccess(response: DeleteAllOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoSuccess(response: DeleteAllRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

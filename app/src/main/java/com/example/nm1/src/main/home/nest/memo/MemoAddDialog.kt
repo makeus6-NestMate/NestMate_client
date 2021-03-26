@@ -25,7 +25,7 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
     var display: Display? = null
     var size: Point? = null
 
-    private var color: Int? = null
+    private var color: String? = null
 
 
 //
@@ -76,26 +76,25 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
         binding!!.memoDialogColorRg.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.memo_dialog_radio_btn1 -> {
-                    color = R.color.colorYellow
+                    color = "#ffd581"
                 }
                 R.id.memo_dialog_radio_btn2 -> {
-                    color = R.color.colorPink
+                    color = "#ffd5e5"
                 }
                 R.id.memo_dialog_radio_btn3 -> {
-                    color = R.color.colorBlue
+                    color = "#79e6ef"
                 }
                 R.id.memo_dialog_radio_btn4 -> {
-                    color = R.color.colorPurple
+                    color = "#c0adff"
                 }
                 R.id.memo_dialog_radio_btn5 -> {
-                    color = R.color.colorGreen
+                    color = "#4debbb"
                 }
                 R.id.memo_dialog_radio_btn6 -> {
-                    color = R.color.orange
+                    color = "#ff9e81"
                 }
             }
         }
-
 
         binding!!.memoDialogContentEt.addTextChangedListener(
             object: TextWatcher{
@@ -119,6 +118,12 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
                         imm.hideSoftInputFromWindow(binding!!.memoDialogContentEt.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
 
                     }
+
+                    if(binding!!.memoDialogContentEt.text.isNotEmpty()){
+                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                    }else{
+                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                    }
                 }
 
             }
@@ -131,7 +136,7 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.7).toInt()
+        params?.width = (deviceWidth*0.8).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 }

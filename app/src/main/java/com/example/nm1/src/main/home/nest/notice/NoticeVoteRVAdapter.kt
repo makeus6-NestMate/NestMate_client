@@ -4,9 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
+import com.example.nm1.src.main.home.nest.notice.model.NoticeVoteInfo
+import com.example.nm1.src.main.home.nest.rule.RuleRVAdapter
+import kotlinx.android.synthetic.main.notice_vote_rv_item.view.*
 
 class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var dataList = ArrayList<NoticeVoteData>()
+    private var dataList = ArrayList<NoticeVoteInfo>()
+    private var listener: NoticeVoteRVAdapter.OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType){
@@ -25,9 +29,15 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when(holder){
             is NoticeRVHolder -> {
                 holder.bindWithView(this.dataList[position])
+                holder.itemView.notice_vote_rv_item_more_btn.setOnClickListener {
+                    listener!!.onNoticeClicked(position, dataList[position].noticeId!!)
+                }
             }
             is VoteRVHolder -> {
                 holder.bindWithView(this.dataList[position])
+                holder.itemView.notice_vote_rv_item_more_btn.setOnClickListener {
+                    listener!!.onVoteClicked(position, dataList[position].voteId!!)
+                }
             }
         }
     }
@@ -36,15 +46,24 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return dataList.size
     }
 
-    fun submitList(list: ArrayList<NoticeVoteData>){
+    fun submitList(list: ArrayList<NoticeVoteInfo>){
         this.dataList = list
     }
 
+    fun setOnClickListener(listener: NoticeVoteRVAdapter.OnItemClickListener){
+        this.listener = listener
+    }
+
     override fun getItemViewType(position: Int): Int {
-        if(dataList[position].isNotice){
+        if(dataList[position].isNotice == "Y"){
             return 0
         }else{
             return 1
         }
+    }
+
+    interface OnItemClickListener {
+        fun onNoticeClicked(position: Int, noticeId: Int)
+        fun onVoteClicked(position: Int, voteId: Int)
     }
 }

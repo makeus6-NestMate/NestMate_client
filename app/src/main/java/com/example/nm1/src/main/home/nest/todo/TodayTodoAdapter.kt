@@ -1,6 +1,8 @@
 package com.example.nm1.src.main.home.nest.todo
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,20 +10,20 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.nm1.R
-import com.example.nm1.databinding.ItemSwipeBinding
-import com.example.nm1.src.main.home.nest.todo.Todo
-import com.example.nm1.src.main.home.nest.todo.TodoCockDialogFragment
-import com.google.android.material.snackbar.Snackbar
+import com.example.nm1.config.ApplicationClass
+import com.example.nm1.src.main.home.nest.todo.model.TodayTodo
+import kotlinx.android.synthetic.main.layout_todo_items.view.*
+import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.coroutines.coroutineContext
 import kotlin.math.floor
 
-class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Todo>, private val fragmentManager:FragmentManager):
-    RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>(){
+class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTodo>, private val fragmentManager:FragmentManager) :
+    RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>() {
+    private var listener: TodayTodoAdapter.OnItemClickListener? = null
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle = itemView.findViewById<TextView>(R.id.todo_tv_title)
@@ -34,22 +36,42 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
         private val imguncheckBackground = itemView.findViewById<ImageView>(R.id.todo_img_notcheckbackground)
         private val layoutCock = itemView.findViewById<LinearLayout>(R.id.todo_layout_cock)
 
-        fun bind(todo: Todo, context: Context, fragmentManager: FragmentManager) {
+        fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
+            val bundle = Bundle()
+
+            if (todayTodo.profileImg!=""){
+                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
+                imgCheck.visibility = View.INVISIBLE
+                imgProfile.visibility = View.VISIBLE
+                imguncheckBackground.visibility = View.INVISIBLE
+                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+                tvReaminHour.visibility = View.INVISIBLE
+                tvRemain.text = "유리"
+
+                Glide
+                    .with(context)
+                    .load(todayTodo.profileImg)
+                    .into(imgProfile) //멤버 프로필
+            }
 //           설정된 시간
             val cal = Calendar.getInstance()
-            cal.time = todo.time
+            val formatData = SimpleDateFormat("yyyy/MM/dd/hh/mm", Locale.getDefault()).parse(todayTodo.deadline)
+            cal.time = formatData
             val hour = cal.get(Calendar.HOUR_OF_DAY)
             val minute = cal.get(Calendar.MINUTE)
 
+//            Log.d("hello", "$hour/$minute")
+
 //            현재 시간
             val current = Calendar.getInstance()
+//            Log.d("hello", current.get(Calendar.HOUR_OF_DAY).toString()+"/"+current.get(Calendar.MINUTE).toString())
 
             val remainhour = hour-current.get(Calendar.HOUR_OF_DAY) //시간만뺀거
             val diffSec = (cal.timeInMillis - current.timeInMillis) / 1000
             val hourTime = floor((diffSec / 3600).toDouble()).toInt() //남은시간
             val minTime = floor(((diffSec - 3600 * hourTime) / 60).toDouble()).toInt() //남은 분
 
-            tvTitle.text = todo.title
+            tvTitle.text = todayTodo.todo
             tvTime.text = if (hour < 12)
                 "오전 " + hour.toString() + "시 " + minute.toString() + "분"
             else {
@@ -75,11 +97,14 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
                 imguncheckBackground.visibility = View.INVISIBLE
                 imgTimer.setImageResource(R.drawable.ic_todo_complete)
                 tvReaminHour.visibility = View.INVISIBLE
-                tvRemain.text = "유리"
             }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
-            if (current.time > cal.time){
+            Log.d("시간", current.time.toString())
+            Log.d("시간", cal.time.toString())
+            Log.d("시간/비교", current.time.after(cal.time).toString())
+
+            if (current.time.after(cal.time)){
                 imgCheck.visibility = View.INVISIBLE
                 imgProfile.visibility = View.INVISIBLE
                 imguncheckBackground.visibility = View.INVISIBLE
@@ -89,8 +114,12 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
 
                 layoutCock.visibility = View.VISIBLE
             }
+
             layoutCock.setOnClickListener {
+                bundle.putInt("todoId", todayTodo.todoId)
                 val todocockdialog = TodoCockDialogFragment()
+
+                todocockdialog.arguments = bundle //todoId전달
                 todocockdialog.show(fragmentManager, "todocockdialog")
             }
         }
@@ -106,9 +135,21 @@ class TodayTodoAdapter(val context: Context, private val todoList: ArrayList<Tod
 
     override fun onBindViewHolder(holder: TodayTodoAdapter.ItemViewHolder, position: Int) {
         holder.bind(todoList[position], context, fragmentManager)
+
+        holder.itemView.todo_img_check.setOnClickListener {
+            listener!!.onClicked(position, todoList[position].todoId)
+        }
     }
 
     override fun getItemCount(): Int {
         return todoList.size
+    }
+
+    fun setOnClickListener(listener: TodayTodoAdapter.OnItemClickListener){
+        this.listener = listener
+    }
+
+    interface OnItemClickListener{
+        fun onClicked(position: Int, todoId: Int)
     }
 }

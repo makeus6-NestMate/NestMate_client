@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/ic__todo_items">
+    android:layout_height="83sp"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/today_todo_background"
+    android:clipToPadding="false"
+    android:elevation="2dp">
 
     <TextView
         android:id="@+id/todo_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,26 +27,29 @@
         android:id="@+id/todo_tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:text="시간"
         android:textColor="#7c7c7c"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todo_tv_title" />
 
     <ImageView
         android:id="@+id/todo_img_notcheckbackground"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="35dp"
         android:background="@color/transparent"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.433"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1"
         app:srcCompat="@drawable/todo_button_repeat" />
 
     <ImageView
@@ -60,7 +67,7 @@
         android:id="@+id/todo_img_timer"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintEnd_toStartOf="@+id/todo_tv_remainhour"
         app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground"
@@ -68,25 +75,28 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/todo_img_profile"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="35dp"
         android:src="@drawable/chicken_img"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHeight_percent="0.334"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.08" />
 
     <LinearLayout
         android:id="@+id/todo_layout_cock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="28dp"
         android:orientation="horizontal"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/todo_img_cock"
@@ -102,6 +112,7 @@
             android:layout_marginLeft="4dp"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:lineSpacingExtra="3sp"
             android:text="콕찌르기"
             android:textColor="#000000"
@@ -115,6 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanscjkkr_medium"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="0sp"
         android:text="4"
         android:textColor="#000000"
@@ -127,15 +139,15 @@
         android:id="@+id/todo_tv_remain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="left"
+        android:includeFontPadding="false"
         android:lineSpacingExtra="0sp"
         android:text="시간 전"
         android:textColor="#000000"
         android:textSize="11sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/todo_img_notcheckbackground"
         app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground"
         tools:text="시간 전" />
 

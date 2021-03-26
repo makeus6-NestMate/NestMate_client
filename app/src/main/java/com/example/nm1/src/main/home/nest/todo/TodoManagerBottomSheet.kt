@@ -100,6 +100,38 @@ class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
         TODO("Not yet implemented")
     }
 
+    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetTodayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockSuccess(response: PostCockResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -147,5 +179,45 @@ class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
     override fun onDeleteRepeatTodoFailure(message: String) {
         dismissLoadingDialog()
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onGetSearchOneDayTodoSuccess(response: GetSearchOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoSuccess(response: GetSearchRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateSuccess(response: GetSearchTodoByDateResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoSuccess(response: DeleteAllOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoSuccess(response: DeleteAllRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

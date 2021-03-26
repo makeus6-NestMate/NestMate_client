@@ -39,16 +39,15 @@
             android:id="@+id/register_dialog_cancel_btn"
             android:layout_width="84dp"
             android:layout_height="40dp"
+            android:layout_marginRight="11dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
             android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:lineSpacingExtra="3sp"
             android:text="@string/memo_dialog_cancel"
-            android:includeFontPadding="false"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="normal"
-            android:layout_marginRight="11dp"
-            />
+            android:textStyle="normal" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register_dialog_confirm_btn"

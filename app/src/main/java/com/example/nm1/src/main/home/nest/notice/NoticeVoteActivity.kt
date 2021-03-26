@@ -77,13 +77,26 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
         })
 
         binding.noticeVoteConfirmBtn.setOnClickListener {
-            val format = SimpleDateFormat("mm월 dd일 HH시 mm분")
-            val timestamp = Timestamp(System.currentTimeMillis()).time
-            val data = NoticeVoteData(isNotice, binding.noticeVoteContentEt.text.toString(), format.format(timestamp).toString(), null)
-            val intent = Intent()
-            intent.putExtra("data", data)
-            setResult(RESULT_OK, intent)
-            finish()
+            if(isNotice){
+                val data = NoticeVoteData(isNotice = isNotice, content = binding.noticeVoteContentEt.text.toString())
+                val intent = Intent()
+                intent.putExtra("isNotice", true)
+                intent.putExtra("data", data)
+                setResult(RESULT_OK, intent)
+                finish()
+            }else{
+                var choiceArr = ArrayList<String>()
+                for(item in voteItemList){
+                    choiceArr.add(item.content)
+                }
+                val data = NoticeVoteData(isNotice = isNotice, title = binding.voteContentEt.text.toString(), choiceArr = choiceArr)
+                val intent = Intent()
+                intent.putExtra("isNotice", false)
+                intent.putExtra("data", data)
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+
         }
 
 
@@ -110,6 +123,8 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
                     binding.voteAddItemEt.clearFocus()
                     binding.voteAddItemLayout.visibility = View.GONE
                     binding.voteAddItemEt.text.clear()
+
+                    binding.noticeVoteConfirmBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
 
                     val imm = this@NoticeVoteActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(binding!!.voteAddItemEt.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)

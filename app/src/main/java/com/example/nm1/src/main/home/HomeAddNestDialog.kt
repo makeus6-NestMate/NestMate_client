@@ -180,11 +180,9 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
     }
 
     override fun onGetNestSuccess(response: GetNestResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun onGetNestFailure(message: String) {
-        TODO("Not yet implemented")
     }
 
     override fun onPutNestSuccess(response: PutEditNestResponse) {

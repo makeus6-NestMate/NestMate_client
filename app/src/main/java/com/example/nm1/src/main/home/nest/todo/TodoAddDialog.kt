@@ -108,9 +108,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
             isrepeat[1] = true
         }
 //       할일
-//       글자수 실시간으로 보이게
+//       글자수 실시간으로 보이게 & 버튼 활성화
         binding.todoEdtTitle.addTextChangedListener(object : TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -118,6 +117,27 @@ class TodoAddDialog : DialogFragment(), TodoView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val userinput = binding.todoEdtTitle.text.toString()
                 binding.todoTvTitlelength.text = userinput.length.toString()
+
+//           반복
+                if (isrepeat[0]){
+                    if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
+                        binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                    }else{
+                        binding.todoBtnConfirm.isEnabled = false
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                    }
+                }
+//            하루만
+                else if (isrepeat[1]){
+                    if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
+                        binding.todoBtnConfirm.isEnabled = true //버튼 활성화
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                    }else{
+                        binding.todoBtnConfirm.isEnabled = false
+                        binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                    }
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -353,31 +373,6 @@ class TodoAddDialog : DialogFragment(), TodoView {
             dismiss()
         }
 
-//       다 입력시 확인버튼 활성화
-        binding.todoEdtTitle.onMyTextChanged {
-//           반복
-            if (isrepeat[0]){
-                if(binding.todoEdtTitle.text.isNotEmpty() && selecteddaylist.joinToString("")!="0000000" && binding.todoTimepicker.text.isNotEmpty()){
-                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-                }else{
-                    binding.todoBtnConfirm.isEnabled = false
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
-                }
-            }
-//            하루만
-            else if (isrepeat[1]){
-                if(binding.todoEdtTitle.text.isNotEmpty() && binding.todoDatepicker.text.isNotEmpty() && binding.todoTimepicker.text.isNotEmpty()){
-                    binding.todoBtnConfirm.isEnabled = true //버튼 활성화
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-                }else{
-                    binding.todoBtnConfirm.isEnabled = false
-                    binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
-                }
-            }
-
-        }
-
 //       확인버튼 -> 할일 등록
 //       반복/하루만 구분할 필요 O -> 날짜선택 / 요일선택이 다름
         binding.todoBtnConfirm.setOnClickListener {
@@ -405,7 +400,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
 
         val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.76).toInt()
+        params?.width = (deviceWidth*0.75).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 
@@ -461,6 +456,38 @@ class TodoAddDialog : DialogFragment(), TodoView {
         TODO("Not yet implemented")
     }
 
+    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetTodayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockSuccess(response: PostCockResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -490,6 +517,46 @@ class TodoAddDialog : DialogFragment(), TodoView {
     }
 
     override fun onDeleteRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchOneDayTodoSuccess(response: GetSearchOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoSuccess(response: GetSearchRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateSuccess(response: GetSearchTodoByDateResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetSearchTodoByDateFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoSuccess(response: DeleteAllOneDayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllOneDayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoSuccess(response: DeleteAllRepeatTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteAllRepeatTodoFailure(message: String) {
         TODO("Not yet implemented")
     }
 }
