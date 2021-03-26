@@ -3,20 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/ic__todo_items">
+    android:layout_height="100sp">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic__todo_items" />
 
     <TextView
         android:id="@+id/todo_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +43,7 @@
         android:includeFontPadding="false"
         android:text="시간"
         android:textColor="#7c7c7c"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_title" />
@@ -39,14 +52,14 @@
         android:id="@+id/todo_img_notcheckbackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="35dp"
         android:background="@color/transparent"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.434"
+        app:layout_constraintHeight_percent="0.334"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.1"
+        app:layout_constraintWidth_percent="0.08"
         app:srcCompat="@drawable/todo_button_repeat" />
 
     <ImageView
@@ -74,14 +87,14 @@
         android:id="@+id/todo_img_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="35dp"
         android:src="@drawable/chicken_img"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.434"
+        app:layout_constraintHeight_percent="0.334"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.1" />
+        app:layout_constraintWidth_percent="0.08" />
 
     <LinearLayout
         android:id="@+id/todo_layout_cock"
@@ -92,7 +105,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/todo_img_cock"

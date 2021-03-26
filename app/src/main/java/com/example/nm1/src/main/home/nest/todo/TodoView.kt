@@ -22,6 +22,18 @@ interface TodoView {
 //   오늘 할일 조회
     fun onGetTodayTodoSuccess(response:GetTodayTodoResponse)
     fun onGetTodayTodoFailure(message: String)
+    
+//   할일 완료
+    fun onPostCompleteTodoSuccess(response:PostTodoCompleteResponse)
+    fun onPostCompleteTodoFailure(message: String)
+
+//    콕찌르기 멤버
+    fun onGetCockMemberSuccess(response:GetCockMemberResponse)
+    fun onGetCockMemberFailure(message: String)
+
+    //    콕찌르기
+    fun onPostCockSuccess(response:PostCockResponse)
+    fun onPostCockFailure(message: String)
 
     //    하루 할일 수정
     fun onPutOneDayTodoSuccess(response:PutOneDayTodoResponse)

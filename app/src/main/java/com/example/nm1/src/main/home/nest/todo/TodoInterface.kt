@@ -25,7 +25,19 @@ interface TodoInterface {
     @GET("/room/{roomId}/todo/today")
     fun getTodayTodo(@Path("roomId") roomId:Int) : Call<GetTodayTodoResponse>
 
-//    하루 할일 수정
+//    오늘 할일 완료
+    @POST("/room/{roomId}/todo/{todoId}/complete")
+    fun postTodoComplete(@Path("roomId") roomId:Int, @Path("todoId") todoId: Int): Call<PostTodoCompleteResponse>
+
+//    콕찌르기
+    @POST("/room/{roomId}/todo/{todoId}/member/{memberId}")
+    fun postCock(@Path("roomId") roomId:Int, @Path("todoId") todoId: Int, @Path("memberId") memberId:Int): Call<PostCockResponse>
+
+//    콕찌르기 멤버 가져오기
+    @GET("/room/{roomId}/todo/member")
+    fun getCockMember(@Path("roomId") roomId:Int) : Call<GetCockMemberResponse>
+
+    //    하루 할일 수정
     @PUT("/room/{roomId}/todo/day")
     fun putOneDayTodo(@Path("roomId") roomId:Int, @Body params:PutOneDayTodo) : Call<PutOneDayTodoResponse>
 

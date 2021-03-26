@@ -24,9 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showLoadingDialog(requireContext())
-        HomeService(this).tryGetNest()
-
         binding.homeLayoutEmpty.setOnClickListener {
             val intent = Intent(activity, NestActivity::class.java)
             startActivity(intent)
@@ -62,6 +59,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             LinearLayoutManager.HORIZONTAL,
             false
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showLoadingDialog(requireContext())
+        HomeService(this).tryGetNest()
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {

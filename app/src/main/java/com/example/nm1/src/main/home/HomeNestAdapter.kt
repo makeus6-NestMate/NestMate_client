@@ -98,14 +98,14 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
             }
 
 //           둥지 수정
-            layoutNest.setOnLongClickListener {
-                val homeNestEditBottomSheet = HomeNestEditBottomSheet()
-                editor.putString("roomName", nest.roomName)
-                editor.putInt("roomId", nest.roomId)
-
-                homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
-                true
-            }
+//            layoutNest.setOnLongClickListener {
+//                val homeNestEditBottomSheet = HomeNestEditBottomSheet()
+//                editor.putString("roomName", nest.roomName)
+//                editor.putInt("roomId", nest.roomId)
+//
+//                homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
+//                true
+//            }
         }
     }
 

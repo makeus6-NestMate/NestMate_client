@@ -405,7 +405,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
 
         val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.76).toInt()
+        params?.width = (deviceWidth*0.75).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 
@@ -458,6 +458,38 @@ class TodoAddDialog : DialogFragment(), TodoView {
     }
 
     override fun onGetRepeatTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetTodayTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockSuccess(response: PostCockResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberFailure(message: String) {
         TODO("Not yet implemented")
     }
 

@@ -22,6 +22,9 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId)
+
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
             // 새로고침 완료시,
@@ -101,14 +104,44 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
         dismissLoadingDialog()
-        val adapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
-        binding.todoRecycler.adapter = adapter
-        adapter.notifyDataSetChanged()
+        if (response.result.todo.isNotEmpty()){ //오늘 할일이 있으면
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE
+            val adapter = TodayTodoAdapter(requireContext(), response.result.todo, parentFragmentManager)
+
+
+            binding.todoRecycler.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onGetTodayTodoFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
+    }
+
+    override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCompleteTodoFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockSuccess(response: PostCockResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostCockFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberSuccess(response: GetCockMemberResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetCockMemberFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onPutOneDayTodoSuccess(response: PutOneDayTodoResponse) {

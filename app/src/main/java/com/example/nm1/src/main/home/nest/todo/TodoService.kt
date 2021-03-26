@@ -72,6 +72,46 @@ class TodoService(val view: TodoView) {
         })
     }
 
+    fun tryPostCompleteTodo(roomId:Int, todoId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.postTodoComplete(roomId, todoId).enqueue(object: Callback<PostTodoCompleteResponse> {
+            override fun onResponse(call: Call<PostTodoCompleteResponse>, response: Response<PostTodoCompleteResponse>) {
+                view.onPostCompleteTodoSuccess(response.body() as PostTodoCompleteResponse)
+            }
+
+            override fun onFailure(call: Call<PostTodoCompleteResponse>, t: Throwable) {
+                view.onPostCompleteTodoFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryPostCock(roomId:Int, todoId:Int, memberId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.postCock(roomId, todoId, memberId).enqueue(object: Callback<PostCockResponse> {
+            override fun onResponse(call: Call<PostCockResponse>, response: Response<PostCockResponse>) {
+                view.onPostCockSuccess(response.body() as PostCockResponse)
+            }
+
+            override fun onFailure(call: Call<PostCockResponse>, t: Throwable) {
+                view.onPostCockFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    fun tryGetCockMember(roomId:Int){
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        todoInterface.getCockMember(roomId).enqueue(object: Callback<GetCockMemberResponse> {
+            override fun onResponse(call: Call<GetCockMemberResponse>, response: Response<GetCockMemberResponse>) {
+                view.onGetCockMemberSuccess(response.body() as GetCockMemberResponse)
+            }
+
+            override fun onFailure(call: Call<GetCockMemberResponse>, t: Throwable) {
+                view.onGetCockMemberFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+
     fun tryPutOneDayTodo(roomId:Int, putOneDayTodo: PutOneDayTodo){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
         todoInterface.putOneDayTodo(roomId, putOneDayTodo).enqueue(object: Callback<PutOneDayTodoResponse> {
