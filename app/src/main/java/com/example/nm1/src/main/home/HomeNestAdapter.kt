@@ -2,12 +2,15 @@ package com.example.nm1.src.main.home
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
@@ -15,7 +18,7 @@ import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.nest.NestActivity
 
-class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>):
+class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>, private val fragmentManager: FragmentManager):
     RecyclerView.Adapter<HomeNestAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,16 +29,26 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
         private val memList = itemView.findViewById<RecyclerView>(R.id.nest_recycler_memlist)
         private val layoutNest = itemView.findViewById<ConstraintLayout>(R.id.layout_nest_item)
         val editor = ApplicationClass.sSharedPreferences.edit()
+        private val viewPool = RecyclerView.RecycledViewPool()
 
-        fun bind(nest: NestInfo, context: Context) {
+        fun bind(nest: NestInfo, context: Context, fragmentManager: FragmentManager) {
             tvName.text = nest.roomName //둥지 이름
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val width = (windowManager.defaultDisplay.width *0.4805).toInt()
+
+            val innerLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+            memList.apply{
+                layoutManager = innerLayoutManager
+                adapter = HomeNestMemberAdapter(context, nest.members)
+                setRecycledViewPool(viewPool)
+            }
 
             itemView.layoutParams = RecyclerView.LayoutParams(
                 width,
                 RecyclerView.LayoutParams.MATCH_PARENT
             )
+
 //           배경
             when (nest.roomColor) {
                 "#" + Integer.toHexString(ContextCompat.getColor(context, R.color.peach))
@@ -76,21 +89,23 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
                 tvPlusMemNum.text = (nest.members.size-3).toString() //추가 멤버 수 보여주기
             }
 
-            val adapter = HomeNestMemberAdapter(context, nest.members)
-            memList.layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-            memList.adapter = adapter
-
             layoutNest.setOnClickListener {
 //              둥지를 클릭할때마다 roomId 저장소에 저장
                 editor.putString("roomName", nest.roomName)
                 editor.putInt("roomId", nest.roomId)
                 editor.apply()
-                
+
                 startActivity(context, Intent(context, NestActivity::class.java), null)
+            }
+
+//           둥지 수정
+            layoutNest.setOnLongClickListener {
+                val homeNestEditBottomSheet = HomeNestEditBottomSheet()
+                editor.putString("roomName", nest.roomName)
+                editor.putInt("roomId", nest.roomId)
+
+                homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
+                true
             }
         }
     }
@@ -104,7 +119,7 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
     }
 
     override fun onBindViewHolder(holder: HomeNestAdapter.ItemViewHolder, position: Int) {
-        holder.bind(nestList[position], context)
+        holder.bind(nestList[position], context, fragmentManager)
     }
 
     override fun getItemCount(): Int {

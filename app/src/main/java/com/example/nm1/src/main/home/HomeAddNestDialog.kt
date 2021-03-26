@@ -5,8 +5,11 @@ import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -17,10 +20,11 @@ import com.example.nm1.databinding.DialogNestAddBinding
 import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.PostAddNestRequest
+import com.example.nm1.src.main.home.model.PutEditNestResponse
 import com.example.nm1.util.LoadingDialog
-import com.example.nm1.util.onMyTextChanged
 
-class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
+
+class HomeAddNestDialog : DialogFragment(), HomeView {
     var windowManager: WindowManager? = null
     var display: Display? = null
     var size: Point? = null
@@ -81,15 +85,47 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
 
 //        취소버튼
         binding.homeAddnestBtnCancel.setOnClickListener {
+            binding.homeAddnestEdtName.text.clear()
+            binding.homeAddnestRadiogroup.clearCheck()
+
             dismiss()
         }
 
 //       확인버튼
-        binding.homeAddnestEdtName.onMyTextChanged {
-            if(binding.homeAddnestEdtName.text.isNotEmpty() && color!=0){
+//        binding.homeAddnestEdtName.addTextChangedListener() {
+//            if(binding.homeAddnestEdtName.text.isNotEmpty() && color!=0){
+//                binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
+//                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+//            }else{
+//                binding.homeAddnestBtnConfirm.isEnabled = false
+//                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+//            }
+//        }
+
+//        버튼활성화
+        binding.homeAddnestEdtName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+                if (binding.homeAddnestEdtName.text.isNotEmpty() && color!=0) {
+                    binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }
+                else{
+                    binding.homeAddnestBtnConfirm.isEnabled = false
+                    binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
+            }
+            override fun afterTextChanged(s: Editable) {
+
+            }
+        })
+
+        binding.homeAddnestRadiogroup.setOnCheckedChangeListener { group, checkedId ->
+            if (binding.homeAddnestEdtName.text.isNotEmpty() && checkedId != -1) {
                 binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
                 binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-            }else{
+            } else {
                 binding.homeAddnestBtnConfirm.isEnabled = false
                 binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
             }
@@ -97,8 +133,13 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
 
         binding.homeAddnestBtnConfirm.setOnClickListener {
             showLoadingDialog(requireContext())
-            val hexColor = "#"+Integer.toHexString(ContextCompat.getColor(requireContext(), color)).substring(2)
-            val addNestRequest = PostAddNestRequest(hexColor, binding.homeAddnestEdtName.text.toString())
+            val hexColor = "#"+Integer.toHexString(ContextCompat.getColor(requireContext(), color)).substring(
+                2
+            )
+            val addNestRequest = PostAddNestRequest(
+                hexColor,
+                binding.homeAddnestEdtName.text.toString()
+            )
             HomeService(this).tryAddNest(addNestRequest)
         }
     }
@@ -143,6 +184,14 @@ class HomeAddNestDialogFragment : DialogFragment(), HomeFragmentView {
     }
 
     override fun onGetNestFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutNestSuccess(response: PutEditNestResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutNestFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

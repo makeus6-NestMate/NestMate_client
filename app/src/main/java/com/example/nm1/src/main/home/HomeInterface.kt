@@ -1,12 +1,8 @@
 package com.example.nm1.src.main.home
 
-import com.example.nm1.src.main.home.model.AddNestResponse
-import com.example.nm1.src.main.home.model.GetNestResponse
-import com.example.nm1.src.main.home.model.PostAddNestRequest
+import com.example.nm1.src.main.home.model.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface HomeInterface {
 //   둥지 만들기
@@ -16,4 +12,8 @@ interface HomeInterface {
 //    둥지 가져오기
     @GET("/room")
     fun getNest(): Call<GetNestResponse>
+
+//    둥지 수정
+    @PUT("/room/{roomId}")
+    fun putEditNest(@Path("roomId") roomId:Int, @Body params: PutEditNestRequest): Call<PutEditNestResponse>
 }

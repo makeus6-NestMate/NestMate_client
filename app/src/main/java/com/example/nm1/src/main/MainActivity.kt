@@ -1,17 +1,13 @@
 package com.example.nm1.src.main
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.nm1.R
-import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityMainBinding
-import com.example.nm1.src.login.LoginActivity
 import com.example.nm1.src.main.alarm.AlarmFragment
 import com.example.nm1.src.main.home.HomeFragment
 import com.example.nm1.src.main.mypage.MyFragment
-import com.example.nm1.src.register.RegisterOneActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate)  {
 

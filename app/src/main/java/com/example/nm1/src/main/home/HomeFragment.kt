@@ -11,13 +11,13 @@ import com.example.nm1.databinding.FragmentHomeBinding
 import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.NestInfo
+import com.example.nm1.src.main.home.model.PutEditNestResponse
 import com.example.nm1.src.main.home.nest.NestActivity
-
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::bind,
     R.layout.fragment_home
-), HomeFragmentView {
+), HomeView {
     private var nestlist:List<NestInfo>?=null
     var adapter:HomeNestAdapter?=null
 
@@ -32,11 +32,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             startActivity(intent)
         }
 
-        val addnestedialog = HomeAddNestDialogFragment()
+        val addnestedialog = HomeAddNestDialog()
         binding.homeBtnAddnest.setOnClickListener {
             addnestedialog.show(parentFragmentManager, "addnestdialog")
         }
 
+//        둥지 추가 후 바로 반영
         setFragmentResultListener("addnest") { _, bundle ->
             bundle.getString("addnest_ok")?.let {
                 if (it=="ok"){
@@ -45,6 +46,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
             }
         }
+
+//        둥지 수정 후 바로 반영
+        setFragmentResultListener("editnest") { _, bundle ->
+            bundle.getString("editnest_ok")?.let {
+                if (it=="ok"){
+                    showLoadingDialog(requireContext())
+                    HomeService(this).tryGetNest()
+                }
+            }
+        }
+
         binding.nestList.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.HORIZONTAL,
@@ -82,7 +94,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             binding.nestList.visibility = View.VISIBLE
             binding.homeLayoutEmpty.visibility = View.INVISIBLE
 
-            adapter = HomeNestAdapter(requireContext(), nestlist!!)
+            adapter = HomeNestAdapter(requireContext(), nestlist!!, parentFragmentManager)
         }
         binding.nestList.adapter = adapter
     }
@@ -90,5 +102,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override fun onGetNestFailure(message: String) {
         dismissLoadingDialog()
         showCustomToast(message)
+    }
+
+    override fun onPutNestSuccess(response: PutEditNestResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPutNestFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
