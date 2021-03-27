@@ -4,6 +4,7 @@ import com.example.nm1.config.BaseResponse
 import com.example.nm1.src.main.home.nest.memo.model.GetMemoResponse
 import com.example.nm1.src.main.home.nest.memo.model.PatchMemoRequest
 import com.example.nm1.src.main.home.nest.memo.model.PostMemoRequest
+import com.example.nm1.src.main.home.nest.memo.model.PutMemoRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -20,4 +21,7 @@ interface MemoInterface {
 
     @PATCH("/room/{roomId}/memo/{memoId}")
     fun patchMEmo(@Path("roomId") roomId: Int, @Path("memoId") memoId: Int, @Body params: PatchMemoRequest): Call<BaseResponse>
+
+    @PUT("/room/{roomId}/memo/{memoId}")
+    fun putMemo(@Path("roomId") roomId: Int, @Path("memoId") memoId: Int, @Body params: PutMemoRequest): Call<BaseResponse>
 }

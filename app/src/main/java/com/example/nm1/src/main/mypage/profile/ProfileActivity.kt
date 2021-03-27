@@ -25,7 +25,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
     private var profileImg: String? = null
     private var nickname: String? = null
     private lateinit var uriPhoto: Uri
-    private lateinit var uploadFile: MultipartBody.Part
+    private var uploadFile: MultipartBody.Part? = null
     private var map = HashMap<String, RequestBody>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +46,13 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
         }
 
         binding.profileConfirmBtn.setOnClickListener {
-            var name = RequestBody.create("text/plain".toMediaTypeOrNull(), nickname!!)
+            var name = RequestBody.create("text/plain".toMediaTypeOrNull(), binding.profileNickname.text.toString())
             map["nickname"] = name
 
             ProfileService(this).tryPutProfile(map = map, img = uploadFile)
             showLoadingDialog(this)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,6 +71,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
                     uploadFile = MultipartBody.Part.createFormData("img", file.name, requestFile)
 
                     binding.profileImg.setImageURI(uriPhoto)
+
+
+
                 }
             }
         }

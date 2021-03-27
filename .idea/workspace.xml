@@ -59,26 +59,26 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/config/ApplicationClass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/config/ApplicationClass.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoAddInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoDeleteInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/memo/MemoView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NVFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NVFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeRVHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeRVHolder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/NoticeVoteService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/VoteRVHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/VoteRVHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/vote/VoteActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/notice/vote/VoteActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/MyFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/MyFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/notice_vote_rec_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/notice_vote_rec_design.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rule_rec_design.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rule_rec_design.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_vote.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_vote.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_nv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_nv.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/mypage/profile/ProfileService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_mypage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_mypage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/memo_delete_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/memo_delete_dialog.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notice_vote_rv_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notice_vote_rv_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vote_add_rv_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vote_add_rv_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vote_rv_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vote_rv_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,9 +106,9 @@
       <list>
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -258,10 +258,10 @@
     </state>
     <state x="371" y="-767" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616789848609" />
     <state x="371" y="-767" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616535685726" />
-    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser" timestamp="1616790568649">
+    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser" timestamp="1616799525986">
       <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616790568649" />
+    <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616799525986" />
     <state x="371" y="-893" key="#com.intellij.ide.util.MemberChooser/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616537431868" />
     <state x="371" y="-912" key="#com.intellij.ide.util.MemberChooser/-327.-1080.1920.1080/0.0.1440.900@-327.-1080.1920.1080" timestamp="1616343778144" />
     <state x="558" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615970222441" />
@@ -293,28 +293,28 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616245243363" />
-    <state width="1878" height="222" key="GridCell.Tab.0.bottom" timestamp="1616780892197">
+    <state width="1878" height="169" key="GridCell.Tab.0.bottom" timestamp="1616802645892">
       <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
-    <state width="1878" height="222" key="GridCell.Tab.0.bottom/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616780892197" />
+    <state width="1878" height="169" key="GridCell.Tab.0.bottom/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616802645892" />
     <state width="1878" height="596" key="GridCell.Tab.0.bottom/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616539012178" />
     <state width="1537" height="117" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
-    <state width="1878" height="222" key="GridCell.Tab.0.center" timestamp="1616780892196">
+    <state width="1878" height="169" key="GridCell.Tab.0.center" timestamp="1616802645890">
       <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
-    <state width="1878" height="222" key="GridCell.Tab.0.center/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616780892196" />
+    <state width="1878" height="169" key="GridCell.Tab.0.center/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616802645890" />
     <state width="1878" height="596" key="GridCell.Tab.0.center/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616539012176" />
     <state width="1537" height="117" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
-    <state width="1878" height="222" key="GridCell.Tab.0.left" timestamp="1616780892195">
+    <state width="1878" height="169" key="GridCell.Tab.0.left" timestamp="1616802645889">
       <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
-    <state width="1878" height="222" key="GridCell.Tab.0.left/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616780892195" />
+    <state width="1878" height="169" key="GridCell.Tab.0.left/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616802645889" />
     <state width="1878" height="596" key="GridCell.Tab.0.left/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616539012175" />
     <state width="1537" height="117" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616255523826" />
-    <state width="1878" height="222" key="GridCell.Tab.0.right" timestamp="1616780892197">
+    <state width="1878" height="169" key="GridCell.Tab.0.right" timestamp="1616802645891">
       <screen x="-327" y="-1057" width="1920" height="1057" />
     </state>
-    <state width="1878" height="222" key="GridCell.Tab.0.right/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616780892197" />
+    <state width="1878" height="169" key="GridCell.Tab.0.right/-327.-1057.1920.1057/44.23.1396.877@-327.-1057.1920.1057" timestamp="1616802645891" />
     <state width="1878" height="596" key="GridCell.Tab.0.right/-327.-1057.1920.1057/47.23.1393.877@-327.-1057.1920.1057" timestamp="1616539012177" />
     <state width="1537" height="117" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616255523827" />
     <state x="147" y="65" key="MergeDialog" timestamp="1615962314363">

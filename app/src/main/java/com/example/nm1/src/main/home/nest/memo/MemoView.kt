@@ -15,4 +15,7 @@ interface MemoView {
 
     fun onPatchMemoSuccess(response: BaseResponse)
     fun onPatchMemoFailure(message: String)
+
+    fun onPutMemoSuccess(response: BaseResponse)
+    fun onPutMemoFailure(message: String)
 }

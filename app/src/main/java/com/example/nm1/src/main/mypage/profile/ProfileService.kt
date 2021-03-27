@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ProfileService(val view: ProfileView) {
-    fun tryPutProfile(map: HashMap<String, RequestBody>, img: MultipartBody.Part){
+    fun tryPutProfile(map: HashMap<String, RequestBody>?, img: MultipartBody.Part?){
         val retrofit = ApplicationClass.sRetrofit.create(ProfileInterface::class.java)
         retrofit.putProfile(map, img).enqueue(object: Callback<BaseResponse>{
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {

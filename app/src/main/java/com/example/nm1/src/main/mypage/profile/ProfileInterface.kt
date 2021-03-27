@@ -12,6 +12,6 @@ import retrofit2.http.PartMap
 interface ProfileInterface {
     @Multipart
     @PUT("/user/profile")
-    fun putProfile(@PartMap map: HashMap<String, RequestBody>, @Part img: MultipartBody.Part): Call<BaseResponse>
+    fun putProfile(@PartMap map: HashMap<String, RequestBody>? = null, @Part img: MultipartBody.Part? = null): Call<BaseResponse>
 
 }

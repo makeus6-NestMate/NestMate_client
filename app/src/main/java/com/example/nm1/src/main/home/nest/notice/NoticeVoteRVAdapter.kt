@@ -38,7 +38,7 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.itemView.notice_vote_rv_item_more_btn.setOnClickListener {
                     listener!!.onVoteMoreClicked(position, dataList[position].voteId!!)
                 }
-                holder.itemView.notice_vote_rv_item_layout.setOnClickListener {
+                holder.itemView.notice_vote_rv_item_content.setOnClickListener {
                     listener!!.onVoteClicked(position, dataList[position].voteId!!)
                 }
 
