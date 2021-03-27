@@ -52,7 +52,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/mem_img_background"
         app:layout_constraintEnd_toEndOf="@+id/mem_img_background"
-        app:layout_constraintHeight_percent="0.0694"
+        app:layout_constraintHeight_percent="0.07"
         app:layout_constraintTop_toTopOf="@+id/mem_img_background"
         app:layout_constraintWidth_percent="0.0527"
         tools:visibility="visible" />
