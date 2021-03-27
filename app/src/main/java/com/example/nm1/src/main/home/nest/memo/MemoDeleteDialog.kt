@@ -44,6 +44,11 @@ class MemoDeleteDialog(context: Context, memoDeleteInterface: MemoDeleteInterfac
             this.memoDeleteInterface.onDeleteClicked(true, roomId, memoId, listIdx)
             dismiss()
         }
+
+        binding.memoEditBtn.setOnClickListener {
+            this.memoDeleteInterface.onEditClicked(true, roomId, memoId, listIdx)
+            dismiss()
+        }
     }
 
     override fun onResume() {

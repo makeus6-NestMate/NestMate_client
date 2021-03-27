@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <include
@@ -27,23 +28,29 @@
                 android:layout_height="30dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/chart_crown"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:layout_gravity="center_vertical"
-                android:textStyle="normal"
-                android:textSize="13sp"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:text="이번주"
                 android:textColor="#ffffff"
+                android:textSize="13sp"
+                android:textStyle="normal"
                 android:lineSpacingExtra="8sp"
-                android:text="이번주"/>
+                android:includeFontPadding="false"/>
         </FrameLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
             android:textSize="19sp"
             android:textColor="#000000"
+            android:includeFontPadding="false"
             android:lineSpacingExtra="8sp"
             android:text="최고의 메이트는?"/>
     </LinearLayout>
@@ -63,23 +70,28 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/chart_best_mate_nothing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="invisible"
+                android:fontFamily="@font/notosanskr_bold"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="#c1c1c1"
+                android:includeFontPadding="false"
                 android:lineSpacingExtra="7sp"
                 android:text="아직 최고의 메이트가 없어요"/>
 
             <LinearLayout
+                android:id="@+id/chart_best_mate_existing"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:visibility="invisible"
                 android:gravity="center_vertical">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/bestmate_img"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginLeft="15dp"
@@ -89,22 +101,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/notosanskr_medium"
                     android:textStyle="normal"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:lineSpacingExtra="7sp"
+                    android:includeFontPadding="false"
                     android:text="수현"/>
                 <TextView
                     android:id="@+id/bestmate_cnt_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
+                    android:fontFamily="@font/notosanskr_regular"
                     android:textStyle="normal"
                     android:textSize="10sp"
                     android:textColor="#7c7c7c"
+                    android:includeFontPadding="false"
                     android:lineSpacingExtra="3sp"
-                    android:text="횟수 43회"
-                    />
+                    android:text="횟수 43회"/>
 
                 <View
                     android:layout_width="0dp"
@@ -115,7 +130,7 @@
                     android:id="@+id/clap_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="right|center"
                     android:layout_marginRight="20dp">
 
                     <ImageView
@@ -127,10 +142,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:background="@color/transparent"
+                        android:fontFamily="@font/notosanskr_medium"
                         android:textStyle="normal"
                         android:textSize="12sp"
                         android:textColor="#000000"
                         android:lineSpacingExtra="-3sp"
+                        android:includeFontPadding="false"
                         android:text="박수보내기"
                         />
                 </LinearLayout>
@@ -141,24 +158,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="367dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="19dp"
+        android:layout_marginBottom="40dp"
+        android:weightSum="100"
         android:layout_below="@+id/chart_best_mate"
         android:background="@drawable/rec_design">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chart_person_list"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginBottom="1dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/chart_person_item">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="0dp"
+            android:layout_weight="23">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chart_person_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/chart_member_item">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -167,32 +190,94 @@
             android:background="#e0e0e0"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="76"
             android:layout_gravity="center"
+            android:paddingHorizontal="23dp"
+            android:weightSum="13"
             android:orientation="horizontal">
 
             <include
                 android:id="@+id/chart_mon"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_tue"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_wed"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_thu"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_fri"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_sat"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <include
                 android:id="@+id/chart_sun"
-                layout="@layout/chart_day"/>
+                layout="@layout/chart_day"
+                android:layout_width="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
 

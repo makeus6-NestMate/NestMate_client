@@ -16,26 +16,18 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
-        <ImageButton
-            android:id="@+id/back_btn_two"
-            android:layout_width="7dp"
-            android:layout_height="13dp"
-            android:layout_marginLeft="17dp"
-            android:scaleType="centerInside"
-            android:layout_centerVertical="true"
-            android:background="@color/nothing"
-            android:src="@drawable/back_icon"/>
-
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
             android:textSize="16sp"
             android:textColor="#000000"
-            android:lineSpacingExtra="2sp"/>
+            android:lineSpacingExtra="2sp"
+            android:includeFontPadding="false"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,8 +37,8 @@
 
             <ImageButton
                 android:id="@+id/plus_btn"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginRight="18dp"
                 android:scaleType="centerInside"
                 android:background="@color/nothing"

@@ -25,9 +25,9 @@ class NoticeVoteService(val view: NoticeVoteView) {
         })
     }
 
-    fun tryGetNoticeVote(roomId: Int){
+    fun tryGetNoticeVote(roomId: Int, page: Int){
         val retrofit = ApplicationClass.sRetrofit.create(NoticeVoteInterface::class.java)
-        retrofit.getNoticeVote(roomId).enqueue(object: Callback<GetNoticeVoteResponse>{
+        retrofit.getNoticeVote(roomId, page).enqueue(object: Callback<GetNoticeVoteResponse>{
             override fun onResponse(
                 call: Call<GetNoticeVoteResponse>,
                 response: Response<GetNoticeVoteResponse>
