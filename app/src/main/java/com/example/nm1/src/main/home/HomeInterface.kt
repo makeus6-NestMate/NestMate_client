@@ -10,7 +10,7 @@ interface HomeInterface {
     fun postAddNest(@Body params: PostAddNestRequest): Call<AddNestResponse>
 
 //    둥지 가져오기
-    @GET("/room")
+    @GET("/room?page=0")
     fun getNest(): Call<GetNestResponse>
 
 //    둥지 수정
