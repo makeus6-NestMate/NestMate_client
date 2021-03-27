@@ -22,6 +22,16 @@ class NoticeRVHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         }
 
         content.text = item.notice
-        timestamp.text = item.createdAt
+        val time = item.createdAt
+        var isAm = "오전"
+        var hours = "0"
+        if((time.substring(9,11).toInt()) > 12){
+            isAm = "오후"
+            hours = (time.substring(9,11).toInt() - 12).toString()
+        }else{
+            isAm = "오전"
+            hours = time.substring(9,11)
+        }
+        timestamp.text = time.substring(3, 5) + "월 " + time.substring(6,8) + "일 " + isAm + " " + hours + "시 " + time.substring(12,14) + "분"
     }
 }

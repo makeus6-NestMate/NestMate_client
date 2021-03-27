@@ -13,7 +13,7 @@ interface NoticeVoteInterface {
     fun postNotice(@Path("roomId") roomId: Int, @Body params: PostNoticeRequest): Call<BaseResponse>
 
     @GET("/room/{roomId}/noticeVote")
-    fun getNoticeVote(@Path("roomId") roomId: Int): Call<GetNoticeVoteResponse>
+    fun getNoticeVote(@Path("roomId") roomId: Int, @Query("page") page: Int): Call<GetNoticeVoteResponse>
 
     @POST("/room/{roomId}/vote")
     fun postVote(@Path("roomId") roomId: Int, @Body params: PostVoteRequest): Call<BaseResponse>

@@ -12,6 +12,7 @@ class VoteRVHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private var title = itemView.notice_vote_rv_item_title
     private var content = itemView.notice_vote_rv_item_content
     private var timestamp = itemView.notice_vote_rv_item_timestamp
+    private var ingMark = itemView.notice_vote_rv_item_vote_ing
 
     fun bindWithView(item: NoticeVoteInfo){
         Glide.with(itemView).load(item.profileImg).error(R.drawable.chicken_img).into(img)
@@ -22,6 +23,28 @@ class VoteRVHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         }
 
         content.text = item.title
-        timestamp.text = item.createdAt
+
+
+        if(item.isFinished != null){
+            if(item.isFinished == "Y"){
+                ingMark.visibility = View.GONE
+            }else{
+                ingMark.visibility = View.VISIBLE
+            }
+        }else{
+            ingMark.visibility = View.GONE
+        }
+
+        val time = item.createdAt
+        var isAm = "오전"
+        var hours = "0"
+        if((time.substring(9,11).toInt()) > 12){
+            isAm = "오후"
+            hours = (time.substring(9,11).toInt() - 12).toString()
+        }else{
+            isAm = "오전"
+            hours = time.substring(9,11)
+        }
+        timestamp.text = time.substring(3, 5) + "월 " + time.substring(6,8) + "일 " + isAm + " " + hours + "시 " + time.substring(12,14) + "분"
     }
 }

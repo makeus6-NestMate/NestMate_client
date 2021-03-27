@@ -13,11 +13,14 @@ import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.config.BaseResponse
 import com.example.nm1.databinding.FragmentMemoBinding
-import com.example.nm1.src.main.home.nest.memo.model.GetMemoResponse
-import com.example.nm1.src.main.home.nest.memo.model.MemoData
-import com.example.nm1.src.main.home.nest.memo.model.PatchMemoRequest
-import com.example.nm1.src.main.home.nest.memo.model.PostMemoRequest
+import com.example.nm1.src.main.home.nest.memo.model.*
+import com.jakewharton.rxbinding4.view.focusChanges
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.subscribeBy
 import kotlinx.android.synthetic.main.memo_item.view.*
+import retrofit2.Call
+import java.util.concurrent.TimeUnit
 
 class MemoFragment : BaseFragment<FragmentMemoBinding>(
     FragmentMemoBinding::bind,
@@ -47,33 +50,38 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
 
 
         binding.memoAddBtn.setOnClickListener {
-            val customDialog = MemoAddDialog(this)
-            customDialog.show(parentFragmentManager, "test")
+            val customDialog = MemoAddDialog(memoCustomDialogInterface = this)
+            customDialog.show(childFragmentManager, "test")
         }
     }
 
     override fun onResume() {
         super.onResume()
         MemoService(this).tryGetMemo(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
+        showLoadingDialog(requireContext())
     }
 
 
     @SuppressLint("ClickableViewAccessibility", "ResourceAsColor")
-    override fun onConfirmBtnClicked(message: String, color: String?) {
+    override fun onConfirmBtnClicked(isEdit: Boolean, memoId: Int?, message: String, color: String?) {
         Log.d("로그", "This is MemoFragment${color}")
+        if(!isEdit){
+            var item = activity?.applicationContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            var target = item.inflate(R.layout.memo_item, null)
+            target.memo_item_tv.text = message
 
-        var item = activity?.applicationContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var target = item.inflate(R.layout.memo_item, null)
-        target.memo_item_tv.text = message
-
-        if(color != null){
-            target.memo_item_layout.setBackgroundColor(Color.parseColor(color))
+            if(color != null){
+                target.memo_item_layout.setBackgroundColor(Color.parseColor(color))
+            }
+            val request = PostMemoRequest(message, 0f, 0f, (color ?: "#ff9e81"))
+            MemoService(this@MemoFragment).tryPostMemo(ApplicationClass.sSharedPreferences.getInt("roomId", 0), request)
+            showLoadingDialog(requireContext())
+        }else{
+            val request = PutMemoRequest(message, color!!)
+            MemoService(this@MemoFragment).tryPutMemo(ApplicationClass.sSharedPreferences.getInt("roomId", 0), memoId!!, request)
+            showLoadingDialog(requireContext())
         }
 
-
-
-        val request = PostMemoRequest(message, 0f, 0f, (color ?: "#ff9e81"))
-        MemoService(this@MemoFragment).tryPostMemo(ApplicationClass.sSharedPreferences.getInt("roomId", 0), request)
     }
 
     override fun onCancelBtnClicked() {
@@ -87,11 +95,19 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
         }
     }
 
+    override fun onEditClicked(flag: Boolean, roomId: Int, memoId: Int, listIdx: Int) {
+        val customDialog = MemoAddDialog(isEdit = true, roomId = roomId, memoId = memoId, color = memoList[listIdx].memoColor,
+            content = memoList[listIdx].memo, memoCustomDialogInterface = this)
+        customDialog.show(childFragmentManager, "test")
+    }
+
 
     override fun onPostMemoSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
                 MemoService(this).tryGetMemo(ApplicationClass.sSharedPreferences.getInt("roomId", 0))
+                showLoadingDialog(requireContext())
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -100,11 +116,13 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
     }
 
     override fun onPostMemoFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onGetMemoSuccess(response: GetMemoResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
                 memoList = response.result.memo
@@ -121,7 +139,21 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
                     var item = activity?.applicationContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var target = item.inflate(R.layout.memo_item, null)
                     target.memo_item_tv.text = memoList[i].memo
-                    target.memo_item_timestamp_tv.text = memoList[i].createdAt
+
+                    val time = memoList[i].createdAt
+                    var isAm = "오전"
+                    var hours = "0"
+                    if((time.substring(6,8).toInt()) > 12){
+                        isAm = "오후"
+                        hours = (time.substring(6,8).toInt() - 12).toString()
+                    }else{
+                        isAm = "오전"
+                        hours = time.substring(6,8)
+                    }
+
+                    target.memo_item_timestamp_tv.text =  time.substring(0, 2) + "월 " + time.substring(3,5) + "일 " + isAm + " " + hours + "시 " + time.substring(9,11)+ "분"
+
+
 
                     target.memo_item_layout.setBackgroundColor(Color.parseColor(memoList[i].memoColor))
 
@@ -156,6 +188,7 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
 
                                 val request = PatchMemoRequest(v.x, v.y)
                                 MemoService(this).tryPatchMemo(ApplicationClass.sSharedPreferences.getInt("roomId",-1), memoList[i].memoId, request)
+                                showLoadingDialog(requireContext())
                             }
                         }
                         true
@@ -189,14 +222,16 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
     }
 
     override fun onGetMemoFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     override fun onDeleteMemoSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
                 MemoService(this).tryGetMemo(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
-                showCustomToast(response.message.toString())
+                showLoadingDialog(requireContext())
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -205,10 +240,12 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
     }
 
     override fun onDeleteMemoFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     override fun onPatchMemoSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
 
@@ -220,6 +257,25 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
     }
 
     override fun onPatchMemoFailure(message: String) {
+        dismissLoadingDialog()
+        showCustomToast(message)
+    }
+
+    override fun onPutMemoSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
+        when(response.code){
+            200 -> {
+                MemoService(this).tryGetMemo(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
+                showLoadingDialog(requireContext())
+            }
+            else -> {
+                showCustomToast(response.message.toString())
+            }
+        }
+    }
+
+    override fun onPutMemoFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 }
