@@ -22,7 +22,7 @@ interface TodoInterface {
     fun getRepeatTodo(@Path("roomId") roomId:Int) : Call<GetRepeatTodoResponse>
 
 //    오늘 할일 조회
-    @GET("/room/{roomId}/todo/today")
+    @GET("/room/{roomId}/todo/today?page=0")
     fun getTodayTodo(@Path("roomId") roomId:Int) : Call<GetTodayTodoResponse>
 
 //    오늘 할일 완료
