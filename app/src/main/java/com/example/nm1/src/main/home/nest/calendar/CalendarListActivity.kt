@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
@@ -26,6 +28,8 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     private lateinit var date : String
     private var calCount :String = ""
 
+    private var paging = 0
+
     private lateinit var calList : List<CalendarDetailInfo>
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
@@ -39,7 +43,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
 
         date = "$selectedYear/$selectedMonth/$selectedDay"
         showLoadingDialog(this)
-        CalendarService(this).tryGetDetailCalendar(roomId, date)
+        CalendarService(this).tryGetDetailCalendar(roomId, date, paging)
 
         val currentTime = Calendar.getInstance().time
         val currentMonth: String = SimpleDateFormat("MM", Locale.KOREAN).format(currentTime)
@@ -66,6 +70,22 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
             intent.putExtra("day", selectedDay)
             startActivity(intent)
         }
+        binding.calendarScheduleList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter?.itemCount
+                if (lastVisibleItemPosition + 1 == itemTotalCount) {
+                    getList()
+                }
+            }
+        })
+    }
+
+    fun getList(){
+        CalendarService(this).tryGetDetailCalendar(roomId, date, paging)
+        paging++
     }
 
     override fun onAddCalendarSuccess(response: AddCalendarResponse) {
@@ -85,7 +105,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onDeleteCalendarSuccess(response: DeleteCalendarResponse) {
-        CalendarService(this).tryGetDetailCalendar(roomId, date)
+        CalendarService(this).tryGetDetailCalendar(roomId, date, 0)
     }
 
     override fun onDeleteCalendarFailure(message: String) {
@@ -103,6 +123,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     override fun onGetDetailCalendarSuccess(response: GetDetailCalendarResponse) {
         calList = response.result.calendarDetailInfo
         val calListAdapter = CalendarListAdapter(this, calList)
+
         calCount = calListAdapter.itemCount.toString()
         binding.calendarListTitle.text=calCount+smallTitle
         calListAdapter.itemSetClick = object: CalendarListAdapter.ItemSetClick {
@@ -111,6 +132,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
                     when(it){
                         0 -> {
                             val intent = Intent(view.context, CalendarAddActivity::class.java)
+                            intent.putExtra("calendarId",calList[position].calendarId)
                             intent.putExtra("position",position)
                             intent.putExtra("cateIdx", calList[position].categoryIdx)
                             intent.putExtra("cateName", calList[position].category)

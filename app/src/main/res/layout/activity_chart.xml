@@ -179,7 +179,6 @@
                 android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/chart_member_item">
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
@@ -204,7 +203,7 @@
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_weight="1"/>
             <View
@@ -215,7 +214,7 @@
                 android:id="@+id/chart_tue"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -227,7 +226,7 @@
                 android:id="@+id/chart_wed"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -239,7 +238,7 @@
                 android:id="@+id/chart_thu"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -251,7 +250,7 @@
                 android:id="@+id/chart_fri"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -263,7 +262,7 @@
                 android:id="@+id/chart_sat"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -275,7 +274,7 @@
                 android:id="@+id/chart_sun"
                 layout="@layout/chart_day"
                 android:layout_width="0dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="17dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>

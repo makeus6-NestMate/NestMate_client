@@ -95,10 +95,10 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
             }
             moveYear=preYear; moveMonth=preMonth; moveDay=preDay; moveHour=preHour; moveMin=preMin;
             // 제목
-            binding.calendarTitleTxt.setText(intent.getStringExtra("title"))
+            binding.calendarTitleTxt.setText(intent.getStringExtra("title").toString())
             moveTitle=intent.getStringExtra("title").toString()
             // 메모
-            binding.calendarContentTxt.setText(intent.getStringExtra("memo"))
+            binding.calendarContentTxt.setText(intent.getStringExtra("memo").toString())
             moveMemo=intent.getStringExtra("memo").toString()
             checkActive()
         }

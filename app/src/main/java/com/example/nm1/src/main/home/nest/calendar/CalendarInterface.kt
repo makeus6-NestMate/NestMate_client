@@ -23,5 +23,5 @@ interface CalendarInterface {
 
     // 일정 세부 가져오기
     @GET("/room/{roomId}/calendar/detail")
-    fun getDetailCalendar(@Path("roomId") roomId:Int, @Query("date") date:String) : Call<GetDetailCalendarResponse>
+    fun getDetailCalendar(@Path("roomId") roomId:Int, @Query("date") date:String, @Query("page") page:Int) : Call<GetDetailCalendarResponse>
 }

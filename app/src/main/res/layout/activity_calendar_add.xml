@@ -200,6 +200,7 @@
                 android:maxLength="15"
                 android:singleLine="true"
                 android:lines="1"
+                android:textColor="@color/black"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:background="@drawable/new_rec_design"/>
@@ -234,6 +235,7 @@
                 android:paddingTop="9dp"
                 android:paddingLeft="14dp"
                 android:lines="3"
+                android:textColor="@color/black"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:background="@drawable/new_rec_design"/>

@@ -62,7 +62,9 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         if(cnt==0) return
         val img = ImageView(day.context)
         val len = day.chart_block.height
-        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*cnt/mx).dp)
+        Log.d("qqqqqa", len.toString())
+        Log.d("qqqqqb", (len*cnt/mx).toString())
+        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*cnt/mx))
         layoutParams.setMargins(0.dp,4.dp,0.dp,0.dp)
         img.layoutParams=layoutParams
         val drawable = resources.getDrawable(R.drawable.chart_rec_design)
