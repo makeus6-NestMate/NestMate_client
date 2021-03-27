@@ -13,11 +13,10 @@
     </style>
 
     <style name="nest_tabtext_style" parent="TextAppearance.Design.Tab">
-        <item name="fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="fontFamily">@font/notosanscjkkr_medium</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingExtra">17sp</item>
         <item name="android:textColor">@color/darkgray</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="orangebutton">

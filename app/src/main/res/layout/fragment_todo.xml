@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:includeFontPadding="false"
@@ -47,16 +48,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView"
             app:srcCompat="@drawable/ic__nest_todo_today" />
 
         <Button
             android:id="@+id/todo_btn_manager"
             android:layout_width="64dp"
             android:layout_height="27dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="26dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/todo_button_repeat"
             android:fontFamily="@font/notosanscjkkr_medium"
@@ -64,18 +65,17 @@
             android:text="할일관리"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/todo_btn_addtodo"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <Button
             android:id="@+id/todo_btn_addtodo"
             android:layout_width="27dp"
             android:layout_height="27dp"
-            android:layout_marginTop="35dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic__nest_todo_plustodo"
             android:shadowColor="@color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/todo_btn_manager" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/todo_layout_empty"
@@ -89,7 +89,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.129"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todo_btn_manager">
+            app:layout_constraintTop_toBottomOf="@+id/todo_tv_todaydate">
 
             <ImageView
                 android:id="@+id/todo_img_empty2"
