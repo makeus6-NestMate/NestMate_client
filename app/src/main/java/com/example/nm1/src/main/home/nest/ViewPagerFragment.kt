@@ -1,6 +1,9 @@
 package com.example.nm1.src.main.home.nest
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nm1.PagerFragmentStateAdapter
 import com.example.nm1.R

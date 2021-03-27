@@ -16,7 +16,7 @@ import com.example.nm1.R
 import com.example.nm1.databinding.DialogMemoAddBinding
 import kotlinx.android.synthetic.main.dialog_memo_add.view.*
 
-class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment() {
+class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? = null, content: String? = null, color: String? = null, memoCustomDialogInterface: MemoAddInterface): DialogFragment() {
 
     private var memoCustomDialogInterface: MemoAddInterface? = null
     private var binding: DialogMemoAddBinding? = null
@@ -25,8 +25,13 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
     var display: Display? = null
     var size: Point? = null
 
-    private var color: String? = null
+    private var isEdit = isEdit
+    private var roomId = roomId
+    private var memoId = memoId
+    private var content = content
 
+    private var color = color ?: "#ffd581"
+    private var str: String? = null
 
 //
 //    companion object{
@@ -65,11 +70,17 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
         size = Point()
         display!!.getSize(size)
 
-
+        if(isEdit != null && isEdit == true){
+            binding!!.memoDialogContentEt.setText(content!!)
+            str = content
+        }
 
         binding!!.memoDialogConfirmBtn.setOnClickListener {
-            val str = binding!!.memoDialogContentEt.text.toString()
-            this.memoCustomDialogInterface!!.onConfirmBtnClicked(str, color)
+            if(isEdit != null && isEdit == true){
+                this.memoCustomDialogInterface!!.onConfirmBtnClicked(isEdit = true, memoId = memoId, message = str!!, color = color)
+            }else{
+                this.memoCustomDialogInterface!!.onConfirmBtnClicked(isEdit = false, memoId = -1, message = str!!, color = color)
+            }
             dismiss()
         }
 
@@ -124,6 +135,8 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
                     }else{
                         binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
                     }
+
+                    str = binding!!.memoDialogContentEt.text.toString()
                 }
 
             }
@@ -136,7 +149,7 @@ class MemoAddDialog(memoCustomDialogInterface: MemoAddInterface): DialogFragment
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.8).toInt()
+        params?.width = (deviceWidth*0.75).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 }

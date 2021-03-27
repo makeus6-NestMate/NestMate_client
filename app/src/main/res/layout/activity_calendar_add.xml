@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,46 +30,59 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="카테고리 선택"/>
 
             <LinearLayout
+                android:id="@+id/calendar_category_pick_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
-
                 <include
                     android:id="@+id/category_trip"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="13dp"/>
                 <include
                     android:id="@+id/category_meal"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="13dp"/>
                 <include
                     android:id="@+id/category_meeting"
-                    layout="@layout/calendar_category"/>
+                    layout="@layout/calendar_category"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="13dp"/>
                 <include
                     android:id="@+id/category_birthday"
                     layout="@layout/calendar_category"/>
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/calendaradd_layout_select"
+                android:id="@+id/calendar_category_pick_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
                 <include
                     android:id="@+id/category_general"
-                    layout="@layout/calendar_category" />
-
+                    layout="@layout/calendar_category"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="13dp"/>
                 <include
                     android:id="@+id/category_etc"
-                    layout="@layout/calendar_category" />
-
+                    layout="@layout/calendar_category"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="13dp"/>
                 <include
                     android:id="@+id/category_random"
-                    layout="@layout/calendar_category" />
+                    layout="@layout/calendar_category"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -88,6 +102,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="날짜 선택"/>
 
             <LinearLayout
@@ -97,53 +113,18 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/calendar_year_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="78dp"
-                    android:layout_height="49dp"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#7c7c7c"
-                    android:lineSpacingExtra="23sp"
-                    android:text="년"/>
-                <Spinner
-                    android:id="@+id/calendar_month_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="78dp"
+                    android:id="@+id/cal_add_date"
+                    android:layout_width="match_parent"
                     android:layout_height="49dp"
-                    android:layout_marginLeft="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
+                    android:gravity="center"
+                    android:background="@drawable/todo_spinner"
+                    android:fontFamily="@font/notosanskr_medium"
                     android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#7c7c7c"
-                    android:lineSpacingExtra="23sp"
-                    android:text="월"/>
-                <Spinner
-                    android:id="@+id/calendar_day_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="78dp"
-                    android:layout_height="49dp"
-                    android:layout_marginLeft="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#7c7c7c"
-                    android:lineSpacingExtra="23sp"
-                    android:text="일"/>
+                    android:textSize="17sp"
+                    android:textColor="#1c1c1c"
+                    android:lineSpacingExtra="15sp"
+                    android:paddingLeft="10dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -163,6 +144,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="시간 선택"/>
 
             <LinearLayout
@@ -172,44 +155,18 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/calendar_fm_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="87dp"
-                    android:layout_height="49dp"/>
-                <Spinner
-                    android:id="@+id/calendar_hour_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="78dp"
-                    android:layout_height="49dp"
-                    android:layout_marginLeft="11dp"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#7c7c7c"
-                    android:lineSpacingExtra="23sp"
-                    android:text="시"/>
-                <Spinner
-                    android:id="@+id/calendar_min_spinner"
-                    android:layout_centerHorizontal="true"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="78dp"
+                    android:id="@+id/cal_add_time"
+                    android:layout_width="match_parent"
                     android:layout_height="49dp"
-                    android:layout_marginLeft="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
+                    android:gravity="center"
+                    android:background="@drawable/todo_spinner"
+                    android:fontFamily="@font/notosanskr_medium"
                     android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#7c7c7c"
-                    android:lineSpacingExtra="23sp"
-                    android:text="분"/>
+                    android:textSize="17sp"
+                    android:textColor="#1c1c1c"
+                    android:lineSpacingExtra="15sp"
+                    android:paddingLeft="10dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -229,6 +186,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="제목"/>
 
             <EditText
@@ -238,7 +197,13 @@
                 android:layout_marginTop="11dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="14dp"
-                android:background="@drawable/rec_design"/>
+                android:maxLength="15"
+                android:singleLine="true"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:background="@drawable/new_rec_design"/>
         </LinearLayout>
 
         <LinearLayout
@@ -257,6 +222,8 @@
                 android:textSize="15sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
                 android:text="내용"/>
 
             <EditText
@@ -265,9 +232,13 @@
                 android:layout_height="97dp"
                 android:layout_marginTop="11dp"
                 android:gravity="start"
-                android:paddingTop="7dp"
+                android:paddingTop="9dp"
                 android:paddingLeft="14dp"
-                android:background="@drawable/rec_design"/>
+                android:lines="3"
+                android:textColor="@color/black"
+                android:fontFamily="@font/notosanskr_medium"
+                android:includeFontPadding="false"
+                android:background="@drawable/new_rec_design"/>
         </LinearLayout>
 
         <Button
@@ -277,8 +248,10 @@
             android:layout_below="@+id/calendar_content"
             android:layout_marginVertical="23dp"
             android:layout_marginHorizontal="20dp"
-            android:background="@drawable/roundrec_design"
+            android:background="@drawable/roundrec_design_inactive_bg"
             android:text="확인"
+            android:fontFamily="@font/notosanskr_medium"
+            android:includeFontPadding="false"
             android:textColor="@color/white"/>
 
     </RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="19dp"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/cal_add_cate_roundrec"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/calendar_category_color_mini_list"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/round_design"/>
+
+        <TextView
+            android:id="@+id/calendar_category_name_mini_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/notosanskr_medium"
+            android:textStyle="normal"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="5sp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:maxWidth="24dp"
+            android:ellipsize="end"
+            android:text="어쩌라구요옹"/>
+    </LinearLayout>
+</LinearLayout>

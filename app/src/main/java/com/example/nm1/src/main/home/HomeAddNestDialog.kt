@@ -9,7 +9,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.*
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -29,6 +28,7 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
     var display: Display? = null
     var size: Point? = null
     var color = 0
+
     lateinit var mLoadingDialog: LoadingDialog
 
     private lateinit var binding: DialogNestAddBinding
@@ -52,6 +52,8 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var color = 0
 
         windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
         display = windowManager!!.defaultDisplay
@@ -80,6 +82,15 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
                 R.id.home_addnest_radio_btn6 -> {
                     color = R.color.light_green
                 }
+            }
+
+            if (binding.homeAddnestEdtName.text.isNotEmpty()) {
+                binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+            }
+            else{
+                binding.homeAddnestBtnConfirm.isEnabled = false
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
             }
         }
 
@@ -120,16 +131,6 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
 
             }
         })
-
-        binding.homeAddnestRadiogroup.setOnCheckedChangeListener { group, checkedId ->
-            if (binding.homeAddnestEdtName.text.isNotEmpty() && checkedId != -1) {
-                binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-            } else {
-                binding.homeAddnestBtnConfirm.isEnabled = false
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
-            }
-        }
 
         binding.homeAddnestBtnConfirm.setOnClickListener {
             showLoadingDialog(requireContext())

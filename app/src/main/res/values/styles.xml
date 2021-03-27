@@ -13,11 +13,10 @@
     </style>
 
     <style name="nest_tabtext_style" parent="TextAppearance.Design.Tab">
-        <item name="fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="fontFamily">@font/notosanscjkkr_medium</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingExtra">17sp</item>
         <item name="android:textColor">@color/darkgray</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="orangebutton">
@@ -72,5 +71,18 @@
 
     <style name="MyTimePickerTheme" parent="android:Widget.Material.Light.TimePicker">
         <item name="android:timePickerMode">spinner</item>
+    </style>
+
+    <style name="dialog_fullscreen" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/modal_radius</item>
     </style>
 </resources>
