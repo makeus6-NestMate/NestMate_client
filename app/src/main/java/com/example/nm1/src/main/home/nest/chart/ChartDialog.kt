@@ -22,6 +22,7 @@ class ChartDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DialogChartBinding.inflate(inflater, container, false)
+        dialog?.window?.setBackgroundDrawableResource(R.drawable.rec_design)
         return binding.root
     }
 

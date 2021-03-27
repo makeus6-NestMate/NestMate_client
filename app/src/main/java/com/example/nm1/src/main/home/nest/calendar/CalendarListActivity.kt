@@ -38,12 +38,12 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         selectedDay=intent.getStringExtra("day").toString()
 
         date = "$selectedYear/$selectedMonth/$selectedDay"
+        showLoadingDialog(this)
         CalendarService(this).tryGetDetailCalendar(roomId, date)
 
         val currentTime = Calendar.getInstance().time
         val currentMonth: String = SimpleDateFormat("MM", Locale.KOREAN).format(currentTime)
         var currentDay: String = SimpleDateFormat("dd", Locale.KOREAN).format(currentTime)
-        val currentHour: String = SimpleDateFormat("HH", Locale.KOREAN).format(currentTime)
 
         //대제목
         toolbarTitle = selectedYear+"년 "+selectedMonth+"월 "+selectedDay+"일"
@@ -85,13 +85,6 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onDeleteCalendarSuccess(response: DeleteCalendarResponse) {
-//        val intent = Intent(this, CalendarListActivity::class.java)
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//        intent.putExtra("year", selectedYear)
-//        intent.putExtra("month", selectedMonth)
-//        intent.putExtra("day", selectedDay)
-//        startActivity(intent)
-//        finish()
         CalendarService(this).tryGetDetailCalendar(roomId, date)
     }
 
@@ -149,6 +142,8 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         }
         binding.calendarScheduleList.adapter = calListAdapter
         calListAdapter.notifyDataSetChanged()
+
+        dismissLoadingDialog()
     }
 
     override fun onGetDetailCalendarFailure(message: String) {

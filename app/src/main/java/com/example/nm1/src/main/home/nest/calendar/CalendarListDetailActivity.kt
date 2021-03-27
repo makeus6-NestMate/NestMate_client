@@ -96,7 +96,6 @@ class CalendarListDetailActivity : BaseActivity<ActivityCalendarListDetailBindin
         intent.putExtra("day", datetime.substring(8,10))
         startActivity(intent)
         finish()
-        finish()
     }
 
     override fun onDeleteCalendarFailure(message: String) {

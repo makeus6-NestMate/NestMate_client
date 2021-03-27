@@ -36,6 +36,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showLoadingDialog(requireContext())
         initView(0)
         binding.calendarBackBtn.setOnClickListener {
             initView(1)
@@ -46,6 +47,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
     }
 
     fun initView(idx : Int) {
+        Log.d("zzzzz", roomId.toString())
         if(idx==1) pageIndex--;
         else if(idx==2) pageIndex++;
 
@@ -110,6 +112,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
             }
         }
         binding.calendarView.adapter=calAdapter
+        dismissLoadingDialog()
     }
 
     override fun onGetCalendarFailure(message: String) {

@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:orientation="horizontal"
+    android:gravity="center_vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rec_design">
 
-    <ImageView
-        android:id="@+id/alarmImage"
-        android:background="@drawable/round_design"
-        android:layout_gravity="center_vertical"
+    <TextView
+        android:id="@+id/alarm_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"/>
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:textStyle="normal"
+        android:textSize="10sp"
+        android:textColor="#c1c1c1"
+        android:lineSpacingExtra="5sp"
+        android:includeFontPadding="false"
+        android:layout_alignParentRight="true"
+        tools:text="오후 7시 30분"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="13dp">
+        android:layout_marginVertical="15dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/alarm_img"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/round_design"/>
 
         <TextView
-            android:id="@+id/alarmTime"
+            android:id="@+id/alarm_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:textStyle="normal"
-            android:textSize="10sp"
-            android:textColor="#c1c1c1"
-            android:lineSpacingExtra="5sp"
-            android:layout_alignParentRight="true"
-            tools:text="오후 7시 30분"
-            />
-
-        <TextView
-            android:id="@+id/alarmContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/alarmTime"
+            android:layout_marginLeft="13dp"
+            android:fontFamily="@font/notosanskr_regular"
             android:textStyle="normal"
             android:textSize="14sp"
             android:textColor="#000000"
-            android:lineSpacingExtra="9sp"
+            android:lineSpacingExtra="3sp"
+            android:includeFontPadding="false"
             tools:text="‘서은’님이\n‘쓰레기 버리기’를 부탁해요."/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
