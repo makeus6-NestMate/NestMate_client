@@ -14,11 +14,11 @@ interface TodoInterface {
     fun postAddRepeatTodo(@Path("roomId") roomId:Int, @Body params: PostAddRepeatTodo): Call<AddRepeatTodoResponse>
 
 //    하루 할일 조회
-    @GET("/room/{roomId}/todo/day")
+    @GET("/room/{roomId}/todo/day?page=0")
     fun getOneDayTodo(@Path("roomId") roomId:Int) : Call<GetOneDayTodoResponse>
 
 //    반복 할일 조회
-    @GET("/room/{roomId}/todo/days")
+    @GET("/room/{roomId}/todo/days?page=0")
     fun getRepeatTodo(@Path("roomId") roomId:Int) : Call<GetRepeatTodoResponse>
 
 //    오늘 할일 조회
@@ -54,15 +54,15 @@ interface TodoInterface {
     fun deleteRepeatTodo(@Path("roomId") roomId:Int, @Path("todoId") todoId:Int): Call<DeleteRepeatTodoResponse>
 
 //   하루할일 키워드검색
-    @GET("/room/{roomId}/todo/day/search")
+    @GET("/room/{roomId}/todo/day/search?page=0")
     fun getSearchOneDayTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchOneDayTodoResponse>
 
 //    반복 할일 키워드검색
-    @GET("/room/{roomId}/todo/days/search")
+    @GET("/room/{roomId}/todo/days/search?page=0")
     fun getSearchRepeatTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchRepeatTodoResponse>
 
 //    하루할일 날짜 검색
-    @GET("/room/{roomId}/todo/day/calendar")
+    @GET("/room/{roomId}/todo/day/calendar?page=0")
     fun getSearchTodoByDate(@Path("roomId") roomId:Int, @Query("date") date:String) : Call<GetSearchTodoByDateResponse>
 
 //    하루할일 전체 삭제
