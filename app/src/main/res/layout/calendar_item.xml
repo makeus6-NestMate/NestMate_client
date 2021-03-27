@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    android:gravity="top|center_horizontal">
+
     <TextView
         android:id="@+id/calendar_day"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center_horizontal|top"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:background="@drawable/calendar_today_round_design"
+        android:fontFamily="@font/notosanskr_regular"
         android:text="1"
         android:textStyle="normal"
         android:textSize="16sp"
         android:textColor="#000000"
-        android:lineSpacingExtra="8sp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:lineSpacingExtra="8sp"
+        android:includeFontPadding="false"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_category_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        tools:listitem="@layout/calendar_category_mini_list"/>
+</LinearLayout>
