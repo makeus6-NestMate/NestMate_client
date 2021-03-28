@@ -1,8 +1,10 @@
 package com.example.nm1.src.main.home.nest.notice
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
@@ -22,6 +24,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
     private lateinit var adapter: NoticeVoteRVAdapter
     private var roomId = ApplicationClass.sSharedPreferences.getInt("roomId", -1)
     private var page = 0
+    private lateinit var thisContext: Context
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,12 +33,15 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         }else{
             binding.noticeEmptyImg.visibility = View.GONE
         }
+        thisContext = requireContext()
 
         binding.noticeVoteAddBtn.setOnClickListener {
             val intent = Intent(activity, NoticeVoteActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivityForResult(intent, 100)
         }
+
+        Log.d("로그", "${roomId}")
 
         this.adapter = NoticeVoteRVAdapter()
         this.adapter.submitList(this.dataList)
@@ -46,8 +52,8 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
 
     override fun onResume() {
         super.onResume()
+        showLoadingDialog(thisContext)
         NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-        showLoadingDialog(requireContext())
         if(dataList.size > 0){
             binding.noticeEmptyImg.visibility = View.GONE
         }else{
@@ -64,14 +70,14 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
                 if(from == true){
                     val item = data?.getSerializableExtra("data") as NoticeVoteData
                     val request = PostNoticeRequest(item.content!!)
-                    showLoadingDialog(requireContext())
-                    NoticeVoteService(this).tryPostNotice(roomId, request)
+                    //showLoadingDialog(thisContext)
+                    NoticeVoteService(this@NVFragment).tryPostNotice(roomId, request)
 
                 }else{
                     val item = data?.getSerializableExtra("data") as NoticeVoteData
                     val request = PostVoteRequest(item.title!!, item.choiceArr!!)
-                    showLoadingDialog(requireContext())
-                    NoticeVoteService(this).tryPostVote(roomId, request)
+                    //showLoadingDialog(thisContext)
+                    NoticeVoteService(this@NVFragment).tryPostVote(roomId, request)
 
                 }
 
@@ -83,7 +89,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(requireContext())
+                showLoadingDialog(thisContext)
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
 
             }
@@ -138,9 +144,8 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(requireContext())
+                showLoadingDialog(thisContext)
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -157,7 +162,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(requireContext())
+                showLoadingDialog(thisContext)
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
 
             }
@@ -176,7 +181,7 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(requireContext())
+                showLoadingDialog(thisContext)
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
 
             }
@@ -221,13 +226,13 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         if(isNotice){
             dataList.removeAt(position)
             adapter.notifyItemRemoved(position)
-            showLoadingDialog(requireContext())
+            showLoadingDialog(thisContext)
             NoticeVoteService(this@NVFragment).tryDeleteNotice(roomId, noticeId!!)
 
         }else{
             dataList.removeAt(position)
             adapter.notifyItemRemoved(position)
-            showLoadingDialog(requireContext())
+            showLoadingDialog(thisContext)
             NoticeVoteService(this@NVFragment).tryDeleteVote(roomId, voteId!!)
 
         }
