@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentHomeBinding
+import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.model.PutEditNestResponse
 import com.example.nm1.src.main.home.nest.NestActivity
+import com.example.nm1.src.main.home.nest.calendar.CalendarViewPagerFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::bind,
@@ -59,6 +61,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             LinearLayoutManager.HORIZONTAL,
             false
         )
+
+        binding.imageButton.setOnClickListener {
+            (activity as MainActivity).changeTipFragment(TipOneFragment())
+        }
     }
 
     override fun onResume() {

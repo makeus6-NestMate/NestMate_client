@@ -269,6 +269,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     }
 
     fun changeRandomCate(new :String){
+        if(new=="" || new[0]==' ') return
         binding.calendarCategoryPick2.category_random.calendar_category_name.text=new
         moveCate = new
     }

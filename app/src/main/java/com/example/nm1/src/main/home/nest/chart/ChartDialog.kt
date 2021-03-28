@@ -11,7 +11,7 @@ import com.example.nm1.databinding.DialogChartBinding
 class ChartDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isCancelable=true
+        isCancelable=false
     }
 
     private lateinit var binding: DialogChartBinding

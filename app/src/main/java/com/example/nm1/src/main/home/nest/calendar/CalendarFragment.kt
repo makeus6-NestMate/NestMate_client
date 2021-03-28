@@ -70,11 +70,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
         CalendarService(this).tryGetCalendar(roomId, dateArgu)
     }
 
-    override fun onResume() {
-        super.onResume()
-        initView(0)
-    }
-
     override fun onAddCalendarSuccess(response: AddCalendarResponse) {
         TODO("Not yet implemented")
     }
@@ -103,7 +98,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
         val calList = response.result.calendarInfo
         val calAdapter = CalendarAdapter(requireContext(), binding.calendarLayout, currentDate, calList)
         calAdapter.itemClick = object: CalendarAdapter.ItemClick {
-            override fun onClick(view: View, position: Int) {
+            override fun onClick(view: View, position: Int, first:Int, last:Int) {
+                if (position < first || position > last) return
                 val intent = Intent(requireContext(), CalendarListActivity::class.java)
                 intent.putExtra("year", datetime.substring(0,4))
                 intent.putExtra("month", datetime.substring(6,8).toInt().toString())
@@ -116,7 +112,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
     }
 
     override fun onGetCalendarFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("다시 시도 해주세요.")
     }
 
     override fun onGetDetailCalendarSuccess(response: GetDetailCalendarResponse) {

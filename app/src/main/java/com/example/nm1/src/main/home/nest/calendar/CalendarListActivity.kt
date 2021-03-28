@@ -83,11 +83,6 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
 //        })
     }
 
-    fun getList(){
-        CalendarService(this).tryGetDetailCalendar(roomId, date)
-        paging++
-    }
-
     override fun onAddCalendarSuccess(response: AddCalendarResponse) {
         TODO("Not yet implemented")
     }
@@ -169,6 +164,6 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onGetDetailCalendarFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("다시 시도 해주세요.")
     }
 }

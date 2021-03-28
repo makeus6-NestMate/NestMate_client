@@ -1,9 +1,12 @@
 package com.example.nm1.src.main.alarm
 
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
@@ -20,43 +23,39 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>(
 ), AlarmFragmentView {
 
     private lateinit var alarmList: List<AlarmInfo>
+    private var sumList = mutableListOf<AlarmInfo>()
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
+    private var paging : Int = -1
+    private lateinit var alarmListAdapter : AlarmListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.alarmToolbar.toolbarTitle.text = "알림"
 
-        AlarmService(this).tryGetAlarm(roomId)
+        alarmListAdapter = AlarmListAdapter(requireContext(), sumList)
+        binding.alarmList.adapter=alarmListAdapter
+        AlarmService(this).tryGetAlarm(roomId, ++paging)
+        binding.alarmList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter?.itemCount
+                if (lastVisibleItemPosition + 1 == itemTotalCount) {
+                    AlarmService(this@AlarmFragment).tryGetAlarm(roomId, ++paging)
+                }
+            }
+        })
     }
 
     override fun onGetAlarmSuccess(response: GetAlarmResponse) {
         alarmList = response.result.alarmInfo
-        val alarmListAdapter = AlarmListAdapter(requireContext(), alarmList)
-        // 이게 맞나...? 스와이프 삭제...?
-        binding.alarmList.adapter = alarmListAdapter
-//        val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
-//        itemTouchHelper.attachToRecyclerView(binding.alarmList)
+        for(idx in alarmList.indices) sumList.add(alarmList[idx])
+
+        binding.alarmList.adapter?.notifyItemInserted(sumList.size-1)
     }
 
     override fun onGetAlarmFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("다시 시도 해주세요.")
     }
-
-    private var itemTouchCallback: ItemTouchHelper.SimpleCallback =
-        object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return true
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-                // 삭제되는 아이템의 포지션을 가져온다
-                val position = viewHolder.adapterPosition
-                // 아답타에게 알린다
-                binding.alarmList.adapter?.notifyItemRemoved(position)
-            }
-        }
 }

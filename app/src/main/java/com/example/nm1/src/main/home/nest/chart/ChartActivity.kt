@@ -42,8 +42,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         showLoadingDialog(this)
         ChartService(this).tryGetChart(roomId)
 
-        dayList =
-            arrayOf(chart_mon, chart_tue, chart_wed, chart_thu, chart_fri, chart_sat, chart_sun).toList()
+        dayList = arrayOf(chart_mon, chart_tue, chart_wed, chart_thu, chart_fri, chart_sat, chart_sun).toList()
         for(idx1 in dayList.indices) init(dayList[idx1], txtArray[idx1])
 
         binding.chartToolbar.toolbarTitle.text = "차트"
@@ -62,8 +61,6 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         if(cnt==0) return
         val img = ImageView(day.context)
         val len = day.chart_block.height
-        Log.d("qqqqqa", len.toString())
-        Log.d("qqqqqb", (len*cnt/mx).toString())
         val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*cnt/mx))
         layoutParams.setMargins(0.dp,4.dp,0.dp,0.dp)
         img.layoutParams=layoutParams
@@ -78,7 +75,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
     }
 
     override fun onPostChartClapFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("다시 시도 해주세요.")
     }
 
     override fun onGetChartSuccess(response: GetChartResponse) {
@@ -89,8 +86,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         if(bestMember!=null){
             binding.chartBestMate.chart_best_mate_nothing.visibility=View.INVISIBLE
             binding.chartBestMate.chart_best_mate_existing.visibility=View.VISIBLE
-            if(bestMember.profileImg!=null) Glide.with(this).load(bestMember.profileImg).into(binding.chartBestMate.chart_best_mate_existing.bestmate_img)
-            else binding.chartBestMate.chart_best_mate_existing.bestmate_img.setImageResource(R.drawable.home_bird_icon)
+            Glide.with(this).load(bestMember.profileImg).error(R.drawable.home_bird_icon).into(binding.chartBestMate.chart_best_mate_existing.bestmate_img)
             binding.chartBestMate.chart_best_mate_existing.bestmate_name_tv.text= bestMember.nickname
             binding.chartBestMate.chart_best_mate_existing.bestmate_cnt_tv.text= "횟수 "+bestMember.prizeCount.toString()+"회"
         }
@@ -111,10 +107,11 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
             for(idx2 in dataList[idx1].indices) draw(dayList[idx1], colorArray[idx2], dataList[idx1][idx2].count, mx)
         }
 
+        draw(dayList[0], colorArray[0], 1, 1)
         dismissLoadingDialog()
     }
 
     override fun onGetChartFailure(message: String) {
-        TODO("Not yet implemented")
+        showCustomToast("다시 시도 해주세요.")
     }
 }
