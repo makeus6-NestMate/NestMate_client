@@ -88,6 +88,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         super.onResume()
         page = 0
         nestlist.clear()
+        isnestend = false
         showLoadingDialog(requireContext())
         HomeService(this).tryGetNest(page)
     }
