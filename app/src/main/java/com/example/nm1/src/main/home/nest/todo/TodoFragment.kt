@@ -23,9 +23,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showLoadingDialog(requireContext())
-        TodoService(this).tryGetTodayTodo(roomId)
-
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
             // 새로고침 완료시,
@@ -75,6 +72,12 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             showLoadingDialog(requireContext())
             TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId)
     }
 
     override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {

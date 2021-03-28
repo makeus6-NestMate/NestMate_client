@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -83,6 +84,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
 
             isrepeat[0] = true
             isrepeat[1] = false
+
+            Log.d("hello", isrepeat[0].toString()+"/"+isrepeat[1].toString())
         }
 
 //        하루만 버튼색 변경
@@ -106,6 +109,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
 
             isrepeat[0] = false
             isrepeat[1] = true
+
+            Log.d("hello", isrepeat[0].toString()+"/"+isrepeat[1].toString())
         }
 //       할일
 //       글자수 실시간으로 보이게 & 버튼 활성화
