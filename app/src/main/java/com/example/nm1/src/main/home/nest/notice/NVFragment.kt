@@ -64,13 +64,15 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
                 if(from == true){
                     val item = data?.getSerializableExtra("data") as NoticeVoteData
                     val request = PostNoticeRequest(item.content!!)
-                    NoticeVoteService(this).tryPostNotice(roomId, request)
                     showLoadingDialog(requireContext())
+                    NoticeVoteService(this).tryPostNotice(roomId, request)
+
                 }else{
                     val item = data?.getSerializableExtra("data") as NoticeVoteData
                     val request = PostVoteRequest(item.title!!, item.choiceArr!!)
-                    NoticeVoteService(this).tryPostVote(roomId, request)
                     showLoadingDialog(requireContext())
+                    NoticeVoteService(this).tryPostVote(roomId, request)
+
                 }
 
             }
@@ -81,8 +83,9 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
                 showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
+
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -135,8 +138,9 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
                 showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
+
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -153,8 +157,9 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
                 showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
+
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -171,8 +176,9 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
                 showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
+
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -215,13 +221,15 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         if(isNotice){
             dataList.removeAt(position)
             adapter.notifyItemRemoved(position)
-            NoticeVoteService(this@NVFragment).tryDeleteNotice(roomId, noticeId!!)
             showLoadingDialog(requireContext())
+            NoticeVoteService(this@NVFragment).tryDeleteNotice(roomId, noticeId!!)
+
         }else{
             dataList.removeAt(position)
             adapter.notifyItemRemoved(position)
-            NoticeVoteService(this@NVFragment).tryDeleteVote(roomId, voteId!!)
             showLoadingDialog(requireContext())
+            NoticeVoteService(this@NVFragment).tryDeleteVote(roomId, voteId!!)
+
         }
 
     }

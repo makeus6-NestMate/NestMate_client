@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fcfcfc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".src.main.home.nest.rule.RuleFragment">
@@ -169,7 +170,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/rule_add_input_num"
                     app:layout_constraintEnd_toStartOf="@id/rule_add_input_more_btn"
-                    android:hint="12시 이후 귀가시 미리 이야기한다."
+                    android:hint="규칙을 등록해주세요."
                     android:fontFamily="@font/notosanskr_regular"
                     android:maxLines="1"
                     android:inputType="text"

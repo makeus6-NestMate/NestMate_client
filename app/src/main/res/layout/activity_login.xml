@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fcfcfc"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -66,6 +67,7 @@
                 android:breakStrategy="balanced"
                 android:fontFamily="@font/notosanskr_regular"
                 android:hint="이메일을 입력해주세요."
+                android:inputType="text"
                 android:lineSpacingExtra="3sp"
                 android:maxLines="1"
                 android:textColor="@color/black"

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
+import com.bumptech.glide.Glide
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
@@ -133,6 +134,7 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
                     var item = activity?.applicationContext?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var target = item.inflate(R.layout.memo_item, null)
                     target.memo_item_tv.text = memoList[i].memo
+                    Glide.with(this).load(memoList[i].profileImg).error(R.drawable.chicken_img).into(target.memo_item_profile_img)
 
                     val time = memoList[i].createdAt
                     var isAm = "오전"
