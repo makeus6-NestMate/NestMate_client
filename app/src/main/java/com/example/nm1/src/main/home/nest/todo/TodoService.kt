@@ -33,9 +33,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun tryGetOneDayTodo(roomId:Int){
+    fun tryGetOneDayTodo(roomId:Int, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getOneDayTodo(roomId).enqueue(object: Callback<GetOneDayTodoResponse> {
+        todoInterface.getOneDayTodo(roomId, page).enqueue(object: Callback<GetOneDayTodoResponse> {
             override fun onResponse(call: Call<GetOneDayTodoResponse>, response: Response<GetOneDayTodoResponse>) {
                 view.onGetOneDayTodoSuccess(response.body() as GetOneDayTodoResponse)
             }
@@ -46,9 +46,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun tryGetRepeatTodo(roomId:Int){
+    fun tryGetRepeatTodo(roomId:Int, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getRepeatTodo(roomId).enqueue(object: Callback<GetRepeatTodoResponse> {
+        todoInterface.getRepeatTodo(roomId, page).enqueue(object: Callback<GetRepeatTodoResponse> {
             override fun onResponse(call: Call<GetRepeatTodoResponse>, response: Response<GetRepeatTodoResponse>) {
                 view.onGetRepeatTodoSuccess(response.body() as GetRepeatTodoResponse)
             }
@@ -59,9 +59,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun tryGetTodayTodo(roomId:Int){
+    fun tryGetTodayTodo(roomId:Int, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getTodayTodo(roomId).enqueue(object: Callback<GetTodayTodoResponse> {
+        todoInterface.getTodayTodo(roomId, page).enqueue(object: Callback<GetTodayTodoResponse> {
             override fun onResponse(call: Call<GetTodayTodoResponse>, response: Response<GetTodayTodoResponse>) {
                 view.onGetTodayTodoSuccess(response.body() as GetTodayTodoResponse)
             }
@@ -164,9 +164,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun trySearchGetOneDayTodo(roomId:Int, keyword:String){
+    fun trySearchGetOneDayTodo(roomId:Int, keyword:String, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getSearchOneDayTodo(roomId, keyword).enqueue(object: Callback<GetSearchOneDayTodoResponse> {
+        todoInterface.getSearchOneDayTodo(roomId, keyword, page).enqueue(object: Callback<GetSearchOneDayTodoResponse> {
             override fun onResponse(call: Call<GetSearchOneDayTodoResponse>, response: Response<GetSearchOneDayTodoResponse>) {
                 view.onGetSearchOneDayTodoSuccess(response.body() as GetSearchOneDayTodoResponse)
             }
@@ -177,9 +177,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun trySearchGetRepeatTodo(roomId:Int, keyword:String){
+    fun trySearchGetRepeatTodo(roomId:Int, keyword:String, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getSearchRepeatTodo(roomId, keyword).enqueue(object: Callback<GetSearchRepeatTodoResponse> {
+        todoInterface.getSearchRepeatTodo(roomId, keyword, page).enqueue(object: Callback<GetSearchRepeatTodoResponse> {
             override fun onResponse(call: Call<GetSearchRepeatTodoResponse>, response: Response<GetSearchRepeatTodoResponse>) {
                 view.onGetSearchRepeatTodoSuccess(response.body() as GetSearchRepeatTodoResponse)
             }
@@ -190,9 +190,9 @@ class TodoService(val view: TodoView) {
         })
     }
 
-    fun trySearchTodoByDate(roomId:Int, date:String){
+    fun trySearchTodoByDate(roomId:Int, date:String, page:Int){
         val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
-        todoInterface.getSearchTodoByDate(roomId, date).enqueue(object: Callback<GetSearchTodoByDateResponse> {
+        todoInterface.getSearchTodoByDate(roomId, date, page).enqueue(object: Callback<GetSearchTodoByDateResponse> {
             override fun onResponse(call: Call<GetSearchTodoByDateResponse>, response: Response<GetSearchTodoByDateResponse>) {
                 view.onGetSearchTodoByDateSuccess(response.body() as GetSearchTodoByDateResponse)
             }

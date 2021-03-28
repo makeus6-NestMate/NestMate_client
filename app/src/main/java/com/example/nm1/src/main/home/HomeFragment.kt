@@ -87,6 +87,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override fun onResume() {
         super.onResume()
         page = 0
+        nestlist.clear()
+        isnestend = false
         showLoadingDialog(requireContext())
         HomeService(this).tryGetNest(page)
     }
