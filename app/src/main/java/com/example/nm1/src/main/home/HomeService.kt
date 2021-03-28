@@ -20,9 +20,9 @@ class HomeService(val view: HomeView) {
        })
     }
 
-    fun tryGetNest(){
+    fun tryGetNest(page:Int){
         val homeInterface = ApplicationClass.sRetrofit.create(HomeInterface::class.java)
-        homeInterface.getNest().enqueue(object: Callback<GetNestResponse> {
+        homeInterface.getNest(page).enqueue(object: Callback<GetNestResponse> {
             override fun onResponse(call: Call<GetNestResponse>, response: Response<GetNestResponse>) {
                 view.onGetNestSuccess(response.body() as GetNestResponse)
             }
