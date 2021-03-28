@@ -73,6 +73,7 @@ class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? =
         if(isEdit != null && isEdit == true){
             binding!!.memoDialogContentEt.setText(content!!)
             str = content
+            binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
         }
 
         binding!!.memoDialogConfirmBtn.setOnClickListener {
@@ -81,6 +82,10 @@ class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? =
             }else{
                 this.memoCustomDialogInterface!!.onConfirmBtnClicked(isEdit = false, memoId = -1, message = str!!, color = color)
             }
+            dismiss()
+        }
+
+        binding!!.memoDialogCancelBtn.setOnClickListener {
             dismiss()
         }
 
@@ -106,6 +111,7 @@ class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? =
                 }
             }
         }
+        dialog?.setCancelable(false)
 
         binding!!.memoDialogContentEt.addTextChangedListener(
             object: TextWatcher{

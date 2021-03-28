@@ -5,6 +5,7 @@ import com.example.nm1.config.BaseResponse
 import com.example.nm1.src.main.home.nest.notice.model.GetNoticeVoteResponse
 import com.example.nm1.src.main.home.nest.notice.model.PostNoticeRequest
 import com.example.nm1.src.main.home.nest.notice.model.PostVoteRequest
+import okhttp3.internal.notify
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,6 +79,20 @@ class NoticeVoteService(val view: NoticeVoteView) {
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 view.onDeleteVoteFailure(t.message ?: "통신 오류")
+            }
+
+        })
+    }
+
+    fun tryPutNotice(roomId: Int, noticeId: Int, request: PostNoticeRequest){
+        val retrofit = ApplicationClass.sRetrofit.create(NoticeVoteInterface::class.java)
+        retrofit.putNotice(roomId, noticeId, request).enqueue(object: Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                view.onPutNoticeSuccess(response.body() as BaseResponse)
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                view.onPutNoticeFailure(t.message ?: "통신 오류")
             }
 
         })

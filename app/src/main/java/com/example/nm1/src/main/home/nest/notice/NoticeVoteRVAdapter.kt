@@ -1,6 +1,7 @@
 package com.example.nm1.src.main.home.nest.notice
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
@@ -32,6 +33,11 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.itemView.notice_vote_rv_item_more_btn.setOnClickListener {
                     listener!!.onNoticeClicked(position, dataList[position].noticeId!!)
                 }
+                if(dataList[position].isOwner == "Y"){
+                    holder.itemView.notice_vote_rv_item_more_btn.visibility = View.VISIBLE
+                }else{
+                    holder.itemView.notice_vote_rv_item_more_btn.visibility = View.GONE
+                }
             }
             is VoteRVHolder -> {
                 holder.bindWithView(this.dataList[position])
@@ -40,6 +46,12 @@ class NoticeVoteRVAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
                 holder.itemView.notice_vote_rv_item_content.setOnClickListener {
                     listener!!.onVoteClicked(position, dataList[position].voteId!!)
+                }
+
+                if(dataList[position].isOwner == "Y"){
+                    holder.itemView.notice_vote_rv_item_more_btn.visibility = View.VISIBLE
+                }else{
+                    holder.itemView.notice_vote_rv_item_more_btn.visibility = View.GONE
                 }
 
             }

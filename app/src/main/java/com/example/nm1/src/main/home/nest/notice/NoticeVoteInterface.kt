@@ -23,4 +23,7 @@ interface NoticeVoteInterface {
 
     @DELETE("/room/{roomId}/vote/{voteId}")
     fun deleteVote(@Path("roomId") roomId: Int, @Path("voteId") voteId: Int): Call<BaseResponse>
+
+    @PUT("/room/{roomId}/notice/{noticeId}")
+    fun putNotice(@Path("roomId") roomId: Int, @Path("noticeId") noticeId: Int, @Body params: PostNoticeRequest): Call<BaseResponse>
 }

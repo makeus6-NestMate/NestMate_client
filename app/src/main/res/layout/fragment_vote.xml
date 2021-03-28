@@ -53,7 +53,7 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:textStyle="normal"
                 android:textSize="15sp"
-                android:textColor="#e0e0e0"
+                android:textColor="@color/white"
                 android:lineSpacingExtra="16sp"/>
         </LinearLayout>
 

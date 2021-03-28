@@ -38,7 +38,7 @@ class NoticeVoteDialog(isNotice: Boolean, position: Int, noticeId: Int? = null, 
         }
 
         binding.dialogNvEditBtn.setOnClickListener {
-            nvDialogInterface.onEditClicked()
+            nvDialogInterface.onEditClicked(isNotice = true, isEdit = true, position = position, noticeId = noticeId!!)
             dismiss()
         }
     }

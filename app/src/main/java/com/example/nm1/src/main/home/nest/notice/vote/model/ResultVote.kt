@@ -6,6 +6,6 @@ data class ResultVote(@SerializedName("choiceId") val choiceId: Int,
                       @SerializedName("isFinished") val isFinished: String,
                       @SerializedName("voteTitle") val voteTitle: String,
                       @SerializedName("choice") val choice: ArrayList<Choice>,
-                      @SerializedName("unVoteMemberCnt") val unVoteMemberCnt: Int,
+                      @SerializedName("unVoteMemeberCnt") val unVoteMemeberCnt: Int,
                       @SerializedName("isOwner") val isOwner: Boolean
 )

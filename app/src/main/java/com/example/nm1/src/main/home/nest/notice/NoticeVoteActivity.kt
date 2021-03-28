@@ -11,6 +11,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
+import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityNoticeVoteBinding
 import com.example.nm1.src.main.home.nest.notice.voteItemRV.VoteItemData
@@ -24,11 +25,20 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
     private var isNotice = true
     private var voteItemList = ArrayList<VoteItemData>()
     private lateinit var adapter: VoteItemRVAdapter
+    private var isEdit: Boolean? = null
+    private var noticeId: Int? = null
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.noticeVoteToolbar.toolbarTitle.text = "공지/투표"
+        isEdit = intent.getBooleanExtra("isEdit", false)
+
+        if(isEdit!!){
+            noticeId = intent.getIntExtra("noticeId", -1)
+            binding.noticeVoteContentEt.setText(intent.getStringExtra("content").toString())
+            binding.noticeVoteConfirmBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+        }
 
         binding.noticeVoteNoticeBtn.setOnClickListener {
             isNotice = true
@@ -41,13 +51,15 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
         }
 
         binding.noticeVoteVoteBtn.setOnClickListener {
-            isNotice = false
-            binding.noticeContentLayout.visibility = View.GONE
-            binding.voteContentLayout.visibility = View.VISIBLE
-            binding.noticeVoteNoticeBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_white_bg)
-            binding.noticeVoteNoticeBtn.setTextColor(R.color.colorTextHint)
-            binding.noticeVoteVoteBtn.setTextColor(Color.WHITE)
-            binding.noticeVoteVoteBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+            if(!isEdit!!){
+                isNotice = false
+                binding.noticeContentLayout.visibility = View.GONE
+                binding.voteContentLayout.visibility = View.VISIBLE
+                binding.noticeVoteNoticeBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_white_bg)
+                binding.noticeVoteNoticeBtn.setTextColor(R.color.colorTextHint)
+                binding.noticeVoteVoteBtn.setTextColor(Color.WHITE)
+                binding.noticeVoteVoteBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+            }
         }
 
         binding.noticeVoteContentEt.addTextChangedListener(object: TextWatcher{
@@ -82,6 +94,9 @@ class NoticeVoteActivity : BaseActivity<ActivityNoticeVoteBinding>(ActivityNotic
                 val intent = Intent()
                 intent.putExtra("isNotice", true)
                 intent.putExtra("data", data)
+                if(isEdit!!){
+                    intent.putExtra("noticeId", noticeId)
+                }
                 setResult(RESULT_OK, intent)
                 finish()
             }else{
