@@ -3,79 +3,106 @@ package com.example.nm1.src.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityLoginBinding
-import com.example.nm1.src.login.model.LoginResponse
-import com.example.nm1.src.login.model.PostLoginRequest
+import com.example.nm1.src.login.model.KakaoLoginResponse
+import com.example.nm1.src.login.model.KakaoRegisterResponse
+import com.example.nm1.src.login.model.PostKakaoLoginRequest
 import com.example.nm1.src.main.MainActivity
-import com.example.nm1.src.register.RegisterOneActivity
-import com.example.nm1.util.onMyTextChanged
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.user.UserApiClient
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
-    private var isEmail = false
-    private var isPW = false
+    private var kakaoImg:String? = null
+    var email:String?=null
+    var access_token:String?=null
+    val editor = ApplicationClass.sSharedPreferences.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.loginBtn.setOnClickListener {
-            val request = PostLoginRequest(binding.loginEmail.text.toString(), binding.loginPw.text.toString())
-            LoginService(this).tryPostLogin(request)
-        }
+        // 로그인 공통 callback 구성
+        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+            if (error != null) {
+                Log.e("kakaologin", "로그인 실패", error)
+            } else if (token != null) {
+                Log.i("kakaologin", "로그인 성공 ${token.accessToken}")
+                access_token = token.accessToken
 
-        binding.loginRegister.setOnClickListener {
-            val intent = Intent(this, RegisterOneActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-            finish()
-        }
+                UserApiClient.instance.me { user, error ->
+                    if (error != null) {
+                        Log.e("kakaologin", "사용자 정보 요청 실패", error)
+                    } else if (user != null) {
 
-        binding.loginEmail.onMyTextChanged {
-            isEmail = binding.loginEmail.text.toString().isNotEmpty()
+                        email = user.kakaoAccount?.email!!
+                        kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
 
-            if(isEmail && isPW){
-                binding.loginBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
-            }else{
-                binding.loginBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+                        if (email!=null && kakaoImg!=null) {
+
+                            //  카카오 회원가입
+                            if (!ApplicationClass.sSharedPreferences.getBoolean(
+                                    "iskakaoregisterd",
+                                    false
+                                )
+                            ) {
+                                val intent = Intent(this, KakaoRegisterActivity::class.java)
+                                intent.putExtra("kakaoImg", kakaoImg)
+                                intent.putExtra("email", email)
+                                intent.putExtra("access_token", access_token)
+
+                                startActivity(intent)
+                            } else { //카카오 로그인
+                                this.finish()
+                                showLoadingDialog(this)
+                                val postKakaoRegisterRequest = PostKakaoLoginRequest(email!!,
+                                    access_token!!
+                                )
+                                LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoRegisterRequest)
+                            }
+                        }
+
+                        Log.i(
+                            "kakaologin", "사용자 정보 요청 성공" +
+                                    "\n회원번호: ${user.id}" +
+                                    "\n이메일: ${user.kakaoAccount?.email}" +
+                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                    "\n프로필사진: ${user.kakaoAccount?.profile?.profileImageUrl}"
+                        )
+                    }
+                }
             }
         }
 
-        binding.loginPw.onMyTextChanged {
-            isPW = binding.loginPw.text.toString().isNotEmpty()
-
-            if(isEmail && isPW){
-                binding.loginBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
-            }else{
-                binding.loginBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+        binding.loginBtnKakao.setOnClickListener {
+            // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
+                UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
+            } else {
+                UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
     }
 
-    override fun onPostLoginSuccess(response: LoginResponse) {
-        when(response.code){
-            200 -> {
-                showCustomToast(response.message.toString())
-                val token = response.result.token
-                val editor = ApplicationClass.sSharedPreferences.edit()
-                Log.d("로그", "Login Success!! ${token}")
-
-                editor.putString(ApplicationClass.X_ACCESS_TOKEN, token)
-                editor.apply()
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            else -> {
-                showCustomToast(response.message.toString())
-            }
-        }
+    override fun onPostKakaoRegisterSuccess(response: KakaoRegisterResponse) {
+        TODO("Not yet implemented")
     }
 
-    override fun onPostLoginFailure(message: String) {
+    override fun onPostKakaoRegisterFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostKakaoLoginSuccess(response: KakaoLoginResponse) {
+        dismissLoadingDialog()
+        editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
+        editor.apply()
+
+        this.finish()
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    override fun onPostKakaoLoginFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
-
 }

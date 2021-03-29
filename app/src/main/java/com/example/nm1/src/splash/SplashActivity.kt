@@ -11,6 +11,11 @@ import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivitySplashBinding
 import com.example.nm1.src.login.LoginActivity
 import com.example.nm1.src.main.MainActivity
+import com.example.nm1.src.main.home.nest.NestActivity
+import com.example.nm1.src.main.mypage.MyFragment
+import com.example.nm1.src.register.RegisterOneActivity
+import com.example.nm1.src.register.RegisterTwoActivity
+import okhttp3.internal.wait
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     @RequiresApi(Build.VERSION_CODES.P)

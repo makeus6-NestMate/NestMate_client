@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">둥지메이트</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="kakao_app_key">ce2aaa0ffffda41e08a7fd9cb08888c3</string>
+    <string name="kakao_scheme">kakaoce2aaa0ffffda41e08a7fd9cb08888c3</string>
+
     <string name="calendar_format">yyyy. MM</string>
     <string-array name="todo_spinner_ampm">
         <item>오전</item>
