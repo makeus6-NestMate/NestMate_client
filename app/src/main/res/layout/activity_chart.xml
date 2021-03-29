@@ -74,7 +74,7 @@
             android:layout_marginTop="10dp"
             android:weightSum="100"
             android:background="@drawable/rec_design"
-            android:elevation="3dp">
+            android:elevation="5dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -180,7 +180,7 @@
             android:weightSum="100"
             android:layout_below="@+id/chart_best_mate"
             android:background="@drawable/rec_design"
-            android:elevation="3dp">
+            android:elevation="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -35,7 +35,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     var calListAdapter:CalendarListAdapter?=null
 
     private var paging : Int = 0       // 현재 페이지
-    var isDetailed = false
+    var isEnded = false
 
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
@@ -83,8 +83,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
 //             direction:  양수일경우엔 오른쪽 스크롤, 음수일경우엔 왼쪽 스크롤
 //                수평으로 더이상 스크롤이 안되면, 데이터를 더해서 불러옴
                 if (!binding.calendarScheduleList.canScrollVertically(1)){
-                    if (!isDetailed) {
-                        dismissLoadingDialog()
+                    if (!isEnded) {
                         showLoadingDialog(this@CalendarListActivity)
                         CalendarService(this@CalendarListActivity).tryGetDetailCalendar(roomId, date,++paging)
                     }
@@ -97,7 +96,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         super.onResume()
         paging = 0
         sumList.clear()
-        isDetailed = false
+        isEnded = false
         showLoadingDialog(this@CalendarListActivity)
         CalendarService(this@CalendarListActivity).tryGetDetailCalendar(roomId, date, paging)
     }
@@ -119,6 +118,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onDeleteCalendarSuccess(response: DeleteCalendarResponse) {
+        dismissLoadingDialog()
         onResume()
     }
 
@@ -139,29 +139,21 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         calList = response.result.calendarDetailInfo
 
         ///
-        if (paging==0 && calList.isNullOrEmpty()){
-
-        }
-//      맨 처음(page=0) -> 둥지가 하나라도 있으면
-        else if (paging==0 && calList.isNotEmpty()){
-            Log.d("둥지", "둥지있음")
+        if (paging==0 && calList.isNotEmpty()){
             sumList.addAll(calList)
             calListAdapter = CalendarListAdapter(this, sumList)
             binding.calendarScheduleList.adapter = calListAdapter
         }
-//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+//      page=1부터 불러오고, 항목이 있으면
         else if (paging!=0 && calList.isNotEmpty()){
-            Log.d("둥지", "둥지추가")
             sumList.addAll(calList)
             calListAdapter!!.notifyItemInserted(sumList.size-1)
         }
 //        페이지추가 끝
-        if (paging!=0 && calList.isNullOrEmpty()){
-            isDetailed = true
-        }
+        if (paging!=0 && calList.isNullOrEmpty()) isEnded=true
         ///
 
-        calCount = calListAdapter?.itemCount.toString()
+        calCount = response.result.calendarCnt.toString()
         binding.calendarListTitle.text=calCount+smallTitle
         calListAdapter?.itemSetClick = object: CalendarListAdapter.ItemSetClick {
             override fun onClick(view: View, position: Int) {
@@ -179,17 +171,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
                             startActivity(intent)
                         }
                         1 -> {
-                            CalendarService(this@CalendarListActivity).tryDeleteCalendar(roomId, calList[position].calendarId)
-                            intent.putExtra("calendarId",sumList[position].calendarId)
-                            intent.putExtra("position",position)
-                            intent.putExtra("cateIdx", sumList[position].categoryIdx)
-                            intent.putExtra("cateName", sumList[position].category)
-                            intent.putExtra("title", sumList[position].title)
-                            intent.putExtra("datetime", sumList[position].time)
-                            intent.putExtra("memo", sumList[position].content)
-                            startActivity(intent)
-                        }
-                        1 -> {
+                            showLoadingDialog(this@CalendarListActivity)
                             CalendarService(this@CalendarListActivity).tryDeleteCalendar(roomId, sumList[position].calendarId)
                         }
                     }
@@ -211,8 +193,6 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
             }
         }
         binding.calendarScheduleList.adapter = calListAdapter
-
-        dismissLoadingDialog()
     }
 
     override fun onGetDetailCalendarFailure(message: String) {

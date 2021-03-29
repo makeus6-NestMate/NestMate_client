@@ -49,6 +49,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
 
         binding.clapBtn.setOnClickListener {
             // bestMember 이게 맞나...?
+            showLoadingDialog(this)
             ChartService(this).tryPostChartClap(roomId, bestMember.userId)
         }
     }
@@ -60,7 +61,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
     fun draw(day : View, color: String, cnt : Int, mx:Int){
         if(cnt==0) return
         val img = ImageView(day.context)
-        val len = day.chart_block.height
+        val len = day.chart_block.height-10
         val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*cnt/mx))
         layoutParams.setMargins(0.dp,4.dp,0.dp,0.dp)
         img.layoutParams=layoutParams
@@ -71,6 +72,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
     }
 
     override fun onPostChartClapSuccess(response: PostChartClapResponse) {
+        dismissLoadingDialog()
         ChartDialog().show(supportFragmentManager, "ChartDialog")
     }
 
@@ -79,6 +81,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
     }
 
     override fun onGetChartSuccess(response: GetChartResponse) {
+        dismissLoadingDialog()
         memList = response.result.member
         dataList = response.result.chart
         bestMember = response.result.bestMember
@@ -106,9 +109,6 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
             init(dayList[idx1], txtArray[idx1])
             for(idx2 in dataList[idx1].indices) draw(dayList[idx1], colorArray[idx2], dataList[idx1][idx2].count, mx)
         }
-
-        draw(dayList[0], colorArray[0], 1, 1)
-        dismissLoadingDialog()
     }
 
     override fun onGetChartFailure(message: String) {

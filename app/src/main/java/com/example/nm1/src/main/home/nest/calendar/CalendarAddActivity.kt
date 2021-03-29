@@ -48,7 +48,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     private var moveCateIdx : Int = -1
     // 확인 작업
     private var isOK = false
-    private val Selected = Array(4){false}
+    private val Selected = Array(4){0}
     // 부수 데이터
     private var calendarId : Int = -1
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
@@ -100,10 +100,12 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
             // 메모
             binding.calendarContentTxt.setText(intent.getStringExtra("memo").toString())
             moveMemo=intent.getStringExtra("memo").toString()
+            Selected[0]=1;Selected[1]=1;Selected[2]=1;Selected[3]=1;
             checkActive()
         }
         else{ //일정 추가일 경우!
             if(intent.hasExtra("year")) {
+                Selected[1]=1
                 preYear= intent.getStringExtra("year")!!.toInt()
                 preMonth= intent.getStringExtra("month")!!.toInt()
                 preDay= intent.getStringExtra("day")!!.toInt()
@@ -161,9 +163,11 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
                     selecteddate = calendar.time
 
                     val simpledateformat = SimpleDateFormat("EEEE", Locale.KOREA)
-                    val dayName: String = simpledateformat.format(selecteddate)
 
                     binding.calAddDate.text = year.toString()+"년 "+month.toString()+"월 "+dayOfMonth.toString()+"일"
+                    Selected[1]=binding.calAddDate.text.toString().length
+                    Log.d("one", Selected[1].toString()+" "+binding.calAddDate.text.toString().length)
+                    checkActive()
                     moveYear=year
                     moveMonth=month
                     moveDay=dayOfMonth
@@ -175,7 +179,6 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
 //           최소 날짜를 현재 시각 이후로
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000
             dpd.show()
-            checkActive()
         }
 
         //시간 선택
@@ -201,6 +204,9 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
                         else "오후 " + (hourOfDay - 12).toString() + "시 " + minute.toString() + "분"
                     }
                     binding.calAddTime.text = timeString
+                    Selected[2]=timeString.length
+                    checkActive()
+                    Log.d("two", Selected[2].toString()+" "+timeString.length)
                     moveHour=hourOfDay
                     moveMin=minute
                 },
@@ -209,19 +215,17 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
                 false
             )
             tpd.show()
-            checkActive()
         }
 
         //제목 입력
         binding.calendarTitleTxt.onMyTextChanged {
             moveTitle=binding.calendarTitleTxt.text.toString()
+            if(moveTitle!="" && moveTitle[0]!=' ') Selected[3]=binding.calendarTitleTxt.text.length
             checkActive()
         }
 
         binding.calendarContentTxt.onMyTextChanged {
-            // 에러 나면 의심해봐라. null인지 ""인지
             moveMemo=binding.calendarContentTxt.text.toString()
-            checkActive()
         }
 
         binding.calendarAddBtn.setOnClickListener {
@@ -230,11 +234,13 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
                 if(calendarId!=-1){
                     val datetime = "$moveYear/$moveMonth/$moveDay/$moveHour/$moveMin"
                     val putArgu = PutCalendarRequest(moveTitle, moveMemo, datetime, moveCate, moveCateIdx)
+                    showLoadingDialog(this@CalendarAddActivity)
                     CalendarService(this).tryPutCalendar(roomId, calendarId, putArgu)
                 }
                 else{
                     val datetime = "$moveYear/$moveMonth/$moveDay/$moveHour/$moveMin"
                     val postArgu = PostAddCalendarRequest(moveTitle, moveMemo, datetime, moveCate, moveCateIdx)
+                    showLoadingDialog(this@CalendarAddActivity)
                     CalendarService(this).tryAddCalendar(roomId, postArgu)
                 }
             }
@@ -264,7 +270,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         moveCateIdx=selectedIdx
         moveCate=nameArray[selectedIdx]
 
-        Selected[0]=true
+        Selected[0]=selectedIdx
         checkActive()
     }
 
@@ -275,24 +281,20 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     }
 
     fun checkActive(){
-        var flag = -1
-        Selected[1]=(binding.calAddDate.text).isNotEmpty()
-        Selected[2]=(binding.calAddTime.text).isNotEmpty()
-        Selected[3]=(binding.calendarTitleTxt.text).isNotEmpty()
         for(idx in Selected.indices){
-            if(!Selected[idx]) flag = idx
+            if(Selected[idx]==0){
+                Log.d("flag", idx.toString())
+                binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+                isOK=false
+                return
+            }
         }
-
-        if(flag==-1){
-            binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
-            isOK = true
-        }else{
-            binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
-            isOK=false
-        }
+        binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+        isOK = true
     }
 
     override fun onAddCalendarSuccess(response: AddCalendarResponse) {
+        dismissLoadingDialog()
         val intent = Intent(this, CalendarListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.putExtra("year", moveYear.toString())
@@ -307,6 +309,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     }
 
     override fun onPutCalendarSuccess(response: PutCalendarResponse) {
+        dismissLoadingDialog()
         val intent = Intent(this, CalendarListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.putExtra("year", moveYear.toString())

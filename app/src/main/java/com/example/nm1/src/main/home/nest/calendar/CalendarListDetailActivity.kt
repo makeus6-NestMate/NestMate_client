@@ -59,6 +59,7 @@ class CalendarListDetailActivity : BaseActivity<ActivityCalendarListDetailBindin
                         startActivity(intent)
                     }
                     1 -> {
+                        showLoadingDialog(this@CalendarListDetailActivity)
                         CalendarService(this@CalendarListDetailActivity).tryDeleteCalendar(roomId, calendarId)
                     }
                 }
@@ -89,6 +90,7 @@ class CalendarListDetailActivity : BaseActivity<ActivityCalendarListDetailBindin
     }
 
     override fun onDeleteCalendarSuccess(response: DeleteCalendarResponse) {
+        dismissLoadingDialog()
         val intent = Intent(this, CalendarListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.putExtra("year", datetime.substring(0,4))

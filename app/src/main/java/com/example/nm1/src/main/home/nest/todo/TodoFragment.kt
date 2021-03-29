@@ -23,7 +23,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     private var todoAdapter: TodayTodoAdapter? = null
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
-    private lateinit var adapter: TodayTodoAdapter
+    private var adapter: TodayTodoAdapter?= null
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -169,8 +169,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             istodoend = true
         }
 
-        this.adapter = todoAdapter!!
-        this.adapter.setOnClickListener(onClicked)
+        if(this.adapter!=null){
+            this.adapter = todoAdapter!!
+            this.adapter!!.setOnClickListener(onClicked)
+        }
     }
 
     override fun onGetTodayTodoFailure(message: String) {

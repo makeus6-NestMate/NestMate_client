@@ -4,28 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:layout_marginHorizontal="28dp"
+    android:gravity="center_vertical|left">
 
     <ImageView
         android:id="@+id/tip_title_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="250dp"
+        android:scaleType="fitCenter"/>
 
     <TextView
         android:id="@+id/tip_title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="28dp"
+        android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
         android:textSize="13sp"
         android:textColor="#000000"
-        android:lineSpacingExtra="9sp"
-        android:gravity="center_horizontal"/>
+        android:lineSpacingExtra="9sp"/>
 
     <TextView
         android:id="@+id/tip_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="28dp"
+        android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
         android:textSize="13sp"

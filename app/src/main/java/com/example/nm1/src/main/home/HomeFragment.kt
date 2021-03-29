@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentHomeBinding
+import com.example.nm1.src.main.MainActivity
 import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.NestInfo
@@ -82,6 +83,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
             }
         })
+
+        //tip
+        binding.imageButton.setOnClickListener {
+            (activity as MainActivity).changeTipFragment(TipOneFragment())
+        }
+        binding.imageButton2.setOnClickListener {
+            (activity as MainActivity).changeTipFragment(TipTwoFragment())
+        }
     }
 
     override fun onResume() {

@@ -67,7 +67,7 @@ class TipOneFragment : BaseFragment<FragmentTipOneBinding> (FragmentTipOneBindin
         binding.tipFif.tipTxt.text="차트를 통해 이번주 가장 많은 집안일을 \n" +
                 "한 최고의 메이트에게 박수를 보내보세요!\n" +
                 "우리집이 행복할 수 있었던건 최고의 메이트가 \n" +
-                "집안일에 많은 노력을 했기 때문이니까요!\n"
+                "집안일에 많은 노력을 했기 때문이니까요!"
         binding.tipFif.tipImg.setImageResource(R.drawable.tip_one_fifth_img)
 
         //last
@@ -77,7 +77,7 @@ class TipOneFragment : BaseFragment<FragmentTipOneBinding> (FragmentTipOneBindin
 
         //bottom
         binding.tipPostDate.text="게시일 : "+"2021.02.22"
-        binding.tipPostPerson.text="해피"
+        binding.tipPostPerson.text="작성자 : 해피"
     }
 
     override fun onAttach(context: Context) {

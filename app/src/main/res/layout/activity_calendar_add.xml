@@ -238,6 +238,7 @@
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/roundrec_design_inactive_bg"
             android:text="확인"
+            android:stateListAnimator="@null"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
             android:textColor="@color/white"/>

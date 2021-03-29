@@ -13,6 +13,7 @@ import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentCalendarBinding
 import com.example.nm1.src.main.home.HomeService
 import com.example.nm1.src.main.home.nest.calendar.model.*
+import okhttp3.internal.notify
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,6 +46,16 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
         binding.calendarFrontBtn.setOnClickListener {
             initView(2)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val date = Calendar.getInstance().run {
+            add(Calendar.MONTH, pageIndex)
+            time
+        }
+        var dateArgu: String = SimpleDateFormat("yyyy/MM", Locale.KOREA).format(date.time)
+        CalendarService(this).tryGetCalendar(roomId, dateArgu)
     }
 
     fun initView(idx : Int) {
