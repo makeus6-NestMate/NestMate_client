@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
@@ -220,12 +221,18 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         //제목 입력
         binding.calendarTitleTxt.onMyTextChanged {
             moveTitle=binding.calendarTitleTxt.text.toString()
-            if(moveTitle!="" && moveTitle[0]!=' ') Selected[3]=binding.calendarTitleTxt.text.length
+            if(moveTitle.trim()!="") Selected[3]=binding.calendarTitleTxt.text.length
+            else Selected[3]=0
             checkActive()
         }
 
         binding.calendarContentTxt.onMyTextChanged {
-            moveMemo=binding.calendarContentTxt.text.toString()
+            if(binding.calendarContentTxt.lineCount>10){
+                binding.calendarContentTxt.text.delete(binding.calendarContentTxt.selectionEnd -1, binding.calendarContentTxt.selectionStart)
+                val imm = this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.calendarContentTxt.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+            else if(binding.calendarContentTxt.text.toString().trim()!="") moveMemo=binding.calendarContentTxt.text.toString()
         }
 
         binding.calendarAddBtn.setOnClickListener {
@@ -275,9 +282,10 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     }
 
     fun changeRandomCate(new :String){
-        if(new=="" || new[0]==' ') return
-        binding.calendarCategoryPick2.category_random.calendar_category_name.text=new
-        moveCate = new
+        if(new.trim()!="") {
+            binding.calendarCategoryPick2.category_random.calendar_category_name.text=new
+            moveCate = new
+        }
     }
 
     fun checkActive(){
