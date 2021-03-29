@@ -18,13 +18,14 @@ import com.kakao.sdk.common.util.Utility
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
+
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         var keyHash = Utility.getKeyHash(this)
-
+        // Add code to print out the key hash
         try {
             val info = packageManager.getPackageInfo(
                 packageName, PackageManager.GET_SIGNATURES
@@ -40,6 +41,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         } catch (e: PackageManager.NameNotFoundException) {
         } catch (e: NoSuchAlgorithmException) {
         }
+
+        Log.d("KEY_HASH", keyHash)
+
         if(ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "na") == "na"){
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, LoginActivity::class.java))
