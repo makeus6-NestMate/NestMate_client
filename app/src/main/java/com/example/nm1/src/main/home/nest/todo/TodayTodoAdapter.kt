@@ -21,9 +21,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
 
-class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTodo>, private val fragmentManager:FragmentManager) :
+class TodayTodoAdapter(val context: Context, private val todoList: MutableList<TodayTodo>, private val fragmentManager:FragmentManager) :
     RecyclerView.Adapter<TodayTodoAdapter.ItemViewHolder>() {
-    private var listener: TodayTodoAdapter.OnItemClickListener? = null
+    private var listener: OnItemClickListener? = null
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle = itemView.findViewById<TextView>(R.id.todo_tv_title)
@@ -90,14 +90,14 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
                 tvRemain.text = "분 전"
             }
 
-            imgCheck.setOnClickListener {
-                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
-                imgCheck.visibility = View.INVISIBLE
-                imgProfile.visibility = View.VISIBLE
-                imguncheckBackground.visibility = View.INVISIBLE
-                imgTimer.setImageResource(R.drawable.ic_todo_complete)
-                tvReaminHour.visibility = View.INVISIBLE
-            }
+//            imgCheck.setOnClickListener {
+//                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
+//                imgCheck.visibility = View.INVISIBLE
+//                imgProfile.visibility = View.VISIBLE
+//                imguncheckBackground.visibility = View.INVISIBLE
+//                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+//                tvReaminHour.visibility = View.INVISIBLE
+//            }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
             Log.d("시간", current.time.toString())
@@ -145,7 +145,7 @@ class TodayTodoAdapter(val context: Context, private val todoList: List<TodayTod
         return todoList.size
     }
 
-    fun setOnClickListener(listener: TodayTodoAdapter.OnItemClickListener){
+    fun setOnClickListener(listener: OnItemClickListener){
         this.listener = listener
     }
 

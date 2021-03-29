@@ -2,15 +2,16 @@ package com.example.nm1.src.main.home
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
@@ -18,7 +19,11 @@ import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.nest.NestActivity
 
-class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>, private val fragmentManager: FragmentManager):
+class HomeNestAdapter(
+    val context: Context,
+    private val nestList: MutableList<NestInfo>,
+    private val fragmentManager: FragmentManager
+):
     RecyclerView.Adapter<HomeNestAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,7 +41,11 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val width = (windowManager.defaultDisplay.width *0.4805).toInt()
 
-            val innerLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            val innerLayoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
 
             memList.apply{
                 layoutManager = innerLayoutManager
@@ -89,24 +98,28 @@ class HomeNestAdapter(val context: Context, private val nestList: List<NestInfo>
                 tvPlusMemNum.text = (nest.members.size-3).toString() //추가 멤버 수 보여주기
             }
 
-            layoutNest.setOnClickListener {
-//              둥지를 클릭할때마다 roomId 저장소에 저장
-                editor.putString("roomName", nest.roomName)
-                editor.putInt("roomId", nest.roomId)
-                editor.apply()
+            if (nestList.isNotEmpty()) {
+                layoutNest.setOnClickListener {
+                    //              둥지를 클릭할때마다 roomId 저장소에 저장
+                    editor.putString("roomName", nest.roomName)
+                    editor.putInt("roomId", nest.roomId)
+                    editor.apply()
 
-                startActivity(context, Intent(context, NestActivity::class.java), null)
-            }
+                    startActivity(context, Intent(context, NestActivity::class.java), null)
+                }
 
-//           둥지 수정
-            layoutNest.setOnLongClickListener {
-                val homeNestEditBottomSheet = HomeNestEditBottomSheet()
-                editor.putString("roomName", nest.roomName)
-                editor.putInt("roomId", nest.roomId)
-                editor.apply()
+                //           둥지 수정
+                layoutNest.setOnLongClickListener {
+                    val homeNestEditBottomSheet = HomeNestEditBottomSheet()
+                    editor.putString("roomName", nest.roomName)
+                    editor.putInt("roomId", nest.roomId)
+                    editor.apply()
 
-                homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
-                true
+                    homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
+                    true
+                }
+            }else{
+                layoutNest.isEnabled = false
             }
         }
     }

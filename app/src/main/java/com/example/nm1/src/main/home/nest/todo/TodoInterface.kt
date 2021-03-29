@@ -14,16 +14,16 @@ interface TodoInterface {
     fun postAddRepeatTodo(@Path("roomId") roomId:Int, @Body params: PostAddRepeatTodo): Call<AddRepeatTodoResponse>
 
 //    하루 할일 조회
-    @GET("/room/{roomId}/todo/day?page=0")
-    fun getOneDayTodo(@Path("roomId") roomId:Int) : Call<GetOneDayTodoResponse>
+    @GET("/room/{roomId}/todo/day")
+    fun getOneDayTodo(@Path("roomId") roomId:Int, @Query("page") page:Int) : Call<GetOneDayTodoResponse>
 
 //    반복 할일 조회
-    @GET("/room/{roomId}/todo/days?page=0")
-    fun getRepeatTodo(@Path("roomId") roomId:Int) : Call<GetRepeatTodoResponse>
+    @GET("/room/{roomId}/todo/days")
+    fun getRepeatTodo(@Path("roomId") roomId:Int, @Query("page") page:Int) : Call<GetRepeatTodoResponse>
 
 //    오늘 할일 조회
-    @GET("/room/{roomId}/todo/today?page=0")
-    fun getTodayTodo(@Path("roomId") roomId:Int) : Call<GetTodayTodoResponse>
+    @GET("/room/{roomId}/todo/today")
+    fun getTodayTodo(@Path("roomId") roomId:Int, @Query("page") page:Int) : Call<GetTodayTodoResponse>
 
 //    오늘 할일 완료
     @POST("/room/{roomId}/todo/{todoId}/complete")
@@ -54,16 +54,16 @@ interface TodoInterface {
     fun deleteRepeatTodo(@Path("roomId") roomId:Int, @Path("todoId") todoId:Int): Call<DeleteRepeatTodoResponse>
 
 //   하루할일 키워드검색
-    @GET("/room/{roomId}/todo/day/search?page=0")
-    fun getSearchOneDayTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchOneDayTodoResponse>
+    @GET("/room/{roomId}/todo/day/search")
+    fun getSearchOneDayTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String, @Query("page") page:Int) : Call<GetSearchOneDayTodoResponse>
 
 //    반복 할일 키워드검색
-    @GET("/room/{roomId}/todo/days/search?page=0")
-    fun getSearchRepeatTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String) : Call<GetSearchRepeatTodoResponse>
+    @GET("/room/{roomId}/todo/days/search")
+    fun getSearchRepeatTodo(@Path("roomId") roomId:Int, @Query("keyword") keyword:String, @Query("page") page:Int) : Call<GetSearchRepeatTodoResponse>
 
 //    하루할일 날짜 검색
-    @GET("/room/{roomId}/todo/day/calendar?page=0")
-    fun getSearchTodoByDate(@Path("roomId") roomId:Int, @Query("date") date:String) : Call<GetSearchTodoByDateResponse>
+    @GET("/room/{roomId}/todo/day/calendar")
+    fun getSearchTodoByDate(@Path("roomId") roomId:Int, @Query("date") date:String, @Query("page") page:Int) : Call<GetSearchTodoByDateResponse>
 
 //    하루할일 전체 삭제
     @DELETE("/room/{roomId}/todo/day")

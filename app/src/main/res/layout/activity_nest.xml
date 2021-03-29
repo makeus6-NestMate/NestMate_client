@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorNest"
     android:layout_height="match_parent"
     tools:context=".src.main.home.nest.NestActivity">
 
@@ -70,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/inner_toolbar"
-        android:background="@color/white"
+        android:background="@color/colorNest"
         android:orientation="vertical"></LinearLayout>
 
 </RelativeLayout>

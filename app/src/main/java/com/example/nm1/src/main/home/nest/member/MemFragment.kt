@@ -15,15 +15,19 @@ class MemFragment : BaseFragment<FragmentMemBinding>(FragmentMemBinding::bind, R
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//       멤버 얻어오기
-        showLoadingDialog(requireContext())
-        MemberService(this).tryGetMember(roomId)
-
 //       멤버추가
         binding.memLayoutPlus.setOnClickListener {
             val memberPlusBottomSheet = MemberPlusBottomSheet()
             memberPlusBottomSheet.show(parentFragmentManager, memberPlusBottomSheet.tag)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //       멤버 얻어오기
+        showLoadingDialog(requireContext())
+        MemberService(this).tryGetMember(roomId)
     }
 
     override fun onAddMemberByEmailSuccess(response: ResponseAddMemberByEmail) {
