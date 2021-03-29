@@ -1,10 +1,8 @@
 package com.example.nm1.src.login
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.databinding.ActivityLoginBinding
@@ -16,7 +14,7 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
-    var profileImg:String? = null
+    private var kakaoImg:String? = null
     var email:String?=null
     var access_token:String?=null
     val editor = ApplicationClass.sSharedPreferences.edit()
@@ -38,11 +36,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                     } else if (user != null) {
 
                         email = user.kakaoAccount?.email!!
-                        profileImg = user.kakaoAccount?.profile?.profileImageUrl
+                        kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
 
-                        if (email!=null && profileImg!=null) {
-                            editor.putString(ApplicationClass.kakaoToken, access_token)
-                            editor.apply()
+                        if (email!=null && kakaoImg!=null) {
 
                             //  카카오 회원가입
                             if (!ApplicationClass.sSharedPreferences.getBoolean(
@@ -51,8 +47,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                                 )
                             ) {
                                 val intent = Intent(this, KakaoRegisterActivity::class.java)
-                                intent.putExtra("profileImg", profileImg)
+                                intent.putExtra("kakaoImg", kakaoImg)
                                 intent.putExtra("email", email)
+                                intent.putExtra("access_token", access_token)
 
                                 startActivity(intent)
                             } else { //카카오 로그인
@@ -98,7 +95,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     override fun onPostKakaoLoginSuccess(response: KakaoLoginResponse) {
         dismissLoadingDialog()
         editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
-        editor.remove(ApplicationClass.kakaoToken)
         editor.apply()
 
         this.finish()

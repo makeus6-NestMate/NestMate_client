@@ -2,6 +2,8 @@ package com.example.nm1.src.login
 
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.login.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,9 +23,9 @@ class LoginService(val view: LoginActivityView) {
 //       })
 //    }
 
-    fun tryPostKakaoRegister(postKakaoRegisterRequest: PostKakaoRegisterRequest){
+    fun tryPostKakaoRegister(map: HashMap<String, RequestBody>?, img: MultipartBody.Part?){
         val loginRetrofitInterface = ApplicationClass.sRetrofit.create(LoginRetrofitInterface::class.java)
-        loginRetrofitInterface.postKakaoRegister(postKakaoRegisterRequest).enqueue(object: Callback<KakaoRegisterResponse> {
+        loginRetrofitInterface.postKakaoRegister(map, img).enqueue(object: Callback<KakaoRegisterResponse> {
             override fun onResponse(call: Call<KakaoRegisterResponse>, response: Response<KakaoRegisterResponse>) {
                 view.onPostKakaoRegisterSuccess(response.body() as KakaoRegisterResponse)
             }
