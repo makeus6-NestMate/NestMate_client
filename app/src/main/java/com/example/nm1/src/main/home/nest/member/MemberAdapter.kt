@@ -29,10 +29,9 @@ class MemberAdapter(val context: Context, private val memList: List<Member>, val
         private val btnMenu = itemView.findViewById<Button>(R.id.mem_btn_edit)
 
         fun bind(member: Member, context: Context) {
-            Glide
-                .with(context)
+            Glide.with(context)
                 .load(member.profileImg)
-                .into(imgProfile) //멤버 프로필
+                .into(imgProfile)
             tvName.text = member.nickname //멤버이름
 
             btnMenu.setOnClickListener {
