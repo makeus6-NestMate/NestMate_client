@@ -106,7 +106,7 @@
                         android:id="@+id/bestmate_img"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="13"
+                        android:layout_weight="11"
                         android:layout_marginVertical="15dp"
                         android:layout_marginLeft="15dp"/>
                     <TextView

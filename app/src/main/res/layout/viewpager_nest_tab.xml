@@ -11,7 +11,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/nest_tab_top"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@color/colorNest"
         android:clipToPadding="false"
         app:tabIndicator="@drawable/tab_selector"
