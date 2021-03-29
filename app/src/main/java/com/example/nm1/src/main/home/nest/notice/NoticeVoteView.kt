@@ -18,4 +18,7 @@ interface NoticeVoteView {
 
     fun onDeleteVoteSuccess(response: BaseResponse)
     fun onDeleteVoteFailure(message: String)
+
+    fun onPutNoticeSuccess(response: BaseResponse)
+    fun onPutNoticeFailure(message: String)
 }

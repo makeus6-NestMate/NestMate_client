@@ -1,6 +1,7 @@
 package com.example.nm1.src.main.home.nest.notice.vote
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nm1.R
@@ -41,8 +42,9 @@ class VoteFragment: BaseFragment<FragmentVoteBinding>(FragmentVoteBinding::bind,
 
         adapter.setOnClickListener(onClicked)
 
-        VoteFragmentService(this).tryGetVote(roomId!!, voteId!!)
         showLoadingDialog(requireContext())
+        VoteFragmentService(this).tryGetVote(roomId!!, voteId!!)
+
 
         binding.voteConfirmBtn.setOnClickListener {
             if(selectedId != -1){
@@ -72,29 +74,38 @@ class VoteFragment: BaseFragment<FragmentVoteBinding>(FragmentVoteBinding::bind,
                     binding.voteIng.visibility = View.GONE
                     binding.voteDone.visibility = View.VISIBLE
                 }
+                Log.d("okhttp", result.unVoteMemeberCnt.toString())
+                binding.voteMemberCnt.text = "미참여 " +result.unVoteMemeberCnt.toString() + "명"
 
                 if(result.choiceId == -1 && result.isFinished == "N"){
+                    binding.voteConfirmBtn.visibility = View.VISIBLE
                     binding.voteTitle.text = result.voteTitle
-                    binding.voteMemberCnt.text = "미참여 " +result.unVoteMemberCnt.toString() + "명"
+
                     binding.voteConfirmBtn.visibility = View.VISIBLE
                     dataList.clear()
+                    //adapter.updateStatus(result.isFinished)
+                    adapter.isFinished = "N"
                     dataList.addAll(result.choice as ArrayList<Choice>)
-                    adapter.updateStatus(result.isFinished)
                     adapter.notifyDataSetChanged()
 
                 }else{
                     binding.voteTitle.text = result.voteTitle
-                    binding.voteMemberCnt.text = "미참여 " +result.unVoteMemberCnt.toString() + "명"
                     binding.voteConfirmBtn.visibility = View.GONE
                     dataList.clear()
+                    adapter.isFinished = "Y"
+                    //adapter.updateStatus(result.isFinished)
                     dataList.addAll(result.choice as ArrayList<Choice>)
-                    adapter.updateStatus(result.isFinished)
                     adapter.notifyDataSetChanged()
                 }
 
                 if(result.choiceId != -1 && result.isOwner){
                     binding.voteConfirmBtn.visibility = View.GONE
                     binding.voteFinishBtn.visibility = View.VISIBLE
+                }
+
+                if(isFinished == "Y"){
+                    binding.voteConfirmBtn.visibility = View.GONE
+                    binding.voteFinishBtn.visibility = View.GONE
                 }
             }
             else -> {

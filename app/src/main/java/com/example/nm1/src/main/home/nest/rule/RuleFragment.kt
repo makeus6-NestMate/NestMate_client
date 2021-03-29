@@ -38,6 +38,8 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
 
         RuleService(this).tryGetRule(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
 
+        binding.ruleTitle1.text = "'" + ApplicationClass.sSharedPreferences.getString("roomName", "둥지") + "'"
+
         binding.ruleAddBtn.setOnClickListener {
             isContinue = true
 

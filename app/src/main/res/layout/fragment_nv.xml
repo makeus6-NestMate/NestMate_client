@@ -18,6 +18,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notice_recyclerview"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

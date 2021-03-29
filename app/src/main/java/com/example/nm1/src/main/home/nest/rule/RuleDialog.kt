@@ -35,6 +35,5 @@ class RuleDialog(position: Int, ruleId: Int, ruleDialogInterface: RuleDialogInte
             ruleDialogInterface.onEditClicked(position, ruleId)
             dismiss()
         }
-        dialog?.setCancelable(false)
     }
 }

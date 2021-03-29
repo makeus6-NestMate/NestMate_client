@@ -2,15 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/rule_rec_design"
     android:id="@+id/vote_rv_item_layout"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:paddingBottom="16dp"
-    android:paddingTop="16dp"
-    android:layout_marginTop="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp"
+    android:background="@drawable/today_todo_background"
+    android:clipToPadding="false"
+    android:elevation="2dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView

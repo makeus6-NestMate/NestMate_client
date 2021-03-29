@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.vote_rv_item.view.*
 
 class VoteDetailRVAdapter: RecyclerView.Adapter<VoteDetailRVAdapter.VoteDetailRVHolder>() {
     private var dataList = ArrayList<Choice>()
-    private var isFinished = "N"
+    public var isFinished = "N"
     private var lastPosition = -1
     private var listener: VoteDetailRVAdapter.OnItemClickListener? = null
 
