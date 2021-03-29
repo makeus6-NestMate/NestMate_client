@@ -55,18 +55,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="center|left"
-                android:paddingTop="2dp"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="9dp"
                 android:background="@drawable/memo_dialog_content_bg"
                 android:hint="최대 7자"
+                android:maxLength="7"
+                android:textColorHint="@color/gray"
                 android:fontFamily="@font/notosanskr_medium"
                 android:textStyle="normal"
                 android:textSize="12sp"
                 android:textColor="#1c1c1c"
                 android:lineSpacingExtra="6sp"
-                android:maxLength="7"
-                android:lines="1"
+                android:includeFontPadding="false"
                 android:singleLine="true"/>
         </LinearLayout>
 
