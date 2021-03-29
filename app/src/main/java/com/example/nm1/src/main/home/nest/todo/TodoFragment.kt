@@ -193,7 +193,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         }
 
         this.adapter = todoAdapter!!
-        this.adapter.setOnClickListener(onClicked)
+        this.adapter!!.setOnClickListener(onClicked)
     }
 
     override fun onGetTodayTodoFailure(message: String) {
