@@ -16,6 +16,7 @@
         android:clipToPadding="false"
         app:tabIndicator="@drawable/tab_selector"
         app:tabIndicatorColor="@color/orange"
+        app:tabPaddingBottom="1dp"
         app:tabPaddingEnd="-1dp"
         app:tabPaddingStart="-1dp"
         app:tabSelectedTextColor="@color/orange"

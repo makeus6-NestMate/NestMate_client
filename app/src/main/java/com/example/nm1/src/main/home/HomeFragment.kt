@@ -29,6 +29,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        page = 0
+        nestlist.clear()
+        adapter = HomeNestAdapter(requireContext(), null, parentFragmentManager)
+        binding.nestList.setOnClickListener(null)
+
+        showLoadingDialog(requireContext())
+        HomeService(this).tryGetNest(page)
+
         binding.homeLayoutEmpty.setOnClickListener {
             val intent = Intent(activity, NestActivity::class.java)
             startActivity(intent)
@@ -44,6 +52,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             bundle.getString("addnest_ok")?.let {
                 if (it == "ok") {
                     page = 0
+                    nestlist.clear()
+                    isnestend = false
                     showLoadingDialog(requireContext())
                     HomeService(this).tryGetNest(page)
                 }
@@ -55,6 +65,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             bundle.getString("editnest_ok")?.let {
                 if (it == "ok") {
                     page = 0
+                    nestlist.clear()
+                    isnestend = false
                     showLoadingDialog(requireContext())
                     HomeService(this).tryGetNest(page)
                 }
@@ -82,15 +94,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
             }
         })
-    }
 
-    override fun onResume() {
-        super.onResume()
-        page = 0
-        nestlist.clear()
-        isnestend = false
-        showLoadingDialog(requireContext())
-        HomeService(this).tryGetNest(page)
+        //tip
+//        binding.imageButton.setOnClickListener {
+//            (activity as MainActivity).changeTipFragment(TipOneFragment())
+//        }
+//        binding.imageButton2.setOnClickListener {
+//            (activity as MainActivity).changeTipFragment(TipTwoFragment())
+//        }
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {
@@ -110,13 +121,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             binding.homeTvOwnerEmpty.text = "'"+response.result.userName+"'"
             binding.homeLayoutUser.visibility = View.INVISIBLE
             binding.homeDrawableBird.visibility = View.INVISIBLE
-            binding.nestList.visibility = View.INVISIBLE
+            binding.nestList.visibility = View.GONE
+            binding.nestList.setOnClickListener(null)
             binding.homeLayoutUserEmpty.visibility = View.VISIBLE
             binding.homeLayoutEmpty.visibility = View.VISIBLE
         }
 //      맨 처음(page=0) -> 둥지가 하나라도 있으면
         else if (page==0 && response.result.roomInfo.isNotEmpty()){
             Log.d("둥지", "둥지있음")
+            binding.nestList.isEnabled = true
+
             binding.homeTvOwner.text = "'"+response.result.userName+"'"
             binding.homeLayoutUser.visibility = View.VISIBLE
             binding.homeDrawableBird.visibility = View.VISIBLE
@@ -131,6 +145,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
         else if (page!=0 && response.result.roomInfo.isNotEmpty()){
             Log.d("둥지", "둥지추가")
+            binding.nestList.visibility = View.VISIBLE
             nestlist.addAll(response.result.roomInfo)
             adapter!!.notifyItemInserted(nestlist.size-1)
         }
@@ -138,6 +153,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 //        페이지추가 끝
         if (page!=0 && response.result.roomInfo.isNullOrEmpty()){
             Log.d("둥지", "둥지끝")
+            binding.nestList.visibility = View.VISIBLE
             isnestend = true
         }
     }
