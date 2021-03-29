@@ -37,10 +37,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         showLoadingDialog(requireContext())
         HomeService(this).tryGetNest(page)
 
-        binding.homeLayoutEmpty.setOnClickListener {
-            val intent = Intent(activity, NestActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.homeLayoutEmpty.setOnClickListener {
+//            val intent = Intent(activity, NestActivity::class.java)
+//            startActivity(intent)
+//        }
 
         val addnestedialog = HomeAddNestDialog()
         binding.homeBtnAddnest.setOnClickListener {
