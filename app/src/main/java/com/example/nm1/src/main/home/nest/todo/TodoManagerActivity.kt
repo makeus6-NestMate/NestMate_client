@@ -46,6 +46,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
         //   리프레시 레이아웃 -> 처음부터 띄워줌
         binding.todoManagerRefreshlayout.setOnRefreshListener {
+            dismissLoadingDialog()
             page = 0
             istodoend = false
             onedaylist.clear()
