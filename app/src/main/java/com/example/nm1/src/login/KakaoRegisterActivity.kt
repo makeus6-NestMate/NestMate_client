@@ -43,6 +43,10 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
         kakaoImg = intent.getStringExtra("kakaoImg")
         email = intent.getStringExtra("email")
 
+        Log.d("kakaoImg", kakaoImg!!)
+        Log.d("kakaoImg", email!!)
+        Log.d("kakaoImg", intent.getStringExtra("access_token")!!)
+
         Glide.with(this).load(kakaoImg).error(R.drawable.chicken_img).into(binding.kakaoregiProfile)
 
         binding.kakaoregiEdtNickname.addTextChangedListener(object : TextWatcher {
@@ -90,7 +94,7 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
                 map["kakaoImg"] = kakaoImg
             }
 
-            LoginService(this).tryPostKakaoRegister(map = map, img = uploadFile)
+            LoginService(this).tryPostKakaoRegister(map = map, profileImg = uploadFile)
             showLoadingDialog(this)
         }
 
