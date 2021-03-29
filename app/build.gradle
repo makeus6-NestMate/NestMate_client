@@ -83,4 +83,7 @@ dependencies {
 
     implementation 'com.sdsmdg.harjot:materialshadows:1.2.5'
 
+    // 카카오 로그인
+    implementation "com.kakao.sdk:v2-user:2.4.1"
+
 }

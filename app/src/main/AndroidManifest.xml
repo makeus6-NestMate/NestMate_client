@@ -17,7 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="AllowBackup">
-        <activity android:name=".src.main.mypage.profile.ProfileActivity"></activity>
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+            <data android:host="oauth"
+                android:scheme="@string/kakao_scheme" />
+        </intent-filter>
+    </activity>
+        <activity android:name=".src.login.KakaoRegisterActivity"></activity>
+        <activity android:name=".src.main.mypage.profile.ProfileActivity" />
         <activity android:name=".src.main.home.nest.notice.vote.VoteActivity" />
         <activity
             android:name=".src.main.home.nest.notice.NoticeVoteActivity"

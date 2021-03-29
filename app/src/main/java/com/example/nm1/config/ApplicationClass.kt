@@ -2,6 +2,8 @@ package com.example.nm1.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import com.example.nm1.R
+import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,6 +28,7 @@ class ApplicationClass : Application() {
 
         // JWT Token Header 키 값
         val X_ACCESS_TOKEN = "access-token"
+        val kakaoToken = "access_token"
 
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
@@ -39,6 +42,9 @@ class ApplicationClass : Application() {
             applicationContext.getSharedPreferences("NESTMATE", MODE_PRIVATE)
         // 레트로핏 인스턴스 생성
         initRetrofitInstance()
+
+        // Kakao SDK 초기화
+        KakaoSdk.init(this, getString(R.string.kakao_app_key))
     }
 
     // 레트로핏 인스턴스를 생성하고, 레트로핏에 각종 설정값들을 지정해줍니다.

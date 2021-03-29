@@ -14,6 +14,7 @@ import com.example.nm1.src.main.home.nest.NestActivity
 import com.example.nm1.src.main.mypage.MyFragment
 import com.example.nm1.src.register.RegisterOneActivity
 import com.example.nm1.src.register.RegisterTwoActivity
+import okhttp3.internal.wait
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
