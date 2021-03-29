@@ -16,9 +16,12 @@ import com.bumptech.glide.Glide
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
+import com.example.nm1.config.BaseResponse
 import com.example.nm1.databinding.ActivityKakaoRegisterBinding
 import com.example.nm1.src.login.model.KakaoLoginResponse
 import com.example.nm1.src.login.model.KakaoRegisterResponse
+import com.example.nm1.src.login.model.PostKakaoLoginRequest
+import com.example.nm1.src.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -31,7 +34,7 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
     private var email: String? = null
     private lateinit var uriPhoto: Uri
     private var uploadFile: MultipartBody.Part? = null
-    private var map = HashMap<String, RequestBody>()
+    val editor = ApplicationClass.sSharedPreferences.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,10 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
 
         kakaoImg = intent.getStringExtra("kakaoImg")
         email = intent.getStringExtra("email")
+
+        Log.d("kakaoImg", kakaoImg!!)
+        Log.d("kakaoImg", email!!)
+        Log.d("kakaoImg", intent.getStringExtra("access_token")!!)
 
         Glide.with(this).load(kakaoImg).error(R.drawable.chicken_img).into(binding.kakaoregiProfile)
 
@@ -73,27 +80,20 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
         }
 
         binding.kakaoregiBtnConfirm.setOnClickListener {
-            var name = RequestBody.create("text/plain".toMediaTypeOrNull(), binding.kakaoregiEdtNickname.text.toString())
-            var kakaoImg = RequestBody.create("text/plain".toMediaTypeOrNull(),
-                intent.getStringExtra("kakaoImg")!!
-            )
+            showLoadingDialog(this)
+            if (uploadFile!=null){ //갤러리로 고른 사진이 있다면
+                kakaoImg = null
+            }
+            var nickname = RequestBody.create("text/plain".toMediaTypeOrNull(), binding.kakaoregiEdtNickname.text.toString())
             var email = RequestBody.create("text/plain".toMediaTypeOrNull(),
                 intent.getStringExtra("email")!!
             )
-            var access_token = RequestBody.create("text/plain".toMediaTypeOrNull(),
-                intent.getStringExtra("access_token")!!)
-            map["nickname"] = name
-            map["email"] = email
-            map["access_token"] = access_token
-
-            if (uploadFile==null){
-                map["kakaoImg"] = kakaoImg
-            }
-
-            LoginService(this).tryPostKakaoRegister(map = map, img = uploadFile)
-            showLoadingDialog(this)
+            var access_token = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("access_token")!!)
+            var kakaoImg = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("kakaoImg")!!)
+            LoginService(this).tryPostKakaoRegister(nickname = nickname, profileImg = uploadFile, email = email,
+                access_token = access_token, kakaoImg = kakaoImg
+                )
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -109,7 +109,7 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
 
                     var file = File(getRealPathFromURI(uriPhoto))
                     var requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
-                    uploadFile = MultipartBody.Part.createFormData("img", file.name, requestFile)
+                    uploadFile = MultipartBody.Part.createFormData("profileImg", file.name, requestFile)
 
                     binding.kakaoregiProfile.setImageURI(uriPhoto)
                 }
@@ -131,12 +131,11 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
         return path
     }
 
-    override fun onPostKakaoRegisterSuccess(response: KakaoRegisterResponse) {
+    override fun onPostKakaoRegisterSuccess(response: BaseResponse) {
         dismissLoadingDialog()
-        this.finish()
-
-        ApplicationClass.sSharedPreferences.edit().putBoolean("iskakaoregisterd", true) //카카오 회원가입 성공
-        ApplicationClass.sSharedPreferences.edit().apply()
+        showLoadingDialog(this)
+        val postKakaoLoginRequest = PostKakaoLoginRequest(intent.getStringExtra("email")!!, intent.getStringExtra("access_token")!!)
+        LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoLoginRequest)
     }
 
     override fun onPostKakaoRegisterFailure(message: String) {
@@ -145,10 +144,18 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
     }
 
     override fun onPostKakaoLoginSuccess(response: KakaoLoginResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
+        editor.apply()
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        this.finish()
     }
 
     override fun onPostKakaoLoginFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 }
