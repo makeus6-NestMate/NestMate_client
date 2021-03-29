@@ -147,17 +147,13 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                Log.d("okhttp", "onPostSuccess: isEnd: $isEnd / page: $page / lastPage = $lastPage")
-                Log.d("okhttp", "zzzz")
-                if(isEnd){
-                    page = lastPage -2
-                    isEnd = false
-                    showLoadingDialog(thisContext)
-                    NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-                }else{
-                    showLoadingDialog(thisContext)
-                    NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-                }
+                page = 0
+                isEnd = false
+                dataList.clear()
+                noticeIdSet.clear()
+                voteIdSet.clear()
+                showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -243,17 +239,13 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                Log.d("okhttp", "onPostSuccess: isEnd: $isEnd / page: $page / lastPage = $lastPage")
-                Log.d("okhttp", "zzzz")
-                if(isEnd){
-                    page = lastPage -2
-                    isEnd = false
-                    showLoadingDialog(thisContext)
-                    NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-                }else{
-                    showLoadingDialog(thisContext)
-                    NoticeVoteService(this).tryGetNoticeVote(roomId, page)
-                }
+                page = 0
+                isEnd = false
+                dataList.clear()
+                noticeIdSet.clear()
+                voteIdSet.clear()
+                showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())
@@ -270,7 +262,12 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(thisContext)
+                page = 0
+                isEnd = false
+                dataList.clear()
+                noticeIdSet.clear()
+                voteIdSet.clear()
+                showLoadingDialog(requireContext())
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
@@ -288,7 +285,12 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                showLoadingDialog(thisContext)
+                page = 0
+                isEnd = false
+                dataList.clear()
+                noticeIdSet.clear()
+                voteIdSet.clear()
+                showLoadingDialog(requireContext())
                 NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
@@ -306,9 +308,13 @@ class NVFragment : BaseFragment<FragmentNvBinding>(FragmentNvBinding::bind, R.la
         dismissLoadingDialog()
         when(response.code){
             200 -> {
-                editData.notice = editContent
-                dataList[editPosition] = editData
-                adapter.notifyItemChanged(editPosition)
+                page = 0
+                isEnd = false
+                dataList.clear()
+                noticeIdSet.clear()
+                voteIdSet.clear()
+                showLoadingDialog(requireContext())
+                NoticeVoteService(this).tryGetNoticeVote(roomId, page)
             }
             else -> {
                 showCustomToast(response.message.toString())

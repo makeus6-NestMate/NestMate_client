@@ -18,7 +18,6 @@
         app:tabIndicatorColor="@color/orange"
         app:tabPaddingEnd="-1dp"
         app:tabPaddingStart="-1dp"
-        android:paddingBottom="6dp"
         app:tabSelectedTextColor="@color/orange"
         app:tabTextAppearance="@style/nest_tabtext_style" />
 
