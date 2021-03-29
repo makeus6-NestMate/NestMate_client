@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.src.main.home.nest.todo.model.OneDayTodo
 
-class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist: List<OneDayTodo>, private val fragmentManager: FragmentManager):
+class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist: MutableList<OneDayTodo>, private val fragmentManager: FragmentManager):
     RecyclerView.Adapter<TodoOneDayManagerAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

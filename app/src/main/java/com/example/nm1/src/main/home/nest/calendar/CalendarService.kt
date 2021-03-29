@@ -61,9 +61,10 @@ class CalendarService (val view: CalendarActivityView) {
         })
     }
 
-    fun tryGetDetailCalendar(roomId:Int, date:String){
+
+    fun tryGetDetailCalendar(roomId:Int, date:String, page:Int){
         val calendarInterface = ApplicationClass.sRetrofit.create(CalendarInterface::class.java)
-        calendarInterface.getDetailCalendar(roomId, date).enqueue(object: Callback<GetDetailCalendarResponse> {
+        calendarInterface.getDetailCalendar(roomId, date, page).enqueue(object: Callback<GetDetailCalendarResponse> {
             override fun onResponse(call: Call<GetDetailCalendarResponse>, response: Response<GetDetailCalendarResponse>) {
                 view.onGetDetailCalendarSuccess(response.body() as GetDetailCalendarResponse)
             }

@@ -36,4 +36,6 @@
     <color name="sky">#22b0ea</color>
     <color name="light_green">#92e032</color>
 
+    <color name="background">#fcfcfc</color>
+
 </resources>

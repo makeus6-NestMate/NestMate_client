@@ -10,9 +10,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AlarmService (val view: AlarmFragmentView) {
-    fun tryGetAlarm(roomId:Int){
+    fun tryGetAlarm(roomId:Int, page:Int){
         val alarmInterface = ApplicationClass.sRetrofit.create(AlarmInterface::class.java)
-        alarmInterface.getAlarm(roomId).enqueue(object: Callback<GetAlarmResponse> {
+        alarmInterface.getAlarm(roomId, page).enqueue(object: Callback<GetAlarmResponse> {
             override fun onResponse(call: Call<GetAlarmResponse>, response: Response<GetAlarmResponse>) {
                 view.onGetAlarmSuccess(response.body() as GetAlarmResponse)
             }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.src.main.home.nest.todo.model.RepeatTodo
 
-class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist: List<RepeatTodo>, private val fragmentManager: FragmentManager):
+class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist: MutableList<RepeatTodo>, private val fragmentManager: FragmentManager):
     RecyclerView.Adapter<TodoRepeatManagerAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

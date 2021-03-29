@@ -2,6 +2,7 @@ package com.example.nm1.src.main.home.nest.chart
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nm1.R
 import com.example.nm1.src.main.home.nest.chart.model.ChartMemberInfo
+import kotlinx.android.synthetic.main.activity_profile.view.*
+import kotlinx.android.synthetic.main.chart_member_item.view.*
 
 class ChartMemberAdapter(val context : Context, private val chartMemList: List<ChartMemberInfo>) :
     RecyclerView.Adapter<ChartMemberAdapter.Holder>() {
@@ -23,8 +26,7 @@ class ChartMemberAdapter(val context : Context, private val chartMemList: List<C
         private val color : ImageView = itemView.findViewById(R.id.chart_person_color);
         private val name : TextView = itemView.findViewById(R.id.chart_person_name);
         fun bind (chartMem: ChartMemberInfo, position: Int, context: Context) {
-            if(chartMem.profileImg!=null) Glide.with(context).load(chartMem.profileImg).into(img)
-            else img.setImageResource(R.drawable.home_bird_icon)
+            Glide.with(context).load(chartMem.profileImg).error(R.drawable.home_bird_icon).into(img)
             color.background.setTint(Color.parseColor(colorArray[position]))
             name.text = chartMem.nickname
         }
@@ -32,6 +34,9 @@ class ChartMemberAdapter(val context : Context, private val chartMemList: List<C
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.chart_member_item, parent, false)
+        view.layoutParams.width=parent.width/8
+        view.chart_person_img.layoutParams.width=parent.width/8
+        view.chart_person_img.layoutParams.height=parent.width/8
         return Holder(view)
     }
 

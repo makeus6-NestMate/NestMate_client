@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
@@ -14,6 +15,9 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTodoManagerBinding::inflate), TodoView {
+    private var onedaylist = mutableListOf<OneDayTodo>()
+    private var repeatlist = mutableListOf<RepeatTodo>()
+
     private lateinit var onedayadapter:TodoOneDayManagerAdapter
     private lateinit var repeatadapter:TodoRepeatManagerAdapter
     private val isrepeat = Array(2){false}
@@ -22,19 +26,41 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
     private var selectedmonth by Delegates.notNull<Int>()
     private var selectedday by Delegates.notNull<Int>()
 
+    private var page = 0       // 현재 페이지
+    var searchKeyword = ""
+    var searchdate = ""
+    var istodoend = false //끝 판단
+    var iskeywordsearch = false  //키워드 검색결과인지 판단
+    var isdatesearch = false //날짜 검색결과인지 판단
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         isrepeat[0] = true
-        showLoadingDialog(this)
-        TodoService(this).tryGetRepeatTodo(roomId)
+        page = 0
+        onedaylist.clear()
+        repeatlist.clear()
 
-        //       리프레시 레이아웃
+        showLoadingDialog(this)
+        TodoService(this).tryGetRepeatTodo(roomId, page)
+
+        //   리프레시 레이아웃 -> 처음부터 띄워줌
         binding.todoManagerRefreshlayout.setOnRefreshListener {
-            if (isrepeat[1]) //하루
-                TodoService(this).tryGetOneDayTodo(roomId)
-            else if (isrepeat[0]) //반복
-                TodoService(this).tryGetRepeatTodo(roomId)
+            page = 0
+            istodoend = false
+            onedaylist.clear()
+            repeatlist.clear()
+
+            if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
+                TodoService(this).tryGetOneDayTodo(roomId, page)
+            else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
+                TodoService(this).tryGetRepeatTodo(roomId, page)
+            else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
+                TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
+            else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
+                TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
+            else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
+                TodoService(this).trySearchGetRepeatTodo(roomId, searchdate, page)
 
             // 새로고침 완료시, 새로고침 아이콘이 사라질 수 있게
             binding.todoManagerRefreshlayout.isRefreshing = false
@@ -42,6 +68,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
 //       반복
         binding.todoManagerBtnRepeat.setOnClickListener {
+            page = 0 //초기화
+            iskeywordsearch = false
+            isdatesearch = false
+            istodoend = false
+            onedaylist.clear()
+            repeatlist.clear()
+
             binding.todoManagerBtnRepeat.setBackgroundResource(R.drawable.orange_button)
             binding.todoManagerBtnRepeat.setTextColor(
                 ContextCompat.getColor(this, R.color.white
@@ -57,11 +90,18 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             isrepeat[1] = false
 
             showLoadingDialog(this)
-            TodoService(this).tryGetRepeatTodo(roomId)
+            TodoService(this).tryGetRepeatTodo(roomId, page)
         }
 
 //        하루만
         binding.todoManagerBtnOne.setOnClickListener {
+            page = 0
+            istodoend = false
+            iskeywordsearch = false
+            isdatesearch = false
+            onedaylist.clear()
+            repeatlist.clear()
+
             binding.todoManagerBtnOne.setBackgroundResource(R.drawable.orange_button)
             binding.todoManagerBtnOne.setTextColor(
                 ContextCompat.getColor(
@@ -78,8 +118,34 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             isrepeat[1] = true
 
             showLoadingDialog(this)
-            TodoService(this).tryGetOneDayTodo(roomId)
+            TodoService(this).tryGetOneDayTodo(roomId, page)
         }
+
+        binding.todoManagerRecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+//             direction:  양수일경우엔 아래 스크롤, 음수일경우엔 위 스크롤
+//                수직으로 더이상 스크롤이 안되면, 데이터를 더해서 불러옴
+                if (!binding.todoManagerRecyclerview.canScrollVertically(1)){
+                    if (!istodoend) {
+                        dismissLoadingDialog()
+                        showLoadingDialog(this@TodoManagerActivity)
+
+                        if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
+                            TodoService(this@TodoManagerActivity).tryGetOneDayTodo(roomId, ++page)
+                        else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
+                            TodoService(this@TodoManagerActivity).tryGetRepeatTodo(roomId, ++page)
+                        else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
+                            TodoService(this@TodoManagerActivity).trySearchGetOneDayTodo(roomId, searchKeyword, ++page)
+                        else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
+                            TodoService(this@TodoManagerActivity).trySearchGetRepeatTodo(roomId, searchKeyword, ++page)
+                        else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
+                            TodoService(this@TodoManagerActivity).trySearchTodoByDate(roomId, searchdate, ++page)
+                    }
+                }
+            }
+        })
 
 //        검색창 띄우기
         binding.todoManagerBtnSearch.setOnClickListener {
@@ -96,20 +162,28 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
             binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+
+            binding.todoManagerEdtSearch.text.clear()
         }
 
         // 키워드 입력 후 엔터누르면 검색
-        binding.todoManagerEdtSearch.setOnEditorActionListener { v, actionId, event ->
+        binding.todoManagerEdtSearch.setOnEditorActionListener { _, actionId, _ ->
+            page = 0
+
             when (actionId){
                 EditorInfo.IME_ACTION_SEARCH -> {
+                    iskeywordsearch = true
+                    searchKeyword = binding.todoManagerEdtSearch.text.toString().trim()
 //                   하루만
                     if (isrepeat[1]) {
+                        onedaylist.clear()
                         showLoadingDialog(this)
-                        TodoService(this).trySearchGetOneDayTodo(roomId, binding.todoManagerEdtSearch.text.toString().trim())
+                        TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
                     }
                     else if (isrepeat[0]){
+                        repeatlist.clear()
                         showLoadingDialog(this)
-                        TodoService(this).trySearchGetRepeatTodo(roomId, binding.todoManagerEdtSearch.text.toString().trim())
+                        TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
                     }
                 }
             }
@@ -128,6 +202,9 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
                 this,
                 R.style.MyDatePickerStyle,
                 { _, year, monthOfYear, dayOfMonth ->
+                    isdatesearch = true
+                    onedaylist.clear()
+
 //                  월이 0부터 시작하여 1을 더해주어야함
                     val month = monthOfYear + 1
 //                   선택한 날짜의 요일을 구하기 위한 calendar
@@ -139,8 +216,10 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
                     selectedmonth = month
                     selectedday = dayOfMonth
 
+                    searchdate = "$selectedyear/$selectedmonth/$selectedday"
+
                     showLoadingDialog(this)
-                    TodoService(this).trySearchTodoByDate(roomId, "$selectedyear/$selectedmonth/$selectedday")
+                    TodoService(this).trySearchTodoByDate(roomId, searchdate, page)
                 },
                 year,
                 month,
@@ -182,9 +261,27 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
         dismissLoadingDialog()
-        onedayadapter = TodoOneDayManagerAdapter(this, response.result.todo, supportFragmentManager)
-        binding.todoManagerRecyclerview.adapter = onedayadapter
-        onedayadapter.notifyDataSetChanged()
+
+//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        if (page==0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지있음")
+
+            onedaylist.addAll(response.result.todo)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            binding.todoManagerRecyclerview.adapter = onedayadapter
+        }
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (page!=0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지추가")
+            onedaylist.addAll(response.result.todo)
+            onedayadapter.notifyItemInserted(onedaylist.size-1)
+        }
+
+//        페이지추가 끝
+        if (page!=0 && response.result.todo.isNullOrEmpty()){
+//            Log.d("둥지", "둥지끝")
+            istodoend = true
+        }
     }
 
     override fun onGetOneDayTodoFailure(message: String) {
@@ -194,9 +291,26 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
         dismissLoadingDialog()
-        repeatadapter = TodoRepeatManagerAdapter(this, response.result.todo, supportFragmentManager)
-        binding.todoManagerRecyclerview.adapter = repeatadapter
-        repeatadapter.notifyDataSetChanged()
+//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        if (page==0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지있음")
+
+            repeatlist.addAll(response.result.todo)
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
+            binding.todoManagerRecyclerview.adapter = repeatadapter
+        }
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (page!=0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지추가")
+            repeatlist.addAll(response.result.todo)
+            repeatadapter.notifyItemInserted(repeatlist.size-1)
+        }
+
+//        페이지추가 끝
+        if (page!=0 && response.result.todo.isNullOrEmpty()){
+//            Log.d("둥지", "둥지끝")
+            istodoend = true
+        }
     }
 
     override fun onGetRepeatTodoFailure(message: String) {
@@ -273,16 +387,25 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         if (response.code==494){
             showCustomToast(response.message!!)
         }
-//      검색 결과가 있으면
-        else if (response.result.todo.isNotEmpty()) {
-            onedayadapter =
-                TodoOneDayManagerAdapter(this, response.result.todo, supportFragmentManager)
+//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        else if (page==0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지있음")
+
+            onedaylist.addAll(response.result.todo)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
-            onedayadapter.notifyDataSetChanged()
         }
-//      없으면
-        else {
-            showCustomToast("검색 결과가 없습니다")
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (page!=0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지추가")
+            onedaylist.addAll(response.result.todo)
+            onedayadapter.notifyItemInserted(onedaylist.size-1)
+        }
+
+//        페이지추가 끝
+        if (page!=0 && response.result.todo.isNullOrEmpty()){
+//            Log.d("둥지", "둥지끝")
+            istodoend = true
         }
     }
 
@@ -296,16 +419,25 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         if (response.code==494){ //검색어를 입력하지 않았을 경우
             showCustomToast(response.message!!)
         }
-//      검색 결과가 있으면
-        else if (response.result.todo.isNotEmpty()) {
-            repeatadapter =
-                TodoRepeatManagerAdapter(this, response.result.todo, supportFragmentManager)
+//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        else if (page==0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지있음")
+
+            repeatlist.addAll(response.result.todo)
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = repeatadapter
-            repeatadapter.notifyDataSetChanged()
         }
-//      없으면
-        else {
-            showCustomToast("검색 결과가 없습니다")
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (page!=0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지추가")
+            repeatlist.addAll(response.result.todo)
+            repeatadapter.notifyItemInserted(repeatlist.size-1)
+        }
+
+//        페이지추가 끝
+        if (page!=0 && response.result.todo.isNullOrEmpty()){
+//            Log.d("둥지", "둥지끝")
+            istodoend = true
         }
     }
 
@@ -316,15 +448,29 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onGetSearchTodoByDateSuccess(response: GetSearchTodoByDateResponse) {
         dismissLoadingDialog()
-        //      검색 결과가 있으면
-        if (response.result.todo.isNotEmpty()) {
-            onedayadapter =
-                TodoOneDayManagerAdapter(this, response.result.todo, supportFragmentManager)
+
+//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        if (page==0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지있음")
+
+            onedaylist.addAll(response.result.todo)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
-            onedayadapter.notifyDataSetChanged()
+        }
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (page!=0 && response.result.todo.isNotEmpty()){
+//            Log.d("둥지", "둥지추가")
+            onedaylist.addAll(response.result.todo)
+            onedayadapter.notifyItemInserted(onedaylist.size-1)
+        }
+
+//        페이지추가 끝
+        else if (page!=0 && response.result.todo.isNullOrEmpty()){
+//            Log.d("둥지", "둥지끝")
+            istodoend = true
         }
 //      없으면
-        else {
+        else if (page==0 && response.result.todo.isNullOrEmpty()){
             showCustomToast("검색 결과가 없습니다")
         }
     }

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.dialog_calendar_add.*
 class CalendarAddDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isCancelable=true
+        isCancelable=false
     }
 
     private lateinit var binding: DialogCalendarAddBinding
@@ -39,7 +39,7 @@ class CalendarAddDialog : DialogFragment() {
         val origin : String = (activity as CalendarAddActivity).calendar_category_pick_2.category_random.calendar_category_name.text.toString()
         binding.calendarAddTxt.onMyTextChanged {
             (activity as CalendarAddActivity).changeRandomCate(binding.calendarAddTxt.text.toString())
-            if(binding.calendarAddTxt.text.toString()!=""){
+            if(binding.calendarAddTxt.text.toString()!="" || binding.calendarAddTxt.text[0]!=' '){
                 binding.calendarAddYesBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             }
             else{
