@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:orientation="vertical"
+    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <include
@@ -16,24 +17,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/chart_toolbar">
+        android:layout_marginTop="26dp">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="77dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/roundrec_design_active_bg">
 
             <ImageView
-                android:layout_width="77dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="13dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/chart_crown"/>
+                android:src="@drawable/chart_crown" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginLeft="3dp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="이번주"
                 android:textColor="#ffffff"
@@ -41,7 +44,7 @@
                 android:textStyle="normal"
                 android:lineSpacingExtra="8sp"
                 android:includeFontPadding="false"/>
-        </FrameLayout>
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,229 +59,244 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/chart_best_mate"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/chart_text"
-        android:background="@drawable/rec_design">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="74">
 
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/chart_best_mate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="13.5"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:weightSum="100"
+            android:background="@drawable/rec_design"
+            android:elevation="3dp">
 
-            <TextView
-                android:id="@+id/chart_best_mate_nothing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/notosanskr_bold"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#c1c1c1"
-                android:includeFontPadding="false"
-                android:lineSpacingExtra="7sp"
-                android:text="아직 최고의 메이트가 없어요"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/chart_best_mate_nothing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="#c1c1c1"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7sp"
+                    android:text="아직 최고의 메이트가 없어요"/>
+
+                <LinearLayout
+                    android:id="@+id/chart_best_mate_existing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:gravity="center_vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/bestmate_img"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginLeft="15dp"/>
+                    <TextView
+                        android:id="@+id/bestmate_name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:textStyle="normal"
+                        android:textSize="16sp"
+                        android:textColor="#000000"
+                        android:lineSpacingExtra="7sp"
+                        android:includeFontPadding="false"
+                        android:text="수현"/>
+                    <TextView
+                        android:id="@+id/bestmate_cnt_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/notosanskr_regular"
+                        android:textStyle="normal"
+                        android:textSize="10sp"
+                        android:textColor="#7c7c7c"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="3sp"
+                        android:text="횟수 43회"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="22.3" />
+
+                    <LinearLayout
+                        android:id="@+id/clap_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center"
+                        android:layout_marginRight="20dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/chart_clap"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:background="@color/transparent"
+                            android:fontFamily="@font/notosanskr_medium"
+                            android:textStyle="normal"
+                            android:textSize="12sp"
+                            android:textColor="#000000"
+                            android:lineSpacingExtra="-3sp"
+                            android:includeFontPadding="false"
+                            android:text="박수보내기"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60.5"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="40dp"
+            android:weightSum="100"
+            android:layout_below="@+id/chart_best_mate"
+            android:background="@drawable/rec_design"
+            android:elevation="3dp">
 
             <LinearLayout
-                android:id="@+id/chart_best_mate_existing"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:visibility="invisible"
-                android:gravity="center_vertical">
+                android:layout_height="0dp"
+                android:layout_weight="23">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/bestmate_img"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/round_design"/>
-                <TextView
-                    android:id="@+id/bestmate_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:textStyle="normal"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:lineSpacingExtra="7sp"
-                    android:includeFontPadding="false"
-                    android:text="수현"/>
-                <TextView
-                    android:id="@+id/bestmate_cnt_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:fontFamily="@font/notosanskr_regular"
-                    android:textStyle="normal"
-                    android:textSize="10sp"
-                    android:textColor="#7c7c7c"
-                    android:includeFontPadding="false"
-                    android:lineSpacingExtra="3sp"
-                    android:text="횟수 43회"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chart_person_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/chart_member_item">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="14dp"
+                android:background="#e0e0e0"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="76"
+                android:layout_gravity="center"
+                android:paddingHorizontal="23dp"
+                android:weightSum="13"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/chart_mon"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_weight="1" />
 
                 <View
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <LinearLayout
-                    android:id="@+id/clap_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center"
-                    android:layout_marginRight="20dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="14dp"
-                        android:src="@drawable/chart_clap"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@color/transparent"
-                        android:fontFamily="@font/notosanskr_medium"
-                        android:textStyle="normal"
-                        android:textSize="12sp"
-                        android:textColor="#000000"
-                        android:lineSpacingExtra="-3sp"
-                        android:includeFontPadding="false"
-                        android:text="박수보내기"
-                        />
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_tue"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_wed"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_thu"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_fri"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_sat"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <include
+                    android:id="@+id/chart_sun"
+                    layout="@layout/chart_day"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="17dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
             </LinearLayout>
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="40dp"
-        android:weightSum="100"
-        android:layout_below="@+id/chart_best_mate"
-        android:background="@drawable/rec_design">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="23">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/chart_person_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/chart_member_item">
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="14dp"
-            android:background="#e0e0e0"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="76"
-            android:layout_gravity="center"
-            android:paddingHorizontal="23dp"
-            android:weightSum="13"
-            android:orientation="horizontal">
-
-            <include
-                android:id="@+id/chart_mon"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_tue"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_wed"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_thu"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_fri"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_sat"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <include
-                android:id="@+id/chart_sun"
-                layout="@layout/chart_day"
-                android:layout_width="0dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="17dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>

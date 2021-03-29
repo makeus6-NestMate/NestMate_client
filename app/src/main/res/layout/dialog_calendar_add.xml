@@ -2,14 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/rec_design">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="272dp"
         android:layout_height="175dp"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center_horizontal"
+        android:background="@drawable/memo_dialog_bg">
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,8 +55,8 @@
                 android:layout_height="33dp"
                 android:layout_marginLeft="22dp"
                 android:gravity="center_vertical"
-                android:paddingLeft="11dp"
-                android:background="@drawable/rec_design"
+                android:paddingLeft="9dp"
+                android:background="@drawable/memo_dialog_content_bg"
                 android:hint="최대 7자"
                 android:fontFamily="@font/notosanskr_medium"
                 android:textStyle="normal"
@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingBottom="1dp"
             android:layout_marginTop="24dp">
 
             <Button
@@ -84,6 +85,7 @@
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="#ffffff"
+                android:stateListAnimator="@null"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
@@ -94,6 +96,7 @@
                 android:layout_width="84dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="5dp"
+                android:stateListAnimator="@null"
                 android:background="@drawable/roundrec_design_inactive_bg"
                 android:textStyle="normal"
                 android:textSize="15sp"
