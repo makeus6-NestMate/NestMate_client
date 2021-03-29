@@ -46,6 +46,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
         //   리프레시 레이아웃 -> 처음부터 띄워줌
         binding.todoManagerRefreshlayout.setOnRefreshListener {
+            dismissLoadingDialog()
             page = 0
             istodoend = false
             onedaylist.clear()
@@ -75,6 +76,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             onedaylist.clear()
             repeatlist.clear()
 
+            binding.todoManagerBtnSearch.visibility = View.VISIBLE
+            binding.todoManagerSearchExit.visibility = View.INVISIBLE
+            binding.todoManagerEdtSearch.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+
+            binding.todoManagerEdtSearch.text.clear()
+
             binding.todoManagerBtnRepeat.setBackgroundResource(R.drawable.orange_button)
             binding.todoManagerBtnRepeat.setTextColor(
                 ContextCompat.getColor(this, R.color.white
@@ -101,6 +109,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             isdatesearch = false
             onedaylist.clear()
             repeatlist.clear()
+
+            binding.todoManagerBtnSearch.visibility = View.VISIBLE
+            binding.todoManagerSearchExit.visibility = View.INVISIBLE
+            binding.todoManagerEdtSearch.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+
+            binding.todoManagerEdtSearch.text.clear()
 
             binding.todoManagerBtnOne.setBackgroundResource(R.drawable.orange_button)
             binding.todoManagerBtnOne.setTextColor(
@@ -262,8 +277,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
     override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
         dismissLoadingDialog()
 
+        if (page==0 && response.result.todo.isNullOrEmpty()){
+            onedaylist.clear()
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            binding.todoManagerRecyclerview.adapter = onedayadapter
+        }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
-        if (page==0 && response.result.todo.isNotEmpty()){
+        else if (page==0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지있음")
 
             onedaylist.addAll(response.result.todo)
@@ -291,8 +311,14 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
         dismissLoadingDialog()
+
+        if (page==0 && response.result.todo.isNullOrEmpty()){
+            repeatlist.clear()
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
+            binding.todoManagerRecyclerview.adapter = repeatadapter
+        }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
-        if (page==0 && response.result.todo.isNotEmpty()){
+        else if (page==0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지있음")
 
             repeatlist.addAll(response.result.todo)

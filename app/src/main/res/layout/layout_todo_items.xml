@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="19dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="19dp"
         android:background="@color/transparent"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,9 +67,9 @@
         android:id="@+id/todo_img_timer"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/todo_tv_remainhour"
+        app:layout_constraintEnd_toStartOf="@+id/todo_tv_timeorname"
         app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground"
         app:srcCompat="@drawable/ic_todo_timer" />
 
@@ -77,14 +77,14 @@
         android:id="@+id/todo_img_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="19dp"
         android:src="@drawable/chicken_img"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.334"
+        app:layout_constraintHeight_percent="0.433"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.08" />
+        app:layout_constraintWidth_percent="0.1" />
 
     <LinearLayout
         android:id="@+id/todo_layout_cock"
@@ -122,7 +122,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/todo_tv_remainhour"
+        android:id="@+id/todo_tv_timeorname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanscjkkr_medium"
@@ -132,23 +132,8 @@
         android:textColor="#000000"
         android:textSize="11sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toStartOf="@+id/todo_tv_remain"
-        app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground" />
-
-    <TextView
-        android:id="@+id/todo_tv_remain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/notosanscjkkr_medium"
-        android:gravity="left"
-        android:includeFontPadding="false"
-        android:lineSpacingExtra="0sp"
-        android:text="시간 전"
-        android:textColor="#000000"
-        android:textSize="11sp"
-        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/todo_img_notcheckbackground"
-        app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground"
-        tools:text="시간 전" />
+        app:layout_constraintStart_toStartOf="@+id/todo_img_notcheckbackground"
+        app:layout_constraintTop_toBottomOf="@+id/todo_img_notcheckbackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

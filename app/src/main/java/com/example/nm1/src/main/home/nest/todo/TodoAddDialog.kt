@@ -13,13 +13,14 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.databinding.DialogTodoAddBinding
 import com.example.nm1.src.main.home.nest.todo.model.*
 import com.example.nm1.util.LoadingDialog
-import com.example.nm1.util.onMyTextChanged
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
@@ -33,6 +34,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
     private lateinit var binding: DialogTodoAddBinding
     private val selecteddaylist = Array(7){0}
     private val isrepeat = Array(2){false}
+    private val confirmcheck = Array(4){false}
 
 //   선택한 날짜, 시간 저장
     private var selectedyear by Delegates.notNull<Int>()
@@ -57,6 +59,9 @@ class TodoAddDialog : DialogFragment(), TodoView {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         isrepeat[0] = true
+        isrepeat[1] = false
+
+        Log.d("hello", isrepeat[0].toString()+"/"+isrepeat[1].toString())
 
         windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
         display = windowManager!!.defaultDisplay
@@ -143,17 +148,21 @@ class TodoAddDialog : DialogFragment(), TodoView {
                         binding.todoBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
                     }
                 }
+                Add_CheckActive()
             }
 
             override fun afterTextChanged(s: Editable?) {
                 val userinput = binding.todoEdtTitle.text.toString()
                 binding.todoTvTitlelength.text = userinput.length.toString()
+
+                Add_CheckActive()
             }
 
         })
 
 //       요일 선택
         binding.todoBtnMon.setOnClickListener {
+
 //            선택된 경우에 클릭했을때
             if (selecteddaylist[0]==1) {
                 binding.todoBtnMon.setTextColor(
@@ -174,6 +183,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[0] = 1
             }
+            Add_CheckActive()
         }
         binding.todoBtnTue.setOnClickListener {
             if (selecteddaylist[1]==1) {
@@ -195,6 +205,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[1] = 1
             }
+            Add_CheckActive()
         }
         binding.todoBtnWed.setOnClickListener {
             if (selecteddaylist[2]==1) {
@@ -216,6 +227,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[2]=1
             }
+            Add_CheckActive()
         }
         binding.todoBtnThu.setOnClickListener {
             if (selecteddaylist[3]==1) {
@@ -237,6 +249,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[3] = 1
             }
+            Add_CheckActive()
         }
         binding.todoBtnFri.setOnClickListener {
             if (selecteddaylist[4]==1) {
@@ -258,6 +271,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[4] = 1
             }
+            Add_CheckActive()
         }
         binding.todoBtnSat.setOnClickListener {
             if (selecteddaylist[5]==1) {
@@ -279,6 +293,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[5] = 1
             }
+            Add_CheckActive()
         }
         binding.todoBtnSun.setOnClickListener {
             if (selecteddaylist[6]==1) {
@@ -300,6 +315,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[6] = 1
             }
+            Add_CheckActive()
         }
 
 //       날짜 선택
@@ -330,6 +346,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
                     selectedyear = year
                     selectedmonth = month
                     selectedday = dayOfMonth
+
+                    Add_CheckActive()
                 },
                 year,
                 month,
@@ -365,6 +383,8 @@ class TodoAddDialog : DialogFragment(), TodoView {
                     selectedhour = hourOfDay
                     selectedminute = minute
                     binding.todoTimepicker.text = timeString
+
+                    Add_CheckActive()
                 },
                 hour,
                 minute,
@@ -376,6 +396,11 @@ class TodoAddDialog : DialogFragment(), TodoView {
 //       취소버튼
         binding.todoBtnCancel.setOnClickListener {
             dismiss()
+            binding.todoDatepicker.text = ""
+            binding.todoEdtTitle.text.clear()
+            binding.todoTimepicker.text= ""
+
+            Log.d("hello", isrepeat[0].toString()+"/"+isrepeat[1].toString())
         }
 
 //       확인버튼 -> 할일 등록
@@ -395,6 +420,11 @@ class TodoAddDialog : DialogFragment(), TodoView {
                 showLoadingDialog(requireContext())
                 TodoService(this).tryAddRepeatTodo(roomId, postAddRepeatTodo)
             }
+
+            binding.todoDatepicker.text = ""
+            binding.todoEdtTitle.text.clear()
+
+            binding.todoTimepicker.text= ""
         }
 
         return binding.root
@@ -407,6 +437,30 @@ class TodoAddDialog : DialogFragment(), TodoView {
         val deviceWidth = size!!.x
         params?.width = (deviceWidth*0.75).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
+    }
+
+    fun Add_CheckActive(){
+        var flag = -1
+        confirmcheck[0]=(binding.todoEdtTitle.text).isNotEmpty()
+        confirmcheck[2]=(binding.todoTimepicker.text).isNotEmpty()
+        if (isrepeat[0]) { //반복
+            confirmcheck[3] = (selecteddaylist.joinToString("") != "0000000")
+            confirmcheck[1] = true
+        }
+        else if (isrepeat[1]){
+            confirmcheck[3] = true
+            confirmcheck[1]= (binding.todoDatepicker.text).isNotEmpty()
+        }
+        for(idx in confirmcheck.indices){
+            if(!confirmcheck[idx]) flag = idx
+        }
+        if(flag==-1){
+            binding.todoBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+            binding.todoBtnConfirm.isEnabled = true
+        }else{
+            binding.todoBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+            binding.todoBtnConfirm.isEnabled = false
+        }
     }
 
     private fun showLoadingDialog(context: Context) {
@@ -424,9 +478,9 @@ class TodoAddDialog : DialogFragment(), TodoView {
         dismissLoadingDialog()
         binding.todoEdtTitle.text.clear() //할일 제목 비우기
         this.dismiss()
-//        val bundle = bundleOf("todoadd_one_ok" to "ok")
+        val bundle = bundleOf("todoadd_ok" to "ok")
 //        // 요청키로 수신측의 리스너에 값을 전달
-//        setFragmentResult("todoadd_one", bundle)
+        setFragmentResult("todoadd", bundle)
     }
 
     override fun onAddOneDayTodoFailure(message: String) {

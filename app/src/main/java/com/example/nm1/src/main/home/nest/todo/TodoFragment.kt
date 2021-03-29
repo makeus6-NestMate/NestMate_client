@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.HomeService
 import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,7 +22,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     private var page = 0
     private var todaylist = mutableListOf<TodayTodo>()
     var istodoend = false
-    private var todoAdapter: TodayTodoAdapter? = null
+    var todoAdapter: TodayTodoAdapter?=null
+    var itemposition:Int?=null
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
     private var adapter: TodayTodoAdapter?= null
@@ -32,7 +35,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         page = 0
         todaylist.clear()
 
-        todoAdapter= TodayTodoAdapter(requireContext(), todaylist, parentFragmentManager)
+        todoAdapter = TodayTodoAdapter(requireContext(), todaylist, parentFragmentManager)
+
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId, page)
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
@@ -90,23 +96,42 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
         // 해당 요청키로 전달된 값을 처리하겠다는 의미 입니다.
 
-//        setFragmentResultListener("todoadd_one") { _, bundle ->
-//            binding.todoLayoutEmpty.visibility = View.INVISIBLE
-//            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
-//            bundle.getString("todoadd_one_ok")?.let {
-//                if (it=="ok"){
-//                    //showLoadingDialog(requireContext())
-//                    //TodoService(this)
-//                }
-//            }
-//        }
+        setFragmentResultListener("todoadd") { _, bundle ->
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
+            bundle.getString("todoadd_ok")?.let {
+                if (it=="ok"){
+                    page = 0
+                    todaylist.clear()
+                    istodoend = false
+                    showLoadingDialog(requireContext())
+                    TodoService(this).tryGetTodayTodo(roomId, page)
+                }
+            }
+        }
+
+        setFragmentResultListener("todoedit") { _, bundle ->
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
+            bundle.getString("todoedit_ok")?.let {
+                if (it=="ok"){
+                    page = 0
+                    todaylist.clear()
+                    istodoend = false
+                    showLoadingDialog(requireContext())
+                    TodoService(this).tryGetTodayTodo(roomId, page)
+                }
+            }
+        }
     }
 
     private val onClicked = object: TodayTodoAdapter.OnItemClickListener{
         override fun onClicked(position: Int, todoId: Int) {
-            todoAdapter!!.notifyItemChanged(position)
             showLoadingDialog(requireContext())
             TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
+            itemposition = position
+
+            todoAdapter?.notifyItemChanged(position)
         }
     }
 
@@ -158,7 +183,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         else if (page!=0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지추가")
             todaylist.addAll(response.result.todo)
-            todoAdapter!!.notifyItemInserted(todaylist.size-1)
+            todoAdapter?.notifyItemInserted(todaylist.size-1)
         }
 
 //        페이지추가 끝
@@ -167,10 +192,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             istodoend = true
         }
 
-        if(this.adapter!=null){
-            this.adapter = todoAdapter!!
-            this.adapter!!.setOnClickListener(onClicked)
-        }
+        this.adapter = todoAdapter!!
+        this.adapter.setOnClickListener(onClicked)
     }
 
     override fun onGetTodayTodoFailure(message: String) {
@@ -180,6 +203,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
         dismissLoadingDialog()
+        todoAdapter?.notifyItemChanged(itemposition!!)
+        showCustomToast("할일 완료!")
     }
 
     override fun onPostCompleteTodoFailure(message: String) {
