@@ -80,11 +80,8 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
-//             direction:  양수일경우엔 오른쪽 스크롤, 음수일경우엔 왼쪽 스크롤
-//                수평으로 더이상 스크롤이 안되면, 데이터를 더해서 불러옴
                 if (!binding.calendarScheduleList.canScrollVertically(1)){
                     if (!isEnded) {
-                        showLoadingDialog(this@CalendarListActivity)
                         CalendarService(this@CalendarListActivity).tryGetDetailCalendar(roomId, date,++paging)
                     }
                 }
@@ -97,7 +94,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         paging = 0
         sumList.clear()
         isEnded = false
-        showLoadingDialog(this@CalendarListActivity)
+//        showLoadingDialog(this@CalendarListActivity)
         CalendarService(this@CalendarListActivity).tryGetDetailCalendar(roomId, date, paging)
     }
 
@@ -118,7 +115,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onDeleteCalendarSuccess(response: DeleteCalendarResponse) {
-        dismissLoadingDialog()
+//        dismissLoadingDialog()
         onResume()
     }
 
@@ -135,11 +132,15 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
     }
 
     override fun onGetDetailCalendarSuccess(response: GetDetailCalendarResponse) {
-        dismissLoadingDialog()
+//        dismissLoadingDialog()
         calList = response.result.calendarDetailInfo
+        calCount = response.result.calendarCnt.toString()
+        binding.calendarListTitle.text=calCount+smallTitle
 
-        ///
-        if (paging==0 && calList.isNotEmpty()){
+        if (paging==0 && calList.isNullOrEmpty()){
+
+        }
+        else if (paging==0 && calList.isNotEmpty()){
             sumList.addAll(calList)
             calListAdapter = CalendarListAdapter(this, sumList)
             binding.calendarScheduleList.adapter = calListAdapter
@@ -150,11 +151,10 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
             calListAdapter!!.notifyItemInserted(sumList.size-1)
         }
 //        페이지추가 끝
-        if (paging!=0 && calList.isNullOrEmpty()) isEnded=true
+        if (paging!=0 && calList.isNullOrEmpty()) {
+            isEnded=true
+        }
         ///
-
-        calCount = response.result.calendarCnt.toString()
-        binding.calendarListTitle.text=calCount+smallTitle
         calListAdapter?.itemSetClick = object: CalendarListAdapter.ItemSetClick {
             override fun onClick(view: View, position: Int) {
                 val bottomDialogFragment = CalendarListBottomDialog{
@@ -171,7 +171,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
                             startActivity(intent)
                         }
                         1 -> {
-                            showLoadingDialog(this@CalendarListActivity)
+//                            showLoadingDialog(this@CalendarListActivity)
                             CalendarService(this@CalendarListActivity).tryDeleteCalendar(roomId, sumList[position].calendarId)
                         }
                     }
@@ -192,7 +192,6 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
                 startActivity(intent)
             }
         }
-        binding.calendarScheduleList.adapter = calListAdapter
     }
 
     override fun onGetDetailCalendarFailure(message: String) {

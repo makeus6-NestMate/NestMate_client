@@ -261,11 +261,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
 
     fun changeStroke(selectedIdx: Int, arr:Array<View>){
         //초기화
-        val gd_old = GradientDrawable()
-        gd_old.setColor(Color.WHITE)
-        gd_old.cornerRadius=30.dp.toFloat()
-        gd_old.setStroke(2, resources.getColor(R.color.light_gray))
-        for(idx in arr.indices) arr[idx].background=gd_old
+        for(idx in arr.indices) arr[idx].setBackgroundResource(R.drawable.cal_add_cate_roundrec)
 
         //선택된 카테고리
         val gd_new = GradientDrawable()
