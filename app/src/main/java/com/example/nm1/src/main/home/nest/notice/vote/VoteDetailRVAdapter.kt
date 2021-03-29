@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.vote_rv_item.view.*
 class VoteDetailRVAdapter: RecyclerView.Adapter<VoteDetailRVAdapter.VoteDetailRVHolder>() {
     private var dataList = ArrayList<Choice>()
     public var isFinished = "N"
+    var userChoice = -1
     private var lastPosition = -1
     private var listener: VoteDetailRVAdapter.OnItemClickListener? = null
 
@@ -19,7 +20,7 @@ class VoteDetailRVAdapter: RecyclerView.Adapter<VoteDetailRVAdapter.VoteDetailRV
     }
 
     override fun onBindViewHolder(holder: VoteDetailRVHolder, position: Int) {
-        holder.bindWithView(dataList[position], isFinished)
+        holder.bindWithView(dataList[position], isFinished, userChoice)
         holder.radio.isChecked = (position == lastPosition)
         holder.radio.setOnClickListener {
             listener!!.onRadioClicked(dataList[position].choiceId)
@@ -53,14 +54,19 @@ class VoteDetailRVAdapter: RecyclerView.Adapter<VoteDetailRVAdapter.VoteDetailRV
         var radio = itemView.vote_rv_item_radio_btn
         var layout = itemView.vote_rv_item_layout
 
-        fun bindWithView(item: Choice, isFinished: String){
+        fun bindWithView(item: Choice, isFinished: String, choice: Int){
             num.text = (adapterPosition + 1).toString() + "."
             title.text = item.choice
             cnt.text = item.memberCnt.toString()+ " 명"
             if(isFinished == "Y"){
                 cnt.visibility = View.VISIBLE
                 radio.visibility = View.GONE
-            }else{
+            }
+            else if(isFinished == "N" && choice != -1){
+                cnt.visibility = View.VISIBLE
+                radio.visibility = View.GONE
+            }
+            else{
                 cnt.visibility = View.GONE
                 radio.visibility = View.VISIBLE
             }
