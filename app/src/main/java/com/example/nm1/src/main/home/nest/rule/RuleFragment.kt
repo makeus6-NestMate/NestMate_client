@@ -36,8 +36,6 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
 
         this.adapter.setOnClickListener(onClicked)
 
-        RuleService(this).tryGetRule(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
-
         binding.ruleTitle1.text = "'" + ApplicationClass.sSharedPreferences.getString("roomName", "둥지") + "'"
 
         binding.ruleAddBtn.setOnClickListener {
@@ -71,6 +69,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
                             binding.ruleAddInputLayout.visibility = View.GONE
                             binding.ruleAddInputContent.text.clear()
 
+                            showLoadingDialog(requireContext())
                             RuleService(this@RuleFragment).tryPostRule(roomId, request)
 
                             return true
@@ -85,6 +84,9 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
 
     override fun onResume() {
         super.onResume()
+        showLoadingDialog(requireContext())
+        RuleService(this).tryGetRule(ApplicationClass.sSharedPreferences.getInt("roomId", -1))
+
         if(dataList.size == 0){
             binding.ruleEmptyLayout.visibility = View.VISIBLE
         }else{
@@ -93,9 +95,10 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
     }
 
     override fun onPostRuleSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
-
+                showLoadingDialog(requireContext())
                 RuleService(this).tryGetRule(roomId)
             }
             else -> {
@@ -105,10 +108,12 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
     }
 
     override fun onPostRuleFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     override fun onGetRuleSuccess(response: GetRuleResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
                 this.dataList.clear()
@@ -131,12 +136,15 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
     }
 
     override fun onGetRuleFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     override fun onDeleteRuleSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
+                showLoadingDialog(requireContext())
                 RuleService(this).tryGetRule(roomId)
             }
             else -> {
@@ -146,16 +154,19 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
     }
 
     override fun onDeleteRuleFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
     override fun onPutRuleSuccess(response: BaseResponse) {
+        dismissLoadingDialog()
         when(response.code){
             200 -> {
                 val item = binding.ruleRecyclerview.findViewHolderForAdapterPosition(editPosition)
                 item!!.itemView.rule_rv_item_content_et.visibility = View.GONE
                 item!!.itemView.rule_rv_item_content.visibility = View.VISIBLE
 
+                showLoadingDialog(requireContext())
                 RuleService(this).tryGetRule(roomId)
             }
             else -> {
@@ -165,6 +176,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
     }
 
     override fun onPutRuleFailure(message: String) {
+        dismissLoadingDialog()
         showCustomToast(message)
     }
 
@@ -178,6 +190,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
             dataList[position] = RuleData((position + 1).toString(), content, ruleId)
             adapter.notifyItemChanged(position)
             val request = PutRuleRequest(content)
+            showLoadingDialog(requireContext())
             RuleService(this@RuleFragment).tryPutRule(roomId, ruleId, request)
         }
     }

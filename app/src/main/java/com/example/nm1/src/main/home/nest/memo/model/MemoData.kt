@@ -8,5 +8,6 @@ data class MemoData(@SerializedName("memoId") val memoId: Int,
                     @SerializedName("memo") val memo: String,
                     @SerializedName("memoColor") val memoColor: String,
                     @SerializedName("x") val x:Float,
-                    @SerializedName("y") val y: Float
+                    @SerializedName("y") val y: Float,
+                    @SerializedName("isOwner") val isOwner: String
                     )

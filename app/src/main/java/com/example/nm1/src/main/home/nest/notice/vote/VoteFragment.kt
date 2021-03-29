@@ -21,6 +21,7 @@ class VoteFragment: BaseFragment<FragmentVoteBinding>(FragmentVoteBinding::bind,
     private var dataList = ArrayList<Choice>()
     private lateinit var adapter: VoteDetailRVAdapter
     private var selectedId = -1
+    private var confirmedId = -1
     private var isFinished = "N"
 
 
@@ -98,6 +99,11 @@ class VoteFragment: BaseFragment<FragmentVoteBinding>(FragmentVoteBinding::bind,
                     adapter.notifyDataSetChanged()
                 }
 
+                if(result.choiceId != -1){
+                    adapter.userChoice = result.choiceId
+                    confirmedId = result.choiceId
+                }
+
                 if(result.choiceId != -1 && result.isOwner){
                     binding.voteConfirmBtn.visibility = View.GONE
                     binding.voteFinishBtn.visibility = View.VISIBLE
@@ -160,7 +166,7 @@ class VoteFragment: BaseFragment<FragmentVoteBinding>(FragmentVoteBinding::bind,
         }
 
         override fun onMemberClicked(choiceId: Int) {
-            if(isFinished == "Y"){
+            if(isFinished == "Y" || confirmedId != -1){
                 val fragment = VoteMemberFragment()
                 val bundle = Bundle()
                 bundle.putInt("roomId", roomId!!)

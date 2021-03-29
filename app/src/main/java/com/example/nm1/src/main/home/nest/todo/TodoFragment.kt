@@ -32,12 +32,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         page = 0
         todaylist.clear()
 
-
-
-
-
-        showLoadingDialog(requireContext())
-        TodoService(this).tryGetTodayTodo(roomId, page)
+        todoAdapter= TodayTodoAdapter(requireContext(), todaylist, parentFragmentManager)
 
         //    리프레시 레이아웃
         binding.todoRefreshlayout.setOnRefreshListener {
@@ -87,6 +82,9 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
                 }
             }
         })
+
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId, page)
 
 //      dialog에서 받은 것을 recylerview에 추가
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
@@ -153,7 +151,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             binding.todoRecycler.visibility = View.VISIBLE
 
             todaylist.addAll(response.result.todo)
-            todoAdapter= TodayTodoAdapter(requireContext(), todaylist, parentFragmentManager)
+
             binding.todoRecycler.adapter = todoAdapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->

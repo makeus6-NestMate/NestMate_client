@@ -149,7 +149,11 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
 
                     target.memo_item_timestamp_tv.text =  time.substring(0, 2) + "월 " + time.substring(3,5) + "일 " + isAm + " " + hours + "시 " + time.substring(9,11)+ "분"
 
-
+                    if(memoList[i].isOwner == "Y"){
+                        target.memo_item_more_btn.visibility = View.VISIBLE
+                    }else{
+                        target.memo_item_more_btn.visibility = View.GONE
+                    }
 
                     target.memo_item_layout.setBackgroundColor(Color.parseColor(memoList[i].memoColor))
 

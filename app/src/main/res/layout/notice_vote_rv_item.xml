@@ -90,7 +90,6 @@
         android:textStyle="normal"
         android:textSize="13sp"
         android:textColor="#7c7c7c"
-        android:lineSpacingExtra="14sp"
         android:includeFontPadding="false"
         android:text="비밀번호 바뀜 2345입니다."
         android:textAlignment="viewStart"
@@ -108,8 +107,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/more_btn"
-        app:layout_constraintTop_toTopOf="@id/notice_vote_rv_item_title"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="14dp"/>
 
     <TextView
