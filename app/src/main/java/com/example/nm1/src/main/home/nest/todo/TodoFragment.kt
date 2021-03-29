@@ -10,7 +10,6 @@ import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
-import com.example.nm1.src.main.home.HomeService
 import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,9 +87,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
                 }
             }
         })
-
-        showLoadingDialog(requireContext())
-        TodoService(this).tryGetTodayTodo(roomId, page)
 
 //      dialog에서 받은 것을 recylerview에 추가
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
