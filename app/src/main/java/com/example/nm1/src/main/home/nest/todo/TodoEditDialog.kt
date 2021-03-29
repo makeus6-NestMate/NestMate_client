@@ -31,6 +31,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
 
     private lateinit var binding: DialogTodoAddBinding
     private val selecteddaylist = Array(7){0}
+    private val confirmcheck = Array(4){false}
 
 //   선택한 날짜, 시간 저장
     private var selectedyear by Delegates.notNull<Int>()

@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nm1.R
-import com.example.nm1.config.ApplicationClass
 import com.example.nm1.src.main.home.nest.todo.model.TodayTodo
 import kotlinx.android.synthetic.main.layout_todo_items.view.*
 import java.text.SimpleDateFormat
@@ -28,8 +27,7 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle = itemView.findViewById<TextView>(R.id.todo_tv_title)
         private val tvTime = itemView.findViewById<TextView>(R.id.todo_tv_time)
-        private val tvRemain = itemView.findViewById<TextView>(R.id.todo_tv_remain)
-        private val tvReaminHour = itemView.findViewById<TextView>(R.id.todo_tv_remainhour)
+        private val tvTimeOrName = itemView.findViewById<TextView>(R.id.todo_tv_timeorname)
         private val imgTimer = itemView.findViewById<ImageView>(R.id.todo_img_timer)
         private val imgCheck = itemView.findViewById<ImageView>(R.id.todo_img_check)
         private val imgProfile = itemView.findViewById<ImageView>(R.id.todo_img_profile)
@@ -39,20 +37,6 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
         fun bind(todayTodo: TodayTodo, context: Context, fragmentManager: FragmentManager) {
             val bundle = Bundle()
 
-            if (todayTodo.profileImg!=""){
-                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
-                imgCheck.visibility = View.INVISIBLE
-                imgProfile.visibility = View.VISIBLE
-                imguncheckBackground.visibility = View.INVISIBLE
-                imgTimer.setImageResource(R.drawable.ic_todo_complete)
-                tvReaminHour.visibility = View.INVISIBLE
-                tvRemain.text = "유리"
-
-                Glide
-                    .with(context)
-                    .load(todayTodo.profileImg)
-                    .into(imgProfile) //멤버 프로필
-            }
 //           설정된 시간
             val cal = Calendar.getInstance()
             val formatData = SimpleDateFormat("yyyy/MM/dd/hh/mm", Locale.getDefault()).parse(todayTodo.deadline)
@@ -77,17 +61,15 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
             else {
                 "오후 " + (hour - 12).toString() + "시 " + minute.toString() + "분"
             }
-            tvReaminHour.text = remainhour.toString()
+            tvTimeOrName.text = remainhour.toString()
 
 //            1시간 이상 남았을때 -> 시간 표시
             if (hourTime>=1 && !(imgProfile.isVisible)) {
-                tvReaminHour.text = remainhour.toString()
-                tvRemain.text = "시간 전"
+                tvTimeOrName.text = remainhour.toString()+"시간 전"
             }
 //            1시간 미만 남았을때 -> 분 표시
             else if (hourTime<1 && !(imgProfile.isVisible)){
-                tvReaminHour.text = minTime.toString()
-                tvRemain.text = "분 전"
+                tvTimeOrName.text = minTime.toString()+"분 전"
             }
 
 //            imgCheck.setOnClickListener {
@@ -98,6 +80,20 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
 //                imgTimer.setImageResource(R.drawable.ic_todo_complete)
 //                tvReaminHour.visibility = View.INVISIBLE
 //            }
+            if (todayTodo.profileImg!=""){
+                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
+                imgCheck.visibility = View.INVISIBLE
+                imgProfile.visibility = View.VISIBLE
+                imguncheckBackground.visibility = View.INVISIBLE
+                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+
+                Glide
+                    .with(context)
+                    .load(todayTodo.profileImg)
+                    .into(imgProfile) //멤버 프로필
+
+                tvTimeOrName.text = todayTodo.nickname
+            }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
             Log.d("시간", current.time.toString())
@@ -109,8 +105,7 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
                 imgProfile.visibility = View.INVISIBLE
                 imguncheckBackground.visibility = View.INVISIBLE
                 imgTimer.visibility = View.INVISIBLE
-                tvReaminHour.visibility = View.INVISIBLE
-                tvRemain.visibility = View.INVISIBLE
+                tvTimeOrName.visibility = View.INVISIBLE
 
                 layoutCock.visibility = View.VISIBLE
             }

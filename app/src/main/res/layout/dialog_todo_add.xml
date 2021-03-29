@@ -293,7 +293,10 @@
             android:layout_height="match_parent"
             android:background="@drawable/todo_spinner"
             android:fontFamily="@font/notosanscjkkr_medium"
+            android:includeFontPadding="false"
             android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:textColor="@color/black"
             tools:text="날짜" />
     </LinearLayout>
