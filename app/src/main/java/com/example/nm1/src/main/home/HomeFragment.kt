@@ -1,6 +1,5 @@
 package com.example.nm1.src.main.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,7 +14,6 @@ import com.example.nm1.src.main.home.model.AddNestResponse
 import com.example.nm1.src.main.home.model.GetNestResponse
 import com.example.nm1.src.main.home.model.NestInfo
 import com.example.nm1.src.main.home.model.PutEditNestResponse
-import com.example.nm1.src.main.home.nest.NestActivity
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::bind,
@@ -103,15 +101,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         binding.imageButton2.setOnClickListener {
             (activity as MainActivity).changeTipFragment(TipTwoFragment())
         }
-    }
-
-        //tip
-//        binding.imageButton.setOnClickListener {
-//            (activity as MainActivity).changeTipFragment(TipOneFragment())
-//        }
-//        binding.imageButton2.setOnClickListener {
-//            (activity as MainActivity).changeTipFragment(TipTwoFragment())
-//        }
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {
