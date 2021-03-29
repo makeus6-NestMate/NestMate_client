@@ -1,5 +1,6 @@
 package com.example.nm1.src.main.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.tip_one_layout.view.*
 class TipOneFragment : BaseFragment<FragmentTipOneBinding> (FragmentTipOneBinding::bind, R.layout.fragment_tip_one){
 
     private lateinit var callback: OnBackPressedCallback
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

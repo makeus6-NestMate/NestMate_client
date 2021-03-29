@@ -20,7 +20,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     private var page = 0
     private var todaylist = mutableListOf<TodayTodo>()
     var istodoend = false
-    private lateinit var todoAdapter: TodayTodoAdapter
+    private var todoAdapter: TodayTodoAdapter? = null
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
     private lateinit var adapter: TodayTodoAdapter
@@ -31,6 +31,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
         page = 0
         todaylist.clear()
+
+
+
+
 
         showLoadingDialog(requireContext())
         TodoService(this).tryGetTodayTodo(roomId, page)
@@ -102,7 +106,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     private val onClicked = object: TodayTodoAdapter.OnItemClickListener{
         override fun onClicked(position: Int, todoId: Int) {
-            todoAdapter.notifyItemChanged(position)
+            todoAdapter!!.notifyItemChanged(position)
             showLoadingDialog(requireContext())
             TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
         }
@@ -156,7 +160,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         else if (page!=0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지추가")
             todaylist.addAll(response.result.todo)
-            todoAdapter.notifyItemInserted(todaylist.size-1)
+            todoAdapter!!.notifyItemInserted(todaylist.size-1)
         }
 
 //        페이지추가 끝
@@ -165,7 +169,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
             istodoend = true
         }
 
-        this.adapter = todoAdapter
+        this.adapter = todoAdapter!!
         this.adapter.setOnClickListener(onClicked)
     }
 

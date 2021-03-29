@@ -38,7 +38,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager .beginTransaction().replace(R.id.outerFrame, fragment) .commit()
     }
-    fun changeTipFragment(fragment: Fragment) {
-        supportFragmentManager .beginTransaction().replace(R.id.main_frame, fragment) .commit()
-    }
+
 }
