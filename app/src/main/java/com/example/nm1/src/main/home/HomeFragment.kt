@@ -30,8 +30,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         binding.homeLayoutEmpty.setOnClickListener {
-            val intent = Intent(activity, NestActivity::class.java)
-            startActivity(intent)
+            if(nestlist.size > 0){
+                val intent = Intent(activity, NestActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         val addnestedialog = HomeAddNestDialog()
