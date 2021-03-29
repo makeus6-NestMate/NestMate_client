@@ -14,7 +14,8 @@ import com.example.nm1.R
 import com.example.nm1.src.main.home.nest.calendar.model.CalendarDetailInfo
 import kotlinx.android.synthetic.main.calendar_category_mini.view.*
 
-class CalendarListAdapter (val context : Context, private val calendarDetailList: List<CalendarDetailInfo>) :
+
+class CalendarListAdapter (val context : Context, private val calendarDetailList: MutableList<CalendarDetailInfo>) :
     RecyclerView.Adapter<CalendarListAdapter.Holder>(){
 
     private val colorArray = arrayOf("#0b70c6", "#1bcbb0", "#95f288", "#fcd60a", "#f26317", "#b71bcb", "#94f5e6")

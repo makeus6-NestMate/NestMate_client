@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
@@ -90,7 +90,7 @@
             android:id="@+id/calendar_day_pick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@+id/calendar_category_pick"
             android:orientation="vertical">
@@ -99,40 +99,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="날짜 선택"/>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/cal_add_date"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="49dp"
                 android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/cal_add_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="49dp"
-                    android:gravity="center"
-                    android:background="@drawable/todo_spinner"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:textStyle="normal"
-                    android:textSize="17sp"
-                    android:textColor="#1c1c1c"
-                    android:lineSpacingExtra="15sp"
-                    android:paddingLeft="10dp"/>
-            </LinearLayout>
+                android:gravity="left"
+                android:background="@drawable/todo_spinner"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:textColor="#1c1c1c"
+                android:lineSpacingExtra="15sp"
+                android:paddingLeft="14dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/calendar_time_pick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="18dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@+id/calendar_day_pick"
             android:orientation="vertical">
@@ -141,41 +134,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:text="시간 선택"/>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/cal_add_time"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="49dp"
                 android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/cal_add_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="49dp"
-                    android:gravity="center"
-                    android:background="@drawable/todo_spinner"
-                    android:fontFamily="@font/notosanskr_medium"
-                    android:textStyle="normal"
-                    android:textSize="17sp"
-                    android:textColor="#1c1c1c"
-                    android:lineSpacingExtra="15sp"
-                    android:paddingLeft="10dp"/>
-            </LinearLayout>
+                android:gravity="left"
+                android:background="@drawable/todo_spinner"
+                android:fontFamily="@font/notosanskr_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:textColor="#1c1c1c"
+                android:lineSpacingExtra="15sp"
+                android:paddingLeft="14dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/calendar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_below="@+id/calendar_time_pick"
             android:orientation="vertical">
 
@@ -183,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
@@ -201,6 +187,7 @@
                 android:singleLine="true"
                 android:lines="1"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:background="@drawable/new_rec_design"/>
@@ -210,8 +197,8 @@
             android:id="@+id/calendar_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_below="@+id/calendar_title"
             android:orientation="vertical">
 
@@ -219,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="3sp"
                 android:fontFamily="@font/notosanskr_medium"
@@ -236,6 +223,7 @@
                 android:paddingLeft="14dp"
                 android:lines="3"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:fontFamily="@font/notosanskr_medium"
                 android:includeFontPadding="false"
                 android:background="@drawable/new_rec_design"/>

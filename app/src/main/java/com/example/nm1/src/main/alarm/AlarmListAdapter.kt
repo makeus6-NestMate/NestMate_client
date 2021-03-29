@@ -17,7 +17,7 @@ import com.example.nm1.src.main.home.nest.calendar.CalendarListAdapter
 import com.example.nm1.src.main.home.nest.calendar.model.CalendarDetailInfo
 import com.example.nm1.src.main.home.nest.chart.model.ChartMemberInfo
 
-class AlarmListAdapter (val context : Context, private val alarmList: List<AlarmInfo>):
+class AlarmListAdapter (val context : Context, private val alarmList: MutableList<AlarmInfo>):
     RecyclerView.Adapter<AlarmListAdapter.Holder>(){
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,12 +26,12 @@ class AlarmListAdapter (val context : Context, private val alarmList: List<Alarm
         private val time : TextView = itemView.findViewById(R.id.alarm_time);
         fun bind (alarmInfo: AlarmInfo, context: Context) {
             //이미지
-            if(alarmInfo.profileImg!=null) Glide.with(context).load(alarmInfo.profileImg).into(img)
-            else img.setImageResource(R.drawable.home_bird_icon)
+            Glide.with(context).load(alarmInfo.profileImg).error(R.drawable.home_bird_icon).into(img)
             //내용
             val splitArr = alarmInfo.message.split(' ')
+            val nickname = "'"+splitArr[0].substring(0,2)+"'"+splitArr[0].substring(2)
             val firstLen = splitArr[0].length // 첫 단어는 첫째줄, 나머지는 둘째줄
-            content.text=alarmInfo.message.substring(0,firstLen)+'\n'+alarmInfo.message.substring(firstLen+1)
+            content.text=nickname+'\n'+alarmInfo.message.substring(firstLen+1)
             //시간 마킹
             var hour = alarmInfo.createdAt.substring(11,13).toInt()
             val min = alarmInfo.createdAt.substring(14,16).toInt()

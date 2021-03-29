@@ -23,6 +23,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
     RecyclerView.Adapter<CalendarAdapter.Holder>() {
     var dateList: ArrayList<Int> = arrayListOf()
     var cateList: ArrayList<CalendarInfo?> = arrayListOf()
+    var firstDateIndex : Int = -1
+    var lastDateIndex : Int = -1
 
     // 날짜 리스트 세팅
     var calendarDay: CalendarDay = CalendarDay(date)
@@ -30,19 +32,21 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         calendarDay.initBaseCalendar(calendarList)
         dateList = calendarDay.dateList
         cateList = calendarDay.cateList
+        firstDateIndex = calendarDay.prevTail
+        lastDateIndex = dateList.size - calendarDay.nextHead - 1
     }
 
     // 날짜 클릭 시
     interface ItemClick {
-        fun onClick(view: View, position: Int)
+        fun onClick(view: View, position: Int, first: Int, last:Int)
     }
     var itemClick: ItemClick? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val datetext : TextView = itemView.findViewById(R.id.calendar_day)
+        private val cates = itemView.findViewById<RecyclerView>(R.id.calendar_category_list)
         private val firstDateIndex = calendarDay.prevTail
         private val lastDateIndex = dateList.size - calendarDay.nextHead - 1
-        private val cates = itemView.findViewById<RecyclerView>(R.id.calendar_category_list)
 
         fun bind(cate: CalendarInfo?, day : Int, position: Int) {
             // 날짜 표시
@@ -50,11 +54,9 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             // 오늘 날짜 처리
             var dateString: String = SimpleDateFormat("dd.HH", Locale.KOREA).format(date)
-            var hourInt = dateString.substring(3).toInt()
             var dateInt = dateString.substring(0,2).toInt()
 
-//            if(hourInt+9>=24) dateInt+=1
-            if (dateList[position] == dateInt) {
+            if (dateList[position] == dateInt && (position in firstDateIndex..lastDateIndex)) {
                 datetext.setTextColor(itemView.resources.getColor(R.color.white))
                 datetext.background.setTint(itemView.resources.getColor(R.color.orange))
             }
@@ -92,7 +94,7 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
         if (itemClick != null) {
             holder?.itemView?.setOnClickListener { v ->
-                itemClick?.onClick(v, position)
+                itemClick?.onClick(v, position, firstDateIndex, lastDateIndex)
             }
         }
     }

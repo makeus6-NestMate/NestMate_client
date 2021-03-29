@@ -269,6 +269,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
     }
 
     fun changeRandomCate(new :String){
+        if(new=="" || new[0]==' ') return
         binding.calendarCategoryPick2.category_random.calendar_category_name.text=new
         moveCate = new
     }
@@ -281,6 +282,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         for(idx in Selected.indices){
             if(!Selected[idx]) flag = idx
         }
+
         if(flag==-1){
             binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             isOK = true
