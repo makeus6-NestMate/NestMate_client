@@ -21,7 +21,7 @@ import com.example.nm1.src.main.home.nest.NestActivity
 
 class HomeNestAdapter(
     val context: Context,
-    private val nestList: MutableList<NestInfo>,
+    private val nestList: MutableList<NestInfo>?,
     private val fragmentManager: FragmentManager
 ):
     RecyclerView.Adapter<HomeNestAdapter.ItemViewHolder>(){
@@ -93,33 +93,31 @@ class HomeNestAdapter(
                     imgBackground.setImageResource(R.drawable.dungji_green_background)
                 }
             }
-            if (nest.members.size>3){
-                layoutplusMem.visibility = View.VISIBLE
-                tvPlusMemNum.text = (nest.members.size-3).toString() //추가 멤버 수 보여주기
-            }
 
-            if (nestList.isNotEmpty()) {
+            if (nestList != null) {
+                if (nest.members.size>3){
+                    layoutplusMem.visibility = View.VISIBLE
+                    tvPlusMemNum.text = (nest.members.size-3).toString() //추가 멤버 수 보여주기
+                }
                 layoutNest.setOnClickListener {
-                    //              둥지를 클릭할때마다 roomId 저장소에 저장
-                    editor.putString("roomName", nest.roomName)
-                    editor.putInt("roomId", nest.roomId)
-                    editor.apply()
+                        //  둥지를 클릭할때마다 roomId 저장소에 저장
+                        editor.putString("roomName", nest.roomName)
+                        editor.putInt("roomId", nest.roomId)
+                        editor.apply()
 
-                    startActivity(context, Intent(context, NestActivity::class.java), null)
-                }
+                        startActivity(context, Intent(context, NestActivity::class.java), null)
+                    }
 
-                //           둥지 수정
-                layoutNest.setOnLongClickListener {
-                    val homeNestEditBottomSheet = HomeNestEditBottomSheet()
-                    editor.putString("roomName", nest.roomName)
-                    editor.putInt("roomId", nest.roomId)
-                    editor.apply()
+                    //   둥지 수정
+                    layoutNest.setOnLongClickListener {
+                        val homeNestEditBottomSheet = HomeNestEditBottomSheet()
+                        editor.putString("roomName", nest.roomName)
+                        editor.putInt("roomId", nest.roomId)
+                        editor.apply()
 
-                    homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
-                    true
-                }
-            }else{
-                layoutNest.isEnabled = false
+                        homeNestEditBottomSheet.show(fragmentManager, homeNestEditBottomSheet.tag)
+                        true
+                    }
             }
         }
     }
@@ -133,10 +131,10 @@ class HomeNestAdapter(
     }
 
     override fun onBindViewHolder(holder: HomeNestAdapter.ItemViewHolder, position: Int) {
-        holder.bind(nestList[position], context, fragmentManager)
+        holder.bind(nestList!![position], context, fragmentManager)
     }
 
     override fun getItemCount(): Int {
-        return nestList.size
+        return nestList?.size ?: 0
     }
 }

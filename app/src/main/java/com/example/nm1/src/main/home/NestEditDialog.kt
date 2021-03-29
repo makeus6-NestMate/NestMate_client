@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.Toast
@@ -80,6 +82,15 @@ class NestEditDialog : DialogFragment(), HomeView {
                     color = R.color.light_green
                 }
             }
+
+            if (binding.homeAddnestEdtName.text.isNotEmpty()) {
+                binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+            }
+            else{
+                binding.homeAddnestBtnConfirm.isEnabled = false
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+            }
         }
 
 //        취소버튼
@@ -88,15 +99,23 @@ class NestEditDialog : DialogFragment(), HomeView {
         }
 
 //       확인버튼
-        binding.homeAddnestEdtName.onMyTextChanged {
-            if(binding.homeAddnestEdtName.text.isNotEmpty() && color!=0){
-                binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
-            }else{
-                binding.homeAddnestBtnConfirm.isEnabled = false
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+        binding.homeAddnestEdtName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+                if (binding.homeAddnestEdtName.text.isNotEmpty() && color!=0) {
+                    binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
+                    binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                }
+                else{
+                    binding.homeAddnestBtnConfirm.isEnabled = false
+                    binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                }
             }
-        }
+            override fun afterTextChanged(s: Editable) {
+
+            }
+        })
 
         binding.homeAddnestBtnConfirm.setOnClickListener {
             showLoadingDialog(requireContext())

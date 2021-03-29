@@ -142,6 +142,8 @@ class HomeAddNestDialog : DialogFragment(), HomeView {
                 binding.homeAddnestEdtName.text.toString()
             )
             HomeService(this).tryAddNest(addNestRequest)
+            binding.homeAddnestEdtName.text.clear()
+            binding.homeAddnestRadiogroup.clearCheck()
         }
     }
 
