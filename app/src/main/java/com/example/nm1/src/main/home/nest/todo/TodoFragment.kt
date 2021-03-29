@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nm1.R
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseFragment
 import com.example.nm1.databinding.FragmentTodoBinding
+import com.example.nm1.src.main.home.HomeService
 import com.example.nm1.src.main.home.nest.todo.model.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -91,16 +93,33 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         // 요청키이름은 마치 onActivityResult 에서 사용하는 requestKey 같은 개념입니다.
         // 해당 요청키로 전달된 값을 처리하겠다는 의미 입니다.
 
-//        setFragmentResultListener("todoadd_one") { _, bundle ->
-//            binding.todoLayoutEmpty.visibility = View.INVISIBLE
-//            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
-//            bundle.getString("todoadd_one_ok")?.let {
-//                if (it=="ok"){
-//                    //showLoadingDialog(requireContext())
-//                    //TodoService(this)
-//                }
-//            }
-//        }
+        setFragmentResultListener("todoadd") { _, bundle ->
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
+            bundle.getString("todoadd_ok")?.let {
+                if (it=="ok"){
+                    page = 0
+                    todaylist.clear()
+                    istodoend = false
+                    showLoadingDialog(requireContext())
+                    TodoService(this).tryGetTodayTodo(roomId, page)
+                }
+            }
+        }
+
+        setFragmentResultListener("todoedit") { _, bundle ->
+            binding.todoLayoutEmpty.visibility = View.INVISIBLE
+            binding.todoRecycler.visibility = View.VISIBLE //목록이 뜨게
+            bundle.getString("todoedit_ok")?.let {
+                if (it=="ok"){
+                    page = 0
+                    todaylist.clear()
+                    istodoend = false
+                    showLoadingDialog(requireContext())
+                    TodoService(this).tryGetTodayTodo(roomId, page)
+                }
+            }
+        }
     }
 
     private val onClicked = object: TodayTodoAdapter.OnItemClickListener{
@@ -182,6 +201,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
         dismissLoadingDialog()
         todoAdapter?.notifyItemChanged(itemposition!!)
+        showCustomToast("할일 완료!")
     }
 
     override fun onPostCompleteTodoFailure(message: String) {

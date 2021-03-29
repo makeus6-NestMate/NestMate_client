@@ -56,6 +56,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         arguments?.getString("onedayorrepeat")
+        binding.todoBtnConfirm.isEnabled = false
 
         windowManager = activity?.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
         display = windowManager!!.defaultDisplay
@@ -126,7 +127,6 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 val userinput = binding.todoEdtTitle.text.toString()
                 binding.todoTvTitlelength.text = userinput.length.toString()
             }
-
         })
 
 //       요일 선택
@@ -151,6 +151,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnMon.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[0] = 1
             }
+            CheckActive()
         }
         binding.todoBtnTue.setOnClickListener {
             if (selecteddaylist[1]==1) {
@@ -172,6 +173,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnTue.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[1] = 1
             }
+            CheckActive()
         }
         binding.todoBtnWed.setOnClickListener {
             if (selecteddaylist[2]==1) {
@@ -193,6 +195,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnWed.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[2]=1
             }
+            CheckActive()
         }
         binding.todoBtnThu.setOnClickListener {
             if (selecteddaylist[3]==1) {
@@ -214,6 +217,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnThu.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[3] = 1
             }
+            CheckActive()
         }
         binding.todoBtnFri.setOnClickListener {
             if (selecteddaylist[4]==1) {
@@ -235,6 +239,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnFri.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[4] = 1
             }
+            CheckActive()
         }
         binding.todoBtnSat.setOnClickListener {
             if (selecteddaylist[5]==1) {
@@ -256,6 +261,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnSat.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[5] = 1
             }
+            CheckActive()
         }
         binding.todoBtnSun.setOnClickListener {
             if (selecteddaylist[6]==1) {
@@ -277,6 +283,8 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 binding.todoBtnSun.setBackgroundResource(R.drawable.todo_btn_clickedday)
                 selecteddaylist[6] = 1
             }
+
+            CheckActive()
         }
 
 //       날짜 선택
@@ -307,10 +315,14 @@ class TodoEditDialog : DialogFragment(), TodoView {
                     selectedyear = year
                     selectedmonth = month
                     selectedday = dayOfMonth
+
+                    CheckActive()
                 },
                 year,
                 month,
                 day
+
+
             )
 //           최소 날짜를 현재 시각 이후로
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000
@@ -342,6 +354,8 @@ class TodoEditDialog : DialogFragment(), TodoView {
                     selectedhour = hourOfDay
                     selectedminute = minute
                     binding.todoTimepicker.text = timeString
+
+                    CheckActive()
                 },
                 hour,
                 minute,
@@ -378,6 +392,7 @@ class TodoEditDialog : DialogFragment(), TodoView {
                 }
             }
 
+            CheckActive()
         }
 
 //       확인버튼 -> 할일 등록
@@ -515,6 +530,31 @@ class TodoEditDialog : DialogFragment(), TodoView {
             this.dismiss()
         }
     }
+
+    fun CheckActive(){
+        var flag = -1
+        confirmcheck[0]=(binding.todoEdtTitle.text).isNotEmpty()
+        confirmcheck[2]=(binding.todoTimepicker.text).isNotEmpty()
+        if (arguments?.getString("onedayorrepeat")=="repeat") { //반복
+            confirmcheck[3] = (selecteddaylist.joinToString("") != "0000000")
+            confirmcheck[1] = true
+        }
+        else{
+            confirmcheck[3] = true
+            confirmcheck[1]= (binding.todoDatepicker.text).isNotEmpty()
+        }
+        for(idx in confirmcheck.indices){
+            if(!confirmcheck[idx]) flag = idx
+        }
+        if(flag==-1){
+            binding.todoBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_active_bg)
+            binding.todoBtnConfirm.isEnabled = true
+        }else{
+            binding.todoBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
+            binding.todoBtnConfirm.isEnabled = false
+        }
+    }
+
 
     override fun onPutRepeatTodoFailure(message: String) {
         dismissLoadingDialog()
