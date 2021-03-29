@@ -23,36 +23,69 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>(
 ), AlarmFragmentView {
 
     private lateinit var alarmList: List<AlarmInfo>
-    private var sumList = mutableListOf<AlarmInfo>()
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
-    private var paging : Int = -1
-    private lateinit var alarmListAdapter : AlarmListAdapter
+    private var paging : Int = 0
+    private var alarmListAdapter : AlarmListAdapter? = null
+
+    private var sumList = mutableListOf<AlarmInfo>()
+
+    var isAlarmed = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.alarmToolbar.toolbarTitle.text = "알림"
 
-        alarmListAdapter = AlarmListAdapter(requireContext(), sumList)
-        binding.alarmList.adapter=alarmListAdapter
-        AlarmService(this).tryGetAlarm(roomId, ++paging)
-        binding.alarmList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val lastVisibleItemPosition =
-                    (recyclerView.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
-                val itemTotalCount = recyclerView.adapter?.itemCount
-                if (lastVisibleItemPosition + 1 == itemTotalCount) {
-                    AlarmService(this@AlarmFragment).tryGetAlarm(roomId, ++paging)
+        binding.alarmList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+//             direction:  양수일경우엔 오른쪽 스크롤, 음수일경우엔 왼쪽 스크롤
+//                수평으로 더이상 스크롤이 안되면, 데이터를 더해서 불러옴
+                if (!binding.alarmList.canScrollVertically(1)){
+                    if (!isAlarmed) {
+                        dismissLoadingDialog()
+                        showLoadingDialog(requireContext())
+                        AlarmService(this@AlarmFragment).tryGetAlarm(roomId, ++paging)
+                    }
                 }
             }
         })
     }
 
-    override fun onGetAlarmSuccess(response: GetAlarmResponse) {
-        alarmList = response.result.alarmInfo
-        for(idx in alarmList.indices) sumList.add(alarmList[idx])
+    override fun onResume() {
+        super.onResume()
+        paging = 0
+        sumList.clear()
+        isAlarmed = false
+        showLoadingDialog(requireContext())
+        AlarmService(this).tryGetAlarm(roomId, paging)
+    }
 
-        binding.alarmList.adapter?.notifyItemInserted(sumList.size-1)
+
+    override fun onGetAlarmSuccess(response: GetAlarmResponse) {
+        dismissLoadingDialog()
+        alarmList = response.result.alarmInfo
+        //      맨 처음(page=0) 둥지가 없으면
+        if (paging==0 && alarmList.isNullOrEmpty()){
+
+        }
+//      맨 처음(page=0) -> 둥지가 하나라도 있으면
+        else if (paging==0 && alarmList.isNotEmpty()){
+            Log.d("둥지", "둥지있음")
+            sumList.addAll(alarmList)
+            alarmListAdapter = AlarmListAdapter(requireContext(), sumList)
+            binding.alarmList.adapter = alarmListAdapter
+        }
+//      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
+        else if (paging!=0 && alarmList.isNotEmpty()){
+            Log.d("둥지", "둥지추가")
+            sumList.addAll(alarmList)
+            alarmListAdapter!!.notifyItemInserted(sumList.size-1)
+        }
+//        페이지추가 끝
+        if (paging!=0 && alarmList.isNullOrEmpty()){
+            isAlarmed = true
+        }
     }
 
     override fun onGetAlarmFailure(message: String) {

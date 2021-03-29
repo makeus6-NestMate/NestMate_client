@@ -17,7 +17,7 @@ import com.example.nm1.src.main.home.nest.calendar.CalendarListAdapter
 import com.example.nm1.src.main.home.nest.calendar.model.CalendarDetailInfo
 import com.example.nm1.src.main.home.nest.chart.model.ChartMemberInfo
 
-class AlarmListAdapter (val context : Context, private val alarmList: List<AlarmInfo>):
+class AlarmListAdapter (val context : Context, private val alarmList: MutableList<AlarmInfo>):
     RecyclerView.Adapter<AlarmListAdapter.Holder>(){
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {

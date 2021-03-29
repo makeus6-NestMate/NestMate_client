@@ -282,6 +282,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         for(idx in Selected.indices){
             if(!Selected[idx]) flag = idx
         }
+
         if(flag==-1){
             binding.calendarAddBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             isOK = true
