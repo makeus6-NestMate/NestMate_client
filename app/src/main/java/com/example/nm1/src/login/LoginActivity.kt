@@ -58,7 +58,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                             } else { //카카오 로그인
                                 this.finish()
                                 showLoadingDialog(this)
-                                val postKakaoRegisterRequest = PostKakaoLoginRequest(email!!)
+                                val postKakaoRegisterRequest = PostKakaoLoginRequest(email!!,
+                                    access_token!!
+                                )
                                 LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoRegisterRequest)
                             }
                         }

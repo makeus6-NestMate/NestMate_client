@@ -5,11 +5,9 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.nm1.R
@@ -71,9 +69,6 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
                     uploadFile = MultipartBody.Part.createFormData("img", file.name, requestFile)
 
                     binding.profileImg.setImageURI(uriPhoto)
-
-
-
                 }
             }
         }
