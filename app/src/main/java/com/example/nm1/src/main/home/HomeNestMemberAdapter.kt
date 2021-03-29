@@ -17,7 +17,6 @@ import com.example.nm1.R
 import com.example.nm1.src.main.home.model.NestMember
 import java.util.*
 
-
 class HomeNestMemberAdapter(val context: Context, private val memList: List<NestMember>):
     RecyclerView.Adapter<HomeNestMemberAdapter.ItemViewHolder>(){
 
