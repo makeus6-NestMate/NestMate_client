@@ -13,7 +13,11 @@ interface LoginRetrofitInterface {
 //   카카오 회원가입
     @Multipart
     @POST("/kakao/user")
-    fun postKakaoRegister(@PartMap map: HashMap<String, RequestBody>, @Part profileImg: MultipartBody.Part? = null): Call<KakaoRegisterResponse>
+    fun postKakaoRegister(@Part("nickname") nickname:RequestBody,
+                          @Part profileImg:MultipartBody.Part?=null,
+                          @Part("email") email:RequestBody,
+                          @Part("access_token") access_token:RequestBody,
+                          @Part("kakaoImg") kakaoImg:RequestBody?=null): Call<KakaoRegisterResponse>
 
 //    카카오 로그인
     @POST("/kakao/login")

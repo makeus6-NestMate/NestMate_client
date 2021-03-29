@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
+import com.example.nm1.config.BaseResponse
 import com.example.nm1.databinding.ActivityLoginBinding
 import com.example.nm1.src.login.model.KakaoLoginResponse
 import com.example.nm1.src.login.model.KakaoRegisterResponse
@@ -40,26 +41,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
                         if (email!=null && kakaoImg!=null) {
 
-                            //  카카오 회원가입
-                            if (!ApplicationClass.sSharedPreferences.getBoolean(
-                                    "iskakaoregisterd",
-                                    false
-                                )
-                            ) {
-                                val intent = Intent(this, KakaoRegisterActivity::class.java)
-                                intent.putExtra("kakaoImg", kakaoImg)
-                                intent.putExtra("email", email)
-                                intent.putExtra("access_token", access_token)
-
-                                startActivity(intent)
-                            } else { //카카오 로그인
-                                this.finish()
-                                showLoadingDialog(this)
-                                val postKakaoRegisterRequest = PostKakaoLoginRequest(email!!,
-                                    access_token!!
-                                )
-                                LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoRegisterRequest)
-                            }
+                            //  먼저 로그인 진입후 -> 회원이 아니면 회원가입을 시킴
+                            showLoadingDialog(this)
+                            val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
+                                access_token!!
+                            )
+                            LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoLoginRequest)
                         }
 
                         Log.i(
@@ -84,7 +71,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
-    override fun onPostKakaoRegisterSuccess(response: KakaoRegisterResponse) {
+    override fun onPostKakaoRegisterSuccess(response: BaseResponse) {
         TODO("Not yet implemented")
     }
 
@@ -94,11 +81,23 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     override fun onPostKakaoLoginSuccess(response: KakaoLoginResponse) {
         dismissLoadingDialog()
-        editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
-        editor.apply()
+        if (response.code==423){ //회원이 아님 -> 회원가입으로 이동
+            val intent = Intent(this, KakaoRegisterActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("access_token", access_token)
+            intent.putExtra("kakaoImg", kakaoImg)
 
-        this.finish()
-        startActivity(Intent(this, MainActivity::class.java))
+            startActivity(intent)
+        }
+        else{ //회원임 -> 토큰값을 저장하면서 로그인
+            editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
+            editor.apply()
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     override fun onPostKakaoLoginFailure(message: String) {

@@ -23,9 +23,11 @@ class LoginService(val view: LoginActivityView) {
 //       })
 //    }
 
-    fun tryPostKakaoRegister(map: HashMap<String, RequestBody>, profileImg: MultipartBody.Part?){
+    fun tryPostKakaoRegister(
+        nickname:RequestBody, profileImg: MultipartBody.Part?, email:RequestBody,
+        access_token:RequestBody, kakaoImg:RequestBody){
         val loginRetrofitInterface = ApplicationClass.sRetrofit.create(LoginRetrofitInterface::class.java)
-        loginRetrofitInterface.postKakaoRegister(map, profileImg).enqueue(object: Callback<KakaoRegisterResponse> {
+        loginRetrofitInterface.postKakaoRegister(nickname, profileImg, email, access_token, kakaoImg).enqueue(object: Callback<KakaoRegisterResponse> {
             override fun onResponse(call: Call<KakaoRegisterResponse>, response: Response<KakaoRegisterResponse>) {
                 view.onPostKakaoRegisterSuccess(response.body() as KakaoRegisterResponse)
             }
