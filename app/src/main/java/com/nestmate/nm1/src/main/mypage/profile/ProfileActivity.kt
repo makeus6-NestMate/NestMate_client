@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.nestmate.nm1.R
@@ -33,6 +34,8 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(ActivityProfileBind
 
         profileImg = intent.getStringExtra("profileImg")
         nickname = intent.getStringExtra("nickname")
+
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
 
         binding.profileNickname.setText(nickname)
         Glide.with(this).load(profileImg).error(R.drawable.chicken_img).into(binding.profileImg)
