@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView"
         app:srcCompat="@drawable/ic__nest_todo_today" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/todo_btn_manager"
         android:layout_width="64dp"
         android:layout_height="27dp"
@@ -57,9 +57,9 @@
         android:background="@drawable/todo_button_repeat"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
+        android:textColor="@color/black"
         android:text="할일관리"
         android:textSize="12sp"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/todo_btn_addtodo"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

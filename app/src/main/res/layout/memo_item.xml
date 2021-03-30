@@ -58,7 +58,7 @@
                 android:maxLines="5"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:lineSpacingExtra="4sp"
+                android:lineSpacingExtra="2sp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="4dp"
                 />
