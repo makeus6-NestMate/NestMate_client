@@ -42,6 +42,9 @@ class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist:
                     tvTime.text = "오후 "+(onedaytodo.deadline.substring(6, 8).toInt()-12)+"시 "+onedaytodo.deadline.substring(9, 11)+"분"
                 }
             }
+            if (onedaytodo.isOwner=='N'){
+                btnTool.visibility = View.GONE
+            }
             btnTool.setOnClickListener {
                 val todoManagerBottomSheet = TodoManagerBottomSheet()
                 bundle.putInt("todoId", onedaytodo.todoId)

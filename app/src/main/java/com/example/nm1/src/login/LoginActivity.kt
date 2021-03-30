@@ -3,12 +3,12 @@ package com.example.nm1.src.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.nm1.config.ApplicationClass
 import com.example.nm1.config.BaseActivity
 import com.example.nm1.config.BaseResponse
 import com.example.nm1.databinding.ActivityLoginBinding
 import com.example.nm1.src.login.model.KakaoLoginResponse
-import com.example.nm1.src.login.model.KakaoRegisterResponse
 import com.example.nm1.src.login.model.PostKakaoLoginRequest
 import com.example.nm1.src.main.MainActivity
 import com.kakao.sdk.auth.model.OAuthToken
@@ -17,7 +17,7 @@ import com.kakao.sdk.user.UserApiClient
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
     private var kakaoImg:String? = null
     var email:String?=null
-    var access_token:String?=null
+    private var access_token:String?=null
     val editor = ApplicationClass.sSharedPreferences.edit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +62,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
 
         binding.loginBtnKakao.setOnClickListener {
+            showCustomToast("회원가입 시 전체 동의하기를 눌러주세요 (카카오 계정 이메일 포함)")
             // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)

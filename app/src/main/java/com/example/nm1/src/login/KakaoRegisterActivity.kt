@@ -19,14 +19,12 @@ import com.example.nm1.config.BaseActivity
 import com.example.nm1.config.BaseResponse
 import com.example.nm1.databinding.ActivityKakaoRegisterBinding
 import com.example.nm1.src.login.model.KakaoLoginResponse
-import com.example.nm1.src.login.model.KakaoRegisterResponse
 import com.example.nm1.src.login.model.PostKakaoLoginRequest
 import com.example.nm1.src.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.util.*
 
 class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(ActivityKakaoRegisterBinding::inflate),
     LoginActivityView {

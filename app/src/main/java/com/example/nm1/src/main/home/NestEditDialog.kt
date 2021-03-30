@@ -85,11 +85,11 @@ class NestEditDialog : DialogFragment(), HomeView {
 
             if (binding.homeAddnestEdtName.text.isNotEmpty()) {
                 binding.homeAddnestBtnConfirm.isEnabled = true //버튼 활성화
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             }
             else{
                 binding.homeAddnestBtnConfirm.isEnabled = false
-                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                binding.homeAddnestBtnConfirm.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
             }
         }
 

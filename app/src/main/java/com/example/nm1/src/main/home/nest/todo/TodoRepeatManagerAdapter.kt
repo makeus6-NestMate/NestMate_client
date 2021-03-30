@@ -66,6 +66,9 @@ class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist:
                     tvTime.text = "오후 "+(repeatTodo.deadline.substring(0, 2).toInt()-12)+"시 "+repeatTodo.deadline.substring(3, 5)+"분"
                 }
             }
+            if (repeatTodo.iwOwner=='N'){
+                btnTool.visibility = View.GONE
+            }
             btnTool.setOnClickListener {
                 val todoManagerBottomSheet = TodoManagerBottomSheet()
                 bundle.putInt("todoId", repeatTodo.todoId)

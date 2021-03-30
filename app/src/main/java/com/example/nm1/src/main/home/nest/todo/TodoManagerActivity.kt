@@ -37,35 +37,6 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         super.onCreate(savedInstanceState)
 
         isrepeat[0] = true
-        page = 0
-        onedaylist.clear()
-        repeatlist.clear()
-
-        showLoadingDialog(this)
-        TodoService(this).tryGetRepeatTodo(roomId, page)
-
-        //   리프레시 레이아웃 -> 처음부터 띄워줌
-        binding.todoManagerRefreshlayout.setOnRefreshListener {
-            dismissLoadingDialog()
-            page = 0
-            istodoend = false
-            onedaylist.clear()
-            repeatlist.clear()
-
-            if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
-                TodoService(this).tryGetOneDayTodo(roomId, page)
-            else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
-                TodoService(this).tryGetRepeatTodo(roomId, page)
-            else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
-                TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
-            else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
-                TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
-            else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
-                TodoService(this).trySearchGetRepeatTodo(roomId, searchdate, page)
-
-            // 새로고침 완료시, 새로고침 아이콘이 사라질 수 있게
-            binding.todoManagerRefreshlayout.isRefreshing = false
-        }
 
 //       반복
         binding.todoManagerBtnRepeat.setOnClickListener {
@@ -80,6 +51,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
             binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()
 
@@ -114,6 +86,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
             binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()
 
@@ -167,6 +140,8 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerBtnSearch.visibility = View.INVISIBLE
             binding.todoManagerSearchExit.visibility = View.VISIBLE
             binding.todoManagerEdtSearch.visibility = View.VISIBLE
+            binding.todoManagerTitle.text = ""
+
             if (isrepeat[1])  //캘린더 검색은 하루만일때 가능하므로
                 binding.todoManagerBtnCalendar.visibility = View.VISIBLE
         }
@@ -177,6 +152,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
             binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()
         }
@@ -344,6 +320,26 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         showCustomToast(message)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        page = 0
+        onedaylist.clear()
+        repeatlist.clear()
+
+        showLoadingDialog(this)
+        if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
+            TodoService(this).tryGetOneDayTodo(roomId, page)
+        else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
+            TodoService(this).tryGetRepeatTodo(roomId, page)
+        else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
+            TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
+        else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
+        else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchdate, page)
+    }
+
     override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
         TODO("Not yet implemented")
     }
@@ -413,6 +409,9 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         if (response.code==494){
             showCustomToast(response.message!!)
         }
+        else if (page==0 && response.result.todo.isNullOrEmpty()){
+            showCustomToast("검색 결과가 없습니다")
+        }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
         else if (page==0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지있음")
@@ -444,6 +443,9 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         dismissLoadingDialog()
         if (response.code==494){ //검색어를 입력하지 않았을 경우
             showCustomToast(response.message!!)
+        }
+            else if (page==0 && response.result.todo.isNullOrEmpty()){
+            showCustomToast("검색 결과가 없습니다")
         }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
         else if (page==0 && response.result.todo.isNotEmpty()){

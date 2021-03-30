@@ -31,26 +31,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        page = 0
+        page=0
         todaylist.clear()
-
         todoAdapter = TodayTodoAdapter(requireContext(), todaylist, parentFragmentManager)
 
-        showLoadingDialog(requireContext())
-        TodoService(this).tryGetTodayTodo(roomId, page)
-
-        //    리프레시 레이아웃
-        binding.todoRefreshlayout.setOnRefreshListener {
-            // 새로고침 완료시,
-            // 새로고침 아이콘이 사라질 수 있게 isRefreshing = false
-            page = 0
-            istodoend = false
-            todaylist.clear()
-
-            showLoadingDialog(requireContext())
-            TodoService(this).tryGetTodayTodo(roomId, page)
-            binding.todoRefreshlayout.isRefreshing = false
-        }
 //       오늘날짜 설정
         val todayDate = Calendar.getInstance().time
         val todayMonth: String = SimpleDateFormat("MM", Locale.KOREAN).format(todayDate)
@@ -129,6 +113,17 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
             todoAdapter?.notifyItemChanged(position)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        page = 0
+        istodoend = false
+        todaylist.clear()
+
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId, page)
     }
 
     override fun onAddOneDayTodoSuccess(response: AddOneDayTodoResponse) {

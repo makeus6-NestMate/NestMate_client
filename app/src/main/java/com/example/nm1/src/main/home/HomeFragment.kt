@@ -120,16 +120,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             binding.homeTvOwnerEmpty.text = "'"+response.result.userName+"'"
             binding.homeLayoutUser.visibility = View.INVISIBLE
             binding.homeDrawableBird.visibility = View.INVISIBLE
-            binding.nestList.visibility = View.GONE
-            binding.nestList.setOnClickListener(null)
+            binding.nestList.visibility = View.INVISIBLE
             binding.homeLayoutUserEmpty.visibility = View.VISIBLE
             binding.homeLayoutEmpty.visibility = View.VISIBLE
         }
 //      맨 처음(page=0) -> 둥지가 하나라도 있으면
         else if (page==0 && response.result.roomInfo.isNotEmpty()){
             Log.d("둥지", "둥지있음")
-            binding.nestList.isEnabled = true
-
             binding.homeTvOwner.text = "'"+response.result.userName+"'"
             binding.homeLayoutUser.visibility = View.VISIBLE
             binding.homeDrawableBird.visibility = View.VISIBLE
