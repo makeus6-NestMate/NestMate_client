@@ -29,12 +29,18 @@ class RuleRVAdapter: RecyclerView.Adapter<RuleRVHolder>(){
             listener!!.onClicked(position, (position+1).toString(), list[position].ruleId)
         }
 
+        if(list[position].isOwner == "Y"){
+            holder.itemView.rule_rv_item_more_btn.visibility = View.VISIBLE
+        }else{
+            holder.itemView.rule_rv_item_more_btn.visibility = View.GONE
+        }
+
         holder.itemView.rule_rv_item_content_et.setOnKeyListener(object: View.OnKeyListener{
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
                 if((event?.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
 
                     val str = holder.itemView.rule_rv_item_content_et.text.toString()
-                    listener!!.onEdited(str, position, list[position].ruleId)
+                    listener!!.onEdited(str, position, list[position].ruleId, list[position].isOwner)
 
                     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(holder.itemView.rule_rv_item_content_et.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
@@ -62,7 +68,7 @@ class RuleRVAdapter: RecyclerView.Adapter<RuleRVHolder>(){
 
     interface OnItemClickListener{
         fun onClicked(position: Int, ruleNum: String, ruleId: Int)
-        fun onEdited(content: String, position: Int, ruleID: Int)
+        fun onEdited(content: String, position: Int, ruleID: Int, isOwner: String)
     }
 
     fun editItem(position: Int, ruleId: Int) {

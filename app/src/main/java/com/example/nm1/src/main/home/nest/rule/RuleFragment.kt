@@ -61,7 +61,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
                             val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                             imm.hideSoftInputFromWindow(binding.ruleAddInputContent.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
 
-                            val temp = RuleData(num, str, 99)
+                            val temp = RuleData(num, str, 99, "Y")
                             dataList.add(temp)
                             adapter.notifyDataSetChanged()
 
@@ -118,7 +118,7 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
             200 -> {
                 this.dataList.clear()
                 for(item in response.result.rule){
-                    val data = RuleData((this.dataList.size+1).toString(), item.rule, item.ruleId)
+                    val data = RuleData((this.dataList.size+1).toString(), item.rule, item.ruleId, item.isOwner)
                     this.dataList.add(data)
                 }
                 this.adapter.notifyDataSetChanged()
@@ -186,8 +186,8 @@ class RuleFragment: BaseFragment<FragmentRuleBinding>(FragmentRuleBinding::bind,
             dialog.show(parentFragmentManager, "rule")
         }
 
-        override fun onEdited(content: String, position: Int, ruleId: Int) {
-            dataList[position] = RuleData((position + 1).toString(), content, ruleId)
+        override fun onEdited(content: String, position: Int, ruleId: Int, isOwner: String) {
+            dataList[position] = RuleData((position + 1).toString(), content, ruleId, isOwner)
             adapter.notifyItemChanged(position)
             val request = PutRuleRequest(content)
             showLoadingDialog(requireContext())

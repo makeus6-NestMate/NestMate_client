@@ -12,6 +12,12 @@ class RuleRVHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     fun binWithView(item: RuleData){
         num.text = item.num
         content.text = item.content
+        if(item.isOwner == "Y"){
+            more_btn.visibility = View.VISIBLE
+        }else{
+            more_btn.visibility = View.GONE
+        }
+
     }
 
 }
