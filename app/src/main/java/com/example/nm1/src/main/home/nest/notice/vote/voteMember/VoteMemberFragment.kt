@@ -48,13 +48,6 @@ class VoteMemberFragment: BaseFragment<FragmentVoteMemberBinding>(FragmentVoteMe
                 dataList.addAll(result.voteMember)
                 adapter.notifyDataSetChanged()
 
-                if(dataList.size > 0){
-                    binding.voteMemberRecyclerview.visibility = View.VISIBLE
-                    binding.voteMemberEmptyImg.visibility = View.GONE
-                }else{
-                    binding.voteMemberRecyclerview.visibility = View.GONE
-                    binding.voteMemberEmptyImg.visibility = View.VISIBLE
-                }
             }
             else -> {
                 showCustomToast(response.message.toString())
