@@ -58,11 +58,13 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         day.what_day_txt.text=txt
     }
 
-    fun draw(day : View, color: String, cnt : Int, mx:Int){
+    fun draw(day : View, color: String, cnt : Int, mx:Int, memCnt:Int){
         if(cnt==0) return
         val img = ImageView(day.context)
-        val len = day.chart_block.height-10
-        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*cnt/mx))
+        val len = day.chart_block.height-(4*memCnt)-4
+        val MX = mx.toFloat()
+        Log.d("qqqqqq", len.toString()+(cnt/MX).toString()+ " "+(len*cnt/MX).toString())
+        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (len*(cnt/MX)).toInt()-1)
         layoutParams.setMargins(0.dp,4.dp,0.dp,0.dp)
         img.layoutParams=layoutParams
         val drawable = resources.getDrawable(R.drawable.chart_rec_design)
@@ -107,7 +109,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
 
         for(idx1 in dayList.indices) {
             init(dayList[idx1], txtArray[idx1])
-            for(idx2 in dataList[idx1].indices) draw(dayList[idx1], colorArray[idx2], dataList[idx1][idx2].count, mx)
+            for(idx2 in dataList[idx1].indices) draw(dayList[idx1], colorArray[idx2], dataList[idx1][idx2].count, mx, memList.size)
         }
     }
 
