@@ -109,6 +109,11 @@
                                       </entry>
                                     </map>
                                   </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="outputName" value="ic_nestmate_launcher" />
+                                    </map>
+                                  </option>
                                 </PersistentState>
                               </value>
                             </entry>
