@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.nm1">
+    package="com.nestmate.nm1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".config.ApplicationClass"
+        android:name="com.nestmate.nm1.config.ApplicationClass"
         android:allowBackup="false"
         android:icon="@mipmap/ic_nestmate_launcher"
         android:logo="@mipmap/ic_nestmate_launcher"
@@ -29,15 +29,15 @@
                 android:scheme="@string/kakao_scheme" />
         </intent-filter>
     </activity>
-        <activity android:name=".src.login.KakaoRegisterActivity"></activity>
-        <activity android:name=".src.main.mypage.profile.ProfileActivity" />
-        <activity android:name=".src.main.home.nest.notice.vote.VoteActivity" />
+        <activity android:name="com.nestmate.nm1.src.login.KakaoRegisterActivity"></activity>
+        <activity android:name="com.nestmate.nm1.src.main.mypage.profile.ProfileActivity" />
+        <activity android:name="com.nestmate.nm1.src.main.home.nest.notice.vote.VoteActivity" />
         <activity
-            android:name=".src.main.home.nest.notice.NoticeVoteActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.notice.NoticeVoteActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".src.main.home.nest.todo.TodoManagerActivity" />
+        <activity android:name="com.nestmate.nm1.src.main.home.nest.todo.TodoManagerActivity" />
         <activity
-            android:name=".src.splash.SplashActivity"
+            android:name="com.nestmate.nm1.src.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,40 +52,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".src.login.LoginActivity"
+            android:name="com.nestmate.nm1.src.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".src.register.RegisterOneActivity"
+            android:name="com.nestmate.nm1.src.register.RegisterOneActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".src.register.RegisterTwoActivity"
+            android:name="com.nestmate.nm1.src.register.RegisterTwoActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".src.main.home.nest.NestActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.NestActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".src.main.MainActivity"
+            android:name="com.nestmate.nm1.src.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".src.main.home.nest.chart.ChartActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.chart.ChartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.calendar.CalendarActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.calendar.CalendarActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.calendar.CalendarAddActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.calendar.CalendarAddActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.calendar.CalendarListActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.calendar.CalendarListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".src.main.home.nest.calendar.CalendarListDetailActivity"
+            android:name="com.nestmate.nm1.src.main.home.nest.calendar.CalendarListDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

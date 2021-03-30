@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeFragment.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestAdapter.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/HomeNestMemberAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarActivity.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarAdd.kt" charset="UTF-8" />
@@ -13,28 +9,32 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/CalendarViewPagerFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/ChartActivity.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/ChartDialog.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemPlusBottomSheet.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberAdapter.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberExitBottomSheet.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberInterface.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberPlusBottomSheet.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/member/MemberView.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/ItemDecoration.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeControllerActions.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/SwipeHelperCallback.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodayTodoAdapter.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoCockDialogFragment.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoFragment.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoInterface.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoItemDecoration.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoManagerActivity.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoManagerBottomSheet.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoOneDayManagerAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSearchNoResultDialog.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSwipeController.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoSwipeHelperCallback.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/nm1/src/main/home/nest/todo/TodoView.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/HomeFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/HomeInterface.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/HomeNestAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/HomeNestMemberAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemberAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemberExitBottomSheet.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemberInterface.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemberPlusBottomSheet.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/member/MemberView.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodayTodoAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoCockDialogFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoFragment.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoInterface.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoManagerActivity.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoManagerBottomSheet.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoOneDayManagerAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoView.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_memo_icon.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_setting_icon.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_time_icon.png" charset="UTF-8" />
