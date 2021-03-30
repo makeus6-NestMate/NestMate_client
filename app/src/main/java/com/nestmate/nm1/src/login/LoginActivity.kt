@@ -89,7 +89,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
             startActivity(intent)
         }
-        else{ //회원임 -> 토큰값을 저장하면서 로그인
+        else if (response.code==200){ //회원임 -> 토큰값을 저장하면서 로그인
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.token)
             editor.apply()
 
