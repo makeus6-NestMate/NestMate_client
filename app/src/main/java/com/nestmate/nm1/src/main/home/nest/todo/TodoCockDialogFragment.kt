@@ -144,10 +144,12 @@ class TodoCockDialogFragment : DialogFragment(), TodoView {
         }
         val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_dropdown_item, list)
         binding.todoCockSpinner.adapter = adapter
+        binding.todoCockSpinner.textAlignment = View.TEXT_ALIGNMENT_CENTER
 
         binding.todoCockSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                binding.todoBtnCockconfirm.isEnabled = false
+                binding.todoBtnCockconfirm.setBackgroundResource(com.nestmate.nm1.R.drawable.memo_dialog_btn_grey_bg)
             }
 
             override fun onItemSelected(
@@ -160,6 +162,8 @@ class TodoCockDialogFragment : DialogFragment(), TodoView {
                 if (selectedMember is CockMember) {
                     memberId = selectedMember.memberId
                 }
+                binding.todoBtnCockconfirm.isEnabled = true //버튼 활성화
+                binding.todoBtnCockconfirm.setBackgroundResource(com.nestmate.nm1.R.drawable.memo_dialog_btn_orange_bg)
             }
         }
 

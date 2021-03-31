@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nestmate.nm1.R
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.src.main.home.nest.todo.model.*
 import com.nestmate.nm1.util.LoadingDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class TodoManagerBottomSheet: BottomSheetDialogFragment(), TodoView {
     private lateinit var mLoadingDialog: LoadingDialog

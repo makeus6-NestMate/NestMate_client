@@ -60,7 +60,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/todo_spinner"
         android:popupBackground="@drawable/edittext_design"
-        android:popupTheme="@style/SpinnerTheme"
+        android:popupTheme="@style/SpinnerPopUpTheme"
         android:theme="@style/SpinnerTheme"
         app:layout_constraintHeight_percent="0.184"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -81,14 +81,15 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_cockcancel"
-            style="@style/graybutton"
             android:layout_width="85dp"
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/roundrec_design_inactive_bg"
             android:elevation="0dp"
             android:onClick="onClick"
             android:stateListAnimator="@null"
-            android:text="취소" />
+            android:text="취소"
+            android:textColor="#FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/todo_btn_cockconfirm"
@@ -96,9 +97,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/dialog_button"
+            android:background="@drawable/roundrec_design_inactive_bg"
             android:elevation="0dp"
-            android:enabled="true"
+            android:enabled="false"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:stateListAnimator="@null"
             android:text="확인"

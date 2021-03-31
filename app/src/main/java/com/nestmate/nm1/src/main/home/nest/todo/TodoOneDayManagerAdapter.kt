@@ -2,6 +2,7 @@ package com.nestmate.nm1.src.main.home.nest.todo
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nestmate.nm1.R
 import com.nestmate.nm1.src.main.home.nest.todo.model.OneDayTodo
+import kotlinx.coroutines.supervisorScope
 
-class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist: MutableList<OneDayTodo>, private val fragmentManager: FragmentManager):
+class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist: MutableList<OneDayTodo>, private val isOwnerlist:MutableList<OneDayTodo>?, private val fragmentManager: FragmentManager):
     RecyclerView.Adapter<TodoOneDayManagerAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,7 +24,7 @@ class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist:
         private val tvTime = itemView.findViewById<TextView>(R.id.todo_manager_tv_time)
         private val btnTool = itemView.findViewById<Button>(R.id.todo_manager_tool)
 
-        fun bind(onedaytodo: OneDayTodo, context: Context, fragmentManager: FragmentManager) {
+        fun bind(onedaytodo: OneDayTodo, isOwnerlist: MutableList<OneDayTodo>?, fragmentManager: FragmentManager) {
             val bundle = Bundle() //bottomsheetdialog에 데이터를 전달하기 위함
 
             tvOneDayOrRepeat.text = "하루"
@@ -44,6 +46,12 @@ class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist:
             }
             if (onedaytodo.isOwner=='N'){
                 btnTool.visibility = View.GONE
+            }
+            if (isOwnerlist != null) {
+                for (i in isOwnerlist){
+                    if (i.todoId == onedaytodo.todoId && i.isOwner=='N')
+                        btnTool.visibility = View.GONE
+                }
             }
             btnTool.setOnClickListener {
                 val todoManagerBottomSheet = TodoManagerBottomSheet()
@@ -68,7 +76,7 @@ class TodoOneDayManagerAdapter(val context: Context, private val onedaytodolist:
     }
 
     override fun onBindViewHolder(holder: TodoOneDayManagerAdapter.ItemViewHolder, position: Int) {
-        holder.bind(onedaytodolist[position], context, fragmentManager)
+        holder.bind(onedaytodolist[position], isOwnerlist, fragmentManager)
     }
 
     override fun getItemCount(): Int {

@@ -12,7 +12,9 @@ import android.text.TextWatcher
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.nestmate.nm1.R
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.databinding.DialogTodoAddBinding
@@ -512,6 +514,9 @@ class TodoEditDialog : DialogFragment(), TodoView {
             Toast.makeText(requireContext(), "수정이 완료되었습니다", Toast.LENGTH_SHORT).show()
             this.dismiss()
         }
+        val bundle = bundleOf("todoedit_ok" to "ok")
+//        // 요청키로 수신측의 리스너에 값을 전달
+        setFragmentResult("todoedit", bundle)
     }
 
     override fun onPutOneDayTodoFailure(message: String) {

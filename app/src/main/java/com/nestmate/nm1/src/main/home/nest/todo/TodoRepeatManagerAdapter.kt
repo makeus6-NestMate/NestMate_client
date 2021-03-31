@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nestmate.nm1.R
 import com.nestmate.nm1.src.main.home.nest.todo.model.RepeatTodo
 
-class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist: MutableList<RepeatTodo>, private val fragmentManager: FragmentManager):
+class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist: MutableList<RepeatTodo>, private val isOwnerlist:MutableList<RepeatTodo>?, private val fragmentManager: FragmentManager):
     RecyclerView.Adapter<TodoRepeatManagerAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,7 +22,7 @@ class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist:
         private val tvTime = itemView.findViewById<TextView>(R.id.todo_manager_tv_time)
         private val btnTool = itemView.findViewById<Button>(R.id.todo_manager_tool)
 
-        fun bind(repeatTodo: RepeatTodo, context: Context, fragmentManager: FragmentManager) {
+        fun bind(repeatTodo: RepeatTodo, isOwnerlist: MutableList<RepeatTodo>?, context: Context, fragmentManager: FragmentManager) {
             val bundle = Bundle() //bottomsheetdialog에 데이터를 전달하기 위함
             val days: MutableList<String> = ArrayList()
 
@@ -66,9 +66,16 @@ class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist:
                     tvTime.text = "오후 "+(repeatTodo.deadline.substring(0, 2).toInt()-12)+"시 "+repeatTodo.deadline.substring(3, 5)+"분"
                 }
             }
-            if (repeatTodo.iwOwner=='N'){
+            if (repeatTodo.isOwner=='N'){
                 btnTool.visibility = View.GONE
             }
+            if (isOwnerlist != null) {
+                for (i in isOwnerlist){
+                    if (i.todoId == repeatTodo.todoId && i.isOwner=='N')
+                        btnTool.visibility = View.GONE
+                }
+            }
+
             btnTool.setOnClickListener {
                 val todoManagerBottomSheet = TodoManagerBottomSheet()
                 bundle.putInt("todoId", repeatTodo.todoId)
@@ -93,7 +100,7 @@ class TodoRepeatManagerAdapter(val context: Context, private val repeattodolist:
     }
 
     override fun onBindViewHolder(holder: TodoRepeatManagerAdapter.ItemViewHolder, position: Int) {
-        holder.bind(repeattodolist[position], context, fragmentManager)
+        holder.bind(repeattodolist[position], isOwnerlist, context, fragmentManager)
     }
 
     override fun getItemCount(): Int {

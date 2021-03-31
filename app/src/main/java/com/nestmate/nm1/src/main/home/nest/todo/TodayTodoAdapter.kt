@@ -61,62 +61,55 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
             else {
                 "오후 " + (hour - 12).toString() + "시 " + minute.toString() + "분"
             }
-            tvTimeOrName.text = remainhour.toString()
 
 //            1시간 이상 남았을때 -> 시간 표시
-            if (hourTime>=1 && !(imgProfile.isVisible)) {
+            if (hourTime>=1 && todayTodo.profileImg.isNullOrEmpty()) {
                 tvTimeOrName.text = remainhour.toString()+"시간 전"
             }
 //            1시간 미만 남았을때 -> 분 표시
-            else if (hourTime<1 && !(imgProfile.isVisible)){
+            else if (hourTime<1 && todayTodo.profileImg.isNullOrEmpty()){
                 tvTimeOrName.text = minTime.toString()+"분 전"
             }
 
-//            imgCheck.setOnClickListener {
-//                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
-//                imgCheck.visibility = View.INVISIBLE
-//                imgProfile.visibility = View.VISIBLE
-//                imguncheckBackground.visibility = View.INVISIBLE
-//                imgTimer.setImageResource(R.drawable.ic_todo_complete)
-//                tvReaminHour.visibility = View.INVISIBLE
-//            }
-            if (todayTodo.profileImg!=""){
-                imgCheck.setBackgroundResource(R.drawable.ic_todo_check_complete)
-                imgCheck.visibility = View.INVISIBLE
-                imgProfile.visibility = View.VISIBLE
-                imguncheckBackground.visibility = View.INVISIBLE
-                imgTimer.setImageResource(R.drawable.ic_todo_complete)
+            if (todayTodo.profileImg.isNotEmpty()){ //프로필이 비지 않았음 -> 완료
+                imgCheck.visibility = View.INVISIBLE //체크 안보임
+                imgProfile.visibility = View.VISIBLE //프로필 보임
+                tvTimeOrName.visibility = View.VISIBLE //닉네임 보임
+                imguncheckBackground.visibility = View.INVISIBLE //체크 안보임
+                imgTimer.setImageResource(R.drawable.ic_todo_complete) //완료 표시
+                imgTimer.visibility = View.VISIBLE
+                layoutCock.visibility = View.INVISIBLE //콕찌르기 안보여야함
+                layoutCock.isEnabled = false //콕찌르기 클릭 무력화
+                imgCheck.isEnabled = false //이미지 체크 무력화
 
                 Glide
                     .with(context)
                     .load(todayTodo.profileImg)
                     .into(imgProfile) //멤버 프로필
 
-                tvTimeOrName.text = todayTodo.nickname
+                tvTimeOrName.text = todayTodo.nickname //멤버 닉네임
+            } else if (todayTodo.profileImg.isNullOrEmpty() && current.time.after(cal.time)){ //해결하지 않았는데 시간이 지난경우
+                imgCheck.visibility = View.INVISIBLE //체크안보임
+                imgProfile.visibility = View.INVISIBLE //프로필 안보임
+                imguncheckBackground.visibility = View.INVISIBLE //체크 배경 안보임
+                imgTimer.visibility = View.INVISIBLE //아이콘 안보임
+                tvTimeOrName.visibility = View.INVISIBLE //시간 안보임
+
+                layoutCock.visibility = View.VISIBLE //콕 보임
+                layoutCock.isEnabled = true
+                layoutCock.setOnClickListener {
+                    bundle.putInt("todoId", todayTodo.todoId)
+                    val todocockdialog = TodoCockDialogFragment()
+
+                    todocockdialog.arguments = bundle //todoId전달
+                    todocockdialog.show(fragmentManager, "todocockdialog")
+                }
             }
 
 //         콕 찌르기 -> 현재 시간이 정해진 시간보다 지났을때
             Log.d("시간", current.time.toString())
             Log.d("시간", cal.time.toString())
             Log.d("시간/비교", current.time.after(cal.time).toString())
-
-            if (current.time.after(cal.time)){
-                imgCheck.visibility = View.INVISIBLE
-                imgProfile.visibility = View.INVISIBLE
-                imguncheckBackground.visibility = View.INVISIBLE
-                imgTimer.visibility = View.INVISIBLE
-                tvTimeOrName.visibility = View.INVISIBLE
-
-                layoutCock.visibility = View.VISIBLE
-            }
-
-            layoutCock.setOnClickListener {
-                bundle.putInt("todoId", todayTodo.todoId)
-                val todocockdialog = TodoCockDialogFragment()
-
-                todocockdialog.arguments = bundle //todoId전달
-                todocockdialog.show(fragmentManager, "todocockdialog")
-            }
         }
     }
 

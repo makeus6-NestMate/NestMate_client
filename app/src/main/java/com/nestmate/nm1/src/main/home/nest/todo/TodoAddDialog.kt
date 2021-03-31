@@ -32,7 +32,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
     private lateinit var mLoadingDialog: LoadingDialog
 
     private lateinit var binding: DialogTodoAddBinding
-    private val selecteddaylist = Array(7){0}
+    private var selecteddaylist = Array(7){0}
     private val isrepeat = Array(2){false}
     private val confirmcheck = Array(4){false}
 
@@ -425,6 +425,7 @@ class TodoAddDialog : DialogFragment(), TodoView {
             binding.todoEdtTitle.text.clear()
 
             binding.todoTimepicker.text= ""
+            selecteddaylist = Array(7){0}
         }
 
         return binding.root
@@ -492,6 +493,9 @@ class TodoAddDialog : DialogFragment(), TodoView {
         dismissLoadingDialog()
         binding.todoEdtTitle.text.clear() //할일 제목 비우기
         this.dismiss()
+        val bundle = bundleOf("todoadd_ok" to "ok")
+//        // 요청키로 수신측의 리스너에 값을 전달
+        setFragmentResult("todoadd", bundle)
     }
 
     override fun onAddRepeatTodoFailure(message: String) {

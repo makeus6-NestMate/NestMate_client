@@ -3,6 +3,8 @@ package com.nestmate.nm1.src.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.user.UserApiClient
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.config.BaseActivity
 import com.nestmate.nm1.config.BaseResponse
@@ -10,8 +12,6 @@ import com.nestmate.nm1.databinding.ActivityLoginBinding
 import com.nestmate.nm1.src.login.model.KakaoLoginResponse
 import com.nestmate.nm1.src.login.model.PostKakaoLoginRequest
 import com.nestmate.nm1.src.main.MainActivity
-import com.kakao.sdk.auth.model.OAuthToken
-import com.kakao.sdk.user.UserApiClient
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginActivityView {
     private var kakaoImg:String? = null
@@ -40,7 +40,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
                         if (email!=null && kakaoImg!=null) {
 
-                            //  먼저 로그인 진입후 -> 회원이 아니면 회원가입을 시킴
+                            //  먼저 로그인 진입후 -> 거기서 회원이 아니면 회원가입을 시킴
                             showLoadingDialog(this)
                             val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
                                 access_token!!

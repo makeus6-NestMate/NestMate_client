@@ -22,7 +22,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
     private var todaylist = mutableListOf<TodayTodo>()
     var istodoend = false
     var todoAdapter: TodayTodoAdapter?=null
-    var itemposition:Int?=null
 
     private val roomId = ApplicationClass.sSharedPreferences.getInt("roomId", 0)
     private var adapter: TodayTodoAdapter?= null
@@ -109,9 +108,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
         override fun onClicked(position: Int, todoId: Int) {
             showLoadingDialog(requireContext())
             TodoService(this@TodoFragment).tryPostCompleteTodo(roomId, todoId)
-            itemposition = position
-
-            todoAdapter?.notifyItemChanged(position)
         }
     }
 
@@ -194,8 +190,14 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onPostCompleteTodoSuccess(response: PostTodoCompleteResponse) {
         dismissLoadingDialog()
-        todoAdapter?.notifyItemChanged(itemposition!!)
         showCustomToast("할일 완료!")
+
+        page = 0 //다시 처음부터 띄워주기
+        istodoend = false
+        todaylist.clear()
+
+        showLoadingDialog(requireContext())
+        TodoService(this).tryGetTodayTodo(roomId, page)
     }
 
     override fun onPostCompleteTodoFailure(message: String) {

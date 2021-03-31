@@ -2,6 +2,7 @@ package com.nestmate.nm1.src.main.home.nest.todo
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
@@ -17,6 +18,8 @@ import kotlin.properties.Delegates
 class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTodoManagerBinding::inflate), TodoView {
     private var onedaylist = mutableListOf<OneDayTodo>()
     private var repeatlist = mutableListOf<RepeatTodo>()
+    private var onedayisOwnerlist = mutableListOf<OneDayTodo>()
+    private var repeatisOwnerlist = mutableListOf<RepeatTodo>()
 
     private lateinit var onedayadapter:TodoOneDayManagerAdapter
     private lateinit var repeatadapter:TodoRepeatManagerAdapter
@@ -107,6 +110,8 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
             showLoadingDialog(this)
             TodoService(this).tryGetOneDayTodo(roomId, page)
+
+            showCustomToast("완료했거나 시간이 지난 할일은 사라집니다")
         }
 
         binding.todoManagerRecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -253,9 +258,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
     override fun onGetOneDayTodoSuccess(response: GetOneDayTodoResponse) {
         dismissLoadingDialog()
 
+        onedayisOwnerlist.clear()
+        for (i in response.result.todo){
+            onedayisOwnerlist.add(i)
+        }
         if (page==0 && response.result.todo.isNullOrEmpty()){
             onedaylist.clear()
-            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, null, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
         }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
@@ -263,7 +272,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 //            Log.d("둥지", "둥지있음")
 
             onedaylist.addAll(response.result.todo)
-            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, null, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
@@ -287,10 +296,14 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onGetRepeatTodoSuccess(response: GetRepeatTodoResponse) {
         dismissLoadingDialog()
+        repeatisOwnerlist.clear()
+        for (i in response.result.todo){
+            repeatisOwnerlist.add(i)
+        }
 
         if (page==0 && response.result.todo.isNullOrEmpty()){
             repeatlist.clear()
-            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, null, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = repeatadapter
         }
 //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
@@ -298,7 +311,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 //            Log.d("둥지", "둥지있음")
 
             repeatlist.addAll(response.result.todo)
-            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, null, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = repeatadapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
@@ -417,7 +430,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 //            Log.d("둥지", "둥지있음")
 
             onedaylist.addAll(response.result.todo)
-            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, onedayisOwnerlist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
@@ -452,7 +465,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 //            Log.d("둥지", "둥지있음")
 
             repeatlist.addAll(response.result.todo)
-            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, supportFragmentManager)
+            repeatadapter = TodoRepeatManagerAdapter(this, repeatlist, repeatisOwnerlist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = repeatadapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
@@ -482,7 +495,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 //            Log.d("둥지", "둥지있음")
 
             onedaylist.addAll(response.result.todo)
-            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, supportFragmentManager)
+            onedayadapter = TodoOneDayManagerAdapter(this, onedaylist, onedayisOwnerlist, supportFragmentManager)
             binding.todoManagerRecyclerview.adapter = onedayadapter
         }
 //      page=1부터 불러오고, 둥지가 있으면 추가해줘야함 ->
@@ -510,8 +523,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onDeleteAllOneDayTodoSuccess(response: DeleteAllOneDayTodoResponse) {
         dismissLoadingDialog()
-        onedayadapter.notifyDataSetChanged()
         showCustomToast("하루만 할일이 모두 삭제되었습니다")
+
+        page = 0
+        onedaylist.clear()
+        istodoend = false
+        showLoadingDialog(this)
+        TodoService(this).tryGetOneDayTodo(roomId, page)
     }
 
     override fun onDeleteAllOneDayTodoFailure(message: String) {
@@ -521,8 +539,13 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
     override fun onDeleteAllRepeatTodoSuccess(response: DeleteAllRepeatTodoResponse) {
         dismissLoadingDialog()
-        repeatadapter.notifyDataSetChanged()
         showCustomToast("반복 할일이 모두 삭제되었습니다")
+
+        page = 0
+        repeatlist.clear()
+        istodoend = false
+        showLoadingDialog(this)
+        TodoService(this).tryGetRepeatTodo(roomId, page)
     }
 
     override fun onDeleteAllRepeatTodoFailure(message: String) {
