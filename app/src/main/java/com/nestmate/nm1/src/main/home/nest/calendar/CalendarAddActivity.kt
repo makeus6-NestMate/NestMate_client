@@ -273,7 +273,7 @@ class CalendarAddActivity : BaseActivity<ActivityCalendarAddBinding>(ActivityCal
         moveCateIdx=selectedIdx
         moveCate=nameArray[selectedIdx]
 
-        Selected[0]=selectedIdx
+        Selected[0]=1
         checkActive()
     }
 
