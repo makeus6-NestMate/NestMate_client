@@ -20,6 +20,7 @@ class CalendarDay (date: Date) {
     var cateList = arrayListOf<CalendarInfo?>()
 
     init {
+        // 달력의 시간을 입력받은 date로 설정
         calendar.time = date
     }
 
@@ -32,15 +33,22 @@ class CalendarDay (date: Date) {
         dateList.clear()
         cateList.clear()
 
+        // 1일부터 시작
         calendar.set(Calendar.DATE, 1)
 
+        // DAY_OF_MONTH - 달의 몇번째 일인지(12일이면 12)
+        // getActualMaximum - 셋팅된 날짜의 마지막 일
         currentMaxDate = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
+        // 해당 주의 몇 번째 날인지(일요일이 1, 월요일이 2)
+        // prev니까 1을 빼준다.
         prevTail = calendar.get(Calendar.DAY_OF_WEEK) - 1
 
         makePrevTail(calendar.clone() as Calendar)
         makeCurrentMonth(calendar, calendarList)
 
+        // 전체 칸 개수는 LOW_OF_CALENDAR * DAYS_OF_WEEK이다.
+        // 거기서 이전 prevTail과 현재 currentMaxDate 더한 값을 빼주면 나머지는 다음달이다.
         nextHead = LOW_OF_CALENDAR * DAYS_OF_WEEK - (prevTail + currentMaxDate)
         makeNextHead()
     }
@@ -64,7 +72,7 @@ class CalendarDay (date: Date) {
             cateList.add(null)
         }
         for(cate in calendarList){
-            // 카테고리가 있는 요일에 null 대신 실 데이터 넣음
+            // 카테고리가 있는 일에 null 대신 실 데이터 넣음
             var idx = cate.time.substring(8,10).toInt()
             // 이전 달의 요일 개수를 미리 깔아주고 그 위에 이번 달의 요일 개수를 쌓아야 한다.
             // index는 0부터 시작이니까 -1을 빼줘야 한다.

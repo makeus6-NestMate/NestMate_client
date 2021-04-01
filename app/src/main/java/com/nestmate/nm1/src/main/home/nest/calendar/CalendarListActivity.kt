@@ -186,6 +186,8 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
                 intent.putExtra("title", sumList[position].title)
                 intent.putExtra("datetime", sumList[position].time)
                 intent.putExtra("memo", sumList[position].content)
+                //
+                intent.putExtra("isOwner", sumList[position].isOwner)
                 startActivity(intent)
             }
         }

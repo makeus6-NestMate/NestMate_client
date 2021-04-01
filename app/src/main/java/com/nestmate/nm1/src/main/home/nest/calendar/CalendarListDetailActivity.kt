@@ -3,6 +3,7 @@ package com.nestmate.nm1.src.main.home.nest.calendar
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.config.BaseActivity
 import com.nestmate.nm1.databinding.ActivityCalendarListDetailBinding
@@ -23,8 +24,10 @@ class CalendarListDetailActivity : BaseActivity<ActivityCalendarListDetailBindin
         super.onCreate(savedInstanceState)
         val calendarId = intent.getIntExtra("calendarId", 0)
         binding.calendarListDetailToolbar.toolbarTitle.text=intent.getStringExtra("toolbar")
+        // 제목
         val title = intent.getStringExtra("title")
         binding.calendarListDetailTitle.text=title
+        // 시간
         datetime=intent.getStringExtra("datetime").toString()
         if(datetime!=null){
             var month=datetime.substring(5, 7); var day=datetime.substring(8, 10)
@@ -36,13 +39,17 @@ class CalendarListDetailActivity : BaseActivity<ActivityCalendarListDetailBindin
             }
             binding.calendarListDetailItemTimeTxt.text=month+"월 "+day+"일 "+prefix+hour.toString()+"시 "+min+"분"
         }
+        // 메모
         val memo = intent.getStringExtra("memo")
         binding.calendarListDetailItemMemoTxt.text=memo
-        //카테고리 관련
+        // 카테고리 관련
         val tmpIdx = intent.getIntExtra("cateIdx", 0)
         var tmpName = nameArray[tmpIdx]
         if(tmpIdx==6) tmpName=intent.getStringExtra("cateName").toString()
         initCategory(colorArray[tmpIdx], tmpName)
+        // 자기가 쓴 일정인지 확인
+        val isOwner = intent.getStringExtra("isOwner").toString()
+        if(isOwner=="N") binding.calendarListDetailItemSet.visibility= View.GONE
 
         binding.calendarListDetailItemSet.setOnClickListener {
             val bottomDialogFragment = CalendarListBottomDialog{
