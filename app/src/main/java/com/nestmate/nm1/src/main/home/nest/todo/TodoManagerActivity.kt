@@ -2,7 +2,6 @@ package com.nestmate.nm1.src.main.home.nest.todo
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
@@ -110,8 +109,6 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
 
             showLoadingDialog(this)
             TodoService(this).tryGetOneDayTodo(roomId, page)
-
-            showCustomToast("완료했거나 시간이 지난 할일은 사라집니다")
         }
 
         binding.todoManagerRecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {

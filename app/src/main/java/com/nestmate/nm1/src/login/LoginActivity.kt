@@ -40,7 +40,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
                         if (email!=null && kakaoImg!=null) {
 
-                            //  먼저 로그인 진입후 -> 거기서 회원이 아니면 회원가입을 시킴
+                            //  먼저 로그인 진입후 -> 서버에 저장된 회원이 아닐 경우 회원가입 화면으로 이동
                             showLoadingDialog(this)
                             val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
                                 access_token!!
