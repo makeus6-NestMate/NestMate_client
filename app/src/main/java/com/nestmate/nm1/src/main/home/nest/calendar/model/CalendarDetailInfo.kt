@@ -8,5 +8,6 @@ data class CalendarDetailInfo (
     @SerializedName("time") val time: String,
     @SerializedName("category") val category: String,
     @SerializedName("categoryIdx") val categoryIdx: Int,
-    @SerializedName("calendarId") val calendarId: Int
+    @SerializedName("calendarId") val calendarId: Int,
+    @SerializedName("isOwner") val isOwner: String
 )

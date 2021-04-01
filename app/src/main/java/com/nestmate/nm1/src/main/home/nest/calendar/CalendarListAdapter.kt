@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -64,6 +65,11 @@ class CalendarListAdapter (val context : Context, private val calendarDetailList
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(calendarDetailList[position])
+
+        //
+        if(calendarDetailList[position].isOwner=="N"){
+            holder.itemView.findViewById<ImageButton>(R.id.calendar_list_item_set).visibility=View.GONE
+        }
 
         if (itemSetClick != null) {
             holder.deleteBtn.setOnClickListener { v ->

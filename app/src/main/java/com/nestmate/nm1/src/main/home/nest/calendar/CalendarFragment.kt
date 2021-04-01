@@ -30,6 +30,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // 현재를 가운데로 설정
         pageIndex-=(Int.MAX_VALUE / 2)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -63,6 +64,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding> (
 
         // 날짜 적용
         val date = Calendar.getInstance().run {
+            // 현재 달에 pageIndex만큼 더한다.
             add(Calendar.MONTH, pageIndex)
             time
         }
