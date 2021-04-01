@@ -154,7 +154,7 @@ class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? =
 
         var params: ViewGroup.LayoutParams? = dialog?.window?.attributes
         val deviceWidth = size!!.x
-        params?.width = (deviceWidth*0.75).toInt()
+        params?.width = (deviceWidth*0.7).toInt()
         dialog?.window?.attributes = params as WindowManager.LayoutParams
     }
 }

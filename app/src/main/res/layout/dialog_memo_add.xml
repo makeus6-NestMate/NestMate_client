@@ -63,6 +63,7 @@
             android:gravity="left"
             android:hint="@string/memo_dialog_content_hint"
             android:maxLines="5"
+            android:maxLength="45"
             android:inputType="textMultiLine"
             android:includeFontPadding="false"
             android:lineSpacingExtra="8sp"
