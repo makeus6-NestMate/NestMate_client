@@ -52,7 +52,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerBtnSearch.visibility = View.VISIBLE
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
-            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.GONE
             binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()
@@ -87,7 +87,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerBtnSearch.visibility = View.VISIBLE
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
-            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.GONE
             binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()
@@ -153,7 +153,7 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
             binding.todoManagerBtnSearch.visibility = View.VISIBLE
             binding.todoManagerSearchExit.visibility = View.INVISIBLE
             binding.todoManagerEdtSearch.visibility = View.INVISIBLE
-            binding.todoManagerBtnCalendar.visibility = View.INVISIBLE
+            binding.todoManagerBtnCalendar.visibility = View.GONE
             binding.todoManagerTitle.text = "할일 관리"
 
             binding.todoManagerEdtSearch.text.clear()

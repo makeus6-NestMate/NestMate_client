@@ -156,8 +156,13 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(
 
     override fun onGetTodayTodoSuccess(response: GetTodayTodoResponse) {
         dismissLoadingDialog()
-//      맨 처음(page=0) -> 검색결과가 하나라도 있으면
-        if (page==0 && response.result.todo.isNotEmpty()){
+//       결과가 아얘 없으면 -> 없다는 레이아웃을 띄워줌
+        if (page==0 && response.result.todo.isNullOrEmpty()){
+            binding.todoLayoutEmpty.visibility = View.VISIBLE
+            binding.todoRecycler.visibility = View.INVISIBLE
+        }
+        //      맨 처음(page=0) -> 검색결과가 하나라도 있으면
+        else if (page==0 && response.result.todo.isNotEmpty()){
 //            Log.d("둥지", "둥지있음")
             binding.todoLayoutEmpty.visibility = View.INVISIBLE
             binding.todoRecycler.visibility = View.VISIBLE
