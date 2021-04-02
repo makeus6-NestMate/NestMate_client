@@ -8,7 +8,7 @@ import retrofit2.Response
 
 class TodoService(val view: TodoView) {
     fun tryAddOneDayTodo(roomId:Int, postAddOneDayTodo: PostAddOneDayTodo){
-       val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+       val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.postAddOneDayTodo(roomId, postAddOneDayTodo).enqueue(object: Callback<AddOneDayTodoResponse> {
            override fun onResponse(call: Call<AddOneDayTodoResponse>, response: Response<AddOneDayTodoResponse>) {
                view.onAddOneDayTodoSuccess(response.body() as AddOneDayTodoResponse)
@@ -21,7 +21,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryAddRepeatTodo(roomId:Int, postAddRepeatTodo: PostAddRepeatTodo){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.postAddRepeatTodo(roomId, postAddRepeatTodo).enqueue(object: Callback<AddRepeatTodoResponse> {
             override fun onResponse(call: Call<AddRepeatTodoResponse>, response: Response<AddRepeatTodoResponse>) {
                 view.onAddRepeatTodoSuccess(response.body() as AddRepeatTodoResponse)
@@ -34,7 +34,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryGetOneDayTodo(roomId:Int, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getOneDayTodo(roomId, page).enqueue(object: Callback<GetOneDayTodoResponse> {
             override fun onResponse(call: Call<GetOneDayTodoResponse>, response: Response<GetOneDayTodoResponse>) {
                 view.onGetOneDayTodoSuccess(response.body() as GetOneDayTodoResponse)
@@ -47,7 +47,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryGetRepeatTodo(roomId:Int, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getRepeatTodo(roomId, page).enqueue(object: Callback<GetRepeatTodoResponse> {
             override fun onResponse(call: Call<GetRepeatTodoResponse>, response: Response<GetRepeatTodoResponse>) {
                 view.onGetRepeatTodoSuccess(response.body() as GetRepeatTodoResponse)
@@ -60,7 +60,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryGetTodayTodo(roomId:Int, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getTodayTodo(roomId, page).enqueue(object: Callback<GetTodayTodoResponse> {
             override fun onResponse(call: Call<GetTodayTodoResponse>, response: Response<GetTodayTodoResponse>) {
                 view.onGetTodayTodoSuccess(response.body() as GetTodayTodoResponse)
@@ -73,7 +73,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryPostCompleteTodo(roomId:Int, todoId:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.postTodoComplete(roomId, todoId).enqueue(object: Callback<PostTodoCompleteResponse> {
             override fun onResponse(call: Call<PostTodoCompleteResponse>, response: Response<PostTodoCompleteResponse>) {
                 view.onPostCompleteTodoSuccess(response.body() as PostTodoCompleteResponse)
@@ -86,7 +86,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryPostCock(roomId:Int, todoId:Int, memberId:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.postCock(roomId, todoId, memberId).enqueue(object: Callback<PostCockResponse> {
             override fun onResponse(call: Call<PostCockResponse>, response: Response<PostCockResponse>) {
                 view.onPostCockSuccess(response.body() as PostCockResponse)
@@ -99,7 +99,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryGetCockMember(roomId:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getCockMember(roomId).enqueue(object: Callback<GetCockMemberResponse> {
             override fun onResponse(call: Call<GetCockMemberResponse>, response: Response<GetCockMemberResponse>) {
                 view.onGetCockMemberSuccess(response.body() as GetCockMemberResponse)
@@ -113,7 +113,7 @@ class TodoService(val view: TodoView) {
 
 
     fun tryPutOneDayTodo(roomId:Int, putOneDayTodo: PutOneDayTodo){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.putOneDayTodo(roomId, putOneDayTodo).enqueue(object: Callback<PutOneDayTodoResponse> {
             override fun onResponse(call: Call<PutOneDayTodoResponse>, response: Response<PutOneDayTodoResponse>) {
                 view.onPutOneDayTodoSuccess(response.body() as PutOneDayTodoResponse)
@@ -126,7 +126,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryPutRepeatTodo(roomId:Int, putRepeatTodo: PutRepeatTodo){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.putRepeatTodo(roomId, putRepeatTodo).enqueue(object: Callback<PutRepeatTodoResponse> {
             override fun onResponse(call: Call<PutRepeatTodoResponse>, response: Response<PutRepeatTodoResponse>) {
                 view.onPutRepeatTodoSuccess(response.body() as PutRepeatTodoResponse)
@@ -139,7 +139,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryDeleteOneDayTodo(roomId:Int, todoId: Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.deleteOneDayTodo(roomId, todoId).enqueue(object: Callback<DeleteOneDayTodoResponse> {
             override fun onResponse(call: Call<DeleteOneDayTodoResponse>, response: Response<DeleteOneDayTodoResponse>) {
                 view.onDeleteOneDayTodoSuccess(response.body() as DeleteOneDayTodoResponse)
@@ -152,7 +152,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryDeleteRepeatTodo(roomId:Int, todoId: Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.deleteRepeatTodo(roomId, todoId).enqueue(object: Callback<DeleteRepeatTodoResponse> {
             override fun onResponse(call: Call<DeleteRepeatTodoResponse>, response: Response<DeleteRepeatTodoResponse>) {
                 view.onDeleteRepeatTodoSuccess(response.body() as DeleteRepeatTodoResponse)
@@ -165,7 +165,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun trySearchGetOneDayTodo(roomId:Int, keyword:String, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getSearchOneDayTodo(roomId, keyword, page).enqueue(object: Callback<GetSearchOneDayTodoResponse> {
             override fun onResponse(call: Call<GetSearchOneDayTodoResponse>, response: Response<GetSearchOneDayTodoResponse>) {
                 view.onGetSearchOneDayTodoSuccess(response.body() as GetSearchOneDayTodoResponse)
@@ -178,7 +178,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun trySearchGetRepeatTodo(roomId:Int, keyword:String, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getSearchRepeatTodo(roomId, keyword, page).enqueue(object: Callback<GetSearchRepeatTodoResponse> {
             override fun onResponse(call: Call<GetSearchRepeatTodoResponse>, response: Response<GetSearchRepeatTodoResponse>) {
                 view.onGetSearchRepeatTodoSuccess(response.body() as GetSearchRepeatTodoResponse)
@@ -191,7 +191,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun trySearchTodoByDate(roomId:Int, date:String, page:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.getSearchTodoByDate(roomId, date, page).enqueue(object: Callback<GetSearchTodoByDateResponse> {
             override fun onResponse(call: Call<GetSearchTodoByDateResponse>, response: Response<GetSearchTodoByDateResponse>) {
                 view.onGetSearchTodoByDateSuccess(response.body() as GetSearchTodoByDateResponse)
@@ -204,7 +204,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryDeleteAllOneDayTodo(roomId:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.deleteAllOneDayTodo(roomId).enqueue(object: Callback<DeleteAllOneDayTodoResponse> {
             override fun onResponse(call: Call<DeleteAllOneDayTodoResponse>, response: Response<DeleteAllOneDayTodoResponse>) {
                 view.onDeleteAllOneDayTodoSuccess(response.body() as DeleteAllOneDayTodoResponse)
@@ -217,7 +217,7 @@ class TodoService(val view: TodoView) {
     }
 
     fun tryDeleteAllRepeatTodo(roomId:Int){
-        val todoInterface = ApplicationClass.sRetrofit.create(TodoInterface::class.java)
+        val todoInterface = ApplicationClass.sRetrofit.create(TodoRetrofitInterface::class.java)
         todoInterface.deleteAllRepeatTodo(roomId).enqueue(object: Callback<DeleteAllRepeatTodoResponse> {
             override fun onResponse(call: Call<DeleteAllRepeatTodoResponse>, response: Response<DeleteAllRepeatTodoResponse>) {
                 view.onDeleteAllRepeatTodoSuccess(response.body() as DeleteAllRepeatTodoResponse)

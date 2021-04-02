@@ -11,10 +11,11 @@ import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.config.BaseActivity
 import com.nestmate.nm1.databinding.ActivityTodoManagerBinding
 import com.nestmate.nm1.src.main.home.nest.todo.model.*
+import kotlinx.android.synthetic.main.memo_item.view.*
 import java.util.*
 import kotlin.properties.Delegates
 
-class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTodoManagerBinding::inflate), TodoView {
+class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTodoManagerBinding::inflate), TodoView{
     private var onedaylist = mutableListOf<OneDayTodo>()
     private var repeatlist = mutableListOf<RepeatTodo>()
     private var onedayisOwnerlist = mutableListOf<OneDayTodo>()
@@ -399,19 +400,48 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
     }
 
     override fun onDeleteOneDayTodoSuccess(response: DeleteOneDayTodoResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        page = 0
+        onedaylist.clear()
+        repeatlist.clear()
+
+        showLoadingDialog(this)
+        if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
+            TodoService(this).tryGetOneDayTodo(roomId, page)
+        else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
+            TodoService(this).tryGetRepeatTodo(roomId, page)
+        else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
+            TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
+        else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
+        else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchdate, page)
     }
 
     override fun onDeleteOneDayTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 
     override fun onDeleteRepeatTodoSuccess(response: DeleteRepeatTodoResponse) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+
+        showLoadingDialog(this)
+        if (isrepeat[1] && !iskeywordsearch && !isdatesearch) //하루
+            TodoService(this).tryGetOneDayTodo(roomId, page)
+        else if (isrepeat[0] && !iskeywordsearch && !isdatesearch) //반복
+            TodoService(this).tryGetRepeatTodo(roomId, page)
+        else if (isrepeat[1] && iskeywordsearch && !isdatesearch) //하루 키워드 검색
+            TodoService(this).trySearchGetOneDayTodo(roomId, searchKeyword, page)
+        else if (isrepeat[0] && iskeywordsearch && !isdatesearch) //반복 키워드 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchKeyword, page)
+        else if (isrepeat[1] && !iskeywordsearch && isdatesearch) //하루 날짜 검색
+            TodoService(this).trySearchGetRepeatTodo(roomId, searchdate, page)
     }
 
     override fun onDeleteRepeatTodoFailure(message: String) {
-        TODO("Not yet implemented")
+        dismissLoadingDialog()
+        showCustomToast(message)
     }
 
     override fun onGetSearchOneDayTodoSuccess(response: GetSearchOneDayTodoResponse) {
@@ -549,4 +579,5 @@ class TodoManagerActivity : BaseActivity<ActivityTodoManagerBinding>(ActivityTod
         dismissLoadingDialog()
         showCustomToast(message)
     }
+
 }
