@@ -36,7 +36,7 @@
             android:includeFontPadding="false"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="@+id/nest_img_background"
             app:layout_constraintTop_toTopOf="@+id/nest_img_background" />
 
@@ -81,7 +81,7 @@
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:text="+"
                 android:textColor="#FFFFFF"
-                android:textSize="10sp"
+                android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/nest_tv_plusmemnum"
                 app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />
@@ -94,7 +94,7 @@
                 android:fontFamily="@font/notosanscjkkr_medium"
                 android:text="1"
                 android:textColor="#FFFFFF"
-                android:textSize="10sp"
+                android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/nest_img_plusmembackground" />

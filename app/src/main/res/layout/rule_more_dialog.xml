@@ -15,15 +15,15 @@
         android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginTop="16sp"
-            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:includeFontPadding="false"
             android:fontFamily="@font/notosanskr_medium"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#909090"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="수정하기"
             />
     </androidx.cardview.widget.CardView>
@@ -35,15 +35,15 @@
         android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginTop="16sp"
-            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:includeFontPadding="false"
             android:fontFamily="@font/notosanskr_medium"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#909090"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="@string/memo_delete_dialog_btn_txt"
             />
     </androidx.cardview.widget.CardView>

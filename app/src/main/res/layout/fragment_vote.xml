@@ -124,10 +124,10 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/roundrec_design_inactive_bg"
         android:text="확인"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textStyle="normal"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="1sp"
+        android:lineSpacingExtra="1dp"
         android:textColor="@color/white"/>
 
     <Button
@@ -142,10 +142,10 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/roundrec_design_active_bg"
         android:text="투표마감"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textStyle="normal"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="1sp"
+        android:lineSpacingExtra="1dp"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

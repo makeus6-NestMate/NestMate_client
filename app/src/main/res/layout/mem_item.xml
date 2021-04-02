@@ -34,7 +34,7 @@
         android:layout_marginStart="13dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="17sp"
+        android:lineSpacingExtra="17dp"
         android:textColor="#000000"
         android:textSize="16dp"
         android:textStyle="normal"

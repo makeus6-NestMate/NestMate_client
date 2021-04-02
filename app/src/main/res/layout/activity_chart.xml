@@ -40,9 +40,9 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="이번주"
                 android:textColor="#ffffff"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textStyle="normal"
-                android:lineSpacingExtra="8sp"
+                android:lineSpacingExtra="8dp"
                 android:includeFontPadding="false"/>
         </LinearLayout>
         <TextView
