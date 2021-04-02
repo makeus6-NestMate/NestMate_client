@@ -110,7 +110,7 @@
                     android:textStyle="normal"
                     android:textSize="15sp"
                     android:textColor="#000000"
-                    android:lineSpacingExtra="3sp"
+                    android:lineSpacingExtra="3dp"
                     android:fontFamily="@font/notosanskr_medium"
                     android:includeFontPadding="false"
                     android:text="전화번호"/>
