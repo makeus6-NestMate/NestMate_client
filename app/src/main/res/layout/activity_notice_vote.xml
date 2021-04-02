@@ -33,9 +33,9 @@
             android:text="공지"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="@color/white"
-            android:lineSpacingExtra="16sp"
+            android:lineSpacingExtra="16dp"
             android:includeFontPadding="false"
             android:layout_marginRight="16dp"
             android:clickable="true"
@@ -52,10 +52,10 @@
             android:text="투표"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#c1c1c1"
             android:clickable="true"
-            android:lineSpacingExtra="16sp"
+            android:lineSpacingExtra="16dp"
             android:includeFontPadding="false"
             android:paddingLeft="34dp"
             android:paddingRight="34dp"
@@ -84,9 +84,9 @@
             android:text="내용"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:includeFontPadding="false"/>
 
         <EditText
@@ -102,7 +102,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_regular"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColorHint="@color/colorTextHint"
             android:includeFontPadding="false"
             android:hint="내용을 입력해 주세요."
@@ -134,9 +134,9 @@
             android:text="제목"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:includeFontPadding="false"/>
 
         <EditText
@@ -153,7 +153,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/notosanskr_regular"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColorHint="@color/colorTextHint"
             android:includeFontPadding="false"
             android:hint="제목을 입력해 주세요."
@@ -177,9 +177,9 @@
             android:text="항목"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:includeFontPadding="false"/>
 
         <LinearLayout
@@ -214,9 +214,9 @@
                     android:text="1."
                     android:fontFamily="@font/notosanskr_regular"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="@color/black"
-                    android:lineSpacingExtra="5sp"
+                    android:lineSpacingExtra="5dp"
                     android:includeFontPadding="false"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
@@ -234,11 +234,11 @@
                     android:background="@null"
                     android:fontFamily="@font/notosanskr_regular"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:maxLines="1"
                     android:maxLength="20"
                     android:textColor="@color/black"
-                    android:lineSpacingExtra="5sp"
+                    android:lineSpacingExtra="5dp"
                     android:includeFontPadding="false"
                     app:layout_constraintTop_toTopOf="@id/vote_add_item_num"
                     app:layout_constraintBottom_toBottomOf="@id/vote_add_item_num"
@@ -285,9 +285,9 @@
         android:background="@drawable/roundrec_design_inactive_bg"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textColor="@color/white"
-        android:lineSpacingExtra="1sp"/>
+        android:lineSpacingExtra="1dp"/>
 
 
 

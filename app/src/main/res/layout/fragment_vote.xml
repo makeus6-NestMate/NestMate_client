@@ -34,9 +34,9 @@
                 android:background="@drawable/roundrec_design_active_bg"
                 android:fontFamily="@font/notosanskr_medium"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="@color/white"
-                android:lineSpacingExtra="16sp"/>
+                android:lineSpacingExtra="16dp"/>
 
             <TextView
                 android:id="@+id/vote_done"
@@ -52,9 +52,9 @@
                 android:background="@drawable/roundrec_design_inactive_bg"
                 android:fontFamily="@font/notosanskr_medium"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="@color/white"
-                android:lineSpacingExtra="16sp"/>
+                android:lineSpacingExtra="16dp"/>
         </LinearLayout>
 
         <TextView
@@ -63,9 +63,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:includeFontPadding="false"
             android:text="가족여행 장소"
             app:layout_constraintTop_toTopOf="@id/vote_status_layout"
@@ -80,9 +80,9 @@
             android:text="미참여:1명"
             android:fontFamily="@font/notosanskr_regular"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#1bcbb0"
-            android:lineSpacingExtra="1sp"
+            android:lineSpacingExtra="1dp"
             android:includeFontPadding="false"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -124,10 +124,10 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/roundrec_design_inactive_bg"
         android:text="확인"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textStyle="normal"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="1sp"
+        android:lineSpacingExtra="1dp"
         android:textColor="@color/white"/>
 
     <Button
@@ -142,10 +142,10 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/roundrec_design_active_bg"
         android:text="투표마감"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textStyle="normal"
         android:fontFamily="@font/notosanskr_medium"
-        android:lineSpacingExtra="1sp"
+        android:lineSpacingExtra="1dp"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

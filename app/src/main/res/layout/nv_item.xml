@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nvChange"
             android:textStyle="normal"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#000000"
-            android:lineSpacingExtra="14sp"
+            android:lineSpacingExtra="14dp"
             android:text="Label"/>
         <TextView
             android:id="@+id/nvContent"
@@ -45,9 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nvLabel"
             android:textStyle="normal"
-            android:textSize="13sp"
+            android:textSize="13dp"
             android:textColor="#7c7c7c"
-            android:lineSpacingExtra="14sp"
+            android:lineSpacingExtra="14dp"
             tools:text="Notice"/>
         <TextView
             android:id="@+id/nvTime"
@@ -56,9 +56,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:textStyle="normal"
-            android:textSize="9sp"
+            android:textSize="9dp"
             android:textColor="#c1c1c1"
-            android:lineSpacingExtra="10sp"
+            android:lineSpacingExtra="10dp"
             tools:text="Time"/>
     </RelativeLayout>
 

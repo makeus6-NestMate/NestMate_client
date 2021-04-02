@@ -19,7 +19,7 @@
         android:includeFontPadding="false"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +33,7 @@
         android:includeFontPadding="false"
         android:text="시간"
         android:textColor="#7c7c7c"
-        android:textSize="10sp"
+        android:textSize="10dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_tv_title" />
@@ -113,10 +113,10 @@
             android:fontFamily="@font/notosanscjkkr_medium"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="3sp"
+            android:lineSpacingExtra="3dp"
             android:text="콕찌르기"
             android:textColor="#000000"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textStyle="normal"
             tools:text="콕찌르기" />
     </LinearLayout>
@@ -127,10 +127,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="0sp"
+        android:lineSpacingExtra="0dp"
         android:text="4"
         android:textColor="#000000"
-        android:textSize="11sp"
+        android:textSize="11dp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/todo_img_notcheckbackground"
         app:layout_constraintStart_toStartOf="@+id/todo_img_notcheckbackground"

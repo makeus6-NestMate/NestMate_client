@@ -15,9 +15,9 @@
         android:layout_marginVertical="14dp"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textColor="#909090"
-        android:lineSpacingExtra="5sp"
+        android:lineSpacingExtra="5dp"
         android:text="수정하기"
         android:includeFontPadding="false"/>
 
@@ -34,9 +34,9 @@
         android:layout_marginVertical="14dp"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textColor="#909090"
-        android:lineSpacingExtra="5sp"
+        android:lineSpacingExtra="5dp"
         android:text="삭제하기"
         android:includeFontPadding="false"/>
 

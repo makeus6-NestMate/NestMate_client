@@ -52,10 +52,10 @@
                             android:includeFontPadding="false"
                             android:fontFamily="@font/notosanskr_regular"
                             android:textStyle="bold"
-                            android:textSize="17sp"
+                            android:textSize="17dp"
                             android:textColor="@color/black"
                             android:text="‘해피하우스'"
-                            android:lineSpacingExtra="3sp"/>
+                            android:lineSpacingExtra="3dp"/>
                         <TextView
                             android:id="@+id/rule_title_2"
                             android:layout_width="wrap_content"
@@ -63,11 +63,11 @@
                             android:includeFontPadding="false"
                             android:fontFamily="@font/notosanskr_regular"
                             android:textStyle="normal"
-                            android:textSize="17sp"
+                            android:textSize="17dp"
                             android:textColor="@color/black"
-                            android:layout_marginLeft="1sp"
+                            android:layout_marginLeft="1dp"
                             android:text="에서는"
-                            android:lineSpacingExtra="3sp"/>
+                            android:lineSpacingExtra="3dp"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/rule_title_3"
@@ -76,11 +76,11 @@
                         android:includeFontPadding="false"
                         android:fontFamily="@font/notosanskr_regular"
                         android:textStyle="normal"
-                        android:textSize="17sp"
+                        android:textSize="17dp"
                         android:textColor="@color/black"
-                        android:layout_marginLeft="1sp"
+                        android:layout_marginLeft="1dp"
                         android:text="지켜주세요!"
-                        android:lineSpacingExtra="3sp"/>
+                        android:lineSpacingExtra="3dp"/>
 
                 </LinearLayout>
 
@@ -129,10 +129,10 @@
                     android:text="버튼으로 규칙을 등록해보세요"
                     android:fontFamily="@font/notosanskr_regular"
                     android:textStyle="normal"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#c1c1c1"
                     android:includeFontPadding="false"
-                    android:lineSpacingExtra="7sp"
+                    android:lineSpacingExtra="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -155,11 +155,11 @@
                     android:text="1."
                     android:fontFamily="@font/notosanskr_medium"
                     android:textStyle="normal"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#c1c1c1"
                     android:includeFontPadding="false"
                     android:layout_marginLeft="20dp"
-                    android:lineSpacingExtra="16sp"
+                    android:lineSpacingExtra="16dp"
                     app:layout_constraintTop_toTopOf="@id/rule_add_input_content"
                     app:layout_constraintBottom_toBottomOf="@id/rule_add_input_content"
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -175,14 +175,14 @@
                     android:maxLines="1"
                     android:inputType="text"
                     android:textStyle="normal"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:backgroundTint="@color/transparent"
                     android:textColorHint="#c1c1c1"
                     android:textColor="@color/black"
                     android:padding="0dp"
-                    android:layout_marginLeft="14sp"
+                    android:layout_marginLeft="14dp"
                     android:includeFontPadding="false"
-                    android:lineSpacingExtra="16sp"
+                    android:lineSpacingExtra="16dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
 

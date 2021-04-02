@@ -17,9 +17,9 @@
         android:layout_marginTop="6dp"
         android:fontFamily="@font/notosanskr_regular"
         android:textStyle="normal"
-        android:textSize="10sp"
+        android:textSize="10dp"
         android:textColor="#c1c1c1"
-        android:lineSpacingExtra="5sp"
+        android:lineSpacingExtra="5dp"
         android:includeFontPadding="false"
         android:layout_alignParentRight="true"
         tools:text="오후 7시 30분"/>
@@ -44,9 +44,9 @@
             android:layout_marginLeft="13dp"
             android:fontFamily="@font/notosanskr_regular"
             android:textStyle="normal"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#000000"
-            android:lineSpacingExtra="3sp"
+            android:lineSpacingExtra="3dp"
             android:includeFontPadding="false"
             tools:text="‘서은’님이\n‘쓰레기 버리기’를 부탁해요."/>
 

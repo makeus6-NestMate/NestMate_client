@@ -40,9 +40,9 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="이번주"
                 android:textColor="#ffffff"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textStyle="normal"
-                android:lineSpacingExtra="8sp"
+                android:lineSpacingExtra="8dp"
                 android:includeFontPadding="false"/>
         </LinearLayout>
         <TextView
@@ -51,10 +51,10 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/notosanskr_medium"
             android:textStyle="normal"
-            android:textSize="19sp"
+            android:textSize="19dp"
             android:textColor="#000000"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="8sp"
+            android:lineSpacingExtra="8dp"
             android:text="최고의 메이트는?"/>
     </LinearLayout>
 
@@ -88,10 +88,10 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/notosanskr_bold"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="#c1c1c1"
                     android:includeFontPadding="false"
-                    android:lineSpacingExtra="7sp"
+                    android:lineSpacingExtra="7dp"
                     android:text="아직 최고의 메이트가 없어요"/>
 
                 <LinearLayout
@@ -116,9 +116,9 @@
                         android:layout_marginLeft="10dp"
                         android:fontFamily="@font/notosanskr_medium"
                         android:textStyle="normal"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textColor="#000000"
-                        android:lineSpacingExtra="7sp"
+                        android:lineSpacingExtra="7dp"
                         android:includeFontPadding="false"
                         android:text="수현"/>
                     <TextView
@@ -128,10 +128,10 @@
                         android:layout_marginLeft="7dp"
                         android:fontFamily="@font/notosanskr_regular"
                         android:textStyle="normal"
-                        android:textSize="10sp"
+                        android:textSize="10dp"
                         android:textColor="#7c7c7c"
                         android:includeFontPadding="false"
-                        android:lineSpacingExtra="3sp"
+                        android:lineSpacingExtra="3dp"
                         android:text="횟수 43회"/>
 
                     <View
@@ -157,9 +157,9 @@
                             android:background="@color/transparent"
                             android:fontFamily="@font/notosanskr_medium"
                             android:textStyle="normal"
-                            android:textSize="12sp"
+                            android:textSize="12dp"
                             android:textColor="#000000"
-                            android:lineSpacingExtra="-3sp"
+                            android:lineSpacingExtra="-3dp"
                             android:includeFontPadding="false"
                             android:text="박수보내기"
                             />

@@ -22,9 +22,9 @@
         android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
-        android:textSize="13sp"
+        android:textSize="13dp"
         android:textColor="#000000"
-        android:lineSpacingExtra="9sp"/>
+        android:lineSpacingExtra="9dp"/>
 
     <TextView
         android:id="@+id/tip_txt"
@@ -35,8 +35,8 @@
         android:includeFontPadding="false"
         android:fontFamily="@font/notosanskr_medium"
         android:textStyle="normal"
-        android:textSize="13sp"
+        android:textSize="13dp"
         android:textColor="#505050"
-        android:lineSpacingExtra="9sp"/>
+        android:lineSpacingExtra="9dp"/>
 
 </LinearLayout>

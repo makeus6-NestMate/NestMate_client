@@ -104,7 +104,7 @@
             android:layout_marginStart="4dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center_horizontal"
-            android:lineSpacingExtra="7sp"
+            android:lineSpacingExtra="7dp"
             android:text="버튼으로 할 일을 등록해보세요"
             android:textColor="#c1c1c1"
             android:textSize="15dp"

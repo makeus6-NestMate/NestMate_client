@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/nest_mem_img_profile"
-        android:layout_width="29sp"
-        android:layout_height="29sp"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="4sp"
+        android:lineSpacingExtra="4dp"
         android:text="유리"
         android:textColor="#ffffff"
-        android:textSize="9sp"
+        android:textSize="9dp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/nest_mem_img_profile"
         app:layout_constraintStart_toStartOf="@+id/nest_mem_img_profile"
