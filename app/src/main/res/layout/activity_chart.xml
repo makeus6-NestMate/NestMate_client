@@ -84,7 +84,7 @@
                     android:id="@+id/chart_best_mate_nothing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     android:layout_gravity="center"
                     android:fontFamily="@font/notosanskr_bold"
                     android:textStyle="bold"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:gravity="center_vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView

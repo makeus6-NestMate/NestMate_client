@@ -89,11 +89,15 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         bestMember = response.result.bestMember
 
         if(bestMember!=null){
-            binding.chartBestMate.chart_best_mate_nothing.visibility=View.INVISIBLE
+            binding.chartBestMate.chart_best_mate_nothing.visibility=View.GONE
             binding.chartBestMate.chart_best_mate_existing.visibility=View.VISIBLE
             Glide.with(this).load(bestMember.profileImg).error(R.drawable.home_bird_icon).into(binding.chartBestMate.chart_best_mate_existing.bestmate_img)
             binding.chartBestMate.chart_best_mate_existing.bestmate_name_tv.text= bestMember.nickname
             binding.chartBestMate.chart_best_mate_existing.bestmate_cnt_tv.text= "횟수 "+bestMember.prizeCount.toString()+"회"
+        }
+        else{
+            binding.chartBestMate.chart_best_mate_nothing.visibility=View.VISIBLE
+            binding.chartBestMate.chart_best_mate_existing.visibility=View.GONE
         }
 
         binding.chartPersonList.adapter= ChartMemberAdapter(this, memList)
