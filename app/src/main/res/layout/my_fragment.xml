@@ -37,7 +37,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"
                 android:textStyle="normal"
-                android:textSize="19sp"
+                android:textSize="19dp"
                 android:textColor="#000000"
                 android:fontFamily="@font/notosanskr_medium"
                 android:lineSpacingExtra="8sp"

@@ -26,9 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#000000"
-                android:lineSpacingExtra="3sp"
+                android:lineSpacingExtra="3dp"
                 android:text="이름"/>
             <EditText
                 android:id="@+id/register_name"
@@ -54,9 +54,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#000000"
-                android:lineSpacingExtra="3sp"
+                android:lineSpacingExtra="3dp"
                 android:text="전화번호"/>
 
             <LinearLayout
@@ -234,7 +234,7 @@
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="#000000"
-                android:lineSpacingExtra="3sp"
+                android:lineSpacingExtra="3dp"
                 android:text="비밀번호 확인"/>
             <EditText
                 android:id="@+id/register_chpw"

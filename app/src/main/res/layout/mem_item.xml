@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/mem_img_background"
         android:layout_width="0dp"
-        android:layout_height="72sp"
+        android:layout_height="72dp"
         android:layout_marginBottom="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +19,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/mem_img_profile"
-        android:layout_width="45sp"
-        android:layout_height="45sp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/mem_emptyprofile"
         app:layout_constraintBottom_toBottomOf="@+id/mem_img_background"
