@@ -4,7 +4,7 @@ import com.nestmate.nm1.src.main.home.nest.todo.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
-interface TodoInterface {
+interface TodoRetrofitInterface {
 //    할일 추가
     @POST("/room/{roomId}/todo/day")
     fun postAddOneDayTodo(@Path("roomId") roomId:Int, @Body params: PostAddOneDayTodo): Call<AddOneDayTodoResponse>
