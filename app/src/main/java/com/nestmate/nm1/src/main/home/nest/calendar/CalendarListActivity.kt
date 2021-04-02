@@ -135,7 +135,7 @@ class CalendarListActivity : BaseActivity<ActivityCalendarListBinding>(ActivityC
         binding.calendarListTitle.text=calCount+smallTitle
 
         if (paging==0 && calList.isNullOrEmpty()){
-
+            binding.calendarScheduleList.visibility=View.GONE
         }
         else if (paging==0 && calList.isNotEmpty()){
             sumList.addAll(calList)
