@@ -28,14 +28,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        page = 0
-        nestlist.clear()
         adapter = HomeNestAdapter(requireContext(), null, parentFragmentManager)
         binding.nestList.setOnClickListener(null)
-
-        showLoadingDialog(requireContext())
-        HomeService(this).tryGetNest(page)
-
 //        binding.homeLayoutEmpty.setOnClickListener {
 //            val intent = Intent(activity, NestActivity::class.java)
 //            startActivity(intent)
@@ -101,6 +95,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         binding.imageButton2.setOnClickListener {
             (activity as MainActivity).changeTipFragment(TipTwoFragment())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        page = 0
+        nestlist.clear()
+        isnestend = false
+        showLoadingDialog(requireContext())
+        HomeService(this).tryGetNest(page)
     }
 
     override fun onAddNestSuccess(response: AddNestResponse) {

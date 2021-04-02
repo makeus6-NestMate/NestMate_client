@@ -7,7 +7,9 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.nestmate.nm1.R
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.databinding.DialogMemberAddByemailBinding
@@ -99,6 +101,9 @@ class MemberAddByEmailDialogFragment : DialogFragment(), MemberView {
     override fun onAddMemberByEmailSuccess(response: ResponseAddMemberByEmail) {
         dismissLoadingDialog()
         Toast.makeText(requireContext(), "멤버 초대 완료", Toast.LENGTH_SHORT).show()
+        val bundle = bundleOf("addmember_ok" to "ok")
+        // 요청키로 수신측의 리스너에 값을 전달
+        setFragmentResult("addmember", bundle)
         this.dismiss()
     }
 

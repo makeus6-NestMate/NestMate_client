@@ -2,10 +2,12 @@ package com.nestmate.nm1.src.main.home.nest.member
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import com.nestmate.nm1.R
 import com.nestmate.nm1.config.ApplicationClass
 import com.nestmate.nm1.config.BaseFragment
 import com.nestmate.nm1.databinding.FragmentMemBinding
+import com.nestmate.nm1.src.main.home.HomeService
 import com.nestmate.nm1.src.main.home.nest.member.model.DeleteMeFromNestResponse
 import com.nestmate.nm1.src.main.home.nest.member.model.GetMemberResponse
 import com.nestmate.nm1.src.main.home.nest.member.model.ResponseAddMemberByEmail
@@ -19,6 +21,17 @@ class MemFragment : BaseFragment<FragmentMemBinding>(FragmentMemBinding::bind, R
         binding.memLayoutPlus.setOnClickListener {
             val memberPlusBottomSheet = MemberPlusBottomSheet()
             memberPlusBottomSheet.show(parentFragmentManager, memberPlusBottomSheet.tag)
+        }
+
+        //  멤버 추가 후 바로 반영
+        setFragmentResultListener("addmember") { _, bundle ->
+            bundle.getString("addmember_ok")?.let {
+                if (it == "ok") {
+
+                    showLoadingDialog(requireContext())
+                    MemberService(this).tryGetMember(roomId)
+                }
+            }
         }
     }
 

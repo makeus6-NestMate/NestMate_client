@@ -30,10 +30,10 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodayTodoAdapter.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoCockDialogFragment.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoFragment.kt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoInterface.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoManagerActivity.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoManagerBottomSheet.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoOneDayManagerAdapter.kt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoRetrofitInterface.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/nestmate/nm1/src/main/home/nest/todo/TodoView.kt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_memo_icon.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cal_setting_icon.png" charset="UTF-8" />
