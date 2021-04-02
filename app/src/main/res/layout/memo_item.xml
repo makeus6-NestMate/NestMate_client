@@ -56,9 +56,9 @@
                 android:fontFamily="@font/notosanskr_regular"
                 android:textStyle="normal"
                 android:maxLines="5"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="@color/black"
-                android:lineSpacingExtra="2sp"
+                android:lineSpacingExtra="2dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="4dp"
                 />

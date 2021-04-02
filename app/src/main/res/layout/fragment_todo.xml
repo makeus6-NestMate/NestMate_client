@@ -17,7 +17,7 @@
         android:includeFontPadding="false"
         android:text="TODAY"
         android:textColor="#000000"
-        android:textSize="21sp"
+        android:textSize="21dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
         android:includeFontPadding="false"
         android:text="2월 14일"
         android:textColor="#7c7c7c"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         android:includeFontPadding="false"
         android:textColor="@color/black"
         android:text="할일관리"
-        android:textSize="12sp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/todo_btn_addtodo"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -107,7 +107,7 @@
             android:lineSpacingExtra="7sp"
             android:text="버튼으로 할 일을 등록해보세요"
             android:textColor="#c1c1c1"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/todo_img_empty2"

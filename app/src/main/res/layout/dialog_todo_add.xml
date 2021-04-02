@@ -14,10 +14,10 @@
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="center_horizontal"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="12sp"
+        android:lineSpacingExtra="12dp"
         android:text="할일추가"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,10 +81,10 @@
         android:layout_marginStart="24dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="8sp"
+        android:lineSpacingExtra="8dp"
         android:text="할일"
         android:textColor="#505050"
-        android:textSize="13sp"
+        android:textSize="13dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -109,7 +109,7 @@
         android:textColor="@color/black"
         android:textColorLink="@color/colorPrimary"
         android:textCursorDrawable="@color/colorPrimary"
-        android:textSize="13sp"
+        android:textSize="13dp"
         app:layout_constraintHeight_percent="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -143,10 +143,10 @@
         android:fontFamily="@font/notosanscjkkr_medium"
         android:gravity="right"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="8sp"
+        android:lineSpacingExtra="8dp"
         android:text="요일 선택"
         android:textColor="#505050"
-        android:textSize="13sp"
+        android:textSize="13dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_edt_title" />
@@ -172,8 +172,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_mon"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
                 android:stateListAnimator="@null"
@@ -185,8 +185,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_tue"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
@@ -199,8 +199,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_wed"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
@@ -214,7 +214,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_thu"
-                android:layout_width="28sp"
+                android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
@@ -229,8 +229,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_fri"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
@@ -244,8 +244,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_sat"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
@@ -258,8 +258,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/todo_btn_sun"
-                android:layout_width="28sp"
-                android:layout_height="28sp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/todo_btn_notclickedday"
                 android:elevation="0dp"
@@ -309,10 +309,10 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/notosanscjkkr_medium"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="8sp"
+        android:lineSpacingExtra="8dp"
         android:text="시간 선택"
         android:textColor="#505050"
-        android:textSize="13sp"
+        android:textSize="13dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_layout_date" />
@@ -341,7 +341,7 @@
             android:paddingTop="7dp"
             android:paddingBottom="8dp"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="13dp"
             tools:text="시간" />
     </LinearLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="83sp"
+    android:layout_height="83dp"
     android:layout_marginBottom="12dp"
     android:background="@drawable/today_todo_background"
     android:elevation="2dp">
@@ -19,7 +19,7 @@
         android:includeFontPadding="false"
         android:stateListAnimator="@null"
         android:text="반복"
-        android:textSize="11sp"
+        android:textSize="11dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +31,9 @@
         android:layout_marginTop="14dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
-        android:lineSpacingExtra="2sp"
+        android:lineSpacingExtra="2dp"
         android:textColor="#7c7c7c"
-        android:textSize="12sp"
+        android:textSize="12dp"
         android:textStyle="normal"
         app:layout_constraintStart_toEndOf="@+id/todo_manager_tv_oneorrepeat"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +49,7 @@
         android:includeFontPadding="false"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_manager_tv_oneorrepeat" />
 
@@ -62,7 +62,7 @@
         android:includeFontPadding="false"
         android:text="시간"
         android:textColor="#7c7c7c"
-        android:textSize="12sp"
+        android:textSize="12dp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_manager_tv_title" />

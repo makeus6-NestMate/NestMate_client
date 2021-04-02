@@ -76,9 +76,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -89,10 +89,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="님의 둥지"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             app:layout_constraintStart_toEndOf="@+id/home_tv_owner"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,8 +100,8 @@
 
     <ImageView
         android:id="@+id/home_drawable_bird"
-        android:layout_width="25sp"
-        android:layout_height="24sp"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
         android:layout_marginStart="7dp"
         android:layout_marginBottom="4dp"
         android:src="@drawable/home_bird_icon"
@@ -126,10 +126,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="''"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -139,10 +139,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="님의"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             app:layout_constraintStart_toEndOf="@+id/home_tv_owner_empty"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,10 +152,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="5sp"
+            android:lineSpacingExtra="5dp"
             android:text="둥지가 없어요"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="@+id/home_tv_owner_empty"
             app:layout_constraintTop_toBottomOf="@+id/home_tv_owner_empty" />
 
@@ -251,7 +251,7 @@
             android:includeFontPadding="false"
             android:text="버튼으로"
             android:textColor="#c1c1c1"
-            android:textSize="11sp"
+            android:textSize="11dp"
             android:textStyle="normal"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
             app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -264,7 +264,7 @@
             android:includeFontPadding="false"
             android:text="새 둥지를 만들어보세요"
             android:textColor="#c1c1c1"
-            android:textSize="11sp"
+            android:textSize="11dp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -288,10 +288,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:includeFontPadding="false"
-            android:lineSpacingExtra="4sp"
+            android:lineSpacingExtra="4dp"
             android:text="집안일 TIP"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:textStyle="normal" />
 
         <ImageView
