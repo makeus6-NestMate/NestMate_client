@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:gravity="center_vertical"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rec_design"
-    android:elevation="3dp">
+    android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/alarm_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="14dp"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/notosanskr_regular"
-        android:textStyle="normal"
-        android:textSize="10dp"
-        android:textColor="#c1c1c1"
-        android:lineSpacingExtra="5dp"
-        android:includeFontPadding="false"
         android:layout_alignParentRight="true"
-        tools:text="오후 7시 30분"/>
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="14dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="5dp"
+        android:textColor="#c1c1c1"
+        android:textSize="10dp"
+        android:textStyle="normal"
+        tools:text="오후 7시 30분" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,7 +33,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/alarm_img"
             android:layout_width="45dp"
-            android:layout_height="45dp"/>
+            android:layout_height="45dp" />
 
         <TextView
             android:id="@+id/alarm_content"
@@ -43,12 +41,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
             android:fontFamily="@font/notosanskr_regular"
-            android:textStyle="normal"
-            android:textSize="14dp"
-            android:textColor="#000000"
-            android:lineSpacingExtra="3dp"
             android:includeFontPadding="false"
-            tools:text="‘서은’님이\n‘쓰레기 버리기’를 부탁해요."/>
+            android:lineSpacingExtra="3dp"
+            android:textColor="#000000"
+            android:textSize="14dp"
+            android:textStyle="normal"
+            tools:text="‘서은’님이\n‘쓰레기 버리기’를 부탁해요." />
 
     </LinearLayout>
 
