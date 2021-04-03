@@ -5,7 +5,7 @@
     android:id="@+id/nest_member_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintWidth_percent="0.224">
+    app:layout_constraintWidth_percent="0.3">
 
     <ImageView
         android:id="@+id/nest_mem_img_profile"
