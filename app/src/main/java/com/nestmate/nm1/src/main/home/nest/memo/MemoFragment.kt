@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.nestmate.nm1.R
 import com.nestmate.nm1.config.ApplicationClass
@@ -171,20 +172,28 @@ class MemoFragment : BaseFragment<FragmentMemoBinding>(
                             MotionEvent.ACTION_MOVE -> {
                                 v.animate().x(event.rawX + moveX).y(event.rawY + moveY).setDuration(0).start()
                                 Log.d("로그", "MOVE: ${isItemMoving}")
+                                Log.d("로그", "v.x: ${v.x} / frame.x: ${binding.memoFrameLayout.x}")
+                                Log.d("로그", "v.y: ${v.y} / frame.y: ${binding.memoFrameLayout.y}")
                             }
 
                             MotionEvent.ACTION_UP -> {
-                                if (v.x < 0) {
+                                if (v.x < 0f) {
                                     v.x = 0f
+
                                 } else if (v.x + v.width > binding.memoFrameLayout.width) {
                                     v.x = (binding.memoFrameLayout.width - v.width).toFloat()
                                 }
 
-                                if (v.y < 0) {
+                                if (v.y < 0f) {
                                     v.y = 0f
+
                                 } else if (v.y + v.height > binding.memoFrameLayout.height) {
                                     v.y = (binding.memoFrameLayout.height - v.height).toFloat()
                                 }
+
+                                Log.d("로그", "UP: v.x: ${v.x} / frame.x: ${binding.memoFrameLayout.x}")
+                                Log.d("로그", "UP: v.y: ${v.y} / frame.y: ${binding.memoFrameLayout.y}")
+
 
                                 val request = PatchMemoRequest(v.x, v.y)
                                 MemoService(this).tryPatchMemo(ApplicationClass.sSharedPreferences.getInt("roomId",-1), memoList[i].memoId, request)

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="83dp"
     android:layout_marginBottom="12dp"
-    android:background="@drawable/today_todo_background"
-    android:elevation="2dp">
+    android:background="@drawable/today_todo_background">
 
     <TextView
         android:id="@+id/todo_manager_tv_oneorrepeat"
@@ -14,7 +13,7 @@
         android:layout_width="35dp"
         android:layout_height="20dp"
         android:layout_marginStart="21dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:gravity="center"
         android:includeFontPadding="false"
         android:stateListAnimator="@null"
@@ -28,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:lineSpacingExtra="2dp"
@@ -44,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/notosanskr_medium"
         android:includeFontPadding="false"
         android:text="TextView"
