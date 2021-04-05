@@ -44,10 +44,6 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
         kakaoImg = intent.getStringExtra("kakaoImg")
         email = intent.getStringExtra("email")
 
-        Log.d("kakaoImg", kakaoImg!!)
-        Log.d("kakaoImg", email!!)
-        Log.d("kakaoImg", intent.getStringExtra("access_token")!!)
-
         Glide.with(this).load(kakaoImg).error(R.drawable.chicken_img).into(binding.kakaoregiProfile)
 
         binding.kakaoregiEdtNickname.addTextChangedListener(object : TextWatcher {
@@ -81,19 +77,24 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
             showLoadingDialog(this)
             var nickname = RequestBody.create("text/plain".toMediaTypeOrNull(), binding.kakaoregiEdtNickname.text.toString())
             var email = RequestBody.create("text/plain".toMediaTypeOrNull(),
-                intent.getStringExtra("email")!!
+                email!!
             )
             var access_token = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("access_token")!!)
-            var kakaoImg = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("kakaoImg")!!)
             if (uploadFile!=null){ //갤러리로 고른 사진이 있다면
                 LoginService(this).tryPostKakaoRegister(
                     nickname = nickname, profileImg = uploadFile, email = email,
                     access_token = access_token, kakaoImg = null
                 )
-            } else {
+            } else if (uploadFile==null && kakaoImg!=null){ //갤러리x, 카톡프사 o-> 카톡 프사 넘기기
+                var kakaoProfile = RequestBody.create("text/plain".toMediaTypeOrNull(), kakaoImg!!)
                 LoginService(this).tryPostKakaoRegister(
                     nickname = nickname, profileImg = null, email = email,
-                    access_token = access_token, kakaoImg = kakaoImg
+                    access_token = access_token, kakaoImg = kakaoProfile
+                )
+            } else if (uploadFile==null && kakaoImg==null){ //갤러리에서 고르기 x, 카톡프사 x
+                LoginService(this).tryPostKakaoRegister(
+                    nickname = nickname, profileImg = null, email = email,
+                    access_token = access_token, kakaoImg = null
                 )
             }
         }
@@ -114,7 +115,7 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
                     var requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
                     uploadFile = MultipartBody.Part.createFormData("profileImg", file.name, requestFile)
 
-                    binding.kakaoregiProfile.setImageURI(uriPhoto)
+                    Glide.with(this).load(uriPhoto).error(R.drawable.chicken_img).into(binding.kakaoregiProfile)
                 }
             }
         }

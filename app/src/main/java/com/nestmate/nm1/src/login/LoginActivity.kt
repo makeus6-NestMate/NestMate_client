@@ -25,10 +25,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         // 로그인 공통 callback 구성
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
-                showCustomToast(error.toString())
-                //showCustomToast("로그인 실패, 다시 시도해주세요")
+                showCustomToast("로그인 실패, 다시 시도해주세요")
             } else if (token != null) {
-                Log.i("kakaologin", "로그인 성공 ${token.accessToken}")
                 showCustomToast("로그인 성공")
                 access_token = token.accessToken
 
@@ -41,8 +39,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                         email = user.kakaoAccount?.email!!
                         kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
 
-                        if (email!=null && kakaoImg!=null) {
-
+                        if (email!=null) {
                             //  먼저 로그인 진입후 -> 서버에 저장된 회원이 아닐 경우 회원가입 화면으로 이동
                             showLoadingDialog(this)
                             val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
@@ -65,6 +62,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
         binding.loginBtnKakao.setOnClickListener {
             // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+            showCustomToast("회원가입 시 반드시 전체 동의하기를 눌러주세요 (카카오 계정 포함)")
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
             } else {
