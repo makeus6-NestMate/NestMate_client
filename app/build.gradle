@@ -15,15 +15,15 @@ android {
         applicationId "com.nestmate.nm1"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 6
-        versionName "2.0.1"
+        versionCode 7
+        versionName "2.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

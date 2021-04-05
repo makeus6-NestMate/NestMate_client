@@ -25,8 +25,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         // 로그인 공통 callback 구성
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
-                Log.e("kakaologin", "로그인 실패", error)
-                showCustomToast("로그인 실패, 다시 시도해주세요")
+                showCustomToast(error.toString())
+                //showCustomToast("로그인 실패, 다시 시도해주세요")
             } else if (token != null) {
                 Log.i("kakaologin", "로그인 성공 ${token.accessToken}")
                 showCustomToast("로그인 성공")
@@ -35,6 +35,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 UserApiClient.instance.me { user, error ->
                     if (error != null) {
                         Log.e("kakaologin", "사용자 정보 요청 실패", error)
+                        showCustomToast("사용자 정보 요청 실패")
                     } else if (user != null) {
 
                         email = user.kakaoAccount?.email!!

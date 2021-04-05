@@ -24,7 +24,21 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var keyHash = Utility.getKeyHash(this)
+//        try {
+//            val info = packageManager.getPackageInfo(
+//                packageName, PackageManager.GET_SIGNATURES
+//            )
+//            for (signature in info.signatures) {
+//                val md: MessageDigest = MessageDigest.getInstance("SHA")
+//                md.update(signature.toByteArray())
+//                Log.e(
+//                    "MY KEY HASH:",
+//                    Base64.encodeToString(md.digest(), Base64.DEFAULT)
+//                )
+//            }
+//        } catch (e: PackageManager.NameNotFoundException) {
+//        } catch (e: NoSuchAlgorithmException) {
+//        }
 
         if(ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "na") == "na"){
             Handler(Looper.getMainLooper()).postDelayed({
