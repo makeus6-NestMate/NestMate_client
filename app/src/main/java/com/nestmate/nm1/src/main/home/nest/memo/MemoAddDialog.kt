@@ -137,10 +137,10 @@ class MemoAddDialog(isEdit: Boolean? = null, roomId: Int? = null, memoId: Int? =
 
                     if(binding!!.memoDialogContentEt.text.isNotEmpty()){
                         binding!!.memoDialogConfirmBtn.isEnabled = true
-                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_orange_bg)
+                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
                     }else{
                         binding!!.memoDialogConfirmBtn.isEnabled = false
-                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.memo_dialog_btn_grey_bg)
+                        binding!!.memoDialogConfirmBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
                     }
 
                     str = binding!!.memoDialogContentEt.text.toString()
