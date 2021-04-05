@@ -110,6 +110,7 @@
             android:includeFontPadding="false"
             android:lineSpacingExtra="3dp"
             android:stateListAnimator="@null"
+            android:enabled="false"
             android:text="@string/memo_dialog_confirm"
             android:textColor="@color/white"
             android:textSize="15dp"

@@ -365,7 +365,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
-            android:enabled="true"
+            android:enabled="false"
             android:fontFamily="@font/notosanscjkkr_medium"
             android:stateListAnimator="@null"
             android:text="확인"

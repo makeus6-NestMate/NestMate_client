@@ -182,6 +182,7 @@
             android:id="@+id/memo_dialog_confirm_btn"
             android:includeFontPadding="false"
             android:layout_width="84dp"
+            android:enabled="false"
             android:layout_height="40dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
             android:fontFamily="@font/notosanskr_medium"

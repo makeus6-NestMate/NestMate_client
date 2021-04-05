@@ -45,9 +45,11 @@ class CalendarAddDialog : DialogFragment() {
             }
             else (activity as CalendarAddActivity).changeRandomCate(binding.calendarAddTxt.text.toString())
             if(binding.calendarAddTxt.text.toString().trim()!=""){
+                binding.calendarAddYesBtn.isEnabled = true
                 binding.calendarAddYesBtn.setBackgroundResource(R.drawable.roundrec_design_active_bg)
             }
             else{
+                binding.calendarAddYesBtn.isEnabled = false
                 binding.calendarAddYesBtn.setBackgroundResource(R.drawable.roundrec_design_inactive_bg)
             }
         }

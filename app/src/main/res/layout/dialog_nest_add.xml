@@ -179,6 +179,7 @@
             android:layout_width="84dp"
             android:layout_height="40dp"
             android:background="@drawable/memo_dialog_btn_grey_bg"
+            android:enabled="false"
             android:fontFamily="@font/notosanskr_medium"
             android:includeFontPadding="false"
             android:lineSpacingExtra="3dp"
