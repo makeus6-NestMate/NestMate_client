@@ -14,7 +14,7 @@ interface LoginRetrofitInterface {
     @Multipart
     @POST("/kakao/user")
     fun postKakaoRegister(@Part("nickname") nickname:RequestBody,
-                          @Part profileImg:MultipartBody.Part?=null,
+                          @Part profileImg: MultipartBody.Part? = null,
                           @Part("email") email:RequestBody,
                           @Part("access_token") access_token:RequestBody,
                           @Part("kakaoImg") kakaoImg:RequestBody?=null): Call<KakaoRegisterResponse>

@@ -79,18 +79,23 @@ class KakaoRegisterActivity : BaseActivity<ActivityKakaoRegisterBinding>(Activit
 
         binding.kakaoregiBtnConfirm.setOnClickListener {
             showLoadingDialog(this)
-            if (uploadFile!=null){ //갤러리로 고른 사진이 있다면
-                kakaoImg = null
-            }
             var nickname = RequestBody.create("text/plain".toMediaTypeOrNull(), binding.kakaoregiEdtNickname.text.toString())
             var email = RequestBody.create("text/plain".toMediaTypeOrNull(),
                 intent.getStringExtra("email")!!
             )
             var access_token = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("access_token")!!)
             var kakaoImg = RequestBody.create("text/plain".toMediaTypeOrNull(), intent.getStringExtra("kakaoImg")!!)
-            LoginService(this).tryPostKakaoRegister(nickname = nickname, profileImg = uploadFile, email = email,
-                access_token = access_token, kakaoImg = kakaoImg
+            if (uploadFile!=null){ //갤러리로 고른 사진이 있다면
+                LoginService(this).tryPostKakaoRegister(
+                    nickname = nickname, profileImg = uploadFile, email = email,
+                    access_token = access_token, kakaoImg = null
                 )
+            } else {
+                LoginService(this).tryPostKakaoRegister(
+                    nickname = nickname, profileImg = null, email = email,
+                    access_token = access_token, kakaoImg = kakaoImg
+                )
+            }
         }
     }
 

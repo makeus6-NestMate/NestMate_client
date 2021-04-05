@@ -22,10 +22,12 @@ class MyFragment : BaseFragment<MyFragmentBinding>(MyFragmentBinding::bind, R.la
         binding.myToolbar.toolbarTitle.text="마이페이지"
 
         binding.mypageLogout.setOnClickListener {
+            showLoadingDialog(requireContext())
             val editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, "na")
             editor.apply()
 
+            dismissLoadingDialog()
             val intent = Intent(activity, LoginActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
