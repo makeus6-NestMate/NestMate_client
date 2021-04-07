@@ -84,6 +84,7 @@ class TodayTodoAdapter(val context: Context, private val todoList: MutableList<T
                 Glide
                     .with(context)
                     .load(todayTodo.profileImg)
+                    .error(R.drawable.mem_emptyprofile)
                     .into(imgProfile) //멤버 프로필
 
                 tvTimeOrName.text = todayTodo.nickname //멤버 닉네임

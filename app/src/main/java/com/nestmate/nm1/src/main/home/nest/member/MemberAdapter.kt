@@ -22,6 +22,7 @@ class MemberAdapter(val context: Context, private val memList: List<Member>, val
         fun bind(member: Member, context: Context) {
             Glide.with(context)
                 .load(member.profileImg)
+                .error(R.drawable.mem_emptyprofile)
                 .into(imgProfile)
             tvName.text = member.nickname //멤버이름
 

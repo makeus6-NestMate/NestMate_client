@@ -27,34 +27,67 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             if (error != null) {
                 showCustomToast("로그인 실패, 다시 시도해주세요")
             } else if (token != null) {
-                showCustomToast("로그인 성공")
                 access_token = token.accessToken
 
                 UserApiClient.instance.me { user, error ->
                     if (error != null) {
                         Log.e("kakaologin", "사용자 정보 요청 실패", error)
-                        showCustomToast("사용자 정보 요청 실패")
                     } else if (user != null) {
+                        val scopes = mutableListOf<String>()
+                        if (user.kakaoAccount?.emailNeedsAgreement == true) { scopes.add("account_email") }
 
-                        email = user.kakaoAccount?.email!!
-                        kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
+                        if (scopes.count() > 0) {
+                            UserApiClient.instance.loginWithNewScopes(this, scopes) { token, error ->
+                                showCustomToast("카카오계정(이메일) 항목을 체크해주세요")
+                                if (error != null) {
+                                } else {
+                                    // 사용자 정보 재요청
+                                    UserApiClient.instance.me { user, error ->
+                                        if (error != null) {
+                                            Log.e("kakaologin", "사용자 정보 요청 실패", error)
+                                        }
+                                        else if (user != null) {
+                                            Log.e("kakaologin", "사용자 정보 요청 성공", error)
 
-                        if (email!=null) {
-                            //  먼저 로그인 진입후 -> 서버에 저장된 회원이 아닐 경우 회원가입 화면으로 이동
-                            showLoadingDialog(this)
-                            val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
-                                access_token!!
-                            )
-                            LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoLoginRequest)
+                                            email = user.kakaoAccount?.email!!
+                                            kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
+
+                                            if (email!=null) {
+                                                //  먼저 로그인 진입후 -> 서버에 저장된 회원이 아닐 경우 회원가입 화면으로 이동
+                                                showLoadingDialog(this)
+                                                val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
+                                                    access_token!!
+                                                )
+                                                LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoLoginRequest)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        else{
+                            showCustomToast("로그인 성공")
 
-                        Log.i(
-                            "kakaologin", "사용자 정보 요청 성공" +
-                                    "\n회원번호: ${user.id}" +
-                                    "\n이메일: ${user.kakaoAccount?.email}" +
-                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                                    "\n프로필사진: ${user.kakaoAccount?.profile?.profileImageUrl}"
-                        )
+                            email = user.kakaoAccount?.email!!
+                            kakaoImg = user.kakaoAccount?.profile?.profileImageUrl
+
+                            if (email!=null) {
+                                //  먼저 로그인 진입후 -> 서버에 저장된 회원이 아닐 경우 회원가입 화면으로 이동
+                                showLoadingDialog(this)
+                                val postKakaoLoginRequest = PostKakaoLoginRequest(email!!,
+                                    access_token!!
+                                )
+                                LoginService(this).tryPostKakaoLogin(postKakaoLoginRequest = postKakaoLoginRequest)
+                            }
+
+                            Log.i(
+                                "kakaologin", "사용자 정보 요청 성공" +
+                                        "\n회원번호: ${user.id}" +
+                                        "\n이메일: ${user.kakaoAccount?.email}" +
+                                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                        "\n프로필사진: ${user.kakaoAccount?.profile?.profileImageUrl}"
+                            )
+                        }
                     }
                 }
             }
@@ -62,7 +95,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
         binding.loginBtnKakao.setOnClickListener {
             // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
-            showCustomToast("회원가입 시 반드시 전체 동의하기를 눌러주세요 (카카오 계정 포함)")
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
             } else {

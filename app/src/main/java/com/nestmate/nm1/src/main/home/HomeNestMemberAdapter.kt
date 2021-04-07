@@ -22,7 +22,7 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
 
         fun bind(member: NestMember, context: Context) {
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val width = (windowManager.defaultDisplay.width *0.1).toInt()
+            val width = (windowManager.defaultDisplay.width * 0.1).toInt()
 
             itemView.layoutParams = RecyclerView.LayoutParams(
                 width,
@@ -30,13 +30,12 @@ class HomeNestMemberAdapter(val context: Context, private val memList: List<Nest
             )
 
             tvName.text = member.nickname //멤버 이름
-            if (member.profileImg!=""){
-                Glide
-                    .with(context)
-                    .load(member.profileImg)
-                    .apply(RequestOptions.circleCropTransform()) //원으로
-                    .into(imgProfile) //멤버 프로필
-            }
+            Glide
+                .with(context)
+                .load(member.profileImg)
+                .error(R.drawable.mem_emptyprofile)
+                .apply(RequestOptions.circleCropTransform()) //원으로
+                .into(imgProfile) //멤버 프로필
         }
     }
 

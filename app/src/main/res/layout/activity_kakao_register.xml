@@ -24,7 +24,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/kakaoregi_profile"
             android:layout_width="108dp"
-            android:layout_height="108dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/chicken_img"
             app:layout_constraintEnd_toEndOf="parent"
