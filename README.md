@@ -2,6 +2,8 @@
 
 가족, 룸메이트, 커플이 함께하는 '집안일 분담 도우미' 어플리케이션
 
+Awards - MakeUs 데모데이 최우수상
+
 https://play.google.com/store/apps/details?id=com.nestmate.nm1
 
 ## Introduction
