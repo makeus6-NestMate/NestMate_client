@@ -18,7 +18,7 @@ https://play.google.com/store/apps/details?id=com.nestmate.nm1
 ## Develop Environment
 Language - Kotlin
 
-Architecture - MVP, Singleton
+Pattern - MVP, Singleton
 
 Minimum SDK Version - 24
 
@@ -32,4 +32,4 @@ Loading Dialog - Spinkit
 
 Image - Glide, CircleImageview
 
-SDK - Kakao
+SDK - Kakao(소셜로그인)
