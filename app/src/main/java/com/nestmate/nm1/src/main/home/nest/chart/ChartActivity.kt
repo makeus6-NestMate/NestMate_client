@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_chart.*
 import kotlinx.android.synthetic.main.activity_chart.view.*
 import kotlinx.android.synthetic.main.activity_nest.*
 import kotlinx.android.synthetic.main.chart_day.view.*
+import java.io.Console
 
 class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::inflate),
     ChartActivityView {
@@ -88,7 +89,7 @@ class ChartActivity : BaseActivity<ActivityChartBinding>(ActivityChartBinding::i
         dataList = response.result.chart
         bestMember = response.result.bestMember
 
-        if(bestMember!=null){
+        if(bestMember.prizeCount!=0){
             binding.chartBestMate.chart_best_mate_nothing.visibility=View.GONE
             binding.chartBestMate.chart_best_mate_existing.visibility=View.VISIBLE
             Glide.with(this).load(bestMember.profileImg).error(R.drawable.home_bird_icon).into(binding.chartBestMate.chart_best_mate_existing.bestmate_img)
